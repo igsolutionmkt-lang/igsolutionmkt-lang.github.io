@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Gratuito — IG Solution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090f;
+    --surface: #0e1118;
+    --surface2: #141720;
+    --border: rgba(255,255,255,0.06);
+    --border2: rgba(255,255,255,0.12);
+    --green: #20c45a;
+    --green-soft: rgba(32,196,90,0.08);
+    --green-mid: rgba(32,196,90,0.15);
+    --text: #f0f2f5;
+    --text2: rgba(240,242,245,0.6);
+    --text3: rgba(240,242,245,0.3);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(ellipse, rgba(32,196,90,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ─── Back link ─── */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text3);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 32px;
+    transition: color .18s;
+  }
+  .back:hover { color: var(--text2); }
+
+  /* ─── Header ─── */
+  .header {
+    margin-bottom: 32px;
+    animation: up .5s ease both;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-soft);
+    border: 1px solid rgba(32,196,90,0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: blink 2s ease infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  h1 span { color: var(--green); }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* ─── Promise bar ─── */
+  .promise {
+    display: flex;
+    gap: 6px;
+    margin: 20px 0 32px;
+    flex-wrap: wrap;
+    animation: up .5s .05s ease both;
+  }
+
+  .promise-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    color: var(--text2);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+  }
+  .promise-item span { color: var(--green); font-size: 13px; }
+
+  /* ─── Form ─── */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: up .5s .1s ease both;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  input, select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 14px;
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .18s, box-shadow .18s;
+    -webkit-appearance: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  input::placeholder { color: var(--text3); }
+
+  input:focus, select:focus {
+    border-color: rgba(32,196,90,0.4);
+    box-shadow: 0 0 0 3px rgba(32,196,90,0.08), 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  select { cursor: pointer; }
+  select option { background: #141720; }
+
+  /* radio group */
+  .radio-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .radio-option {
+    position: relative;
+  }
+
+  .radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+
+  .radio-option label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 10px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text2);
+    text-transform: none;
+    letter-spacing: 0;
+    transition: all .18s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .radio-option input[type="radio"]:checked + label {
+    background: var(--green-soft);
+    border-color: rgba(32,196,90,0.35);
+    color: var(--green);
+    box-shadow: 0 0 0 3px rgba(32,196,90,0.08);
+  }
+
+  .radio-option label:hover {
+    border-color: var(--border2);
+    color: var(--text);
+  }
+
+  /* divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  /* submit */
+  button[type="submit"] {
+    background: var(--green);
+    color: #042010;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    letter-spacing: -0.2px;
+    transition: all .2s;
+    box-shadow:
+      0 3px 0 rgba(255,255,255,0.12) inset,
+      0 -2px 0 rgba(0,0,0,0.2) inset,
+      0 4px 20px rgba(32,196,90,.25);
+    margin-top: 6px;
+  }
+
+  button[type="submit"]:hover {
+    background: #1db34f;
+    transform: translateY(-2px);
+    box-shadow:
+      0 3px 0 rgba(255,255,255,0.15) inset,
+      0 -2px 0 rgba(0,0,0,0.2) inset,
+      0 8px 28px rgba(32,196,90,.35);
+  }
+
+  button[type="submit"]:active { transform: translateY(0); }
+
+  .disclaimer {
+    font-size: 11px;
+    color: var(--text3);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  /* ─── Success screen ─── */
+  .success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    animation: up .5s ease both;
+  }
+
+  .success.show { display: flex; }
+
+  .success-icon {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    background: var(--green-soft);
+    border: 1px solid rgba(32,196,90,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 0 40px rgba(32,196,90,0.12);
+  }
+
+  .success h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  .success p {
+    font-size: 14px;
+    color: var(--text2);
+    max-width: 300px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .success-steps {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: left;
+  }
+
+  .step-n {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--green-soft);
+    border: 1px solid rgba(32,196,90,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .step-text { font-size: 13px; color: var(--text2); }
+  .step-text strong { color: var(--text); display: block; font-size: 13.5px; margin-bottom: 1px; }
+
+  a.wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green);
+    color: #042010;
+    border-radius: 12px;
+    padding: 14px 24px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    width: 100%;
+    transition: all .18s;
+    box-shadow: 0 4px 20px rgba(32,196,90,.25);
+  }
+  a.wa-btn:hover { background: #1db34f; transform: translateY(-2px); }
+
+  /* ─── Anim ─── */
+  @keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="https://igsolutionmkt-lang.github.io" class="back">← Voltar</a>
+
+  <!-- Header -->
+  <div class="header" id="formSection">
+    <div class="tag"><span class="dot"></span> 100% Gratuito</div>
+    <h1>Descobre o que estás<br>a <span>perder no Google</span></h1>
+    <p class="subtitle">Em menos de 2 horas analisamos o teu negócio e mostramos exactamente onde estás a perder clientes — sem compromisso.</p>
+
+    <div class="promise">
+      <div class="promise-item"><span>✓</span> Sem custos</div>
+      <div class="promise-item"><span>✓</span> Resposta em 2h</div>
+      <div class="promise-item"><span>✓</span> Sem compromisso</div>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="form" id="leadForm">
+
+    <div class="field">
+      <label>O teu nome</label>
+      <input type="text" id="nome" placeholder="Ex: João Silva" autocomplete="name">
+    </div>
+
+    <div class="field">
+      <label>WhatsApp / Telefone</label>
+      <input type="tel" id="telefone" placeholder="Ex: 912 345 678" autocomplete="tel">
+    </div>
+
+    <div class="field">
+      <label>Tipo de negócio</label>
+      <select id="negocio">
+        <option value="" disabled selected>Selecciona o teu negócio</option>
+        <option>Restaurante / Café / Bar</option>
+        <option>Loja / Comércio local</option>
+        <option>Oficina / Serviços auto</option>
+        <option>Cabeleireiro / Barbearia</option>
+        <option>Outro serviço local</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Cidade</label>
+      <input type="text" id="cidade" placeholder="Ex: Lisboa, Porto, Braga...">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field">
+      <label>Já tens Google Business?</label>
+      <div class="radio-group">
+        <div class="radio-option">
+          <input type="radio" name="google" id="g-sim" value="Sim">
+          <label for="g-sim">✅ Sim, tenho</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="google" id="g-nao" value="Não">
+          <label for="g-nao">❌ Não tenho</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="google" id="g-nao-sei" value="Não sei">
+          <label for="g-nao-sei">🤷 Não sei</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="google" id="g-incompleto" value="Incompleto">
+          <label for="g-incompleto">⚠️ Incompleto</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Quantos clientes tens por mês?</label>
+      <div class="radio-group">
+        <div class="radio-option">
+          <input type="radio" name="clientes" id="c1" value="Menos de 50">
+          <label for="c1">Menos de 50</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="clientes" id="c2" value="50 a 150">
+          <label for="c2">50 a 150</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="clientes" id="c3" value="150 a 500">
+          <label for="c3">150 a 500</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="clientes" id="c4" value="Mais de 500">
+          <label for="c4">Mais de 500</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" onclick="submeter()">🔍 Quero o meu diagnóstico gratuito</button>
+    <p class="disclaimer">Os teus dados são confidenciais. Não partilhamos com terceiros.</p>
+
+  </div>
+
+  <!-- Success -->
+  <div class="success" id="successSection">
+    <div class="success-icon">✅</div>
+    <h2>Pedido recebido!</h2>
+    <p>Vamos analisar o teu negócio e entrar em contacto em menos de 2 horas com o teu diagnóstico completo.</p>
+
+    <div class="success-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-text">
+          <strong>Análise do teu Google Business</strong>
+          Verificamos a tua posição actual no Maps e pesquisa
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-text">
+          <strong>Comparação com concorrentes</strong>
+          O que estão a fazer melhor que tu
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-text">
+          <strong>Plano de acção personalizado</strong>
+          O que podes melhorar e quanto podes ganhar
+        </div>
+      </div>
+    </div>
+
+    <a href="" class="wa-btn" id="waLink">💬 Falar connosco no WhatsApp</a>
+  </div>
+
+</div>
+
+<script>
+function submeter() {
+  const nome = document.getElementById('nome').value.trim();
+  const telefone = document.getElementById('telefone').value.trim();
+  const negocio = document.getElementById('negocio').value;
+  const cidade = document.getElementById('cidade').value.trim();
+  const google = document.querySelector('input[name="google"]:checked');
+  const clientes = document.querySelector('input[name="clientes"]:checked');
+
+  if (!nome || !telefone || !negocio || !cidade) {
+    alert('Por favor preenche os campos obrigatórios: nome, telefone, negócio e cidade.');
+    return;
+  }
+
+  const googleVal = google ? google.value : 'Não respondeu';
+  const clientesVal = clientes ? clientes.value : 'Não respondeu';
+
+  const msg = `Olá! Submeti o formulário de diagnóstico gratuito.\n\n` +
+    `👤 Nome: ${nome}\n` +
+    `📱 Telefone: ${telefone}\n` +
+    `🏪 Negócio: ${negocio}\n` +
+    `📍 Cidade: ${cidade}\n` +
+    `🔍 Google Business: ${googleVal}\n` +
+    `👥 Clientes/mês: ${clientesVal}\n\n` +
+    `Aguardo o meu diagnóstico!`;
+
+  const waUrl = `https://wa.me/351917305248?text=${encodeURIComponent(msg)}`;
+  document.getElementById('waLink').href = waUrl;
+
+  document.getElementById('leadForm').style.display = 'none';
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('successSection').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
