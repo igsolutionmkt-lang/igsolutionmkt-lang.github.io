@@ -142,13 +142,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 1
 /* ======================================================
    STATS
 ====================================================== */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:740px;margin:0 auto 80px;padding:0 20px;position:relative;z-index:2}
-.stat-card{border-radius:var(--r-lg);padding:28px 20px 24px;text-align:center;transition:transform .38s var(--spring),box-shadow .3s}
-.stat-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:var(--shadow-deep)}
-.stat-num{font-weight:300;font-size:44px;letter-spacing:-.06em;display:block;line-height:1;margin-bottom:10px}
-.stat-num-sm{font-size:30px;line-height:1.2}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto 72px;padding:0 20px;position:relative;z-index:2}
+.stat-card{border-radius:var(--r-lg);padding:26px 18px 22px;text-align:center;transition:transform .38s var(--spring),box-shadow .3s}
+.stat-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-deep)}
+.stat-num{font-weight:200;font-size:42px;letter-spacing:-.06em;display:block;line-height:1;margin-bottom:10px}
+.stat-num-sm{font-size:26px;line-height:1.2}
 .c-g{color:var(--green-g)}.c-b{color:var(--blue-g)}.c-s{color:rgba(200,200,220,.80)}
-.stat-label{font-size:12.5px;font-weight:400;color:var(--w40);line-height:1.5;letter-spacing:.02em}
+.stat-label{font-size:12px;font-weight:400;color:var(--w40);line-height:1.5;letter-spacing:.02em}
 
 /* ======================================================
    SECTION UTILS
@@ -213,25 +213,24 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:10px 1
 /* ======================================================
    RESULTADO
 ====================================================== */
-.resultado-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:860px;margin:0 auto}
-.resultado-card{border-radius:var(--r-lg);padding:32px}
-.rc-header{display:flex;align-items:center;gap:16px;margin-bottom:26px}
-.rc-icon{font-size:28px;width:54px;height:54px;background:rgba(255,255,255,.06);border:.5px solid rgba(255,255,255,.10);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.rc-header strong{display:block;color:var(--w100);font-size:15px;font-weight:700}
-.rc-header span{color:var(--w40);font-size:12.5px}
-.rc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
-.rc-stat{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 10px;text-align:center}
-.rc-stat strong{display:block;font-size:20px;font-weight:800;color:var(--green-g);margin-bottom:4px;letter-spacing:-.02em}
-.rc-stat span{font-size:11px;color:var(--w40);line-height:1.4}
-.rc-quote{font-size:14px;font-weight:300;color:var(--w65);font-style:italic;border-left:2.5px solid var(--green);padding-left:14px;line-height:1.70}
-.numeros h3{font-weight:700;font-size:22px;color:var(--w100);margin-bottom:32px;letter-spacing:-.02em}
-.n-item{margin-bottom:22px}
-.n-bar{height:7px;background:rgba(255,255,255,.08);border-radius:var(--r-xl);overflow:hidden;margin-bottom:8px}
+.resultado-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;max-width:900px;margin:0 auto}
+.testemunhos{display:flex;flex-direction:column;gap:16px}
+.testemunho{border-radius:var(--r-md);padding:24px 26px}
+.testemunho-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.t-icon{font-size:22px;width:46px;height:46px;background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.09);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.t-nome{font-size:14px;font-weight:700;color:var(--w88);display:block}
+.t-tipo{font-size:12px;color:var(--w40)}
+.t-stars{color:#fbbf24;font-size:12px;margin-bottom:8px;letter-spacing:1px}
+.t-quote{font-size:14px;font-weight:300;color:var(--w65);font-style:italic;line-height:1.72}
+.numeros{display:flex;flex-direction:column;justify-content:center}
+.numeros h3{font-weight:800;font-size:22px;color:var(--w100);margin-bottom:28px;letter-spacing:-.02em;line-height:1.2}
+.n-item{margin-bottom:20px}
+.n-bar{height:6px;background:rgba(255,255,255,.07);border-radius:var(--r-xl);overflow:hidden;margin-bottom:8px}
 .n-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green-g));border-radius:var(--r-xl);transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--smooth)}
 .n-bar-fill.animate{transform:scaleX(1)}
 .n-row{display:flex;justify-content:space-between;align-items:center}
-.n-row span{font-size:13.5px;font-weight:300;color:var(--w40)}
-.n-row strong{font-size:15px;font-weight:700;color:var(--green-g)}
+.n-row span{font-size:13px;font-weight:300;color:var(--w40)}
+.n-row strong{font-size:14px;font-weight:700;color:var(--green-g)}
 
 /* ======================================================
    SERVIÇOS — INCLUDED LIST
@@ -442,10 +441,12 @@ footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position
   .nav-hamburger{display:flex}
   .problema-grid{grid-template-columns:1fr}
   .resultado-grid{grid-template-columns:1fr}
+  .testemunhos{gap:12px}
   .lp-inner{grid-template-columns:1fr}
   .negocios-grid{grid-template-columns:repeat(2,1fr)}
   .p2030-inner{flex-direction:column}
   .p2030-icon{width:60px;height:60px;font-size:28px}
+  .numeros{margin-top:8px}
 }
 @media(max-width:480px){
   .stats{grid-template-columns:1fr}
@@ -690,33 +691,54 @@ footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position
 <div class="s-wrap" id="resultados">
   <div class="s-head reveal">
     <div class="s-label">Resultados Reais</div>
-    <h2 class="s-title">O que acontece quando<br/>apareces no Google</h2>
+    <h2 class="s-title">O que dizem os nossos clientes</h2>
+    <p class="s-sub">Negócios locais no Porto que passaram a aparecer no Google — e não olharam para trás.</p>
   </div>
   <div class="resultado-grid">
-    <div class="resultado-card glass reveal">
-      <div class="rc-header">
-        <div class="rc-icon">☕</div>
-        <div>
-          <strong>Café Tropical Brasil</strong>
-          <span>Porto · Cliente activo</span>
+    <div class="testemunhos">
+      <div class="testemunho glass reveal">
+        <div class="testemunho-header">
+          <div class="t-icon">🍽️</div>
+          <div>
+            <span class="t-nome">Restaurante · Bonfim, Porto</span>
+            <span class="t-tipo">Cliente Plano Pro</span>
+          </div>
         </div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"Antes não aparecíamos no Google Maps. Em menos de 30 dias passámos para o top 3 e as chamadas triplicaram. Não consigo imaginar voltar atrás."</p>
       </div>
-      <div class="rc-stats">
-        <div class="rc-stat"><strong>+312%</strong><span>visualizações Google Maps</span></div>
-        <div class="rc-stat"><strong>+89</strong><span>novas reviews em 60 dias</span></div>
-        <div class="rc-stat"><strong>#1</strong><span>"café brasileiro Porto"</span></div>
+      <div class="testemunho glass reveal reveal-delay-1">
+        <div class="testemunho-header">
+          <div class="t-icon">✂️</div>
+          <div>
+            <span class="t-nome">Barbearia · Cedofeita, Porto</span>
+            <span class="t-tipo">Cliente Plano Base</span>
+          </div>
+        </div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"A agenda online mudou tudo. Os clientes marcam sozinhos a qualquer hora, recebem confirmação automática e eu não perco mais tempo ao telefone."</p>
       </div>
-      <p class="rc-quote">"Antes não aparecia no Google. Agora tenho clientes a ligar todos os dias a perguntar o horário."</p>
+      <div class="testemunho glass reveal reveal-delay-2">
+        <div class="testemunho-header">
+          <div class="t-icon">☕</div>
+          <div>
+            <span class="t-nome">Café · Baixa, Porto</span>
+            <span class="t-tipo">Cliente Plano Pro</span>
+          </div>
+        </div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"As reviews automáticas via WhatsApp foram a maior surpresa. Passámos de 40 reviews para mais de 120 em dois meses. O Google Maps nota a diferença."</p>
+      </div>
     </div>
     <div class="numeros reveal reveal-delay-1">
-      <h3>Os números falam por si</h3>
+      <h3>Os números<br/>falam por si</h3>
       <div class="n-item">
         <div class="n-bar"><div class="n-bar-fill" data-w="87"></div></div>
         <div class="n-row"><span>Clientes com mais chamadas</span><strong>87%</strong></div>
       </div>
       <div class="n-item">
         <div class="n-bar"><div class="n-bar-fill" data-w="94"></div></div>
-        <div class="n-row"><span>Mais visualizações GBP</span><strong>94%</strong></div>
+        <div class="n-row"><span>Mais visualizações no GBP</span><strong>94%</strong></div>
       </div>
       <div class="n-item">
         <div class="n-bar"><div class="n-bar-fill" data-w="78"></div></div>
@@ -725,6 +747,10 @@ footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position
       <div class="n-item">
         <div class="n-bar"><div class="n-bar-fill" data-w="100"></div></div>
         <div class="n-row"><span>Taxa de retenção mensal</span><strong>100%</strong></div>
+      </div>
+      <div class="n-item">
+        <div class="n-bar"><div class="n-bar-fill" data-w="92"></div></div>
+        <div class="n-row"><span>Clientes com mais reviews</span><strong>92%</strong></div>
       </div>
     </div>
   </div>
