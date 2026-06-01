@@ -1,631 +1,1214 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IG Solution — Clientes no Google para o teu negócio local · Porto</title>
-  <meta name="description" content="Aparecer no Google Maps antes dos teus concorrentes. Mais chamadas, mais clientes, tudo no automático. SEO local, Google Business e automações WhatsApp para restaurantes, cafés e barbearias no Porto." />
-  <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="apple-touch-icon" href="logo.png" />
-  <link rel="canonical" href="https://igsolutionmkt-lang.github.io/" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IG Solution — Clientes no Google para o teu negócio local · Porto</title>
+<meta name="description" content="Aparecer no Google Maps antes dos teus concorrentes. SEO local, Google Business Profile, reviews automáticas e agenda online para restaurantes, cafés e barbearias no Porto. Resultados em 28 dias."/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="apple-touch-icon" href="logo.png"/>
+<link rel="canonical" href="https://igsolutionmkt-lang.github.io/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://igsolutionmkt-lang.github.io/"/>
+<meta property="og:title" content="IG Solution — Aparecer no Google Maps antes dos concorrentes"/>
+<meta property="og:description" content="SEO local, Google Business e automações WhatsApp para restaurantes, cafés e barbearias no Porto. Resultados em 28 dias."/>
+<meta property="og:image" content="https://igsolutionmkt-lang.github.io/logo.png"/>
+<meta property="og:locale" content="pt_PT"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IG Solution — Clientes no Google para o teu negócio local"/>
+<meta name="twitter:image" content="https://igsolutionmkt-lang.github.io/logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"IG Solution","description":"Agência de SEO local para negócios locais em Portugal.","url":"https://igsolutionmkt-lang.github.io/","logo":"https://igsolutionmkt-lang.github.io/logo.png","telephone":"+351917305248","email":"igsolutionmkt@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Porto","addressRegion":"Norte","addressCountry":"PT"},"priceRange":"197-397","openingHours":"Mo-Fr 09:00-18:00","sameAs":["https://instagram.com/igsolutionmkt","https://wa.me/351917305248"]}</script>
+<style>
+/* ======================================================
+   TOKENS
+====================================================== */
+:root {
+  --void:       #07080f;
+  --void2:      #0b0d16;
+  --green:      #16a34a;
+  --green-g:    #4ade80;
+  --green-glow: rgba(22,163,74,0.28);
+  --blue:       #0A84FF;
+  --blue-g:     #38A5FF;
+  --amber:      #f59e0b;
+  --amber-g:    #fbbf24;
+  --red:        #ef4444;
+  --w100: rgba(255,255,255,1);
+  --w88:  rgba(255,255,255,0.88);
+  --w65:  rgba(255,255,255,0.65);
+  --w40:  rgba(255,255,255,0.40);
+  --w20:  rgba(255,255,255,0.20);
+  --w10:  rgba(255,255,255,0.10);
+  --w06:  rgba(255,255,255,0.06);
+  --g-border: rgba(255,255,255,0.09);
+  --g-top:    rgba(255,255,255,0.30);
+  --r-sm: 12px; --r-md: 18px; --r-lg: 24px; --r-xl: 100px;
+  --blur-nav:  blur(48px) saturate(200%);
+  --blur-card: blur(28px) saturate(180%);
+  --shadow-card: 0 8px 48px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.07) inset, 0 0 0 0.5px rgba(255,255,255,0.06);
+  --shadow-deep: 0 20px 80px rgba(0,0,0,0.70), 0 2px 0 rgba(255,255,255,0.09) inset;
+  --spring: cubic-bezier(.34,1.42,.64,1);
+  --smooth: cubic-bezier(.22,1,.36,1);
+}
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://igsolutionmkt-lang.github.io/" />
-  <meta property="og:title" content="IG Solution — Aparecer no Google Maps antes dos concorrentes" />
-  <meta property="og:description" content="SEO local, Google Business e automações WhatsApp para restaurantes, cafés e barbearias no Porto. Resultados em 28 dias." />
-  <meta property="og:image" content="https://igsolutionmkt-lang.github.io/logo.png" />
-  <meta property="og:locale" content="pt_PT" />
-  <meta property="og:site_name" content="IG Solution" />
+/* ======================================================
+   RESET
+====================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--w88);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="IG Solution — Clientes no Google para o teu negócio local" />
-  <meta name="twitter:description" content="SEO local, Google Business e automações WhatsApp. Resultados em 28 dias." />
-  <meta name="twitter:image" content="https://igsolutionmkt-lang.github.io/logo.png" />
+/* ======================================================
+   STAGE — AMBIENT LIGHTS
+====================================================== */
+.stage{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbDrift linear infinite alternate;will-change:transform}
+.orb-1{width:900px;height:900px;background:radial-gradient(circle,rgba(10,80,255,0.50) 0%,rgba(0,30,180,0.18) 45%,transparent 72%);top:-320px;left:-200px;opacity:.28;animation-duration:34s}
+.orb-2{width:700px;height:700px;background:radial-gradient(circle,rgba(22,163,74,0.45) 0%,rgba(0,100,40,0.15) 50%,transparent 72%);top:35%;right:-180px;opacity:.24;animation-duration:26s;animation-delay:-12s}
+.orb-3{width:600px;height:600px;background:radial-gradient(circle,rgba(10,50,180,0.28) 0%,transparent 70%);bottom:-180px;left:25%;opacity:.20;animation-duration:30s;animation-delay:-19s}
+@keyframes orbDrift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(48px,-36px) scale(1.07)}66%{transform:translate(-28px,54px) scale(0.95)}100%{transform:translate(38px,18px) scale(1.05)}}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+/* ======================================================
+   GLASS MIXIN
+====================================================== */
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.03) 40%,rgba(255,255,255,.06) 100%),rgba(255,255,255,.03);backdrop-filter:var(--blur-card);-webkit-backdrop-filter:var(--blur-card);border:.5px solid var(--g-border);border-top-color:var(--g-top);box-shadow:var(--shadow-card);position:relative;overflow:hidden}
+.glass::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,.05) 18%,transparent 45%);pointer-events:none;z-index:0}
+.glass::after{content:'';position:absolute;top:0;left:8%;right:8%;height:.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38) 25%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.38) 75%,transparent);pointer-events:none;z-index:1}
+.glass>*{position:relative;z-index:2}
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "IG Solution",
-    "description": "Agência de SEO local, presença digital e automação para negócios locais em Portugal.",
-    "url": "https://igsolutionmkt-lang.github.io/",
-    "logo": "https://igsolutionmkt-lang.github.io/logo.png",
-    "image": "https://igsolutionmkt-lang.github.io/logo.png",
-    "telephone": "+351917305248",
-    "email": "igsolutionmkt@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Porto",
-      "addressRegion": "Norte",
-      "addressCountry": "PT"
-    },
-    "areaServed": [
-      {"@type": "City", "name": "Porto"},
-      {"@type": "City", "name": "Matosinhos"},
-      {"@type": "City", "name": "Gaia"},
-      {"@type": "City", "name": "Maia"},
-      {"@type": "City", "name": "Gondomar"}
-    ],
-    "serviceType": ["SEO Local","Google Business Profile","Agenda Online","Automação WhatsApp","Gestão de Reviews"],
-    "priceRange": "197-397",
-    "currenciesAccepted": "EUR",
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "sameAs": ["https://instagram.com/igsolutionmkt","https://wa.me/351917305248"]
-  }
-  </script>
+/* ======================================================
+   NAV
+====================================================== */
+.nav-wrap{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 28px);max-width:760px;transition:top .4s var(--smooth)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 18px;border-radius:var(--r-xl);background:linear-gradient(155deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.04) 50%,rgba(255,255,255,.08) 100%),rgba(8,8,16,.75);backdrop-filter:var(--blur-nav);-webkit-backdrop-filter:var(--blur-nav);border:.5px solid rgba(255,255,255,.12);border-top-color:rgba(255,255,255,.36);box-shadow:0 0 0 .5px rgba(255,255,255,.05),0 2px 0 rgba(255,255,255,.09) inset,0 12px 40px rgba(0,0,0,.65),0 4px 12px rgba(0,0,0,.45)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 8px rgba(22,163,74,.5));transition:filter .3s}
+.nav-logo:hover img{filter:drop-shadow(0 0 14px rgba(22,163,74,.7))}
+.nav-logo-text{font-weight:700;font-size:16px;color:var(--w100);letter-spacing:-.01em}
+.nav-logo-text span{color:var(--green-g)}
+.nav-links{display:flex;gap:6px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--w40);padding:6px 12px;border-radius:var(--r-xl);transition:all .2s}
+.nav-links a:hover{color:var(--w88);background:rgba(255,255,255,.07)}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,rgba(22,163,74,.24),rgba(22,163,74,.14));border:.5px solid rgba(22,163,74,.42);border-top-color:rgba(74,222,128,.52);color:var(--green-g);font-size:14px;font-weight:600;padding:9px 20px;border-radius:var(--r-xl);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .28s var(--smooth);box-shadow:0 2px 12px rgba(22,163,74,.18)}
+.nav-cta:hover{background:linear-gradient(135deg,rgba(22,163,74,.36),rgba(22,163,74,.24));border-color:rgba(22,163,74,.62);box-shadow:0 4px 20px rgba(22,163,74,.32);transform:translateY(-1px);color:#fff}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--w65);border-radius:2px;transition:all .2s}
+.nav-mobile{display:none;flex-direction:column;gap:2px;padding:14px 20px 18px;border-top:.5px solid rgba(255,255,255,.06)}
+.nav-mobile a{padding:10px 14px;font-size:15px;font-weight:500;color:var(--w65);border-radius:var(--r-md);transition:all .2s}
+.nav-mobile a:hover{background:rgba(255,255,255,.06);color:var(--w100)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center}
+.nav-mobile.open{display:flex}
+
+/* ======================================================
+   TOPBAR
+====================================================== */
+.topbar{display:flex;justify-content:center;padding:108px 24px 20px;position:relative;z-index:2}
+.topbar-pill{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(22,163,74,.10),rgba(22,163,74,.05));border:.5px solid rgba(22,163,74,.26);border-top-color:rgba(74,222,128,.38);color:var(--green-g);font-size:13px;font-weight:400;letter-spacing:.04em;padding:9px 22px;border-radius:var(--r-xl);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 2px 16px rgba(22,163,74,.08)}
+.pulse{width:7px;height:7px;background:var(--green-g);border-radius:50%;flex-shrink:0;animation:pulse 2.6s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.6)}50%{opacity:.85;box-shadow:0 0 0 7px rgba(74,222,128,0)}}
+
+/* ======================================================
+   HERO
+====================================================== */
+.hero{text-align:center;padding:4px 24px 80px;max-width:820px;margin:0 auto;position:relative;z-index:2}
+.hero-logo-wrap{display:flex;justify-content:center;margin-bottom:36px}
+.hero-logo-ring{width:108px;height:108px;border-radius:50%;padding:3px;background:conic-gradient(from 180deg,rgba(22,163,74,.65),rgba(10,132,255,.55),rgba(22,163,74,.65));animation:logoRing 7s linear infinite;box-shadow:0 0 48px rgba(22,163,74,.24),0 0 96px rgba(10,132,255,.12)}
+@keyframes logoRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-logo-ring img{width:100%;height:100%;object-fit:contain;border-radius:50%;background:var(--void);filter:drop-shadow(0 0 18px rgba(22,163,74,.38));animation:logoFloat 5.5s ease-in-out infinite alternate;display:block}
+@keyframes logoFloat{0%{transform:scale(1)}100%{transform:scale(1.04) translateY(-4px)}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--w40);letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.eyebrow::before,.eyebrow::after{content:'';flex:1;height:.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18));width:28px}
+.eyebrow::after{background:linear-gradient(270deg,transparent,rgba(255,255,255,.18))}
+.hero h1{font-weight:800;font-size:clamp(42px,9vw,80px);line-height:1.04;letter-spacing:-.045em;margin-bottom:10px;color:var(--w100)}
+.hero h1 em{font-style:normal}
+.grad-text{background:linear-gradient(135deg,#38A5FF 0%,#62BDFF 35%,#5EE080 75%,#30D158 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:gradShift 7s ease infinite alternate}
+@keyframes gradShift{0%{background-position:0%}100%{background-position:100%}}
+.hero-sub{font-size:clamp(16px,2.2vw,19px);font-weight:300;color:var(--w65);max-width:560px;margin:20px auto 0;line-height:1.80}
+.hero-sub strong{color:var(--w88);font-weight:500}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0 34px;font-size:12.5px;color:var(--w40);letter-spacing:.03em}
+.trust-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.22)}
+.cta-group{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:56px}
+.btn-main{touch-action:manipulation;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Inter',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em;padding:17px 44px;border-radius:var(--r-xl);color:#fff;background:linear-gradient(135deg,rgba(22,163,74,.96),rgba(16,120,50,.98));border:.5px solid rgba(74,222,128,.50);border-top-color:rgba(160,240,190,.55);box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 -1px 0 rgba(0,0,0,.28) inset,0 6px 32px rgba(22,163,74,.50),0 2px 8px rgba(0,0,0,.40);transition:all .32s var(--spring);width:100%;max-width:360px;position:relative;overflow:hidden}
+.btn-main::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 60%);pointer-events:none}
+.btn-main:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 -1px 0 rgba(0,0,0,.30) inset,0 14px 48px rgba(22,163,74,.66),0 4px 12px rgba(0,0,0,.45)}
+.btn-ghost{touch-action:manipulation;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Inter',sans-serif;font-weight:500;font-size:15px;padding:15px 38px;border-radius:var(--r-xl);color:var(--w88);background:linear-gradient(155deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.04) 100%);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:.5px solid rgba(255,255,255,.14);border-top-color:rgba(255,255,255,.36);box-shadow:var(--shadow-card);transition:all .32s var(--smooth);width:100%;max-width:360px}
+.btn-ghost:hover{transform:translateY(-3px);background:linear-gradient(155deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.06) 100%);color:var(--w100);box-shadow:var(--shadow-deep)}
+
+/* ======================================================
+   STATS
+====================================================== */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:740px;margin:0 auto 80px;padding:0 20px;position:relative;z-index:2}
+.stat-card{border-radius:var(--r-lg);padding:28px 20px 24px;text-align:center;transition:transform .38s var(--spring),box-shadow .3s}
+.stat-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:var(--shadow-deep)}
+.stat-num{font-weight:300;font-size:44px;letter-spacing:-.06em;display:block;line-height:1;margin-bottom:10px}
+.stat-num-sm{font-size:30px;line-height:1.2}
+.c-g{color:var(--green-g)}.c-b{color:var(--blue-g)}.c-s{color:rgba(200,200,220,.80)}
+.stat-label{font-size:12.5px;font-weight:400;color:var(--w40);line-height:1.5;letter-spacing:.02em}
+
+/* ======================================================
+   SECTION UTILS
+====================================================== */
+.s-wrap{padding:88px 24px;position:relative;z-index:2}
+.s-wrap--grey{background:rgba(255,255,255,.018)}
+.s-head{text-align:center;margin-bottom:56px}
+.s-label{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-g);margin-bottom:16px}
+.s-label::before{content:'';width:22px;height:.5px;background:var(--green);opacity:.7}
+.s-label::after{content:'';width:22px;height:.5px;background:var(--green);opacity:.7}
+.s-label.blue{color:var(--blue-g)}.s-label.blue::before,.s-label.blue::after{background:var(--blue)}
+.s-title{font-weight:800;font-size:clamp(28px,5vw,48px);letter-spacing:-.04em;line-height:1.10;margin-bottom:14px;color:var(--w100)}
+.s-sub{font-size:17px;font-weight:300;color:var(--w40);line-height:1.72;max-width:560px;margin:0 auto}
+.hr{height:.5px;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.08) 30%,rgba(255,255,255,.08) 70%,transparent 100%);margin:0 24px;position:relative;z-index:2}
+.container{max-width:780px;margin:0 auto}
+
+/* ======================================================
+   PROBLEMA — SEARCH MOCK
+====================================================== */
+.problema-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:860px;margin:0 auto}
+.problema-text h2{font-weight:800;font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;color:var(--w100)}
+.problema-text p{font-size:16px;font-weight:300;color:var(--w40);margin-bottom:14px;line-height:1.80}
+.problema-highlight{background:rgba(22,163,74,.08);border:.5px solid rgba(22,163,74,.22);border-left:3px solid var(--green);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:16px 20px;font-size:15px;font-weight:600;color:var(--green-g) !important;margin-top:8px}
+.search-mock{background:rgba(12,14,22,.90);border:.5px solid rgba(255,255,255,.10);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-deep)}
+.search-bar{background:rgba(255,255,255,.05);border-bottom:.5px solid rgba(255,255,255,.07);padding:13px 18px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--w40)}
+.search-results{padding:14px;display:flex;flex-direction:column;gap:10px}
+.sr{display:flex;align-items:center;gap:14px;padding:13px;border-radius:12px}
+.sr-top{background:rgba(22,163,74,.08);border:.5px solid rgba(22,163,74,.18)}
+.sr-grey{background:rgba(255,255,255,.03);border:.5px dashed rgba(255,255,255,.07);opacity:.65}
+.sr-rank{font-size:16px;font-weight:800;color:var(--green-g);min-width:30px;text-align:center}
+.sr-rank.grey{color:var(--w40)}
+.sr-info{display:flex;flex-direction:column;gap:4px}
+.sr-info strong{font-size:13px;font-weight:600;color:var(--w88)}
+.sr-info span{font-size:11.5px;color:var(--w40)}
+.sr-tag{display:inline-block;background:rgba(22,163,74,.18);border:.5px solid rgba(22,163,74,.35);color:var(--green-g);font-size:10px;font-weight:700;padding:2px 9px;border-radius:var(--r-xl);width:fit-content;letter-spacing:.03em}
+
+/* ======================================================
+   MÉTODO — 4 STEPS
+====================================================== */
+.metodo-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:920px;margin:0 auto}
+.metodo-card{border-radius:var(--r-lg);padding:28px 22px;position:relative;transition:transform .38s var(--spring),box-shadow .3s}
+.metodo-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 0 48px rgba(22,163,74,.14),var(--shadow-deep)}
+.metodo-num{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--green-g);text-transform:uppercase;margin-bottom:14px;opacity:.80}
+.metodo-icon{font-size:30px;margin-bottom:16px}
+.metodo-card h3{font-size:16px;font-weight:700;color:var(--w100);margin-bottom:10px;letter-spacing:-.01em}
+.metodo-card p{font-size:13.5px;font-weight:300;color:var(--w40);line-height:1.72}
+
+/* ======================================================
+   NEGÓCIOS
+====================================================== */
+.negocios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:780px;margin:0 auto}
+.negocio-card{border-radius:var(--r-lg);padding:28px 22px;text-align:center;transition:all .38s var(--spring);cursor:default}
+.negocio-card:hover{transform:translateY(-6px) scale(1.02)}
+.negocio-icon{font-size:38px;display:block;margin-bottom:14px}
+.negocio-card h3{font-size:16px;font-weight:700;color:var(--w88);margin-bottom:8px;letter-spacing:-.01em}
+.negocio-card p{font-size:13px;font-weight:300;color:var(--w40);line-height:1.60}
+.negocio-cta{border:.5px solid rgba(22,163,74,.22);border-top-color:rgba(22,163,74,.40)}
+.negocio-cta:hover{box-shadow:0 0 32px rgba(22,163,74,.14)}
+.negocio-cta .btn-card-sm{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(22,163,74,.14);border:.5px solid rgba(22,163,74,.34);color:var(--green-g);font-size:13px;font-weight:600;padding:9px 20px;border-radius:var(--r-xl);transition:all .24s var(--smooth)}
+.negocio-cta .btn-card-sm:hover{background:rgba(22,163,74,.26);box-shadow:0 4px 16px rgba(22,163,74,.22);transform:translateY(-1px)}
+
+/* ======================================================
+   RESULTADO
+====================================================== */
+.resultado-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:860px;margin:0 auto}
+.resultado-card{border-radius:var(--r-lg);padding:32px}
+.rc-header{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.rc-icon{font-size:28px;width:54px;height:54px;background:rgba(255,255,255,.06);border:.5px solid rgba(255,255,255,.10);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rc-header strong{display:block;color:var(--w100);font-size:15px;font-weight:700}
+.rc-header span{color:var(--w40);font-size:12.5px}
+.rc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.rc-stat{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 10px;text-align:center}
+.rc-stat strong{display:block;font-size:20px;font-weight:800;color:var(--green-g);margin-bottom:4px;letter-spacing:-.02em}
+.rc-stat span{font-size:11px;color:var(--w40);line-height:1.4}
+.rc-quote{font-size:14px;font-weight:300;color:var(--w65);font-style:italic;border-left:2.5px solid var(--green);padding-left:14px;line-height:1.70}
+.numeros h3{font-weight:700;font-size:22px;color:var(--w100);margin-bottom:32px;letter-spacing:-.02em}
+.n-item{margin-bottom:22px}
+.n-bar{height:7px;background:rgba(255,255,255,.08);border-radius:var(--r-xl);overflow:hidden;margin-bottom:8px}
+.n-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green-g));border-radius:var(--r-xl);transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--smooth)}
+.n-bar-fill.animate{transform:scaleX(1)}
+.n-row{display:flex;justify-content:space-between;align-items:center}
+.n-row span{font-size:13.5px;font-weight:300;color:var(--w40)}
+.n-row strong{font-size:15px;font-weight:700;color:var(--green-g)}
+
+/* ======================================================
+   SERVIÇOS — INCLUDED LIST
+====================================================== */
+.servicos-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.s-item{display:flex;align-items:flex-start;gap:16px;border-radius:var(--r-md);padding:22px;transition:all .26s}
+.s-item:hover{background:rgba(255,255,255,.03)}
+.s-item-icon{font-size:18px;width:40px;height:40px;background:rgba(22,163,74,.12);border:.5px solid rgba(22,163,74,.24);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s-item strong{display:block;font-size:15px;font-weight:700;color:var(--w88);margin-bottom:5px}
+.s-item p{font-size:13.5px;font-weight:300;color:var(--w40);line-height:1.65;margin:0}
+
+/* ======================================================
+   PLANOS
+====================================================== */
+.planos-grid{display:flex;flex-direction:column;gap:16px;max-width:780px;margin:0 auto 16px}
+.plano{border-radius:var(--r-lg);padding:32px;position:relative;transition:transform .38s var(--spring),box-shadow .3s}
+.plano:hover{transform:translateY(-8px) scale(1.008)}
+.plano-b{background:linear-gradient(145deg,rgba(10,132,255,.09) 0%,rgba(255,255,255,.03) 50%,rgba(10,132,255,.04) 100%),rgba(255,255,255,.02);border:.5px solid rgba(10,132,255,.16);border-top-color:rgba(100,180,255,.34);box-shadow:var(--shadow-card)}
+.plano-b:hover{box-shadow:0 0 48px rgba(10,132,255,.16),var(--shadow-deep)}
+.plano-pro{background:linear-gradient(145deg,rgba(22,163,74,.13) 0%,rgba(255,255,255,.03) 40%,rgba(10,132,255,.06) 100%),rgba(255,255,255,.02);border:.5px solid rgba(22,163,74,.22);border-top-color:rgba(74,222,128,.50);box-shadow:0 0 80px rgba(22,163,74,.12),0 0 0 1px rgba(22,163,74,.06),var(--shadow-card)}
+.plano-pro:hover{box-shadow:0 0 100px rgba(22,163,74,.22),0 0 0 1px rgba(22,163,74,.12),var(--shadow-deep)}
+.plano-premium{background:linear-gradient(145deg,rgba(245,158,11,.09) 0%,rgba(255,255,255,.03) 50%,rgba(245,100,0,.04) 100%),rgba(255,255,255,.02);border:.5px solid rgba(245,158,11,.18);border-top-color:rgba(251,191,36,.40);box-shadow:var(--shadow-card)}
+.plano-premium:hover{box-shadow:0 0 48px rgba(245,158,11,.16),var(--shadow-deep)}
+.plano::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.04) 20%,transparent 50%);pointer-events:none;z-index:1}
+.plano::after{content:'';position:absolute;top:0;left:10%;right:10%;height:.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);pointer-events:none;z-index:2}
+.plano>*{position:relative;z-index:3}
+.plano-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-xl);margin-bottom:20px}
+.badge-b{background:rgba(10,132,255,.12);border:.5px solid rgba(10,132,255,.30);color:var(--blue-g)}
+.badge-g{background:rgba(22,163,74,.14);border:.5px solid rgba(22,163,74,.36);color:var(--green-g)}
+.badge-a{background:rgba(245,158,11,.12);border:.5px solid rgba(245,158,11,.30);color:var(--amber-g)}
+.plano-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;gap:16px}
+.p-icon{width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.pi-b{background:rgba(10,132,255,.12);border:.5px solid rgba(10,132,255,.24)}
+.pi-g{background:rgba(22,163,74,.12);border:.5px solid rgba(22,163,74,.26)}
+.pi-a{background:rgba(245,158,11,.10);border:.5px solid rgba(245,158,11,.22)}
+.price-block{text-align:right}
+.price{font-weight:700;font-size:30px;letter-spacing:-.04em;color:var(--w88);display:block;line-height:1}
+.price-mo{font-size:15px;font-weight:300;opacity:.50}
+.price-note{font-size:12px;font-weight:300;color:var(--w40);display:block;margin-top:5px}
+.plano h3{font-weight:700;font-size:22px;letter-spacing:-.02em;margin-bottom:10px;color:var(--w100)}
+.plano-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.p-tag{font-size:11.5px;font-weight:400;color:var(--w40);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.09);padding:4px 13px;border-radius:var(--r-xl)}
+.plano-desc{font-size:15px;font-weight:300;color:var(--w40);line-height:1.80;margin-bottom:18px}
+.plano-desc strong{color:var(--w65);font-weight:400}
+.includes{list-style:none;margin-bottom:26px;border:.5px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;background:rgba(0,0,0,.22)}
+.includes li{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;border-bottom:.5px solid rgba(255,255,255,.055);font-size:14px;font-weight:300;color:var(--w65);line-height:1.50;transition:background .2s}
+.includes li:last-child{border-bottom:none}
+.includes li:hover{background:rgba(255,255,255,.025)}
+.ik{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;flex-shrink:0;margin-top:1px;font-weight:800}
+.ik-b{background:rgba(10,132,255,.15);border:.5px solid rgba(10,132,255,.30);color:var(--blue-g)}
+.ik-g{background:rgba(22,163,74,.14);border:.5px solid rgba(22,163,74,.30);color:var(--green-g)}
+.ik-a{background:rgba(245,158,11,.13);border:.5px solid rgba(245,158,11,.28);color:var(--amber-g)}
+.btn-plan{touch-action:manipulation;display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:.02em;padding:13px 26px;border-radius:var(--r-xl);transition:all .28s var(--smooth)}
+.bp-b{background:rgba(10,132,255,.14);border:.5px solid rgba(10,132,255,.34);color:var(--blue-g)}
+.bp-b:hover{background:rgba(10,132,255,.26);border-color:rgba(10,132,255,.56);box-shadow:0 4px 20px rgba(10,132,255,.22);transform:translateY(-1px)}
+.bp-g{background:linear-gradient(135deg,rgba(22,163,74,.24),rgba(22,163,74,.14));border:.5px solid rgba(22,163,74,.42);border-top-color:rgba(74,222,128,.55);color:var(--green-g);box-shadow:0 2px 12px rgba(22,163,74,.16)}
+.bp-g:hover{background:linear-gradient(135deg,rgba(22,163,74,.36),rgba(22,163,74,.24));box-shadow:0 6px 28px rgba(22,163,74,.28);transform:translateY(-2px)}
+.bp-a{background:rgba(245,158,11,.12);border:.5px solid rgba(245,158,11,.32);color:var(--amber-g)}
+.bp-a:hover{background:rgba(245,158,11,.22);border-color:rgba(245,158,11,.50);box-shadow:0 4px 20px rgba(245,158,11,.18);transform:translateY(-1px)}
+.planos-note{text-align:center;font-size:12.5px;font-weight:300;color:var(--w40);padding:14px 24px;position:relative;z-index:2;letter-spacing:.02em;max-width:780px;margin:0 auto}
+
+/* Garantia */
+.garantia{display:flex;align-items:center;gap:22px;max-width:680px;margin:24px auto 0;border-radius:var(--r-lg);padding:26px 32px}
+.garantia-icon{font-size:38px;flex-shrink:0}
+.garantia strong{display:block;font-size:16px;font-weight:700;color:var(--w88);margin-bottom:6px}
+.garantia p{font-size:14px;font-weight:300;color:var(--w40)}
+
+/* ======================================================
+   PORTUGAL 2030
+====================================================== */
+.p2030-inner{display:flex;gap:40px;align-items:flex-start;max-width:820px;margin:0 auto}
+.p2030-icon{font-size:42px;width:80px;height:80px;border-radius:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(22,163,74,.10);border:.5px solid rgba(22,163,74,.22)}
+.p2030-badge{display:inline-block;background:rgba(22,163,74,.15);border:.5px solid rgba(22,163,74,.32);color:var(--green-g);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:var(--r-xl);margin-bottom:16px}
+.p2030-content h2{font-weight:800;font-size:clamp(22px,3.5vw,34px);letter-spacing:-.03em;line-height:1.15;margin-bottom:14px;color:var(--w100)}
+.p2030-content>p{font-size:15px;font-weight:300;color:var(--w40);line-height:1.78;margin-bottom:20px}
+.p2030-content strong{color:var(--w65);font-weight:600}
+.p2030-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:20px;border:.5px solid rgba(255,255,255,.07);border-radius:var(--r-md);overflow:hidden;background:rgba(0,0,0,.18)}
+.p2030-list li{display:flex;align-items:flex-start;gap:12px;padding:13px 18px;border-bottom:.5px solid rgba(255,255,255,.055);font-size:14px;font-weight:300;color:var(--w65)}
+.p2030-list li:last-child{border-bottom:none}
+.ck{width:18px;height:18px;border-radius:50%;background:rgba(22,163,74,.14);border:.5px solid rgba(22,163,74,.30);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--green-g);font-weight:800;flex-shrink:0;margin-top:1px}
+.p2030-notice{background:rgba(245,158,11,.06);border:.5px solid rgba(245,158,11,.20);border-radius:12px;padding:14px 18px;font-size:13.5px;font-weight:300;color:rgba(251,191,36,.78);line-height:1.70;margin-bottom:24px}
+.p2030-notice strong{font-weight:600;color:rgba(251,191,36,.95)}
+
+/* ======================================================
+   PROCESSO
+====================================================== */
+.processo-steps{display:flex;align-items:flex-start;max-width:820px;margin:0 auto;gap:0}
+.p-step{flex:1;text-align:center;padding:0 12px}
+.p-step-num{width:50px;height:50px;background:rgba(22,163,74,.12);border:.5px solid rgba(22,163,74,.30);box-shadow:0 0 20px rgba(22,163,74,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;color:var(--green-g);margin:0 auto 20px;position:relative;z-index:1}
+.p-step h4{font-size:15px;font-weight:700;color:var(--w88);margin-bottom:8px;letter-spacing:-.01em}
+.p-step p{font-size:13px;font-weight:300;color:var(--w40);line-height:1.70}
+.p-line{flex-shrink:0;height:.5px;width:52px;background:linear-gradient(90deg,rgba(22,163,74,.35),rgba(22,163,74,.35));margin-top:25px}
+
+/* ======================================================
+   LOCALPULSE FEATURE
+====================================================== */
+.lp-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:860px;margin:0 auto}
+.lp-text .s-label{justify-content:flex-start}
+.lp-text .s-label::after{display:none}
+.lp-text h2{font-weight:800;font-size:clamp(24px,4vw,38px);letter-spacing:-.03em;line-height:1.15;margin-bottom:14px;color:var(--w100);text-align:left}
+.lp-text p{font-size:15px;font-weight:300;color:var(--w40);line-height:1.78;margin-bottom:20px}
+.lp-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.lp-features li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:400;color:var(--w65)}
+.lp-features li::before{content:'→';color:var(--green-g);font-weight:700;font-size:12px}
+.lp-mock{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-deep)}
+.lp-mock-header{background:rgba(255,255,255,.06);border-bottom:.5px solid rgba(255,255,255,.07);padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.lp-mock-title{font-size:13px;font-weight:700;color:var(--w88);display:flex;align-items:center;gap:8px}
+.lp-mock-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+.lp-tab{display:flex;gap:6px;margin-bottom:4px}
+.lp-tab span{font-size:11px;font-weight:500;padding:4px 12px;border-radius:var(--r-xl);cursor:pointer;transition:all .2s}
+.lp-tab .active{background:rgba(22,163,74,.18);border:.5px solid rgba(22,163,74,.34);color:var(--green-g)}
+.lp-tab .inactive{color:var(--w40);background:rgba(255,255,255,.04)}
+.lp-metric{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center}
+.lp-metric-label{font-size:12px;color:var(--w40)}
+.lp-metric-val{font-size:20px;font-weight:800;color:var(--green-g);letter-spacing:-.03em}
+.lp-metric-delta{font-size:11px;color:var(--green-g);background:rgba(22,163,74,.12);padding:2px 8px;border-radius:var(--r-xl)}
+.lp-review{background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.07);border-radius:12px;padding:12px;font-size:12.5px;color:var(--w40)}
+.lp-review strong{color:var(--w88);display:block;margin-bottom:4px}
+.lp-stars{color:#fbbf24;font-size:11px}
+
+/* ======================================================
+   FAQ
+====================================================== */
+.faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.fq{border:.5px solid rgba(255,255,255,.08);border-radius:var(--r-md);overflow:hidden;transition:border-color .2s}
+.fq.open{border-color:rgba(22,163,74,.30)}
+.fq-q{width:100%;background:none;border:none;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:15.5px;font-weight:600;cursor:pointer;text-align:left;gap:16px;color:var(--w88);transition:color .2s}
+.fq-q:hover{color:var(--w100)}
+.fq-arrow{flex-shrink:0;font-size:16px;transition:transform .25s;color:var(--green-g);opacity:.80}
+.fq.open .fq-arrow{transform:rotate(180deg)}
+.fq-a{display:none;padding:0 24px 20px}
+.fq-a p{font-size:14.5px;font-weight:300;color:var(--w40);line-height:1.80}
+.fq-a strong{color:var(--w65);font-weight:500}
+.fq.open .fq-a{display:block}
+
+/* ======================================================
+   CTA FINAL
+====================================================== */
+.cta-section{padding:100px 24px 88px;text-align:center;max-width:820px;margin:0 auto;position:relative;z-index:2}
+.cta-logo{width:72px;height:72px;object-fit:contain;margin:0 auto 28px;display:block;filter:drop-shadow(0 0 24px rgba(22,163,74,.45)) drop-shadow(0 0 64px rgba(10,132,255,.18));animation:logoFloat 5.5s ease-in-out infinite alternate}
+.urgency{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,.08);border:.5px solid rgba(239,68,68,.20);border-radius:var(--r-xl);padding:8px 20px;margin-bottom:28px;font-size:12.5px;font-weight:500;color:rgba(239,68,68,.90)}
+.urgency-dot{width:6px;height:6px;border-radius:50%;background:rgba(239,68,68,.85);animation:urgBlink 1.6s ease infinite}
+@keyframes urgBlink{0%,100%{opacity:1}50%{opacity:.28}}
+.sc-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.09);color:var(--w65);font-size:13px;font-weight:400;letter-spacing:.03em;padding:10px 22px;border-radius:var(--r-xl);margin-bottom:36px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.sc-pill strong{color:var(--w88);font-weight:500}
+.cta-section h2{font-weight:800;font-size:clamp(32px,7.5vw,64px);letter-spacing:-.045em;line-height:1.06;margin-bottom:16px;color:var(--w100)}
+.cta-section>p{font-size:16px;font-weight:300;color:var(--w40);margin-bottom:40px;line-height:1.72}
+.cta-note{font-size:12.5px;color:var(--w40);margin-top:20px;letter-spacing:.02em}
+.cta-note a{color:var(--w65);transition:color .2s}
+.cta-note a:hover{color:var(--w88)}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position:relative;z-index:2}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:860px;margin:0 auto;padding-bottom:48px}
+.f-brand .f-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:700;font-size:17px;color:var(--w100)}
+.f-brand .f-logo img{width:30px;height:30px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 7px rgba(22,163,74,.38))}
+.f-brand .f-logo span{color:var(--green-g)}
+.f-brand p{font-size:13.5px;font-weight:300;color:var(--w40);line-height:1.70;margin-bottom:18px}
+.f-socials{display:flex;gap:10px}
+.f-soc{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.09);transition:all .26s}
+.f-soc:hover{background:rgba(255,255,255,.12);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.f-col h4{font-size:12px;font-weight:700;color:var(--w100);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
+.f-col a{display:block;font-size:13.5px;font-weight:300;color:var(--w40);padding:4px 0;transition:color .2s}
+.f-col a:hover{color:var(--w88)}
+.footer-bottom{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:.5px solid rgba(255,255,255,.055);font-size:12px;font-weight:300;color:var(--w20)}
+
+/* ======================================================
+   FLOATING WA
+====================================================== */
+.wa-btn{position:fixed;bottom:26px;right:22px;width:58px;height:58px;background:linear-gradient(135deg,rgba(37,200,96,.92),rgba(20,170,70,.96));border:.5px solid rgba(255,255,255,.24);border-top-color:rgba(255,255,255,.45);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;z-index:999;box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 6px 28px rgba(37,211,102,.46),0 2px 8px rgba(0,0,0,.40);transition:transform .38s var(--spring),box-shadow .3s}
+.wa-btn:hover{transform:scale(1.14) translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.28) inset,0 12px 48px rgba(37,211,102,.64),0 4px 12px rgba(0,0,0,.45)}
+
+/* ======================================================
+   SCROLL REVEAL
+====================================================== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .70s var(--smooth),transform .70s var(--smooth)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.08s}.reveal-delay-2{transition-delay:.16s}.reveal-delay-3{transition-delay:.24s}
+
+/* ======================================================
+   LOAD ANIMATIONS
+====================================================== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.anim-0{animation:fadeIn .5s .05s ease both}
+.anim-1{animation:fadeUp .80s .12s var(--smooth) both}
+.anim-2{animation:fadeUp .80s .24s var(--smooth) both}
+.anim-3{animation:fadeUp .80s .36s var(--smooth) both}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media(min-width:520px){
+  .cta-group{flex-direction:row;justify-content:center}
+  .btn-main,.btn-ghost{width:auto}
+}
+@media(max-width:900px){
+  .metodo-steps{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .processo-steps{flex-wrap:wrap;gap:24px}
+  .p-line{display:none}
+  .p-step{min-width:calc(50% - 12px)}
+}
+@media(max-width:720px){
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .problema-grid{grid-template-columns:1fr}
+  .resultado-grid{grid-template-columns:1fr}
+  .lp-inner{grid-template-columns:1fr}
+  .negocios-grid{grid-template-columns:repeat(2,1fr)}
+  .p2030-inner{flex-direction:column}
+  .p2030-icon{width:60px;height:60px;font-size:28px}
+}
+@media(max-width:480px){
+  .stats{grid-template-columns:1fr}
+  .negocios-grid{grid-template-columns:1fr}
+  .rc-stats{grid-template-columns:1fr}
+  .metodo-steps{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .plano-top{flex-direction:column}
+  .price-block{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="container nav__inner">
-      <a href="#" class="nav__logo">
-        <img src="logo.png" alt="IG Solution" class="nav__logo-img" />
-        <span class="logo-ig">IG</span><span class="logo-sol">.Solution</span>
-      </a>
-      <ul class="nav__links">
-        <li><a href="#metodo">Método</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#resultados">Resultados</a></li>
-        <li><a href="#precos">Preços</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="btn btn--nav" target="_blank">💬 WhatsApp</a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="nav__mobile" id="mobileMenu">
-      <a href="#metodo">Método</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#precos">Preços</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="btn btn--primary" target="_blank">💬 Falar no WhatsApp</a>
-    </div>
+<!-- STAGE -->
+<div class="stage" aria-hidden="true">
+  <div class="orb orb-1" id="orb1"></div>
+  <div class="orb orb-2" id="orb2"></div>
+  <div class="orb orb-3" id="orb3"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<div class="nav-wrap">
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="logo.png" alt="IG Solution"/>
+      <span class="nav-logo-text">IG<span>.</span>Solution</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#precos">Preços</a></li>
+      <li><a href="#localpulse">LocalPulse</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="nav-cta" target="_blank">💬 WhatsApp</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#metodo">Método</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#precos">Preços</a>
+    <a href="#localpulse">LocalPulse</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="nav-cta" target="_blank">💬 Falar no WhatsApp</a>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__badge">
-        <span class="pulse"></span>
-        Porto · Máximo 3 novos clientes / mês
-      </div>
-      <h1 class="hero__title">
-        O teu cliente já<br />
-        te procura.<br />
-        <span class="highlight">Tu é que não apareces.</span>
-      </h1>
-      <p class="hero__sub">
-        Colocamos restaurantes, cafés, barbearias e negócios locais no topo do Google Maps — em 28 dias ou devolvemos o dinheiro.
-      </p>
-      <div class="hero__ctas">
-        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn--primary btn--lg">🔍 Diagnóstico Gratuito</a>
-        <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="btn btn--ghost btn--lg" target="_blank">💬 Falar no WhatsApp</a>
-      </div>
-      <div class="hero__trust">
-        <span>Sem compromisso</span>
-        <span class="trust-dot"></span>
-        <span>Resposta em 2h</span>
-        <span class="trust-dot"></span>
-        <span>Diagnóstico 100% gratuito</span>
-        <span class="trust-dot"></span>
-        <span>Resultados em 28 dias</span>
-      </div>
-      <div class="hero__social-proof">
-        <div class="proof-item">
-          <strong>+47</strong>
-          <span>negócios no Porto</span>
-        </div>
-        <div class="proof-divider"></div>
-        <div class="proof-item">
-          <strong>28 dias</strong>
-          <span>primeiros resultados</span>
-        </div>
-        <div class="proof-divider"></div>
-        <div class="proof-item">
-          <strong>3×</strong>
-          <span>mais chamadas em média</span>
-        </div>
-      </div>
+<!-- ══ TOPBAR ════════════════════════════════════════════ -->
+<div class="topbar anim-0">
+  <div class="topbar-pill">
+    <span class="pulse"></span>
+    Porto, Portugal &nbsp;·&nbsp;
+    <strong style="font-weight:600;color:rgba(255,255,255,.82)">Máximo 3 novos clientes / mês</strong>
+  </div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<div class="hero anim-1">
+  <div class="hero-logo-wrap">
+    <div class="hero-logo-ring">
+      <img src="logo.png" alt="IG Solution"/>
     </div>
-    <div class="hero__bg"></div>
-  </section>
+  </div>
+  <div class="eyebrow">Google Maps · SEO Local · Porto</div>
+  <h1>
+    O teu cliente já te procura.<br/>
+    <em class="grad-text">Tu é que não apareces.</em>
+  </h1>
+  <p class="hero-sub">
+    Quando alguém pesquisa <strong>"restaurante perto de mim"</strong> e o teu negócio não aparece,
+    esse cliente vai ao concorrente — e tu nem sabes que o perdeste.<br/>
+    Resolvemos isso em <strong>28 dias.</strong>
+  </p>
+  <div class="hero-trust">
+    <span>Sem compromisso</span>
+    <span class="trust-dot"></span>
+    <span>Resposta em 2h</span>
+    <span class="trust-dot"></span>
+    <span>100% gratuito</span>
+    <span class="trust-dot"></span>
+    <span>Resultados em 28 dias</span>
+  </div>
+  <div class="cta-group">
+    <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn-main">🔍 Diagnóstico Gratuito</a>
+    <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="btn-ghost" target="_blank">💬 Falar no WhatsApp</a>
+  </div>
+</div>
 
-  <!-- PROBLEMA -->
-  <section class="problem">
-    <div class="container">
-      <div class="problem__grid">
-        <div class="problem__text">
-          <h2>O teu negócio é bom.<br />O problema é que ninguém sabe.</h2>
-          <p>Todos os dias, centenas de pessoas no Porto pesquisam "restaurante perto de mim", "barbearia no Bonfim", "café no Cedofeita".</p>
-          <p>Se não apareces nas primeiras posições do Google Maps, esses clientes vão ao teu concorrente — mesmo que tu sejas melhor.</p>
-          <p class="problem__highlight">Não é falta de qualidade. É falta de visibilidade.</p>
-        </div>
-        <div class="problem__visual">
-          <div class="search-mock">
-            <div class="search-mock__bar">
-              <span>🔍</span>
-              <span>"restaurante Porto centro"</span>
-            </div>
-            <div class="search-mock__results">
-              <div class="result result--top">
-                <div class="result__rank">1º</div>
-                <div class="result__info">
-                  <strong>Restaurante Exemplo</strong>
-                  <span>⭐⭐⭐⭐⭐ 4.9 (312 reviews)</span>
-                  <span class="result__tag">Cliente IG Solution</span>
-                </div>
-              </div>
-              <div class="result result--top">
-                <div class="result__rank">2º</div>
-                <div class="result__info">
-                  <strong>Café do Bairro</strong>
-                  <span>⭐⭐⭐⭐⭐ 4.8 (198 reviews)</span>
-                  <span class="result__tag">Cliente IG Solution</span>
-                </div>
-              </div>
-              <div class="result result--grey">
-                <div class="result__rank grey">?</div>
-                <div class="result__info grey">
-                  <strong>O teu negócio</strong>
-                  <span>Página 3 do Google...</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- ══ STATS ═════════════════════════════════════════════ -->
+<div class="stats anim-2">
+  <div class="stat-card glass reveal">
+    <span class="stat-num c-b">312</span>
+    <div class="stat-label">views / semana<br/>Google Maps</div>
+  </div>
+  <div class="stat-card glass reveal reveal-delay-1">
+    <span class="stat-num stat-num-sm c-g">Top<br/>Maps</span>
+    <div class="stat-label">visibilidade local<br/>em 28 dias</div>
+  </div>
+  <div class="stat-card glass reveal reveal-delay-2">
+    <span class="stat-num c-s">3<span style="font-size:26px">×</span></span>
+    <div class="stat-label">mais chamadas<br/>vs. sem SEO local</div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ PROBLEMA ══════════════════════════════════════════ -->
+<div class="s-wrap">
+  <div class="problema-grid">
+    <div class="problema-text reveal">
+      <h2>O teu negócio é bom.<br/>O problema é que<br/>ninguém sabe.</h2>
+      <p>Todos os dias, centenas de pessoas no Porto pesquisam "restaurante perto de mim", "barbearia no Bonfim", "café no Cedofeita".</p>
+      <p>Se não apareces nas primeiras posições do Google Maps, esses clientes vão ao teu concorrente — mesmo que tu sejas melhor.</p>
+      <p class="problema-highlight">Não é falta de qualidade. É falta de visibilidade.</p>
     </div>
-  </section>
-
-  <!-- MÉTODO -->
-  <section class="metodo" id="metodo">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">O Nosso Método</span>
-        <h2>Presença 360°</h2>
-        <p>4 fases para dominar a pesquisa local na tua zona</p>
-      </div>
-      <div class="metodo__steps">
-        <div class="step">
-          <div class="step__number">01</div>
-          <div class="step__icon">🗺️</div>
-          <h3>SEO Local</h3>
-          <p>Optimizamos o teu site e conteúdo para as pesquisas locais que os teus clientes fazem todos os dias. Palavras-chave, estrutura técnica e autoridade local.</p>
+    <div class="reveal reveal-delay-1">
+      <div class="search-mock glass">
+        <div class="search-bar">
+          <span>🔍</span>
+          <span>"restaurante Porto centro"</span>
         </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
-          <div class="step__number">02</div>
-          <div class="step__icon">📍</div>
-          <h3>Google Business Profile</h3>
-          <p>Configuramos e optimizamos o teu perfil GBP ao máximo — fotos profissionais, posts semanais, Q&A, horários e categorias correctas.</p>
-        </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
-          <div class="step__number">03</div>
-          <div class="step__icon">⭐</div>
-          <h3>Gestão de Reviews</h3>
-          <p>Sistema automático de pedido de reviews via WhatsApp. Mais reviews = mais confiança = mais clientes. Respondemos a todas com IA em menos de 1 hora.</p>
-        </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
-          <div class="step__number">04</div>
-          <div class="step__icon">⚡</div>
-          <h3>Automação</h3>
-          <p>Agenda online com pagamentos, confirmações automáticas e relatórios mensais — para que te focuses no teu negócio enquanto nós gerimos a tua presença digital.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PARA QUEM -->
-  <section class="paraquem">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Para Quem</span>
-        <h2>Trabalhamos com negócios locais no Porto</h2>
-      </div>
-      <div class="paraquem__grid">
-        <div class="negocio-card">
-          <span class="negocio-icon">🍽️</span>
-          <h3>Restaurantes</h3>
-          <p>Mais reservas, mais chamadas, mais clientes à porta</p>
-        </div>
-        <div class="negocio-card">
-          <span class="negocio-icon">☕</span>
-          <h3>Cafés</h3>
-          <p>Aparecer quando alguém procura "café perto" na tua zona</p>
-        </div>
-        <div class="negocio-card">
-          <span class="negocio-icon">✂️</span>
-          <h3>Barbearias</h3>
-          <p>Agenda cheia com clientes novos todos os meses</p>
-        </div>
-        <div class="negocio-card">
-          <span class="negocio-icon">🔧</span>
-          <h3>Oficinas</h3>
-          <p>Ser encontrado quando um carro avaria na tua área</p>
-        </div>
-        <div class="negocio-card">
-          <span class="negocio-icon">💐</span>
-          <h3>Floristas</h3>
-          <p>Captar encomendas locais e eventos na tua região</p>
-        </div>
-        <div class="negocio-card negocio-card--cta">
-          <span class="negocio-icon">🤝</span>
-          <h3>O teu negócio?</h3>
-          <p>Se serves clientes locais no Porto, podemos ajudar</p>
-          <a href="https://wa.me/351917305248?text=Olá!%20Quero%20saber%20se%20podemos%20trabalhar%20juntos." class="btn btn--primary btn--sm" target="_blank">Falar connosco</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTADOS -->
-  <section class="resultados" id="resultados">
-    <div class="container">
-      <div class="section-header section-header--light">
-        <span class="section-tag section-tag--light">Resultados Reais</span>
-        <h2>O que acontece quando apareces no Google</h2>
-      </div>
-      <div class="resultados__grid">
-        <div class="resultado-card">
-          <div class="resultado-card__header">
-            <div class="resultado-card__icon">☕</div>
-            <div>
-              <strong>Café Tropical Brasil</strong>
-              <span>Porto · Cliente activo</span>
+        <div class="search-results">
+          <div class="sr sr-top">
+            <div class="sr-rank">1º</div>
+            <div class="sr-info">
+              <strong>Restaurante Exemplo</strong>
+              <span>⭐⭐⭐⭐⭐ 4.9 · 312 reviews</span>
+              <span class="sr-tag">Cliente IG Solution</span>
             </div>
           </div>
-          <div class="resultado-card__stats">
-            <div class="stat">
-              <strong>+312%</strong>
-              <span>visualizações no Google Maps</span>
-            </div>
-            <div class="stat">
-              <strong>+89</strong>
-              <span>novas reviews em 60 dias</span>
-            </div>
-            <div class="stat">
-              <strong>#1</strong>
-              <span>posição "café brasileiro Porto"</span>
+          <div class="sr sr-top">
+            <div class="sr-rank">2º</div>
+            <div class="sr-info">
+              <strong>Café do Bairro</strong>
+              <span>⭐⭐⭐⭐⭐ 4.8 · 198 reviews</span>
+              <span class="sr-tag">Cliente IG Solution</span>
             </div>
           </div>
-          <blockquote>"Antes não aparecia no Google. Agora tenho clientes a ligar todos os dias a perguntar o horário."</blockquote>
-        </div>
-        <div class="resultado-numeros">
-          <h3>Os números falam por si</h3>
-          <div class="numero-item">
-            <div class="numero-bar"><div class="numero-bar__fill" style="width:87%"></div></div>
-            <div class="numero-label"><span>Clientes com aumento de chamadas</span><strong>87%</strong></div>
-          </div>
-          <div class="numero-item">
-            <div class="numero-bar"><div class="numero-bar__fill" style="width:94%"></div></div>
-            <div class="numero-label"><span>Clientes com mais visualizações GBP</span><strong>94%</strong></div>
-          </div>
-          <div class="numero-item">
-            <div class="numero-bar"><div class="numero-bar__fill" style="width:78%"></div></div>
-            <div class="numero-label"><span>Clientes no top 3 do Maps em 28 dias</span><strong>78%</strong></div>
-          </div>
-          <div class="numero-item">
-            <div class="numero-bar"><div class="numero-bar__fill" style="width:100%"></div></div>
-            <div class="numero-label"><span>Taxa de retenção mensal</span><strong>100%</strong></div>
+          <div class="sr sr-grey">
+            <div class="sr-rank grey">?</div>
+            <div class="sr-info">
+              <strong>O teu negócio</strong>
+              <span>Página 3 do Google...</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- SERVIÇOS -->
-  <section class="servicos" id="servicos">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">O Que Está Incluído</span>
-        <h2>Presença Digital Local</h2>
-        <p>Tudo o que o teu negócio precisa para dominar a pesquisa local</p>
-      </div>
-      <div class="servicos__list">
-        <div class="servico-item">
-          <div class="servico-item__icon">✅</div>
-          <div>
-            <strong>Optimização completa do Google Business Profile</strong>
-            <p>Fotos, descrições, categorias, horários, posts semanais e Q&A</p>
-          </div>
-        </div>
-        <div class="servico-item">
-          <div class="servico-item__icon">✅</div>
-          <div>
-            <strong>SEO Local — aparecer nas pesquisas certas</strong>
-            <p>Keywords locais, citações, autoridade de domínio e análise de concorrentes</p>
-          </div>
-        </div>
-        <div class="servico-item">
-          <div class="servico-item__icon">✅</div>
-          <div>
-            <strong>Sistema automático de reviews via WhatsApp</strong>
-            <p>Pedidos automáticos de review + resposta com IA em menos de 1 hora</p>
-          </div>
-        </div>
-        <div class="servico-item">
-          <div class="servico-item__icon">✅</div>
-          <div>
-            <strong>Agenda online com pagamentos (Plano Pro+)</strong>
-            <p>Marcações, confirmação automática e lembretes 24h antes via WhatsApp</p>
-          </div>
-        </div>
-        <div class="servico-item">
-          <div class="servico-item__icon">✅</div>
-          <div>
-            <strong>Dashboard LocalPulse — controlo em tempo real</strong>
-            <p>Posições, reviews, visualizações GBP e muito mais no telemóvel</p>
-          </div>
-        </div>
-        <div class="servico-item">
-          <div class="servico-item__icon">✅</div>
-          <div>
-            <strong>Relatório mensal + Suporte WhatsApp</strong>
-            <p>Métricas reais todos os meses. Resposta em menos de 2 horas em dias úteis.</p>
-          </div>
-        </div>
-      </div>
+<div class="hr"></div>
+
+<!-- ══ MÉTODO ════════════════════════════════════════════ -->
+<div class="s-wrap" id="metodo">
+  <div class="s-head reveal">
+    <div class="s-label">O Nosso Método</div>
+    <h2 class="s-title">Presença 360°</h2>
+    <p class="s-sub">4 fases para dominar a pesquisa local na tua zona — gerido por nós do início ao fim.</p>
+  </div>
+  <div class="metodo-steps">
+    <div class="metodo-card glass reveal">
+      <div class="metodo-num">— 01</div>
+      <div class="metodo-icon">🗺️</div>
+      <h3>SEO Local</h3>
+      <p>Optimizamos para as pesquisas locais certas. Keywords, estrutura técnica, autoridade e citações locais que fazem o Google confiar no teu negócio.</p>
     </div>
-  </section>
+    <div class="metodo-card glass reveal reveal-delay-1">
+      <div class="metodo-num">— 02</div>
+      <div class="metodo-icon">📍</div>
+      <h3>Google Business</h3>
+      <p>Perfil GBP ao máximo — fotos profissionais, posts semanais, categorias correctas, Q&A e horários actualizados. A tua montrina digital.</p>
+    </div>
+    <div class="metodo-card glass reveal reveal-delay-2">
+      <div class="metodo-num">— 03</div>
+      <div class="metodo-icon">⭐</div>
+      <h3>Reviews</h3>
+      <p>Sistema automático de pedido de reviews via WhatsApp. Respondemos a todas com IA em menos de 1 hora. Reputação no piloto automático.</p>
+    </div>
+    <div class="metodo-card glass reveal reveal-delay-3">
+      <div class="metodo-num">— 04</div>
+      <div class="metodo-icon">⚡</div>
+      <h3>Automação</h3>
+      <p>Agenda online com pagamentos, confirmações e lembretes automáticos. Tu apenas aparecer para trabalhar.</p>
+    </div>
+  </div>
+</div>
 
-  <!-- PREÇOS -->
-  <section class="precos" id="precos">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Preços</span>
-        <h2>Simples e transparente</h2>
-        <p>Mínimo 3 meses · Sem custos de instalação · Cancela depois</p>
-      </div>
-      <div class="precos__grid">
+<div class="hr"></div>
 
-        <div class="plano-card">
-          <div class="plano-card__header">
-            <h3>🗺️ Plano Base</h3>
-            <div class="plano-price">
-              <span class="price-amount">€197</span>
-              <span class="price-period">/mês</span>
-            </div>
-            <p>Google Business &amp; SEO Local</p>
-          </div>
-          <ul class="plano-features">
-            <li>✓ Optimização GBP completa</li>
-            <li>✓ SEO local mensal</li>
-            <li>✓ Reviews automáticas via WhatsApp</li>
-            <li>✓ Resposta a reviews com IA</li>
-            <li>✓ Dashboard LocalPulse</li>
-            <li>✓ Relatório mensal</li>
-          </ul>
-          <a href="https://wa.me/351917305248?text=Olá!%20Tenho%20interesse%20no%20Plano%20Base%20(€197/mês).%20O%20meu%20negócio%20é%3A%20" class="btn btn--outline btn--full" target="_blank">💬 Quero este plano</a>
-        </div>
+<!-- ══ PARA QUEM ══════════════════════════════════════════ -->
+<div class="s-wrap s-wrap--grey">
+  <div class="s-head reveal">
+    <div class="s-label">Para Quem</div>
+    <h2 class="s-title">Negócios locais no Porto</h2>
+    <p class="s-sub">Especializados num nicho específico para sermos excelentes — não mediocres em tudo.</p>
+  </div>
+  <div class="negocios-grid">
+    <div class="negocio-card glass reveal">
+      <span class="negocio-icon">🍽️</span>
+      <h3>Restaurantes</h3>
+      <p>Mais reservas, mais chamadas, mais clientes à porta todos os dias</p>
+    </div>
+    <div class="negocio-card glass reveal reveal-delay-1">
+      <span class="negocio-icon">☕</span>
+      <h3>Cafés</h3>
+      <p>Aparecer quando alguém procura "café perto" na tua zona</p>
+    </div>
+    <div class="negocio-card glass reveal reveal-delay-2">
+      <span class="negocio-icon">✂️</span>
+      <h3>Barbearias</h3>
+      <p>Agenda cheia com clientes novos todos os meses, no automático</p>
+    </div>
+    <div class="negocio-card glass reveal">
+      <span class="negocio-icon">🔧</span>
+      <h3>Oficinas</h3>
+      <p>Ser encontrado imediatamente quando um carro avaria na tua área</p>
+    </div>
+    <div class="negocio-card glass reveal reveal-delay-1">
+      <span class="negocio-icon">💐</span>
+      <h3>Floristas</h3>
+      <p>Captar encomendas locais, eventos e casamentos na tua região</p>
+    </div>
+    <div class="negocio-card glass negocio-cta reveal reveal-delay-2">
+      <span class="negocio-icon">🤝</span>
+      <h3>O teu negócio?</h3>
+      <p>Se serves clientes locais no Porto, podemos ajudar</p>
+      <a href="https://wa.me/351917305248?text=Olá!%20Quero%20saber%20se%20podemos%20trabalhar%20juntos.%20O%20meu%20negócio%20é%3A%20" class="btn-card-sm" target="_blank">Falar connosco →</a>
+    </div>
+  </div>
+</div>
 
-        <div class="plano-card plano-card--featured">
-          <div class="plano-badge">⭐ Mais Popular</div>
-          <div class="plano-card__header">
-            <h3>🚀 Plano Pro</h3>
-            <div class="plano-price">
-              <span class="price-amount">€297</span>
-              <span class="price-period">/mês</span>
-            </div>
-            <p>Google + Agenda + Automações</p>
-          </div>
-          <ul class="plano-features">
-            <li>✓ Tudo do Plano Base</li>
-            <li>✓ Agenda online com pagamentos</li>
-            <li>✓ Confirmação automática WhatsApp</li>
-            <li>✓ Lembrete 24h antes da marcação</li>
-            <li>✓ Landing page de conversão</li>
-            <li>✓ Perfil redes sociais optimizado</li>
-          </ul>
-          <a href="https://wa.me/351917305248?text=Olá!%20Tenho%20interesse%20no%20Plano%20Pro%20(€297/mês).%20O%20meu%20negócio%20é%3A%20" class="btn btn--primary btn--full" target="_blank">💬 Quero este plano</a>
-        </div>
+<div class="hr"></div>
 
-        <div class="plano-card">
-          <div class="plano-card__header">
-            <h3>📈 Plano Premium</h3>
-            <div class="plano-price">
-              <span class="price-amount">€397</span>
-              <span class="price-period">/mês</span>
-            </div>
-            <p>Sistema Completo + Crescimento Activo</p>
-          </div>
-          <ul class="plano-features">
-            <li>✓ Tudo do Plano Pro</li>
-            <li>✓ Campanha Google Ads local</li>
-            <li>✓ 4 posts/mês com IA (design + copy)</li>
-            <li>✓ Análise de concorrentes mensal</li>
-            <li>✓ Follow-up automático a leads</li>
-            <li>✓ Reunião mensal de estratégia</li>
-          </ul>
-          <a href="https://wa.me/351917305248?text=Olá!%20Tenho%20interesse%20no%20Plano%20Premium%20(€397/mês).%20O%20meu%20negócio%20é%3A%20" class="btn btn--outline btn--full" target="_blank">💬 Quero este plano</a>
-        </div>
-
-      </div>
-      <div class="precos__garantia">
-        <span class="garantia-icon">🛡️</span>
+<!-- ══ RESULTADOS ════════════════════════════════════════ -->
+<div class="s-wrap" id="resultados">
+  <div class="s-head reveal">
+    <div class="s-label">Resultados Reais</div>
+    <h2 class="s-title">O que acontece quando<br/>apareces no Google</h2>
+  </div>
+  <div class="resultado-grid">
+    <div class="resultado-card glass reveal">
+      <div class="rc-header">
+        <div class="rc-icon">☕</div>
         <div>
-          <strong>Garantia de 28 dias</strong>
-          <p>Se não vires resultados visíveis no Google Maps em 28 dias, devolvemos o dinheiro. Sem perguntas.</p>
+          <strong>Café Tropical Brasil</strong>
+          <span>Porto · Cliente activo</span>
+        </div>
+      </div>
+      <div class="rc-stats">
+        <div class="rc-stat"><strong>+312%</strong><span>visualizações Google Maps</span></div>
+        <div class="rc-stat"><strong>+89</strong><span>novas reviews em 60 dias</span></div>
+        <div class="rc-stat"><strong>#1</strong><span>"café brasileiro Porto"</span></div>
+      </div>
+      <p class="rc-quote">"Antes não aparecia no Google. Agora tenho clientes a ligar todos os dias a perguntar o horário."</p>
+    </div>
+    <div class="numeros reveal reveal-delay-1">
+      <h3>Os números falam por si</h3>
+      <div class="n-item">
+        <div class="n-bar"><div class="n-bar-fill" data-w="87"></div></div>
+        <div class="n-row"><span>Clientes com mais chamadas</span><strong>87%</strong></div>
+      </div>
+      <div class="n-item">
+        <div class="n-bar"><div class="n-bar-fill" data-w="94"></div></div>
+        <div class="n-row"><span>Mais visualizações GBP</span><strong>94%</strong></div>
+      </div>
+      <div class="n-item">
+        <div class="n-bar"><div class="n-bar-fill" data-w="78"></div></div>
+        <div class="n-row"><span>Top 3 Google Maps em 28 dias</span><strong>78%</strong></div>
+      </div>
+      <div class="n-item">
+        <div class="n-bar"><div class="n-bar-fill" data-w="100"></div></div>
+        <div class="n-row"><span>Taxa de retenção mensal</span><strong>100%</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ SERVIÇOS ══════════════════════════════════════════ -->
+<div class="s-wrap s-wrap--grey" id="servicos">
+  <div class="s-head reveal">
+    <div class="s-label">O Que Está Incluído</div>
+    <h2 class="s-title">Tudo gerido por nós</h2>
+    <p class="s-sub">Instalamos, configuramos e gerimos. Tu focas-te no teu negócio.</p>
+  </div>
+  <div class="servicos-list">
+    <div class="s-item reveal">
+      <div class="s-item-icon">📍</div>
+      <div>
+        <strong>Optimização completa do Google Business Profile</strong>
+        <p>Fotos profissionais, descrição optimizada, categorias, horários, posts semanais e gestão de Q&A</p>
+      </div>
+    </div>
+    <div class="s-item reveal">
+      <div class="s-item-icon">🗺️</div>
+      <div>
+        <strong>SEO Local — aparecer nas pesquisas certas</strong>
+        <p>Keywords locais, citações NAP, autoridade de domínio, análise mensal de concorrentes</p>
+      </div>
+    </div>
+    <div class="s-item reveal">
+      <div class="s-item-icon">⭐</div>
+      <div>
+        <strong>Reviews automáticas via WhatsApp + resposta com IA</strong>
+        <p>Pedido automático após cada visita. Resposta a todas as reviews em menos de 1 hora.</p>
+      </div>
+    </div>
+    <div class="s-item reveal">
+      <div class="s-item-icon">📅</div>
+      <div>
+        <strong>Agenda online com pagamentos (Plano Pro e Premium)</strong>
+        <p>Confirmação automática + lembrete 24h antes via WhatsApp. Funciona 24/7 sem esforço teu.</p>
+      </div>
+    </div>
+    <div class="s-item reveal">
+      <div class="s-item-icon">📊</div>
+      <div>
+        <strong>Dashboard LocalPulse — controlo em tempo real</strong>
+        <p>Posições no Google, reviews, visualizações GBP, posts e métricas — tudo no teu telemóvel.</p>
+      </div>
+    </div>
+    <div class="s-item reveal">
+      <div class="s-item-icon">📋</div>
+      <div>
+        <strong>Relatório mensal + Suporte dedicado WhatsApp</strong>
+        <p>Métricas reais, não de vaidade. Resposta em menos de 2 horas em dias úteis.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ PLANOS ════════════════════════════════════════════ -->
+<div class="s-wrap" id="precos">
+  <div class="s-head reveal">
+    <div class="s-label">Planos</div>
+    <h2 class="s-title">Sistema completo<br/>para encher a agenda</h2>
+    <p class="s-sub">Instalamos tudo. Tu só apareces para trabalhar.</p>
+  </div>
+  <div class="planos-grid">
+
+    <!-- BASE -->
+    <div class="plano plano-b reveal">
+      <div class="plano-badge badge-b">🗺️ Plano Base</div>
+      <div class="plano-top">
+        <div class="p-icon pi-b">📍</div>
+        <div class="price-block">
+          <span class="price">€197<span class="price-mo">/mês</span></span>
+          <span class="price-note">vs. €300+/mês em Google Ads</span>
+        </div>
+      </div>
+      <h3>Google Business &amp; SEO Local</h3>
+      <div class="plano-tags">
+        <span class="p-tag">Perfil optimizado</span>
+        <span class="p-tag">Posição #1 Maps</span>
+        <span class="p-tag">Reviews auto</span>
+        <span class="p-tag">Sem publicidade</span>
+      </div>
+      <p class="plano-desc">O teu negócio aparece antes dos concorrentes. Enquanto um anúncio para quando paras de pagar, <strong>o SEO local continua a trabalhar.</strong></p>
+      <ul class="includes">
+        <li><span class="ik ik-b">✓</span>Optimização completa do Google Business Profile</li>
+        <li><span class="ik ik-b">✓</span>SEO local mensal (keywords, citations, concorrentes)</li>
+        <li><span class="ik ik-b">✓</span>Pedido automático de reviews via WhatsApp</li>
+        <li><span class="ik ik-b">✓</span>Resposta a reviews com IA em menos de 1 hora</li>
+        <li><span class="ik ik-b">✓</span>Dashboard LocalPulse com métricas em tempo real</li>
+        <li><span class="ik ik-b">✓</span>Relatório mensal + suporte WhatsApp</li>
+      </ul>
+      <a href="https://wa.me/351917305248?text=Olá!%20Tenho%20interesse%20no%20Plano%20Base%20(€197/mês).%20O%20meu%20negócio%20é%3A%20" class="btn-plan bp-b" target="_blank">💬 Quero este plano</a>
+    </div>
+
+    <!-- PRO -->
+    <div class="plano plano-pro reveal reveal-delay-1">
+      <div class="plano-badge badge-g">⭐ Mais Popular — Plano Pro</div>
+      <div class="plano-top">
+        <div class="p-icon pi-g">🚀</div>
+        <div class="price-block">
+          <span class="price">€297<span class="price-mo">/mês</span></span>
+          <span class="price-note">agenda online + automações completas</span>
+        </div>
+      </div>
+      <h3>Google + Agenda + Automações</h3>
+      <div class="plano-tags">
+        <span class="p-tag">Agenda com pagamentos</span>
+        <span class="p-tag">WhatsApp auto</span>
+        <span class="p-tag">Landing page</span>
+        <span class="p-tag">24/7</span>
+      </div>
+      <p class="plano-desc">Tudo do Base, mais uma <strong>agenda online profissional com pagamentos</strong>. Os clientes marcam, pagam e recebem confirmação — sem teres de fazer nada.</p>
+      <ul class="includes">
+        <li><span class="ik ik-g">✓</span>Tudo do Plano Base incluído</li>
+        <li><span class="ik ik-g">✓</span>Agenda online com pagamentos (Trafft/Simplybook)</li>
+        <li><span class="ik ik-g">✓</span>Confirmação automática de marcação via WhatsApp</li>
+        <li><span class="ik ik-g">✓</span>Lembrete automático 24h antes da marcação</li>
+        <li><span class="ik ik-g">✓</span>Landing page de conversão focada em marcações</li>
+        <li><span class="ik ik-g">✓</span>Perfil redes sociais configurado e optimizado</li>
+      </ul>
+      <a href="https://wa.me/351917305248?text=Olá!%20Tenho%20interesse%20no%20Plano%20Pro%20(€297/mês).%20O%20meu%20negócio%20é%3A%20" class="btn-plan bp-g" target="_blank">💬 Quero este plano</a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plano plano-premium reveal reveal-delay-2">
+      <div class="plano-badge badge-a">🏆 Plano Premium</div>
+      <div class="plano-top">
+        <div class="p-icon pi-a">📈</div>
+        <div class="price-block">
+          <span class="price">€397<span class="price-mo">/mês</span></span>
+          <span class="price-note">crescimento activo e previsível</span>
+        </div>
+      </div>
+      <h3>Sistema Completo + Crescimento Activo</h3>
+      <div class="plano-tags">
+        <span class="p-tag">Google Ads local</span>
+        <span class="p-tag">Conteúdo IA</span>
+        <span class="p-tag">Follow-up auto</span>
+        <span class="p-tag">Análise concorrentes</span>
+      </div>
+      <p class="plano-desc">Para quem quer <strong>crescimento activo e previsível.</strong> Tudo do Pro, mais captação paga e conteúdo mensal criado com IA.</p>
+      <ul class="includes">
+        <li><span class="ik ik-a">✓</span>Tudo do Plano Pro incluído</li>
+        <li><span class="ik ik-a">✓</span>Campanha Google Ads local (gestão completa)</li>
+        <li><span class="ik ik-a">✓</span>4 posts/mês criados com IA (design + copy)</li>
+        <li><span class="ik ik-a">✓</span>Relatório de concorrentes todos os meses</li>
+        <li><span class="ik ik-a">✓</span>Follow-up automático a leads não convertidos</li>
+        <li><span class="ik ik-a">✓</span>Reunião mensal de estratégia (30 min)</li>
+      </ul>
+      <a href="https://wa.me/351917305248?text=Olá!%20Tenho%20interesse%20no%20Plano%20Premium%20(€397/mês).%20O%20meu%20negócio%20é%3A%20" class="btn-plan bp-a" target="_blank">💬 Quero este plano</a>
+    </div>
+
+  </div>
+  <p class="planos-note">Todos os planos · mínimo 3 meses · sem custos de instalação · cancela a qualquer momento depois</p>
+  <div class="garantia glass reveal">
+    <span class="garantia-icon">🛡️</span>
+    <div>
+      <strong>Garantia de 28 dias</strong>
+      <p>Se não vires resultados visíveis no Google Maps em 28 dias, devolvemos o dinheiro. Sem perguntas.</p>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ PORTUGAL 2030 ══════════════════════════════════════ -->
+<div class="s-wrap s-wrap--grey">
+  <div class="p2030-inner">
+    <div class="p2030-icon reveal">💶</div>
+    <div class="reveal reveal-delay-1">
+      <div class="p2030-badge">✓ Aberto no Norte · até Dez 2026</div>
+      <h2 class="p2030-content" style="font-weight:800;font-size:clamp(22px,3.5vw,34px);letter-spacing:-.03em;line-height:1.15;margin-bottom:14px;color:var(--w100)">Portugal 2030 financia<br/>a digitalização do teu negócio</h2>
+      <p class="p2030-content" style="font-size:15px;font-weight:300;color:var(--w40);line-height:1.78;margin-bottom:20px">O Portugal 2030 financia até <strong style="color:var(--w65);font-weight:600">75% a fundo perdido</strong> para PME adquirirem serviços digitais — SEO local, Google Business, agenda online. Até <strong style="color:var(--w65);font-weight:600">€20.000</strong> disponíveis. Tu pagas apenas 25%.</p>
+      <ul class="p2030-list">
+        <li><span class="ck">✓</span>Até €20.000 disponíveis por empresa (75% subsidiado)</li>
+        <li><span class="ck">✓</span>Cobre SEO local, Google Business e agenda online</li>
+        <li><span class="ck">✓</span>Disponível para restaurantes, cafés, barbearias no Norte</li>
+        <li><span class="ck">✓</span>Orientamos todo o processo de candidatura contigo</li>
+      </ul>
+      <div class="p2030-notice">⚠ <strong>Candidaturas por ordem de entrada.</strong> Os fundos esgotam quando a dotação acaba — quanto mais cedo candidatares, maior a probabilidade de aprovação antes de Dezembro 2026.</div>
+      <a href="https://wa.me/351917305248?text=Olá!%20Quero%20saber%20se%20sou%20elegível%20para%20os%20apoios%20Portugal%202030.%20O%20meu%20negócio%20é%3A%20" class="btn-plan bp-g" target="_blank">💬 Verificar elegibilidade</a>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ PROCESSO ══════════════════════════════════════════ -->
+<div class="s-wrap">
+  <div class="s-head reveal">
+    <div class="s-label">Processo</div>
+    <h2 class="s-title">Do zero a mais pedidos<br/>em 28 dias</h2>
+    <p class="s-sub">Gerido por nós, do primeiro ao último passo. Tu não fazes nada.</p>
+  </div>
+  <div class="processo-steps">
+    <div class="p-step reveal">
+      <div class="p-step-num">1</div>
+      <h4>Diagnóstico gratuito</h4>
+      <p>Analisamos a tua presença no Google — posição, reviews, perfil, concorrentes. Mostramos exactamente o que estás a perder. Em 2 horas.</p>
+    </div>
+    <div class="p-line"></div>
+    <div class="p-step reveal reveal-delay-1">
+      <div class="p-step-num">2</div>
+      <h4>Plano em 24h</h4>
+      <p>Criamos uma estratégia específica para o teu negócio e zona. Sabemos o que funciona na tua área.</p>
+    </div>
+    <div class="p-line"></div>
+    <div class="p-step reveal reveal-delay-2">
+      <div class="p-step-num">3</div>
+      <h4>Activação em 7 dias</h4>
+      <p>Optimizamos o GBP, configuramos a agenda e activamos todas as automações. Tu não fazes nada.</p>
+    </div>
+    <div class="p-line"></div>
+    <div class="p-step reveal reveal-delay-3">
+      <div class="p-step-num">4</div>
+      <h4>Resultados em 28 dias</h4>
+      <p>Mais chamadas, mais marcações, melhor posição. Relatório mensal com números reais.</p>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ LOCALPULSE ════════════════════════════════════════ -->
+<div class="s-wrap s-wrap--grey" id="localpulse">
+  <div class="lp-inner">
+    <div class="lp-text reveal">
+      <div class="s-label">Exclusivo para Clientes</div>
+      <h2>Dashboard LocalPulse —<br/>controlo total no telemóvel</h2>
+      <p>Todos os clientes IG Solution têm acesso ao LocalPulse, a nossa app exclusiva. Vê em tempo real tudo o que acontece com a tua presença digital — sem precisar de perguntar nada a ninguém.</p>
+      <ul class="lp-features">
+        <li>Posições no Google Maps em tempo real</li>
+        <li>Reviews recentes e métricas de reputação</li>
+        <li>Visualizações e cliques no GBP</li>
+        <li>Posts publicados e agendados</li>
+        <li>Chat de suporte directo com a equipa</li>
+        <li>Relatórios mensais de desempenho</li>
+      </ul>
+      <a href="https://localpulse-spotlight.lovable.app" class="btn-plan bp-g" target="_blank">Ver LocalPulse →</a>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="lp-mock glass">
+        <div class="lp-mock-header">
+          <div class="lp-mock-title">
+            <img src="logo.png" alt="" style="width:20px;height:20px;border-radius:50%;object-fit:contain"/>
+            LocalPulse
+          </div>
+          <span style="font-size:11px;color:var(--w40)">Café Tropical Brasil</span>
+        </div>
+        <div class="lp-mock-body">
+          <div class="lp-tab">
+            <span class="active">Painel</span>
+            <span class="inactive">Reviews</span>
+            <span class="inactive">Posição</span>
+            <span class="inactive">Chat</span>
+          </div>
+          <div class="lp-metric">
+            <div>
+              <div class="lp-metric-label">Visualizações esta semana</div>
+              <div class="lp-metric-val">1.247</div>
+            </div>
+            <span class="lp-metric-delta">+312%</span>
+          </div>
+          <div class="lp-metric">
+            <div>
+              <div class="lp-metric-label">Posição "café porto"</div>
+              <div class="lp-metric-val">#1</div>
+            </div>
+            <span class="lp-metric-delta">↑ 6 posições</span>
+          </div>
+          <div class="lp-review">
+            <strong>⭐⭐⭐⭐⭐ <span style="color:var(--w40)">há 2 horas</span></strong>
+            <div class="lp-stars">★★★★★</div>
+            "Melhor café da zona! Ambiente incrível..."
+          </div>
+          <div class="lp-metric">
+            <div>
+              <div class="lp-metric-label">Reviews este mês</div>
+              <div class="lp-metric-val">+24</div>
+            </div>
+            <span class="lp-metric-delta">Auto ✓</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- PORTUGAL 2030 -->
-  <section class="portugal2030">
-    <div class="container">
-      <div class="p2030__inner">
-        <div class="p2030__icon">💶</div>
-        <div class="p2030__content">
-          <div class="p2030__badge">✓ Aberto no Norte · até Dez 2026</div>
-          <h2>Portugal 2030 financia a digitalização do teu negócio</h2>
-          <p>O Portugal 2030 financia até <strong>75% a fundo perdido</strong> para PME adquirirem serviços digitais — SEO local, Google Business, agenda online. Até <strong>€20.000</strong> disponíveis. Tu pagas apenas 25%.</p>
-          <ul class="p2030__list">
-            <li>✓ Até €20.000 disponíveis por empresa (75% subsidiado)</li>
-            <li>✓ Cobre SEO local, Google Business e agenda online</li>
-            <li>✓ Disponível para restaurantes, cafés, barbearias no Norte</li>
-            <li>✓ Orientamos todo o processo de candidatura contigo</li>
-          </ul>
-          <div class="p2030__notice">⚠ <strong>Candidaturas por ordem de entrada.</strong> Os fundos esgotam quando a dotação acaba — quanto mais cedo candidatares, maior a probabilidade de aprovação.</div>
-          <a href="https://wa.me/351917305248?text=Olá!%20Quero%20saber%20se%20sou%20elegível%20para%20os%20apoios%20Portugal%202030.%20O%20meu%20negócio%20é%3A%20" class="btn btn--primary" target="_blank">💬 Verificar elegibilidade</a>
-        </div>
+<div class="hr"></div>
+
+<!-- ══ FAQ ═══════════════════════════════════════════════ -->
+<div class="s-wrap" id="faq">
+  <div class="s-head reveal">
+    <div class="s-label">FAQ</div>
+    <h2 class="s-title">Dúvidas comuns</h2>
+  </div>
+  <div class="faq-list">
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">Funciona para qualquer tipo de negócio local?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>Funciona para restaurantes, cafés, barbearias, cabeleireiros, oficinas, floristas e qualquer negócio que depende de clientes da zona. <strong>Não trabalhamos com clínicas.</strong> Esta especialização é o que nos permite ser excelentes — não mediocres em tudo.</p></div>
+    </div>
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">Em quanto tempo vejo resultados?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>Os primeiros resultados surgem em <strong>7 a 28 dias.</strong> Posição #1 nas pesquisas locais ocorre tipicamente entre 4 a 8 semanas, dependendo da concorrência na zona. Garantimos resultados visíveis em 28 dias ou devolvemos o dinheiro.</p></div>
+    </div>
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">O que é a agenda online e como funciona?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>É um sistema de marcações profissional integrado no teu Google Business. Os clientes escolhem o horário, confirmam e pagam online — <strong>24 horas por dia, sem teres de atender chamadas.</strong> Configuramos e gerimos tudo por ti. Disponível a partir do Plano Pro.</p></div>
+    </div>
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">Tenho de fazer alguma coisa da minha parte?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>Praticamente tudo fica a nosso cargo. Só te pedimos acesso ao Google Business (5 minutos) e aprovação ocasional de conteúdo. O resto corre no automático — incluindo reviews, posts e relatórios.</p></div>
+    </div>
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">Qual é a diferença para fazer publicidade no Google?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>Um anúncio Google custa €200–500/mês e <strong>para quando paras de pagar.</strong> O SEO local é uma presença permanente que fica mais forte com o tempo. A longo prazo, é incomparavelmente mais rentável — e os resultados pertencem-te.</p></div>
+    </div>
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">O que é o Portugal 2030 e como posso aproveitar?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>É um fundo europeu que financia até 75% a fundo perdido para PME do Norte adquirirem serviços digitais — incluindo os nossos serviços. Podes receber até €20.000 e pagar apenas 25%. <strong>Orientamos todo o processo contigo.</strong> <a href="https://wa.me/351917305248?text=Quero saber sobre Portugal 2030" target="_blank" style="color:var(--green-g);text-decoration:underline">Fala connosco para verificar a tua elegibilidade.</a></p></div>
+    </div>
+    <div class="fq reveal">
+      <button class="fq-q" onclick="toggleFaq(this)">Há contrato mínimo?<span class="fq-arrow">↓</span></button>
+      <div class="fq-a"><p>Pedimos um mínimo de <strong>3 meses</strong> — é o tempo necessário para resultados consistentes. Depois disso, és livre de continuar ou parar com 30 dias de aviso. Sem multas, sem letras pequenas.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<div class="cta-section">
+  <img src="logo.png" alt="IG Solution" class="cta-logo"/>
+  <div class="urgency">
+    <span class="urgency-dot"></span>
+    Apenas 1 vaga disponível para Junho 2026
+  </div>
+  <div class="sc-pill">
+    <span class="pulse" style="animation:none;background:var(--blue)"></span>
+    <strong>Máximo 3 novos clientes por mês</strong>&nbsp;·&nbsp;Vagas a esgotar
+  </div>
+  <h2>
+    Descobre o que estás<br/>
+    a perder no Google<br/>
+    <span class="grad-text">— hoje, gratuitamente.</span>
+  </h2>
+  <p>Análise completa da tua presença digital. Sem compromisso, sem spam, sem letra pequena.</p>
+  <div class="cta-group">
+    <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn-main">🔍 Diagnóstico Gratuito</a>
+    <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="btn-ghost" target="_blank">💬 WhatsApp directo</a>
+  </div>
+  <p class="cta-note">
+    Respondemos em menos de 2 horas em dias úteis &nbsp;·&nbsp;
+    <a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a> &nbsp;·&nbsp;
+    <a href="tel:+351917305248">+351 917 305 248</a>
+  </p>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand">
+      <div class="f-logo">
+        <img src="logo.png" alt="IG Solution"/>
+        IG<span>.</span>Solution
+      </div>
+      <p>Especialistas em visibilidade local<br/>para negócios no Porto.<br/>Não somos uma agência genérica —<br/>somos especialistas num nicho.</p>
+      <div class="f-socials">
+        <a href="https://instagram.com/igsolutionmkt" class="f-soc" title="Instagram" target="_blank">📷</a>
+        <a href="https://wa.me/351917305248" class="f-soc" title="WhatsApp" target="_blank">💬</a>
+        <a href="mailto:igsolutionmkt@gmail.com" class="f-soc" title="Email">📧</a>
+        <a href="https://localpulse-spotlight.lovable.app" class="f-soc" title="LocalPulse" target="_blank">📍</a>
       </div>
     </div>
-  </section>
-
-  <!-- PROCESSO -->
-  <section class="processo">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Como Começar</span>
-        <h2>Do zero ao topo em 4 passos</h2>
-        <p>Gerido por nós, do primeiro ao último passo</p>
-      </div>
-      <div class="processo__steps">
-        <div class="processo-step">
-          <div class="processo-step__num">1</div>
-          <h4>Diagnóstico gratuito</h4>
-          <p>Analisamos a tua presença no Google — posição, reviews, perfil, concorrentes. Em 2 horas.</p>
-        </div>
-        <div class="processo-step__line"></div>
-        <div class="processo-step">
-          <div class="processo-step__num">2</div>
-          <h4>Plano em 24h</h4>
-          <p>Estratégia específica para o teu negócio e zona, com o que funciona na tua área.</p>
-        </div>
-        <div class="processo-step__line"></div>
-        <div class="processo-step">
-          <div class="processo-step__num">3</div>
-          <h4>Activação em 7 dias</h4>
-          <p>Optimizamos o GBP, configuramos a agenda e activamos todas as automações.</p>
-        </div>
-        <div class="processo-step__line"></div>
-        <div class="processo-step">
-          <div class="processo-step__num">4</div>
-          <h4>Resultados em 28 dias</h4>
-          <p>Mais chamadas, mais marcações, melhor visibilidade. Relatório com números reais.</p>
-        </div>
-      </div>
+    <div class="f-col">
+      <h4>Serviços</h4>
+      <a href="#metodo">Método Presença 360</a>
+      <a href="#precos">Plano Base — €197</a>
+      <a href="#precos">Plano Pro — €297</a>
+      <a href="#precos">Plano Premium — €397</a>
+      <a href="#localpulse">LocalPulse</a>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">FAQ</span>
-        <h2>Perguntas frequentes</h2>
-      </div>
-      <div class="faq__list">
-        <div class="faq-item">
-          <button class="faq-item__q" onclick="toggleFaq(this)">Funciona para qualquer tipo de negócio local?<span class="faq-arrow">↓</span></button>
-          <div class="faq-item__a"><p>Funciona para restaurantes, cafés, barbearias, cabeleireiros, oficinas, floristas e qualquer negócio que depende de clientes da zona. <strong>Não trabalhamos com clínicas.</strong></p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q" onclick="toggleFaq(this)">Em quanto tempo vejo resultados?<span class="faq-arrow">↓</span></button>
-          <div class="faq-item__a"><p>Os primeiros resultados surgem em 7 a 28 dias. Posição #1 nas pesquisas locais ocorre tipicamente entre 4 a 8 semanas, dependendo da concorrência na zona.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q" onclick="toggleFaq(this)">O que é a agenda online e como funciona?<span class="faq-arrow">↓</span></button>
-          <div class="faq-item__a"><p>É um sistema de marcações integrado no teu Google Business. Os clientes escolhem o horário, confirmam e pagam online — 24 horas por dia, sem teres de atender chamadas. Configuramos tudo por ti.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q" onclick="toggleFaq(this)">Tenho de fazer alguma coisa da minha parte?<span class="faq-arrow">↓</span></button>
-          <div class="faq-item__a"><p>Praticamente tudo fica a nosso cargo. Só te pedimos acesso ao Google Business (5 minutos) e aprovação ocasional de conteúdo. O resto corre no automático.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q" onclick="toggleFaq(this)">Qual é a diferença para fazer publicidade no Google?<span class="faq-arrow">↓</span></button>
-          <div class="faq-item__a"><p>Um anúncio Google custa €200–500/mês e para quando paras de pagar. O SEO local é uma presença permanente que fica mais forte com o tempo — incomparavelmente mais rentável a longo prazo.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-item__q" onclick="toggleFaq(this)">Há contrato mínimo?<span class="faq-arrow">↓</span></button>
-          <div class="faq-item__a"><p>Pedimos um mínimo de 3 meses — é o tempo necessário para resultados consistentes. Depois disso, és livre de continuar ou parar a qualquer momento.</p></div>
-        </div>
-      </div>
+    <div class="f-col">
+      <h4>Negócios</h4>
+      <a href="#">Restaurantes</a>
+      <a href="#">Cafés</a>
+      <a href="#">Barbearias</a>
+      <a href="#">Oficinas</a>
+      <a href="#">Floristas</a>
     </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-final" id="contacto">
-    <div class="container">
-      <div class="cta-final__inner">
-        <img src="logo.png" alt="IG Solution" class="cta-final__logo" />
-        <div class="urgency-strip">
-          <span class="urgency-dot"></span>
-          Apenas 1 vaga disponível para Junho 2026
-        </div>
-        <h2>Descobre o que estás<br />a perder no Google<br /><span class="highlight">— hoje, gratuitamente.</span></h2>
-        <p>Análise completa da tua presença digital. Sem compromisso, sem spam.</p>
-        <div class="cta-final__btns">
-          <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn--primary btn--lg">🔍 Diagnóstico Gratuito</a>
-          <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="btn btn--ghost btn--lg" target="_blank">💬 WhatsApp directo</a>
-        </div>
-        <p class="cta-final__note">Respondemos em menos de 2 horas em dias úteis · <a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a> · <a href="tel:+351917305248">+351 917 305 248</a></p>
-      </div>
+    <div class="f-col">
+      <h4>Empresa</h4>
+      <a href="https://igsolutionmkt-lang.github.io/diagnostico.html">Diagnóstico Gratuito</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a>
+      <a href="tel:+351917305248">+351 917 305 248</a>
+      <a href="https://instagram.com/igsolutionmkt" target="_blank">@igsolutionmkt</a>
     </div>
-  </section>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 IG Solution · Todos os direitos reservados.</span>
+    <span>Porto, Portugal 📍</span>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="#" class="nav__logo">
-          <img src="logo.png" alt="IG Solution" class="nav__logo-img" />
-          <span class="logo-ig">IG</span><span class="logo-sol">.Solution</span>
-        </a>
-        <p>Especialistas em visibilidade local<br />para negócios no Porto.</p>
-        <div class="footer__social">
-          <a href="https://instagram.com/igsolutionmkt" aria-label="Instagram" target="_blank">📷</a>
-          <a href="https://wa.me/351917305248" aria-label="WhatsApp" target="_blank">💬</a>
-          <a href="mailto:igsolutionmkt@gmail.com" aria-label="Email">📧</a>
-          <a href="https://localpulse-spotlight.lovable.app" aria-label="LocalPulse" target="_blank">📍</a>
-        </div>
-      </div>
-      <div class="footer__links">
-        <h4>Serviços</h4>
-        <a href="#metodo">Método Presença 360</a>
-        <a href="#precos">Plano Base €197</a>
-        <a href="#precos">Plano Pro €297</a>
-        <a href="#precos">Plano Premium €397</a>
-      </div>
-      <div class="footer__links">
-        <h4>Negócios</h4>
-        <a href="#">Restaurantes</a>
-        <a href="#">Cafés</a>
-        <a href="#">Barbearias</a>
-        <a href="#">Oficinas</a>
-        <a href="#">Floristas</a>
-      </div>
-      <div class="footer__links">
-        <h4>Empresa</h4>
-        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html">Diagnóstico Gratuito</a>
-        <a href="#resultados">Casos de Sucesso</a>
-        <a href="#faq">FAQ</a>
-        <a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a>
-        <a href="tel:+351917305248">+351 917 305 248</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <span>© 2026 IG Solution · Todos os direitos reservados.</span>
-        <span>Porto, Portugal 📍</span>
-      </div>
-    </div>
-  </footer>
+<!-- FLOATING WA -->
+<a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="wa-btn" title="WhatsApp" target="_blank">💬</a>
 
-  <!-- FLOATING WHATSAPP -->
-  <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." class="wa-float" target="_blank" title="WhatsApp">💬</a>
+<!-- ══ SCRIPTS ═══════════════════════════════════════════ -->
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revObs.observe(el));
 
-  <script src="script.js"></script>
+// Animate bars
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.n-bar-fill').forEach(bar => {
+        const w = bar.dataset.w;
+        bar.style.width = w + '%';
+        bar.classList.add('animate');
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.numeros').forEach(el => barObs.observe(el));
+
+// Nav scroll
+const navWrap = document.querySelector('.nav-wrap');
+window.addEventListener('scroll', () => {
+  navWrap.style.top = window.scrollY > 40 ? '10px' : '16px';
+}, { passive: true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// FAQ
+function toggleFaq(btn) {
+  const item = btn.closest('.fq');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.fq').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - 88, behavior: 'smooth' });
+    }
+  });
+});
+
+// Orb parallax
+const orb1 = document.getElementById('orb1');
+const orb2 = document.getElementById('orb2');
+window.addEventListener('mousemove', (e) => {
+  const cx = (e.clientX / window.innerWidth - .5) * 2;
+  const cy = (e.clientY / window.innerHeight - .5) * 2;
+  if (orb1) orb1.style.transform = `translate(${cx*22}px,${cy*16}px)`;
+  if (orb2) orb2.style.transform = `translate(${cx*-14}px,${cy*-10}px)`;
+}, { passive: true });
+</script>
 </body>
 </html>
