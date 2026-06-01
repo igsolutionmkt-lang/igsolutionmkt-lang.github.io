@@ -995,7 +995,10 @@ footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position
         <li>Chat de suporte directo com a equipa</li>
         <li>Relatórios mensais de desempenho</li>
       </ul>
-      <a href="https://localpulse-spotlight.lovable.app" class="btn-plan bp-g" target="_blank">Ver LocalPulse →</a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="https://localpulse-spotlight.lovable.app/app" class="btn-plan bp-g" target="_blank">Aceder ao LocalPulse →</a>
+        <a href="https://localpulse-spotlight.lovable.app" class="btn-plan" style="background:rgba(255,255,255,.06);border:.5px solid rgba(255,255,255,.12);color:var(--w65);font-family:Inter,sans-serif;font-weight:600;font-size:14px;padding:13px 26px;border-radius:var(--r-xl);transition:all .28s" target="_blank">Saber mais</a>
+      </div>
     </div>
     <div class="reveal reveal-delay-1">
       <div class="lp-mock glass">
@@ -1004,7 +1007,10 @@ footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position
             <img src="logo.png" alt="" style="width:20px;height:20px;border-radius:50%;object-fit:contain"/>
             LocalPulse
           </div>
-          <span style="font-size:11px;color:var(--w40)">Café Tropical Brasil</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green-g)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--green-g);animation:pulse 2.6s ease infinite"></span>
+            Tempo real
+          </span>
         </div>
         <div class="lp-mock-body">
           <div class="lp-tab">
@@ -1016,28 +1022,28 @@ footer{border-top:.5px solid rgba(255,255,255,.055);padding:56px 24px 0;position
           <div class="lp-metric">
             <div>
               <div class="lp-metric-label">Visualizações esta semana</div>
-              <div class="lp-metric-val">1.247</div>
+              <div class="lp-metric-val" id="lp-views">847</div>
             </div>
-            <span class="lp-metric-delta">+312%</span>
+            <span class="lp-metric-delta">+218%</span>
           </div>
           <div class="lp-metric">
             <div>
-              <div class="lp-metric-label">Posição "café porto"</div>
-              <div class="lp-metric-val">#1</div>
+              <div class="lp-metric-label">Chamadas esta semana</div>
+              <div class="lp-metric-val" id="lp-calls">23</div>
             </div>
-            <span class="lp-metric-delta">↑ 6 posições</span>
+            <span class="lp-metric-delta">+3× vs. antes</span>
+          </div>
+          <div class="lp-metric">
+            <div>
+              <div class="lp-metric-label">Posição no Google Maps</div>
+              <div class="lp-metric-val">#2</div>
+            </div>
+            <span class="lp-metric-delta">↑ 4 posições</span>
           </div>
           <div class="lp-review">
-            <strong>⭐⭐⭐⭐⭐ <span style="color:var(--w40)">há 2 horas</span></strong>
+            <strong>Nova review <span style="color:var(--w40)">· agora</span></strong>
             <div class="lp-stars">★★★★★</div>
-            "Melhor café da zona! Ambiente incrível..."
-          </div>
-          <div class="lp-metric">
-            <div>
-              <div class="lp-metric-label">Reviews este mês</div>
-              <div class="lp-metric-val">+24</div>
-            </div>
-            <span class="lp-metric-delta">Auto ✓</span>
+            "Excelente serviço! Recomendo a todos..."
           </div>
         </div>
       </div>
