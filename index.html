@@ -236,7 +236,7 @@ h3{font-size:clamp(17px,2vw,22px);font-weight:700}
 .n4{background:linear-gradient(135deg,rgba(255,179,71,.09),rgba(255,179,71,.03));border:1px solid rgba(255,179,71,.2)}
 
 /* ════════════════════════════════════
-   NICHOS (9 itens)
+   NICHOS (9 itens) — mantido para compatibilidade
 ════════════════════════════════════ */
 .nicho-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
 .nicho-card{padding:26px;border-radius:18px;transition:all .3s;position:relative;overflow:hidden}
@@ -249,6 +249,90 @@ h3{font-size:clamp(17px,2vw,22px);font-weight:700}
 .nl-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);margin-bottom:3px}
 .nl-val{font-size:13px;color:rgba(255,255,255,.6);line-height:1.55}
 .nicho-res{font-size:13.5px;font-weight:700;color:var(--g);margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+
+/* ════════════════════════════════════
+   SOLUÇÕES POR SEGMENTO
+════════════════════════════════════ */
+.sl-stack{display:flex;flex-direction:column;gap:20px;margin-top:56px}
+
+/* Card principal */
+.sl-card{border-radius:22px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,.038);transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1);position:relative}
+.sl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);pointer-events:none;z-index:1}
+.sl-card:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(0,0,0,.4)}
+
+/* Accent colour helpers */
+.sl-card[data-color="green"]:hover{border-color:rgba(0,217,126,.35);box-shadow:0 12px 48px rgba(0,217,126,.1)}
+.sl-card[data-color="blue"]:hover{border-color:rgba(79,142,247,.35);box-shadow:0 12px 48px rgba(79,142,247,.1)}
+.sl-card[data-color="purple"]:hover{border-color:rgba(155,107,255,.35);box-shadow:0 12px 48px rgba(155,107,255,.1)}
+.sl-card[data-color="amber"]:hover{border-color:rgba(255,179,71,.35);box-shadow:0 12px 48px rgba(255,179,71,.1)}
+.sl-card[data-color="pink"]:hover{border-color:rgba(255,107,157,.35);box-shadow:0 12px 48px rgba(255,107,157,.1)}
+
+/* Header */
+.sl-head{display:flex;align-items:center;gap:18px;padding:26px 28px 22px;border-bottom:1px solid var(--border)}
+.sl-icon-wrap{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;transition:transform .3s cubic-bezier(.34,1.42,.64,1)}
+.sl-card:hover .sl-icon-wrap{transform:scale(1.1) rotate(-4deg)}
+.sl-head-info{flex:1;min-width:0}
+.sl-head-info h3{font-size:clamp(16px,2vw,20px);font-weight:800;color:var(--t1);margin-bottom:4px;letter-spacing:-.02em}
+.sl-subtitle{font-size:13.5px;color:var(--t3);font-style:italic;font-family:var(--f-body)}
+.sl-head-badge{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:999px;white-space:nowrap;font-family:var(--f-body)}
+
+/* Body: 3-column flow */
+.sl-body{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:0;padding:24px 28px}
+.sl-col{background:rgba(255,255,255,.03);border-radius:14px;padding:18px 20px;height:100%}
+.sl-col-hd{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-family:var(--f-body)}
+.sl-col-hd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sl-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.sl-col ul li{font-size:13.5px;color:var(--t2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.sl-col ul li::before{content:'';width:5px;height:5px;border-radius:50%;margin-top:6px;flex-shrink:0}
+
+/* Problem column */
+.sl-prob .sl-col-hd{color:rgba(255,120,120,.85)}
+.sl-prob .sl-col-hd-dot{background:rgba(255,80,80,.7)}
+.sl-prob{border:1px solid rgba(255,80,80,.1);background:rgba(255,80,80,.04)}
+.sl-prob ul li{color:rgba(255,255,255,.65)}
+.sl-prob ul li::before{background:rgba(255,100,100,.55)}
+
+/* Solution column */
+.sl-sol .sl-col-hd{color:rgba(0,217,126,.9)}
+.sl-sol .sl-col-hd-dot{background:var(--g)}
+.sl-sol{border:1px solid rgba(0,217,126,.14);background:rgba(0,217,126,.04)}
+.sl-sol ul li::before{background:rgba(0,217,126,.6)}
+
+/* Result column */
+.sl-res .sl-col-hd{color:rgba(147,197,253,.9)}
+.sl-res .sl-col-hd-dot{background:#4f8ef7}
+.sl-res{border:1px solid rgba(79,142,247,.14);background:rgba(79,142,247,.04)}
+.sl-res ul li{font-weight:600}
+.sl-res ul li::before{background:rgba(79,142,247,.7)}
+
+/* Arrow between columns */
+.sl-arrow-wrap{padding:0 16px;display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}
+.sl-arr{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.sl-arr svg{width:12px;height:12px;color:var(--t3)}
+.sl-card:hover .sl-arr{background:rgba(0,217,126,.1);border-color:rgba(0,217,126,.25)}
+.sl-card:hover .sl-arr svg{color:var(--g)}
+.sl-arr-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);font-weight:600}
+
+/* CTA final da secção */
+.sl-cta-block{margin-top:40px;text-align:center;padding:40px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(135deg,rgba(0,217,126,.05),rgba(79,142,247,.04));position:relative;overflow:hidden}
+.sl-cta-block::before{content:'';position:absolute;top:0;left:25%;right:25%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,217,126,.4),transparent)}
+.sl-cta-block h3{font-size:clamp(18px,2.5vw,26px);font-weight:700;color:var(--t1);margin-bottom:8px;font-family:var(--f-head)}
+.sl-cta-block p{font-size:15px;color:var(--t3);margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
+.sl-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Responsive */
+@media(max-width:860px){
+  .sl-body{grid-template-columns:1fr;gap:10px}
+  .sl-arrow-wrap{flex-direction:row;padding:0;justify-content:flex-start}
+  .sl-arr{transform:rotate(90deg)}
+  .sl-arr-label{display:none}
+  .sl-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .sl-head-badge{display:none}
+}
+@media(max-width:540px){
+  .sl-head,.sl-body{padding:18px 16px}
+  .sl-col{padding:14px 16px}
+}
 
 /* ════════════════════════════════════
    AGENDA
@@ -744,25 +828,281 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
 
 <div class="div-line"></div>
 
-<!-- NICHOS -->
+<!-- SOLUÇÕES POR SEGMENTO -->
 <section class="sec" id="nichos">
   <div class="w">
+
     <div class="sec-label r">
-      <span class="tag tag-g">Para Quem</span>
-      <h2>O sistema certo para o seu sector</h2>
-      <p class="lead">9 nichos com soluções específicas para cada realidade.</p>
+      <span class="tag tag-g">Soluções para o Seu Negócio</span>
+      <h2>O sistema certo para<br/>cada segmento</h2>
+      <p class="lead">Não somos uma solução genérica. Adaptamos cada sistema ao seu tipo de negócio — com resultados específicos e mensuráveis.</p>
     </div>
-    <div class="nicho-grid">
-      <div class="nicho-card card r d1"><span class="nicho-icon">☕</span><h3>Cafés</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Invisível no Google, pouca fidelização</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">GBP + reviews automáticas + WhatsApp</div></div><div class="nicho-res">↑ +180% visibilidade</div></div>
-      <div class="nicho-card card r d2"><span class="nicho-icon">🍽️</span><h3>Restaurantes</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Sem reservas online, sem presença digital</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Sistema de reservas + SEO + reviews</div></div><div class="nicho-res">↑ +35% reservas</div></div>
-      <div class="nicho-card card r d3"><span class="nicho-icon">💇</span><h3>Salões de Beleza</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Agenda manual, faltas, sem fidelização</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Agenda.IGSolution + lembretes + CRM</div></div><div class="nicho-res">↑ +40% recorrentes</div></div>
-      <div class="nicho-card card r d4"><span class="nicho-icon">✂️</span><h3>Barbearias</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Agenda por telefone, sem resposta 24/7</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Agendamento online + chatbot WhatsApp</div></div><div class="nicho-res">↑ +50 contactos/mês</div></div>
-      <div class="nicho-card card r d5"><span class="nicho-icon">💪</span><h3>Personal Trainer</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Gestão manual de alunos e pagamentos</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">CRM + agenda + follow-up alunos inativos</div></div><div class="nicho-res">↑ +30% retenção</div></div>
-      <div class="nicho-card card r d6"><span class="nicho-icon">💼</span><h3>Empreendedores</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Sem tempo para gerir clientes e leads</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Sistema automático captação + CRM + IA</div></div><div class="nicho-res">↑ 3× mais leads</div></div>
-      <div class="nicho-card card r d1"><span class="nicho-icon">👤</span><h3>Trabalho Pessoal</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Difícil gerir agenda e captar clientes</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Agenda online + página profissional</div></div><div class="nicho-res">↑ +45% novos clientes</div></div>
-      <div class="nicho-card card r d2"><span class="nicho-icon">🛠️</span><h3>Prestadores de Serviço</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Orçamentos perdidos, leads sem resposta</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Orçamentos auto WhatsApp + SEO local</div></div><div class="nicho-res">↑ +25% fechamentos</div></div>
-      <div class="nicho-card card r d3"><span class="nicho-icon">🤝</span><h3>Acompanhantes</h3><div class="nl-b"><div class="nl-label">Problema</div><div class="nl-val">Gestão manual de agenda e contactos</div></div><div class="nl-b"><div class="nl-label">Solução</div><div class="nl-val">Agenda privada + confirmações auto</div></div><div class="nicho-res">↑ Agenda 90% cheia</div></div>
+
+    <div class="sl-stack">
+
+      <!-- 1. Barbearias & Salões -->
+      <div class="sl-card r d1" data-color="green">
+        <div class="sl-head">
+          <div class="sl-icon-wrap" style="background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.22)">💈</div>
+          <div class="sl-head-info">
+            <h3>Barbearias e Salões de Beleza</h3>
+            <p class="sl-subtitle">Agenda organizada. Menos faltas. Clientes que voltam sempre.</p>
+          </div>
+          <span class="sl-head-badge" style="background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.22);color:var(--g)">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            -60% faltas
+          </span>
+        </div>
+        <div class="sl-body">
+          <div class="sl-col sl-prob">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
+            <ul>
+              <li>Agenda desorganizada e manual</li>
+              <li>Clientes que faltam sem avisar</li>
+              <li>Sem confirmações automáticas</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Solução</span>
+          </div>
+          <div class="sl-col sl-sol">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
+            <ul>
+              <li>Agenda.IGSolution online 24/7</li>
+              <li>WhatsApp automático de resposta</li>
+              <li>Lembretes inteligentes 24h antes</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Resultado</span>
+          </div>
+          <div class="sl-col sl-res">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
+            <ul>
+              <li>-60% faltas e cancelamentos</li>
+              <li>+50 marcações novas/mês</li>
+              <li>Clientes mais fidelizados</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Cafés & Restaurantes -->
+      <div class="sl-card r d2" data-color="amber">
+        <div class="sl-head">
+          <div class="sl-icon-wrap" style="background:rgba(255,179,71,.12);border:1px solid rgba(255,179,71,.22)">🍽️</div>
+          <div class="sl-head-info">
+            <h3>Cafés e Restaurantes</h3>
+            <p class="sl-subtitle">Mais visibilidade local. Mais reservas. Melhor reputação online.</p>
+          </div>
+          <span class="sl-head-badge" style="background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.22);color:#ffcc70">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            +35% reservas
+          </span>
+        </div>
+        <div class="sl-body">
+          <div class="sl-col sl-prob">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
+            <ul>
+              <li>Baixa visibilidade no Google Maps</li>
+              <li>Poucas reservas online</li>
+              <li>Poucas avaliações recentes</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Solução</span>
+          </div>
+          <div class="sl-col sl-sol">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
+            <ul>
+              <li>Marketing Local e SEO optimizado</li>
+              <li>Google Business Profile completo</li>
+              <li>Gestão automática de avaliações</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Resultado</span>
+          </div>
+          <div class="sl-col sl-res">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
+            <ul>
+              <li>+180% visibilidade no Maps</li>
+              <li>+35% mais reservas mensais</li>
+              <li>Reputação online consistente</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Personal Trainers & Coaches -->
+      <div class="sl-card r d3" data-color="blue">
+        <div class="sl-head">
+          <div class="sl-icon-wrap" style="background:rgba(79,142,247,.12);border:1px solid rgba(79,142,247,.22)">🏋️</div>
+          <div class="sl-head-info">
+            <h3>Personal Trainers e Coaches</h3>
+            <p class="sl-subtitle">Mais sessões marcadas. Mais retenção. Melhor experiência do cliente.</p>
+          </div>
+          <span class="sl-head-badge" style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.22);color:#93c5fd">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            +30% retenção
+          </span>
+        </div>
+        <div class="sl-body">
+          <div class="sl-col sl-prob">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
+            <ul>
+              <li>Gestão manual de clientes</li>
+              <li>Falta de acompanhamento pós-sessão</li>
+              <li>Cancelamentos de última hora</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Solução</span>
+          </div>
+          <div class="sl-col sl-sol">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
+            <ul>
+              <li>Agenda.IGSolution integrada</li>
+              <li>CRM de clientes automatizado</li>
+              <li>Automações de follow-up por IA</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Resultado</span>
+          </div>
+          <div class="sl-col sl-res">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
+            <ul>
+              <li>Agenda 90% cheia todos os meses</li>
+              <li>+30% de retenção de clientes</li>
+              <li>Experiência mais profissional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Prestadores de Serviços -->
+      <div class="sl-card r d4" data-color="purple">
+        <div class="sl-head">
+          <div class="sl-icon-wrap" style="background:rgba(155,107,255,.12);border:1px solid rgba(155,107,255,.22)">🛠️</div>
+          <div class="sl-head-info">
+            <h3>Prestadores de Serviços</h3>
+            <p class="sl-subtitle">Eletricistas, canalizadores, limpezas, técnicos e muito mais.</p>
+          </div>
+          <span class="sl-head-badge" style="background:rgba(155,107,255,.1);border:1px solid rgba(155,107,255,.22);color:#c4b5fd">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            +25% orçamentos
+          </span>
+        </div>
+        <div class="sl-body">
+          <div class="sl-col sl-prob">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
+            <ul>
+              <li>Perda de contactos e leads</li>
+              <li>Falta de organização interna</li>
+              <li>Poucos pedidos de orçamento</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Solução</span>
+          </div>
+          <div class="sl-col sl-sol">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
+            <ul>
+              <li>CRM de leads automático</li>
+              <li>WhatsApp com respostas rápidas</li>
+              <li>Automações de follow-up</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Resultado</span>
+          </div>
+          <div class="sl-col sl-res">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
+            <ul>
+              <li>+25% pedidos de orçamento</li>
+              <li>Operação mais organizada</li>
+              <li>Mais vendas fechadas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Empreendedores -->
+      <div class="sl-card r d5" data-color="pink">
+        <div class="sl-head">
+          <div class="sl-icon-wrap" style="background:rgba(255,107,157,.12);border:1px solid rgba(255,107,157,.22)">🚀</div>
+          <div class="sl-head-info">
+            <h3>Empreendedores e Profissionais Independentes</h3>
+            <p class="sl-subtitle">Mais leads. Mais produtividade. Mais vendas — no automático.</p>
+          </div>
+          <span class="sl-head-badge" style="background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.22);color:#ffa0c5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            3× mais leads
+          </span>
+        </div>
+        <div class="sl-body">
+          <div class="sl-col sl-prob">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
+            <ul>
+              <li>Poucos leads qualificados</li>
+              <li>Falta de automação nos processos</li>
+              <li>Tudo feito manualmente</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Solução</span>
+          </div>
+          <div class="sl-col sl-sol">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
+            <ul>
+              <li>Marketing Digital com IA</li>
+              <li>Funis de venda automatizados</li>
+              <li>CRM e captação inteligente</li>
+            </ul>
+          </div>
+          <div class="sl-arrow-wrap">
+            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
+            <span class="sl-arr-label">Resultado</span>
+          </div>
+          <div class="sl-col sl-res">
+            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
+            <ul>
+              <li>3× mais leads qualificados</li>
+              <li>Muito mais produtividade</li>
+              <li>Vendas crescem no automático</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sl-stack -->
+
+    <!-- CTA FINAL DA SECÇÃO -->
+    <div class="sl-cta-block r">
+      <h3>Não encontrou o seu segmento?</h3>
+      <p>Adaptamos as nossas soluções a qualquer negócio local. Se atende clientes, temos um sistema para si.</p>
+      <div class="sl-cta-btns">
+        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-g">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Solicitar Diagnóstico Gratuito
+        </a>
+        <a href="https://wa.me/351917305248?text=Olá!%20O%20meu%20negócio%20é%20diferente%20e%20quero%20saber%20como%20podem%20ajudar." class="btn btn-w" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
     </div>
+
   </div>
 </section>
 
