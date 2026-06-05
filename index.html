@@ -4,532 +4,442 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>IG Solution — Mais Clientes. Menos Trabalho Manual.</title>
-<meta name="description" content="Sistema completo de captação, conversão e gestão automática de clientes para negócios locais no Porto."/>
+<meta name="description" content="Automatizamos a captação de clientes, atendimento WhatsApp e agendamentos para negócios locais no Porto."/>
 <link rel="icon" type="image/png" href="logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
 <style>
-:root{
-  --bg:#0d0f1c;
-  --bg2:#12152a;
-  --g:#00d97e;
-  --g2:#00b865;
-  --gb:rgba(0,217,126,.15);
-  --gbb:rgba(0,217,126,.3);
-  --blue:#4f8ef7;
-  --purple:#9b6bff;
-  --amber:#ffb347;
-  --pink:#ff6b9d;
-  --t1:#ffffff;
-  --t2:rgba(255,255,255,.82);
-  --t3:rgba(255,255,255,.52);
-  --t4:rgba(255,255,255,.28);
-  --border:rgba(255,255,255,.09);
-  --card:rgba(255,255,255,.055);
-  --f-head:'Syne',sans-serif;
-  --f-body:'DM Sans',sans-serif;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --bg:    #06060a;
+  --bg2:   #0b0b10;
+  --sf:    #0f0f16;
+  --sf2:   #141420;
+  --sf3:   #1a1a28;
+  --g:     #00d97e;
+  --g2:    #00b865;
+  --gd:    rgba(0,217,126,.09);
+  --gd2:   rgba(0,217,126,.05);
+  --bd:    rgba(255,255,255,.065);
+  --bd2:   rgba(255,255,255,.11);
+  --bd3:   rgba(255,255,255,.18);
+  --t1:    #ededf2;
+  --t2:    rgba(237,237,242,.62);
+  --t3:    rgba(237,237,242,.36);
+  --t4:    rgba(237,237,242,.18);
+  --fh:    'Bricolage Grotesque', sans-serif;
+  --fb:    'Plus Jakarta Sans', sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--f-body);background:var(--bg);color:var(--t2);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  font-family:var(--fb);
+  background:var(--bg);
+  color:var(--t2);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
+button{font-family:var(--fb);cursor:pointer}
 
-/* ── LAYOUT ── */
-.w{max-width:1100px;margin:0 auto;padding:0 28px}
-.sec{padding:100px 0}
-.sec-sm{padding:72px 0}
+/* Subtle grid overlay */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  background-image:
+    linear-gradient(var(--bd) 1px,transparent 1px),
+    linear-gradient(90deg,var(--bd) 1px,transparent 1px);
+  background-size:56px 56px;
+  pointer-events:none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LAYOUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.w  {max-width:1120px;margin:0 auto;padding:0 32px}
+.wn {max-width:700px; margin:0 auto;padding:0 32px}
+section{position:relative;z-index:1;padding:128px 0}
+.divider{height:1px;background:var(--bd);position:relative;z-index:1}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPOGRAPHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+h1,h2,h3,h4{font-family:var(--fh);color:var(--t1);letter-spacing:-.03em;line-height:1.08}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--g);
+  margin-bottom:18px;
+}
+.eyebrow::before{content:'';width:18px;height:1.5px;background:var(--g)}
+.section-title{font-size:clamp(30px,4vw,50px);font-weight:800;margin-bottom:14px}
+.section-sub{font-size:17px;color:var(--t3);line-height:1.75;max-width:480px}
 .tc{text-align:center}
+.tc .eyebrow{justify-content:center}
+.tc .section-sub{margin:0 auto}
+.grad{background:linear-gradient(135deg,var(--g),#a8ffd8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ── TYPE ── */
-h1,h2,h3{font-family:var(--f-head);color:var(--t1);letter-spacing:-.03em;line-height:1.08}
-h1{font-size:clamp(42px,7vw,82px);font-weight:800}
-h2{font-size:clamp(30px,4.5vw,54px);font-weight:700}
-h3{font-size:clamp(17px,2vw,22px);font-weight:700}
-.lead{font-size:clamp(15px,1.8vw,19px);color:var(--t3);line-height:1.8}
-.grad{background:linear-gradient(135deg,var(--g) 0%,#a8ffda 50%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:gradMove 4s ease infinite alternate}
-@keyframes gradMove{0%{background-position:0%}100%{background-position:100%}}
-.tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:999px;font-family:var(--f-body)}
-.tag-g{background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.28);color:var(--g)}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2.2s ease infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,217,126,.5)}60%{box-shadow:0 0 0 6px rgba(0,217,126,0)}}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BUTTONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;border:none;
+  border-radius:10px;transition:all .18s cubic-bezier(.4,0,.2,1);
+  padding:0 22px;height:44px;white-space:nowrap;font-family:var(--fb);
+}
+.btn-p{background:var(--g);color:#001f10}
+.btn-p:hover{background:#00f090;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,217,126,.28)}
+.btn-s{background:var(--sf2);color:var(--t1);border:1px solid var(--bd2)}
+.btn-s:hover{background:var(--sf3);border-color:var(--bd3);transform:translateY(-1px)}
+.btn-lg{height:52px;padding:0 30px;font-size:15px;border-radius:12px}
 
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-body);font-size:15px;font-weight:600;border:none;cursor:pointer;border-radius:12px;transition:all .22s;min-height:50px;padding:0 28px;white-space:nowrap;position:relative;overflow:hidden}
-.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);pointer-events:none}
-.btn-g{background:linear-gradient(135deg,var(--g),var(--g2));color:#001a0d;box-shadow:0 4px 24px rgba(0,217,126,.35),0 0 0 1px rgba(0,217,126,.4)}
-.btn-g:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 32px rgba(0,217,126,.5)}
-.btn-w{background:rgba(255,255,255,.08);color:var(--t1);border:1px solid rgba(255,255,255,.15)}
-.btn-w:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
-.btn-lg{min-height:58px;padding:0 38px;font-size:16px;border-radius:14px}
-
-/* ── CARD ── */
-.card{background:var(--card);border:1px solid var(--border);border-radius:20px;position:relative;overflow:hidden;transition:all .3s}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent)}
-.card-g{border-color:rgba(0,217,126,.22);background:linear-gradient(135deg,rgba(0,217,126,.06),rgba(0,217,126,.02))}
-
-/* ── REVEAL ── */
-.r{opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
-.r.on{opacity:1;transform:none}
-.r.d1{transition-delay:.07s}.r.d2{transition-delay:.14s}.r.d3{transition-delay:.21s}
-.r.d4{transition-delay:.28s}.r.d5{transition-delay:.35s}.r.d6{transition-delay:.42s}
-
-/* ════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    NAV
-════════════════════════════════════ */
-#nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;transition:all .3s}
-#nav.sc{background:rgba(13,15,28,.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-.nav-in{display:flex;align-items:center;height:52px;gap:24px}
-.logo{display:flex;align-items:center;gap:9px;font-family:var(--f-head);font-size:18px;font-weight:800;color:var(--t1)}
-.logo img{width:30px;height:30px;border-radius:8px}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;transition:all .3s}
+#nav.sc{background:rgba(6,6,10,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+.nav-in{display:flex;align-items:center;height:60px;gap:28px}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--fh);font-size:17px;font-weight:700;color:var(--t1);letter-spacing:-.025em}
+.logo img{width:26px;height:26px;border-radius:7px}
 .logo em{font-style:normal;color:var(--g)}
-.nl{display:flex;gap:4px;margin-left:auto;list-style:none}
-.nl a{font-size:13.5px;color:var(--t3);padding:7px 13px;border-radius:8px;transition:.18s;font-weight:500}
-.nl a:hover{color:var(--t1);background:rgba(255,255,255,.06)}
-.nc{display:flex;gap:10px}
-.hb{display:none;background:none;border:1px solid var(--border);border-radius:9px;padding:9px;flex-direction:column;gap:4px;cursor:pointer;align-items:center;justify-content:center;min-width:42px;min-height:42px}
-.hb span{width:18px;height:1.5px;background:var(--t2);border-radius:2px}
-.mob{display:none;flex-direction:column;gap:3px;padding:12px 20px 18px;background:rgba(13,15,28,.98);border-top:1px solid var(--border)}
-.mob a{padding:12px 14px;font-size:14px;font-weight:500;color:var(--t3);border-radius:9px;transition:.18s}
+.nl{display:flex;list-style:none;gap:2px;margin-left:12px}
+.nl a{font-size:13px;font-weight:500;color:var(--t3);padding:6px 12px;border-radius:7px;transition:.15s}
+.nl a:hover{color:var(--t1);background:rgba(255,255,255,.05)}
+.nc{margin-left:auto;display:flex;gap:10px;align-items:center}
+.hb{display:none;background:none;border:1px solid var(--bd2);border-radius:8px;padding:9px;flex-direction:column;gap:4px;align-items:center;justify-content:center;min-width:40px;min-height:40px}
+.hb span{width:16px;height:1.5px;background:var(--t2);border-radius:2px}
+.mob{display:none;flex-direction:column;gap:2px;padding:10px 16px 16px;background:rgba(6,6,10,.98);border-bottom:1px solid var(--bd)}
+.mob a{font-size:14px;font-weight:500;color:var(--t3);padding:10px 12px;border-radius:8px;transition:.15s}
 .mob a:hover{color:var(--t1);background:rgba(255,255,255,.05)}
 .mob.open{display:flex}
 
-/* ════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    HERO
-════════════════════════════════════ */
-.hero{min-height:100vh;display:flex;align-items:center;padding:130px 28px 80px;position:relative;overflow:hidden}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:120px 32px 80px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;top:-160px;right:-80px;
+  width:640px;height:640px;
+  background:radial-gradient(circle,rgba(0,217,126,.055) 0%,transparent 62%);
+  pointer-events:none;
+}
+.hero-in{
+  max-width:1120px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+  position:relative;z-index:1;
+}
 
-/* Mesh background */
-.hero-mesh{position:absolute;inset:0;z-index:0}
-.mesh-blob{position:absolute;border-radius:50%;filter:blur(100px);animation:blobFloat ease-in-out infinite alternate}
-.blob1{width:700px;height:700px;background:radial-gradient(circle,rgba(0,217,126,.22),transparent 65%);top:-150px;left:-100px;animation-duration:9s}
-.blob2{width:500px;height:500px;background:radial-gradient(circle,rgba(79,142,247,.2),transparent 65%);top:10%;right:-80px;animation-duration:12s;animation-delay:-4s}
-.blob3{width:400px;height:400px;background:radial-gradient(circle,rgba(155,107,255,.18),transparent 65%);bottom:-100px;left:30%;animation-duration:10s;animation-delay:-6s}
-@keyframes blobFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,-30px) scale(1.1)}}
+/* Badge */
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.18);
+  border-radius:999px;padding:5px 14px 5px 8px;margin-bottom:28px;width:fit-content;
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--g);
+  box-shadow:0 0 0 3px rgba(0,217,126,.18);
+  animation:livePing 2.5s ease infinite;
+}
+@keyframes livePing{0%,100%{box-shadow:0 0 0 3px rgba(0,217,126,.18)}55%{box-shadow:0 0 0 7px rgba(0,217,126,0)}}
+.hero-badge span{font-size:12px;font-weight:600;color:var(--g);letter-spacing:.03em}
 
-/* Grid lines */
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 0,black 30%,transparent 100%);mask-image:radial-gradient(ellipse 90% 80% at 50% 0,black 30%,transparent 100%)}
-
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;width:100%}
-.hero-text{}
-.hero-text .tag{margin-bottom:24px}
-.hero-text h1{margin-bottom:20px}
-.hero-sub{font-size:18px;color:var(--t3);line-height:1.8;max-width:480px;margin-bottom:10px}
-.hero-slogan{font-size:14px;color:var(--t4);font-style:italic;margin-bottom:32px;font-family:var(--f-body)}
+/* Heading */
+.hero-h1{font-size:clamp(40px,5.2vw,66px);font-weight:800;letter-spacing:-.04em;line-height:1.04;color:var(--t1);margin-bottom:20px}
+.hero-sub{font-size:17px;color:var(--t3);line-height:1.75;max-width:430px;margin-bottom:36px}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
-.hero-trust{display:flex;gap:20px;flex-wrap:wrap}
-.ht{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--t4)}
-.ht svg{width:14px;height:14px;color:var(--g)}
 
-/* Hero visual */
-.hero-visual{position:relative;height:480px}
+/* Proof */
+.hero-proof{display:flex;align-items:center;gap:14px}
+.av-stack{display:flex;align-items:center}
+.av{width:28px;height:28px;border-radius:50%;border:2px solid var(--bg);background:var(--sf3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--g);margin-left:-8px}
+.av:first-child{margin-left:0}
+.proof-text{font-size:13px;color:var(--t3)}
+.proof-text strong{color:var(--t2);font-weight:600}
+.proof-stars{color:#f59e0b;font-size:11px;letter-spacing:.05em;margin-bottom:2px}
 
-/* Phone mockup */
-.phone{position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;background:linear-gradient(145deg,#1a1f3a,#0f1225);border:1.5px solid rgba(255,255,255,.12);border-radius:28px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.1);animation:phoneFloat 5s ease-in-out infinite}
-@keyframes phoneFloat{0%,100%{transform:translateX(-50%) translateY(0) rotate(-2deg)}50%{transform:translateX(-50%) translateY(-16px) rotate(-2deg)}}
-.phone-notch{width:60px;height:8px;background:#0d0f1c;border-radius:0 0 8px 8px;margin:8px auto 0}
-.phone-screen{padding:12px;min-height:300px}
-.phone-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.phone-logo{font-family:var(--f-head);font-size:13px;font-weight:800;color:var(--g)}
-.phone-live{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--g)}
-.phone-kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
-.pk{background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.15);border-radius:10px;padding:8px}
-.pk-val{font-family:var(--f-head);font-size:18px;font-weight:800;color:var(--t1);line-height:1}
-.pk-lbl{font-size:8px;color:var(--t4);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
-.pk-d{font-size:9px;font-weight:700;color:var(--g);margin-top:3px}
-.phone-chart{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px;height:72px;display:flex;align-items:flex-end;gap:4px;margin-bottom:8px}
-.pc-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px;transition:height .8s}
-.phone-review{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:9px}
-.pr-name{font-size:10px;font-weight:600;color:rgba(255,255,255,.8)}
-.pr-stars{color:#ffb347;font-size:9px}
-.pr-text{font-size:9px;color:var(--t4);margin-top:3px}
-
-/* Floating cards around phone */
-.float-card{position:absolute;background:rgba(13,15,28,.92);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 16px;backdrop-filter:blur(16px);display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.5);font-size:12px;color:var(--t2);animation:floatCard ease-in-out infinite alternate;white-space:nowrap}
-@keyframes floatCard{0%{transform:translateY(0)}100%{transform:translateY(-8px)}}
-.fc-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.fc-val{font-family:var(--f-head);font-size:16px;font-weight:800;color:var(--t1);display:block;line-height:1}
-.fc-lbl{font-size:10px;color:var(--t4)}
-.fc1{top:20px;left:-60px;animation-duration:4s}
-.fc2{top:120px;right:-40px;animation-duration:5s;animation-delay:-.5s}
-.fc3{bottom:120px;left:-50px;animation-duration:3.8s;animation-delay:-.9s}
-.fc4{bottom:60px;right:-20px;animation-duration:4.5s;animation-delay:-1.2s}
-
-/* WhatsApp bubble */
-.wa-bubble{position:absolute;top:-20px;right:10px;background:linear-gradient(135deg,#25d366,#128c7e);border-radius:16px 16px 0 16px;padding:10px 14px;font-size:11px;color:#fff;font-weight:600;box-shadow:0 4px 16px rgba(37,211,102,.35);animation:waBounce 3s ease-in-out infinite}
-@keyframes waBounce{0%,100%{transform:scale(1) rotate(2deg)}50%{transform:scale(1.04) rotate(-1deg)}}
-.wa-bubble::after{content:'';position:absolute;bottom:-8px;right:0;width:16px;height:8px;background:#128c7e;clip-path:polygon(0 0,100% 0,100% 100%)}
-
-/* Maps pin */
-.maps-card{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.97);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:11px;color:#1a1a2e;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:mapsFloat 4.2s ease-in-out infinite alternate}
-@keyframes mapsFloat{0%{transform:translateX(-50%) translateY(0)}100%{transform:translateX(-50%) translateY(-8px)}}
-.maps-pin{width:20px;height:20px}
-
-/* ════════════════════════════════════
-   STATS STRIP
-════════════════════════════════════ */
-.stats-strip{background:linear-gradient(135deg,rgba(0,217,126,.06),rgba(79,142,247,.04));border-top:1px solid rgba(0,217,126,.12);border-bottom:1px solid rgba(0,217,126,.12);padding:32px 0}
-.stats-row{display:flex;justify-content:center;gap:0;flex-wrap:wrap}
-.stat-item{flex:1;min-width:160px;text-align:center;padding:16px 24px;border-right:1px solid var(--border)}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:var(--f-head);font-size:clamp(32px,4vw,48px);font-weight:800;color:var(--t1);line-height:1;display:block}
-.stat-num span[data-count]{display:inline}
-.stat-lbl{font-size:12px;color:var(--t4);text-transform:uppercase;letter-spacing:.08em;margin-top:6px;display:block}
-
-/* ════════════════════════════════════
-   PROBLEMA
-════════════════════════════════════ */
-.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-.prob-card{padding:28px;border-radius:18px;position:relative}
-.prob-card .pico{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px}
-.prob-card h3{font-size:15px;font-weight:700;margin-bottom:8px}
-.prob-card p{font-size:13.5px;color:var(--t3);line-height:1.7;margin-bottom:14px}
-.prob-tag{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:999px}
-.pt-red{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.2);color:#ff9090}
-
-/* ════════════════════════════════════
-   FLUXO
-════════════════════════════════════ */
-.flow-visual{max-width:960px;margin:64px auto 0;position:relative}
-/* SVG connector line */
-.flow-svg{position:absolute;top:36px;left:8%;right:8%;height:4px;z-index:0;overflow:visible}
-.flow-path{fill:none;stroke:url(#flowGrad);stroke-width:2;stroke-dasharray:8 6;animation:dashAnim 2s linear infinite}
-@keyframes dashAnim{to{stroke-dashoffset:-28}}
-.flow-steps{display:grid;grid-template-columns:repeat(6,1fr);position:relative;z-index:1;gap:8px}
-.fs{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px}
-.fs-ball{width:54px;height:54px;border-radius:50%;border:2px solid rgba(0,217,126,.35);display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:var(--bg2);position:relative;font-size:22px;transition:all .3s;box-shadow:0 0 0 0 rgba(0,217,126,0)}
-.fs-ball.last{background:linear-gradient(135deg,var(--g),var(--g2));border-color:transparent;box-shadow:0 0 24px rgba(0,217,126,.4)}
-.fs:hover .fs-ball{border-color:var(--g);box-shadow:0 0 20px rgba(0,217,126,.25);transform:scale(1.1)}
-.fs h4{font-family:var(--f-head);font-size:12.5px;font-weight:700;color:var(--t2);margin-bottom:4px}
-.fs p{font-size:11px;color:var(--t4);line-height:1.5}
-
-/* ════════════════════════════════════
-   SERVIÇOS
-════════════════════════════════════ */
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-.srv-card{padding:34px;border-radius:20px;transition:all .3s}
-.srv-card:hover{transform:translateY(-6px)}
-.srv-ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:26px}
-.srv-card h3{margin-bottom:10px}
-.srv-desc{font-size:14px;color:var(--t3);line-height:1.75;margin-bottom:18px}
-.fl{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.fl li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--t2)}
-.fl-ck{width:16px;height:16px;border-radius:50%;background:rgba(0,217,126,.15);border:1px solid rgba(0,217,126,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:8px;color:var(--g)}
-.srv-res{font-size:13px;font-weight:600;color:var(--g);background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.18);border-radius:10px;padding:10px 14px}
-.srv1{background:linear-gradient(145deg,rgba(79,142,247,.08),rgba(79,142,247,.02));border:1px solid rgba(79,142,247,.18)}
-.srv2{background:linear-gradient(145deg,rgba(0,217,126,.08),rgba(0,217,126,.02));border:1px solid rgba(0,217,126,.25);box-shadow:0 0 40px rgba(0,217,126,.08)}
-.srv3{background:linear-gradient(145deg,rgba(255,179,71,.07),rgba(255,179,71,.02));border:1px solid rgba(255,179,71,.18)}
-
-/* ════════════════════════════════════
-   NÚMEROS ANIMADOS
-════════════════════════════════════ */
-.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
-.num-card{padding:36px 24px;border-radius:20px;text-align:center;position:relative;overflow:hidden;transition:transform .3s}
-.num-card:hover{transform:translateY(-4px)}
-.num-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);pointer-events:none}
-.num-val{font-family:var(--f-head);font-size:clamp(36px,5vw,60px);font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:8px;display:block}
-.num-lbl{font-size:13px;font-weight:600;margin-bottom:4px}
-.num-niche{font-size:11px;color:var(--t4);text-transform:uppercase;letter-spacing:.08em}
-.n1{background:linear-gradient(135deg,rgba(0,217,126,.1),rgba(0,217,126,.04));border:1px solid rgba(0,217,126,.2)}
-.n2{background:linear-gradient(135deg,rgba(79,142,247,.1),rgba(79,142,247,.04));border:1px solid rgba(79,142,247,.2)}
-.n3{background:linear-gradient(135deg,rgba(155,107,255,.1),rgba(155,107,255,.04));border:1px solid rgba(155,107,255,.2)}
-.n4{background:linear-gradient(135deg,rgba(255,179,71,.09),rgba(255,179,71,.03));border:1px solid rgba(255,179,71,.2)}
-
-/* ════════════════════════════════════
-   NICHOS (9 itens) — mantido para compatibilidade
-════════════════════════════════════ */
-.nicho-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-.nicho-card{padding:26px;border-radius:18px;transition:all .3s;position:relative;overflow:hidden}
-.nicho-card:hover{transform:translateY(-4px);border-color:rgba(0,217,126,.3) !important}
-.nicho-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--g),transparent);opacity:0;transition:.3s}
-.nicho-card:hover::before{opacity:1}
-.nicho-icon{font-size:32px;margin-bottom:14px;display:block}
-.nicho-card h3{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--t1)}
-.nl-b{margin-bottom:9px}
-.nl-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);margin-bottom:3px}
-.nl-val{font-size:13px;color:rgba(255,255,255,.6);line-height:1.55}
-.nicho-res{font-size:13.5px;font-weight:700;color:var(--g);margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
-
-/* ════════════════════════════════════
-   SOLUÇÕES POR SEGMENTO
-════════════════════════════════════ */
-.sl-stack{display:flex;flex-direction:column;gap:20px;margin-top:56px}
-
-/* Card principal */
-.sl-card{border-radius:22px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,.038);transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.22,1,.36,1);position:relative}
-.sl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);pointer-events:none;z-index:1}
-.sl-card:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(0,0,0,.4)}
-
-/* Accent colour helpers */
-.sl-card[data-color="green"]:hover{border-color:rgba(0,217,126,.35);box-shadow:0 12px 48px rgba(0,217,126,.1)}
-.sl-card[data-color="blue"]:hover{border-color:rgba(79,142,247,.35);box-shadow:0 12px 48px rgba(79,142,247,.1)}
-.sl-card[data-color="purple"]:hover{border-color:rgba(155,107,255,.35);box-shadow:0 12px 48px rgba(155,107,255,.1)}
-.sl-card[data-color="amber"]:hover{border-color:rgba(255,179,71,.35);box-shadow:0 12px 48px rgba(255,179,71,.1)}
-.sl-card[data-color="pink"]:hover{border-color:rgba(255,107,157,.35);box-shadow:0 12px 48px rgba(255,107,157,.1)}
-
-/* Header */
-.sl-head{display:flex;align-items:center;gap:18px;padding:26px 28px 22px;border-bottom:1px solid var(--border)}
-.sl-icon-wrap{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;transition:transform .3s cubic-bezier(.34,1.42,.64,1)}
-.sl-card:hover .sl-icon-wrap{transform:scale(1.1) rotate(-4deg)}
-.sl-head-info{flex:1;min-width:0}
-.sl-head-info h3{font-size:clamp(16px,2vw,20px);font-weight:800;color:var(--t1);margin-bottom:4px;letter-spacing:-.02em}
-.sl-subtitle{font-size:13.5px;color:var(--t3);font-style:italic;font-family:var(--f-body)}
-.sl-head-badge{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:999px;white-space:nowrap;font-family:var(--f-body)}
-
-/* Body: 3-column flow */
-.sl-body{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:0;padding:24px 28px}
-.sl-col{background:rgba(255,255,255,.03);border-radius:14px;padding:18px 20px;height:100%}
-.sl-col-hd{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-family:var(--f-body)}
-.sl-col-hd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.sl-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.sl-col ul li{font-size:13.5px;color:var(--t2);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.sl-col ul li::before{content:'';width:5px;height:5px;border-radius:50%;margin-top:6px;flex-shrink:0}
-
-/* Problem column */
-.sl-prob .sl-col-hd{color:rgba(255,120,120,.85)}
-.sl-prob .sl-col-hd-dot{background:rgba(255,80,80,.7)}
-.sl-prob{border:1px solid rgba(255,80,80,.1);background:rgba(255,80,80,.04)}
-.sl-prob ul li{color:rgba(255,255,255,.65)}
-.sl-prob ul li::before{background:rgba(255,100,100,.55)}
-
-/* Solution column */
-.sl-sol .sl-col-hd{color:rgba(0,217,126,.9)}
-.sl-sol .sl-col-hd-dot{background:var(--g)}
-.sl-sol{border:1px solid rgba(0,217,126,.14);background:rgba(0,217,126,.04)}
-.sl-sol ul li::before{background:rgba(0,217,126,.6)}
-
-/* Result column */
-.sl-res .sl-col-hd{color:rgba(147,197,253,.9)}
-.sl-res .sl-col-hd-dot{background:#4f8ef7}
-.sl-res{border:1px solid rgba(79,142,247,.14);background:rgba(79,142,247,.04)}
-.sl-res ul li{font-weight:600}
-.sl-res ul li::before{background:rgba(79,142,247,.7)}
-
-/* Arrow between columns */
-.sl-arrow-wrap{padding:0 16px;display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}
-.sl-arr{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .25s}
-.sl-arr svg{width:12px;height:12px;color:var(--t3)}
-.sl-card:hover .sl-arr{background:rgba(0,217,126,.1);border-color:rgba(0,217,126,.25)}
-.sl-card:hover .sl-arr svg{color:var(--g)}
-.sl-arr-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);font-weight:600}
-
-/* CTA final da secção */
-.sl-cta-block{margin-top:40px;text-align:center;padding:40px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(135deg,rgba(0,217,126,.05),rgba(79,142,247,.04));position:relative;overflow:hidden}
-.sl-cta-block::before{content:'';position:absolute;top:0;left:25%;right:25%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,217,126,.4),transparent)}
-.sl-cta-block h3{font-size:clamp(18px,2.5vw,26px);font-weight:700;color:var(--t1);margin-bottom:8px;font-family:var(--f-head)}
-.sl-cta-block p{font-size:15px;color:var(--t3);margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
-.sl-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* Responsive */
-@media(max-width:860px){
-  .sl-body{grid-template-columns:1fr;gap:10px}
-  .sl-arrow-wrap{flex-direction:row;padding:0;justify-content:flex-start}
-  .sl-arr{transform:rotate(90deg)}
-  .sl-arr-label{display:none}
-  .sl-head{flex-direction:column;align-items:flex-start;gap:12px}
-  .sl-head-badge{display:none}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO DASHBOARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.dashboard{
+  background:var(--sf);border:1px solid var(--bd2);border-radius:20px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,255,255,.03),0 32px 72px rgba(0,0,0,.55),0 0 80px rgba(0,217,126,.035);
 }
-@media(max-width:540px){
-  .sl-head,.sl-body{padding:18px 16px}
-  .sl-col{padding:14px 16px}
+.db-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid var(--bd);background:rgba(255,255,255,.018);
+}
+.db-name{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1);display:flex;align-items:center;gap:7px}
+.db-badge{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--g)}
+.db-body{padding:18px}
+
+/* KPIs */
+.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.kpi{background:var(--sf2);border:1px solid var(--bd);border-radius:12px;padding:14px 16px}
+.kpi-lbl{font-size:10px;font-weight:600;color:var(--t4);text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}
+.kpi-val{font-family:var(--fh);font-size:26px;font-weight:800;color:var(--t1);letter-spacing:-.05em;line-height:1;margin-bottom:5px}
+.kpi-d{font-size:11px;font-weight:700;color:var(--g);display:flex;align-items:center;gap:3px}
+
+/* Chart block */
+.chart-block{background:var(--sf2);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.chart-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.chart-hd-title{font-size:11.5px;font-weight:600;color:var(--t2)}
+.chart-hd-period{font-size:10px;color:var(--t4);background:var(--sf3);padding:3px 9px;border-radius:6px}
+.line-chart{display:block;width:100%;height:64px}
+
+/* Activity */
+.activity{display:flex;flex-direction:column;gap:7px}
+.act-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--sf2);border:1px solid var(--bd);border-radius:10px}
+.act-ico{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.act-info{flex:1;min-width:0}
+.act-title{font-size:12px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.act-sub{font-size:11px;color:var(--t4)}
+.act-time{font-size:10px;color:var(--t4);flex-shrink:0}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   METRICS STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.metrics-strip{position:relative;z-index:1}
+.metrics-strip-in{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:44px 0}
+.metrics-row{display:flex;justify-content:center}
+.m-item{flex:1;text-align:center;padding:0 40px;border-right:1px solid var(--bd)}
+.m-item:last-child{border-right:none}
+.m-num{font-family:var(--fh);font-size:clamp(34px,3.5vw,52px);font-weight:800;color:var(--t1);letter-spacing:-.05em;line-height:1;display:block}
+.m-lbl{font-size:11px;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;margin-top:7px;display:block}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HOW IT WORKS — FLOWCHART
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.flow-wrap{max-width:580px;margin:72px auto 0}
+.flow-step{display:flex;align-items:flex-start;gap:22px;width:100%}
+.flow-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.flow-node{
+  width:44px;height:44px;border-radius:12px;
+  border:1px solid var(--bd2);background:var(--sf);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  position:relative;z-index:1;transition:all .3s;
+}
+.flow-step:hover .flow-node{border-color:rgba(0,217,126,.35);background:rgba(0,217,126,.06);box-shadow:0 0 24px rgba(0,217,126,.1)}
+.flow-step.last .flow-node{background:var(--gd);border-color:rgba(0,217,126,.3)}
+.flow-line{width:1px;flex:1;min-height:48px;background:linear-gradient(to bottom,var(--bd2),rgba(255,255,255,.03));margin:0}
+.flow-step.last .flow-line{display:none}
+.flow-body{padding-top:9px;padding-bottom:48px}
+.flow-step.last .flow-body{padding-bottom:0}
+.flow-step-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:5px}
+.flow-title{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--t1);margin-bottom:5px}
+.flow-desc{font-size:14px;color:var(--t3);line-height:1.65}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICES — 3 PILLARS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px}
+.srv{
+  background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:32px;
+  position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.srv::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent)}
+.srv:hover{border-color:rgba(0,217,126,.22);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.3),0 0 48px rgba(0,217,126,.04)}
+.srv-ico{width:48px;height:48px;border-radius:14px;background:var(--gd);border:1px solid rgba(0,217,126,.14);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:24px}
+.srv h3{font-size:19px;font-weight:700;margin-bottom:10px}
+.srv-desc{font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:22px}
+.srv-result{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:700;color:var(--g);
+  background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.15);
+  border-radius:999px;padding:5px 14px;
+}
+.srv.featured{border-color:rgba(0,217,126,.2);background:linear-gradient(145deg,rgba(0,217,126,.055),var(--sf))}
+.srv-popular{
+  position:absolute;top:20px;right:20px;
+  font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--g);background:rgba(0,217,126,.09);border:1px solid rgba(0,217,126,.2);
+  padding:3px 10px;border-radius:999px;
 }
 
-/* ════════════════════════════════════
-   AGENDA
-════════════════════════════════════ */
-.ag-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;max-width:960px;margin:0 auto}
-.ag-text h2{text-align:left;margin-bottom:14px}
-.ag-text p{font-size:15px;color:var(--t3);line-height:1.8;margin-bottom:22px}
-.ag-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:30px}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NICHES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.niches-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:64px}
+.niche{
+  background:var(--sf);border:1px solid var(--bd);border-radius:16px;
+  padding:24px 18px;text-align:center;
+  transition:all .22s;
+}
+.niche:hover{border-color:rgba(0,217,126,.22);background:rgba(0,217,126,.035);transform:translateY(-3px)}
+.niche-ico{font-size:28px;margin-bottom:12px}
+.niche-name{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.niche-sub{font-size:11.5px;color:var(--t4);line-height:1.4}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESULTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.results-wrap{display:grid;grid-template-columns:1fr 2fr;gap:20px;margin-top:64px;align-items:start}
+.results-stats{display:flex;flex-direction:column;gap:14px}
+.r-stat{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:24px}
+.r-big{font-family:var(--fh);font-size:48px;font-weight:800;letter-spacing:-.06em;color:var(--g);line-height:1;display:block;margin-bottom:6px}
+.r-lbl{font-size:13px;color:var(--t2);font-weight:500}
+.r-sub{font-size:11px;color:var(--t4);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.results-chart-card{background:var(--sf);border:1px solid var(--bd);border-radius:20px;overflow:hidden}
+.rc-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--bd)}
+.rc-title{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--t1)}
+.rc-legend{display:flex;gap:14px}
+.leg{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--t3)}
+.leg-dot{width:8px;height:8px;border-radius:50%}
+.bar-area{padding:24px 24px 8px}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:150px;padding-bottom:28px;position:relative}
+.bar-chart::after{content:'';position:absolute;bottom:28px;left:0;right:0;height:1px;background:var(--bd)}
+.bar-grp{flex:1;display:flex;gap:3px;align-items:flex-end;position:relative}
+.bar{flex:1;border-radius:4px 4px 0 0;min-height:3px;transition:height .7s cubic-bezier(.34,1.42,.64,1)}
+.bar-lbl{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--t4);white-space:nowrap}
+.rc-footer{display:grid;grid-template-columns:repeat(3,1fr);background:var(--bd);gap:1px}
+.rc-foot-item{background:var(--sf);padding:16px 20px;text-align:center}
+.rc-foot-num{font-family:var(--fh);font-size:22px;font-weight:800;color:var(--t1);letter-spacing:-.04em;display:block;margin-bottom:3px}
+.rc-foot-lbl{font-size:11px;color:var(--t4)}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   AGENDA SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.agenda-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.agenda-text .section-sub{margin-bottom:32px}
+.af-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
 .af{display:flex;align-items:flex-start;gap:12px}
-.af-ico{width:34px;height:34px;border-radius:9px;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.af strong{display:block;font-size:14px;color:var(--t1);margin-bottom:2px;font-family:var(--f-head)}
+.af-i{width:32px;height:32px;border-radius:9px;background:var(--gd);border:1px solid rgba(0,217,126,.14);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px}
+.af strong{display:block;font-size:14px;font-weight:600;color:var(--t1);margin-bottom:2px}
 .af span{font-size:13px;color:var(--t4)}
+
 /* Agenda mockup */
-.ag-mock{border-radius:20px;overflow:hidden;border:1px solid rgba(0,217,126,.2);box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 40px rgba(0,217,126,.06)}
-.ag-hd{background:rgba(0,217,126,.08);border-bottom:1px solid rgba(0,217,126,.15);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
-.ag-t{font-family:var(--f-head);font-size:14px;font-weight:800;color:var(--g)}
+.ag-mock{background:var(--sf);border:1px solid var(--bd2);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.45)}
+.ag-hd{background:rgba(0,217,126,.055);border-bottom:1px solid rgba(0,217,126,.11);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.ag-t{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--g)}
 .ag-s{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t3)}
-.ag-body{padding:16px;display:flex;flex-direction:column;gap:9px;background:var(--bg2)}
-.ag-slot{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--border);transition:.2s}
-.ag-slot:hover{background:rgba(255,255,255,.07)}
-.ag-slot.ok{border-color:rgba(0,217,126,.2);background:rgba(0,217,126,.04)}
-.ag-time{font-size:11.5px;font-weight:700;color:var(--t4);width:38px;flex-shrink:0}
-.ag-name{font-size:13px;font-weight:600;color:rgba(255,255,255,.85)}
+.ag-body{padding:14px;display:flex;flex-direction:column;gap:7px;background:var(--sf2)}
+.ag-slot{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;background:var(--sf);border:1px solid var(--bd);transition:.18s}
+.ag-slot.ok{border-color:rgba(0,217,126,.17);background:rgba(0,217,126,.025)}
+.ag-time{font-size:11px;font-weight:700;color:var(--t4);width:36px;flex-shrink:0}
+.ag-name{font-size:13px;font-weight:600;color:var(--t1)}
 .ag-svc{font-size:11px;color:var(--t4)}
-.ag-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;margin-left:auto;white-space:nowrap}
-.ab-ok{background:rgba(0,217,126,.12);color:var(--g)}
-.ab-free{background:rgba(255,255,255,.06);color:var(--t4)}
-.ag-notif{background:rgba(0,217,126,.05);border:1px solid rgba(0,217,126,.14);border-radius:11px;padding:11px 14px;display:flex;align-items:flex-start;gap:9px}
-.an-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.an-text{font-size:12px;color:rgba(255,255,255,.55)}
-.an-text strong{color:var(--g)}
+.ag-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;margin-left:auto;white-space:nowrap}
+.tag-ok{background:rgba(0,217,126,.1);color:var(--g)}
+.tag-free{background:rgba(255,255,255,.05);color:var(--t4)}
+.ag-notif{background:rgba(0,217,126,.04);border:1px solid rgba(0,217,126,.11);border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:8px}
+.ag-notif-txt{font-size:12px;color:var(--t3);line-height:1.5}
+.ag-notif-txt strong{color:var(--g)}
 
-/* ════════════════════════════════════
-   PORTUGAL 2030
-════════════════════════════════════ */
-.p30-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;max-width:960px;margin:0 auto}
-.p30-text h2{text-align:left;margin-bottom:14px}
-.p30-text p{font-size:15px;color:var(--t3);line-height:1.8;margin-bottom:20px}
-.p30-list{list-style:none;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:18px}
-.p30-li{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--t2)}
-.p30-li:last-child{border:none}
-.p30-ck{width:18px;height:18px;border-radius:50%;background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--g);flex-shrink:0;margin-top:1px}
-.p30-alert{background:rgba(255,179,71,.06);border:1px solid rgba(255,179,71,.18);border-radius:11px;padding:12px 16px;font-size:13px;color:rgba(255,200,100,.8);line-height:1.7;margin-bottom:22px}
-.p30-visual{display:flex;flex-direction:column;gap:12px}
-.p30-big{padding:28px;border-radius:18px;text-align:center}
-.p30-big strong{font-family:var(--f-head);display:block;font-size:56px;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--g)}
-.p30-big span{font-size:14px;color:var(--t3);display:block;margin-top:8px}
-.p30-steps{display:flex;flex-direction:column;gap:10px}
-.p30-step{display:flex;align-items:center;gap:12px;font-size:13.5px;color:rgba(255,255,255,.65)}
-.p30-n{width:27px;height:27px;border-radius:50%;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.25);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--g);flex-shrink:0;font-family:var(--f-head)}
-
-/* ════════════════════════════════════
-   LOCALPULSE
-════════════════════════════════════ */
-.lp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;max-width:960px;margin:0 auto}
-.lp-text h2{text-align:left;margin-bottom:14px}
-.lp-text p{font-size:15px;color:var(--t3);line-height:1.8;margin-bottom:20px}
-.lp-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.lp-li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--t2)}
-.lp-li svg{width:15px;height:15px;color:var(--g);flex-shrink:0}
-.lp-mock{border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 24px 64px rgba(0,0,0,.5);background:var(--bg2)}
-.lp-mhd{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
-.lp-mt{font-family:var(--f-head);font-size:13px;font-weight:800;color:var(--g)}
-.lp-body{padding:14px;display:flex;flex-direction:column;gap:9px}
-.lp-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.lp-kpi{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:12px}
-.lp-kpi strong{font-family:var(--f-head);font-size:22px;font-weight:800;color:var(--t1);letter-spacing:-.03em;display:block}
-.lp-kpi span{font-size:10px;color:var(--t4);display:block;margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
-.lp-kpi div{font-size:10px;font-weight:700;color:var(--g);margin-top:5px}
-.lp-map{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:11px;height:88px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.lp-map-g{position:absolute;inset:0;background-image:linear-gradient(rgba(0,217,126,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,217,126,.05) 1px,transparent 1px);background-size:18px 18px}
-.lp-pin{position:absolute;width:10px;height:10px;border-radius:50%;border:2.5px solid var(--g);animation:pinPulse 2.2s ease infinite}
-@keyframes pinPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,217,126,.5)}60%{box-shadow:0 0 0 8px rgba(0,217,126,0)}}
-.lp-rv{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:12px}
-.lp-rname{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85)}
-.lp-rstars{color:var(--amber);font-size:11px;margin:3px 0}
-.lp-rtext{font-size:12px;color:var(--t4)}
-
-/* ════════════════════════════════════
-   CASOS
-════════════════════════════════════ */
-.casos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-.caso{padding:26px;border-radius:18px}
-.cb{border-radius:10px;padding:12px 14px;margin-bottom:9px}
-.cb .cbl{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
-.cb .cbv{font-size:13px;line-height:1.6}
-.cb.p{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12)}
-.cb.p .cbl{color:rgba(255,150,150,.6)}
-.cb.p .cbv{color:rgba(255,255,255,.6)}
-.cb.s{background:rgba(79,142,247,.05);border:1px solid rgba(79,142,247,.12)}
-.cb.s .cbl{color:rgba(147,197,253,.6)}
-.cb.s .cbv{color:rgba(255,255,255,.6)}
-.cb.res{background:rgba(0,217,126,.07);border:1px solid rgba(0,217,126,.2)}
-.cb.res .cbl{color:var(--g)}
-.cb.res .cbv{font-family:var(--f-head);font-weight:700;color:var(--g);font-size:15px}
-.c-arr{text-align:center;font-size:14px;color:rgba(255,255,255,.18);margin:4px 0}
-.c-sec{display:flex;align-items:center;gap:7px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--t4);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:8px}
-
-/* ════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FAQ
-════════════════════════════════════ */
-#faq-list{display:flex;flex-direction:column;gap:8px;max-width:700px;margin:48px auto 0}
-.fq{border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s}
-.fq.open{border-color:rgba(0,217,126,.28)}
-.fq-q{width:100%;background:none;border:none;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--f-head);font-size:15px;font-weight:700;color:var(--t2);cursor:pointer;text-align:left;min-height:58px;transition:.2s}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.faq-list{max-width:640px;margin:56px auto 0;display:flex;flex-direction:column;gap:6px}
+.fq{border:1px solid var(--bd);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.fq.open{border-color:rgba(0,217,126,.22)}
+.fq-q{width:100%;background:none;border:none;padding:17px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:var(--fh);font-size:15px;font-weight:600;color:var(--t2);text-align:left;transition:color .18s;min-height:54px}
 .fq-q:hover{color:var(--t1)}
-.fq-arr{width:22px;height:22px;border-radius:50%;background:rgba(0,217,126,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
-.fq.open .fq-arr{transform:rotate(180deg);background:rgba(0,217,126,.2)}
-.fq-arr svg{width:10px;height:10px;color:var(--g)}
-.fq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--t3);line-height:1.8}
+.fq-icon{width:20px;height:20px;border-radius:50%;background:rgba(0,217,126,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g);font-size:16px;line-height:1;transition:all .2s;font-family:monospace}
+.fq.open .fq-icon{background:rgba(0,217,126,.14);transform:rotate(45deg)}
+.fq-a{display:none;padding:0 20px 17px;font-size:14px;color:var(--t3);line-height:1.75}
 .fq.open .fq-a{display:block}
 
-/* ════════════════════════════════════
-   CTA FINAL
-════════════════════════════════════ */
-.cta-sec{padding:120px 28px;text-align:center;position:relative;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,217,126,.1),transparent);pointer-events:none}
-.cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
-.cta-logo{width:68px;height:68px;border-radius:16px;margin:0 auto 24px;filter:drop-shadow(0 0 24px rgba(0,217,126,.5));display:block}
-.urg{display:inline-flex;align-items:center;gap:7px;background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:999px;padding:6px 18px;margin-bottom:24px;font-size:12px;font-weight:600;color:rgba(255,150,150,.9)}
-.urg-d{width:5px;height:5px;border-radius:50%;background:rgba(255,80,80,.9);animation:urgBlink 1.5s ease infinite}
-@keyframes urgBlink{0%,100%{opacity:1}50%{opacity:.3}}
-.cta-sec h2{margin-bottom:18px}
-.cta-sec p{font-size:17px;color:var(--t3);margin-bottom:36px;line-height:1.75}
-.cta-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
-.cta-note{font-size:12.5px;color:var(--t4)}
-.cta-note a{color:var(--t3);transition:.18s}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cta-sec{padding:140px 0;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 65% 75% at 50% 110%,rgba(0,217,126,.065) 0%,transparent 55%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.cta-urgency{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);
+  border-radius:999px;padding:5px 14px;margin-bottom:28px;
+  font-size:12px;font-weight:600;color:rgba(252,165,165,.85);
+}
+.urg-dot{width:5px;height:5px;border-radius:50%;background:rgba(239,68,68,.85);animation:blink 1.8s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.cta-h2{font-size:clamp(30px,4vw,50px);font-weight:800;margin-bottom:16px;letter-spacing:-.04em}
+.cta-p{font-size:17px;color:var(--t3);line-height:1.7;margin-bottom:36px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.cta-note{font-size:12px;color:var(--t4)}
+.cta-note a{color:var(--t3);transition:.15s}
 .cta-note a:hover{color:var(--t1)}
 
-/* ════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FOOTER
-════════════════════════════════════ */
-footer{border-top:1px solid var(--border);padding:56px 0 0}
-.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.ft-logo{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-head);font-size:18px;font-weight:800;color:var(--t1);margin-bottom:12px}
-.ft-logo img{width:28px;height:28px;border-radius:7px}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+footer{border-top:1px solid var(--bd);padding:60px 0 0;position:relative;z-index:1}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.ft-logo{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:16px;font-weight:700;color:var(--t1);margin-bottom:12px}
+.ft-logo img{width:24px;height:24px;border-radius:6px}
 .ft-logo em{font-style:normal;color:var(--g)}
-.ft-brand p{font-size:13.5px;color:var(--t4);line-height:1.75;margin-bottom:18px;max-width:260px}
+.ft-brand p{font-size:13px;color:var(--t4);line-height:1.7;max-width:240px;margin-bottom:18px}
 .ft-socs{display:flex;gap:8px}
-.ft-s{width:36px;height:36px;border-radius:9px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--t3);transition:.2s;font-size:15px}
-.ft-s:hover{background:rgba(0,217,126,.1);border-color:rgba(0,217,126,.25);color:var(--g);transform:translateY(-2px)}
-.ft-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--t4);margin-bottom:14px;font-family:var(--f-head)}
-.ft-col a{display:block;font-size:13.5px;color:var(--t4);padding:3px 0;transition:.18s}
+.ft-soc{width:34px;height:34px;border-radius:8px;background:var(--sf);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--t3);transition:.18s}
+.ft-soc:hover{background:var(--gd);border-color:rgba(0,217,126,.18);color:var(--g);transform:translateY(-2px)}
+.ft-col h4{font-family:var(--fh);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--t4);margin-bottom:14px}
+.ft-col a{display:block;font-size:13px;color:var(--t4);padding:4px 0;transition:.15s}
 .ft-col a:hover{color:var(--t1)}
-.ft-bot{border-top:1px solid var(--border);padding:18px 0;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--t4)}
+.ft-bot{border-top:1px solid var(--bd);padding:20px 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--t4)}
 
-/* FLOATING WA */
-.wa-float{position:fixed;bottom:24px;right:24px;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.4);z-index:99;transition:.3s;border:1px solid rgba(255,255,255,.15)}
-.wa-float:hover{transform:scale(1.1) translateY(-2px);box-shadow:0 8px 36px rgba(37,211,102,.55)}
-.wa-float svg{width:25px;height:25px;fill:#fff}
+/* WA Float */
+.wa-btn{position:fixed;bottom:24px;right:24px;width:52px;height:52px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;z-index:99;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:.25s;border:1.5px solid rgba(255,255,255,.15)}
+.wa-btn:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.5)}
+.wa-btn svg{width:24px;height:24px;fill:#fff}
 
-/* ════════════════════════════════════
-   SECTION DIVIDER
-════════════════════════════════════ */
-.div-line{height:1px;background:linear-gradient(90deg,transparent,var(--border) 30%,var(--border) 70%,transparent)}
-.sec-label{text-align:center;margin-bottom:56px}
-.sec-label .tag{margin-bottom:16px}
-.sec-label h2{margin-bottom:14px}
-.sec-label p{font-size:18px;color:var(--t3);max-width:540px;margin:0 auto}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLL REVEAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.r{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.r.on{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}
+.d4{transition-delay:.24s}.d5{transition-delay:.30s}
 
-/* ════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    RESPONSIVE
-════════════════════════════════════ */
-@media(max-width:960px){
-  .hero-inner{grid-template-columns:1fr;text-align:center}
-  .hero-text .hero-sub,.hero-text .hero-slogan{max-width:100%}
-  .hero-ctas{justify-content:center}
-  .hero-trust{justify-content:center}
-  .hero-visual{height:300px;margin-top:40px}
-  .phone{width:160px}
-  .fc1,.fc3{display:none}
-  .srv-grid,.nums-grid{grid-template-columns:repeat(2,1fr)}
-  .nicho-grid{grid-template-columns:repeat(2,1fr)}
-  .casos-grid{grid-template-columns:repeat(2,1fr)}
-  .ag-wrap,.p30-wrap,.lp-wrap{grid-template-columns:1fr;gap:48px}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media(max-width:1024px){
+  .hero-in{grid-template-columns:1fr;gap:56px;text-align:center}
+  .hero-badge,.hero-ctas,.hero-proof{justify-content:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .srv-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
+  .niches-grid{grid-template-columns:repeat(3,1fr)}
+  .results-wrap{grid-template-columns:1fr}
+  .results-stats{flex-direction:row}
+  .agenda-wrap{grid-template-columns:1fr;gap:48px}
   .ft-g{grid-template-columns:1fr 1fr}
-  .prob-grid{grid-template-columns:1fr}
-  .flow-steps{grid-template-columns:repeat(3,1fr);row-gap:28px}
-  .stat-item{min-width:120px}
 }
-@media(max-width:640px){
+@media(max-width:768px){
+  section{padding:88px 0}
   .nl,.nc{display:none}.hb{display:flex}
-  .srv-grid,.nums-grid,.nicho-grid,.casos-grid{grid-template-columns:1fr}
-  .hero-ctas,.cta-ctas{flex-direction:column;align-items:center}
-  .btn-lg{width:100%;max-width:320px}
-  .ft-g{grid-template-columns:1fr}
+  .niches-grid{grid-template-columns:repeat(2,1fr)}
+  .results-stats{flex-direction:column}
+  .metrics-row{flex-wrap:wrap}
+  .m-item{min-width:50%;border-bottom:1px solid var(--bd)}
+  .m-item:nth-child(odd){border-right:1px solid var(--bd)}
+  .m-item:last-child,.m-item:nth-last-child(2):nth-child(odd){border-bottom:none}
+  .ft-g{grid-template-columns:1fr;gap:32px}
   .ft-bot{flex-direction:column;gap:6px;text-align:center}
-  .flow-steps{grid-template-columns:repeat(2,1fr)}
-  .stats-row{gap:0}
-  .stat-item{min-width:50%}
+}
+@media(max-width:520px){
+  .hero-ctas,.cta-btns{flex-direction:column;align-items:center}
+  .btn-lg{width:100%;max-width:320px;justify-content:center}
+  .niches-grid{grid-template-columns:1fr 1fr}
+  .m-item{min-width:100%;border-right:none}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ══════════════════════════════════════ -->
 <div id="nav">
   <div class="w nav-in">
     <a href="/" class="logo"><img src="logo.png" alt="IG Solution"/>IG<em>.Solution</em></a>
@@ -538,601 +448,364 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#nichos">Nichos</a></li>
       <li><a href="#agenda">Agenda</a></li>
-      <li><a href="#localpulse">LocalPulse</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nc">
-      <a href="https://wa.me/351917305248?text=Quero%20o%20diagnóstico%20gratuito." class="btn btn-g" style="min-height:42px;padding:0 18px;font-size:14px" target="_blank">Diagnóstico Gratuito</a>
+      <a href="https://wa.me/351917305248" class="btn btn-p" target="_blank">Diagnóstico Gratuito</a>
     </div>
     <button class="hb" id="hb" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mob" id="mob">
     <a href="#sistema">Sistema</a><a href="#servicos">Serviços</a><a href="#nichos">Nichos</a>
-    <a href="#agenda">Agenda</a><a href="#localpulse">LocalPulse</a><a href="#faq">FAQ</a>
-    <a href="https://wa.me/351917305248" class="btn btn-g" style="margin-top:8px;justify-content:center" target="_blank">Diagnóstico Gratuito</a>
+    <a href="#agenda">Agenda</a><a href="#faq">FAQ</a>
+    <a href="https://wa.me/351917305248" class="btn btn-p" style="margin-top:8px;justify-content:center" target="_blank">Diagnóstico Gratuito</a>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ══ HERO ══════════════════════════════════════ -->
 <section class="hero">
-  <div class="hero-mesh">
-    <div class="mesh-blob blob1"></div>
-    <div class="mesh-blob blob2"></div>
-    <div class="mesh-blob blob3"></div>
-  </div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="r"><span class="tag tag-g"><span class="dot"></span>Porto · Sistema activo · 24/7</span></div>
-      <h1 class="r d1">Mais Clientes.<br/><span class="grad" id="tw">Menos Trabalho.</span></h1>
-      <p class="hero-slogan r d1">"O teu cliente já te procura. Tu é que não apareces."</p>
-      <p class="hero-sub r d2">Automatizamos a captação, atendimento por WhatsApp, agendamentos e follow-ups para negócios locais.</p>
+  <div class="hero-in">
+
+    <!-- Left -->
+    <div>
+      <div class="hero-badge r">
+        <span class="live-dot"></span>
+        <span>Porto · Sistema activo · 24/7</span>
+      </div>
+      <h1 class="hero-h1 r d1">
+        Mais Clientes.<br/>
+        <span class="grad">Menos Trabalho</span><br/>
+        Manual.
+      </h1>
+      <p class="hero-sub r d2">
+        Automatizamos a captação de clientes, atendimento por WhatsApp e agendamentos para negócios locais no Porto.
+      </p>
       <div class="hero-ctas r d3">
-        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-g btn-lg">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           Diagnóstico Gratuito
         </a>
-        <a href="https://wa.me/351917305248?text=Quero%20ver%20uma%20demonstração." class="btn btn-w btn-lg" target="_blank">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <a href="https://wa.me/351917305248?text=Quero%20ver%20uma%20demonstração." class="btn btn-s btn-lg" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           Ver Demonstração
         </a>
       </div>
-      <div class="hero-trust r d4">
-        <span class="ht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</span>
-        <span class="ht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico gratuito</span>
-        <span class="ht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Resposta em 2h</span>
+      <div class="hero-proof r d4">
+        <div class="av-stack">
+          <div class="av">CF</div><div class="av">MS</div>
+          <div class="av">JR</div><div class="av">AB</div>
+          <div class="av" style="font-size:9px">47+</div>
+        </div>
+        <div>
+          <div class="proof-stars">★★★★★</div>
+          <div class="proof-text"><strong>47+ negócios</strong> no Porto confiam em nós</div>
+        </div>
       </div>
     </div>
 
-    <!-- HERO VISUAL -->
-    <div class="hero-visual r d2">
-      <!-- WhatsApp bubble -->
-      <div class="wa-bubble">💬 Nova mensagem recebida!</div>
+    <!-- Right: Dashboard -->
+    <div class="r d2">
+      <div class="dashboard">
+        <div class="db-top">
+          <div class="db-name">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--g)"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            LocalPulse
+          </div>
+          <div class="db-badge"><span class="live-dot"></span>Tempo real</div>
+        </div>
+        <div class="db-body">
+          <div class="kpi-grid">
+            <div class="kpi">
+              <div class="kpi-lbl">Leads captados</div>
+              <div class="kpi-val" id="kLeads">127</div>
+              <div class="kpi-d"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>+34% este mês</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-lbl">Agendamentos</div>
+              <div class="kpi-val" id="kAgenda">89</div>
+              <div class="kpi-d"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>+50 este mês</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-lbl">Rating Google</div>
+              <div class="kpi-val">4.8★</div>
+              <div class="kpi-d"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>+0.4 pontos</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-lbl">Receita est.</div>
+              <div class="kpi-val">€8.4k</div>
+              <div class="kpi-d"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>+218% visitas</div>
+            </div>
+          </div>
 
-      <!-- Phone -->
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="phone-header">
-            <span class="phone-logo">LocalPulse</span>
-            <span class="phone-live"><span class="dot" style="width:5px;height:5px;margin:0"></span>Live</span>
+          <div class="chart-block">
+            <div class="chart-hd">
+              <span class="chart-hd-title">Leads · últimos 30 dias</span>
+              <span class="chart-hd-period">Jun 2026</span>
+            </div>
+            <svg class="line-chart" id="heroChart" viewBox="0 0 320 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg>
           </div>
-          <div class="phone-kpis">
-            <div class="pk"><div class="pk-val">847</div><div class="pk-lbl">Visitas</div><div class="pk-d">↑ +218%</div></div>
-            <div class="pk"><div class="pk-val">#2</div><div class="pk-lbl">Maps</div><div class="pk-d">↑ 4 pos.</div></div>
-            <div class="pk"><div class="pk-val">23</div><div class="pk-lbl">Chamadas</div><div class="pk-d">↑ +3×</div></div>
-            <div class="pk"><div class="pk-val">4.8★</div><div class="pk-lbl">Rating</div><div class="pk-d">↑ +0.4</div></div>
-          </div>
-          <div class="phone-chart" id="pChart"></div>
-          <div class="phone-review">
-            <div class="pr-name">Pedro Alves · agora</div>
-            <div class="pr-stars">★★★★★</div>
-            <div class="pr-text">"Serviço excelente!"</div>
+
+          <div class="activity">
+            <div class="act-item">
+              <div class="act-ico" style="background:rgba(0,217,126,.1)">📅</div>
+              <div class="act-info">
+                <div class="act-title">Nova marcação — Maria Santos</div>
+                <div class="act-sub">Corte + Coloração · 09:00</div>
+              </div>
+              <div class="act-time">agora</div>
+            </div>
+            <div class="act-item">
+              <div class="act-ico" style="background:rgba(251,191,36,.1)">⭐</div>
+              <div class="act-info">
+                <div class="act-title">Nova avaliação 5★ — Pedro A.</div>
+                <div class="act-sub">Google Business · respondida</div>
+              </div>
+              <div class="act-time">3m</div>
+            </div>
+            <div class="act-item">
+              <div class="act-ico" style="background:rgba(79,142,247,.1)">💬</div>
+              <div class="act-info">
+                <div class="act-title">Lead via WhatsApp captado</div>
+                <div class="act-sub">Respondido automaticamente</div>
+              </div>
+              <div class="act-time">11m</div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Floating cards -->
-      <div class="float-card fc1">
-        <div class="fc-icon" style="background:rgba(0,217,126,.15);font-size:18px">📅</div>
-        <div><span class="fc-val">+50</span><span class="fc-lbl">Marcações hoje</span></div>
-      </div>
-      <div class="float-card fc2">
-        <div class="fc-icon" style="background:rgba(79,142,247,.15);font-size:18px">⭐</div>
-        <div><span class="fc-val">4.9</span><span class="fc-lbl">Rating Google</span></div>
-      </div>
-      <div class="float-card fc3">
-        <div class="fc-icon" style="background:rgba(255,179,71,.15);font-size:18px">💬</div>
-        <div><span class="fc-val">Auto</span><span class="fc-lbl">WhatsApp 24/7</span></div>
-      </div>
-      <div class="float-card fc4" style="animation-duration:4.2s">
-        <div class="fc-icon" style="background:rgba(155,107,255,.15);font-size:18px">🎯</div>
-        <div><span class="fc-val">-40%</span><span class="fc-lbl">Faltas</span></div>
-      </div>
-
-      <!-- Google Maps badge -->
-      <div class="maps-card">
-        <svg class="maps-pin" viewBox="0 0 24 24" fill="#ea4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        <div><div style="font-size:11px;font-weight:700;color:#1a1a2e">#2 no Google Maps</div><div style="font-size:10px;color:#666">Porto · actualizado agora</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="w">
-    <div class="stats-row">
-      <div class="stat-item">
-        <span class="stat-num"><span data-count="47" data-suffix="+">47+</span></span>
-        <span class="stat-lbl">Negócios no Porto</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num"><span data-count="28" data-suffix=" dias">28 dias</span></span>
-        <span class="stat-lbl">Primeiros resultados</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num"><span data-count="3" data-suffix="×">3×</span></span>
-        <span class="stat-lbl">Mais chamadas</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num"><span data-count="218" data-suffix="%">218%</span></span>
-        <span class="stat-lbl">Visibilidade média</span>
+<!-- ══ METRICS STRIP ══════════════════════════ -->
+<div class="metrics-strip">
+  <div class="metrics-strip-in">
+    <div class="w">
+      <div class="metrics-row">
+        <div class="m-item r"><span class="m-num"><span data-count="47" data-suffix="+">47+</span></span><span class="m-lbl">Negócios no Porto</span></div>
+        <div class="m-item r d1"><span class="m-num"><span data-count="28" data-suffix=" dias">28 dias</span></span><span class="m-lbl">Primeiros resultados</span></div>
+        <div class="m-item r d2"><span class="m-num"><span data-count="3" data-suffix="×">3×</span></span><span class="m-lbl">Mais chamadas</span></div>
+        <div class="m-item r d3"><span class="m-num"><span data-count="218" data-suffix="%">218%</span></span><span class="m-lbl">Visibilidade média</span></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PROBLEMA -->
-<section class="sec" id="problema">
+<!-- ══ HOW IT WORKS ══════════════════════════ -->
+<section id="sistema">
   <div class="w">
-    <div class="sec-label r">
-      <span class="tag tag-g">O Problema</span>
-      <h2>O seu negócio perde clientes<br/>todos os dias?</h2>
-      <p class="lead">Cada processo manual é uma oportunidade perdida — e o concorrente aproveitou.</p>
-    </div>
-    <div class="prob-grid">
-      <div class="prob-card card r d1">
-        <div class="pico" style="background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.2)">📞</div>
-        <h3>Chamadas Perdidas</h3>
-        <p>Fora do horário, ao almoço, ao fim de semana — cada chamada não atendida é um cliente a ligar ao concorrente.</p>
-        <span class="prob-tag pt-red">Até €800/mês em perdas</span>
+    <div class="wn" style="padding:0 32px">
+      <div class="tc r">
+        <span class="eyebrow">O Sistema</span>
+        <h2 class="section-title">Do Google à venda,<br/>no automático</h2>
+        <p class="section-sub">Um fluxo completo que capta, converte e fideliza clientes — 24 horas por dia, sem trabalho manual.</p>
       </div>
-      <div class="prob-card card r d2">
-        <div class="pico" style="background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.2)">💬</div>
-        <h3>WhatsApp Sem Resposta</h3>
-        <p>Se não responde em 5 minutos, 60% dos clientes desiste. O WhatsApp manual não escala.</p>
-        <span class="prob-tag" style="background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.2);color:#ffd080">60% dos leads perdidos</span>
-      </div>
-      <div class="prob-card card r d3">
-        <div class="pico" style="background:rgba(155,107,255,.1);border:1px solid rgba(155,107,255,.2)">📅</div>
-        <h3>Agenda Manual</h3>
-        <p>Telefonemas, confirmações, lembretes — horas perdidas por semana em tarefas que deviam ser automáticas.</p>
-        <span class="prob-tag" style="background:rgba(155,107,255,.1);border:1px solid rgba(155,107,255,.2);color:#c4a8ff">5-10h por semana perdidas</span>
-      </div>
-      <div class="prob-card card r d4">
-        <div class="pico" style="background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.2)">⭐</div>
-        <h3>Sem Avaliações Google</h3>
-        <p>93% dos clientes lêem reviews antes de escolher. Sem avaliações recentes, o concorrente ganha.</p>
-        <span class="prob-tag pt-red">-40% de conversão</span>
-      </div>
-      <div class="prob-card card r d5">
-        <div class="pico" style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2)">🌐</div>
-        <h3>Invisível no Google</h3>
-        <p>O seu negócio não aparece quando alguém pesquisa na sua zona. Esses clientes vão ao concorrente.</p>
-        <span class="prob-tag" style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.2);color:#93c5fd">Página 3+ = 0 visitas</span>
-      </div>
-      <div class="prob-card card r d6">
-        <div class="pico" style="background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.2)">🎯</div>
-        <h3>Leads Sem Follow-up</h3>
-        <p>Pessoas interessadas que não compraram. Sem acompanhamento automático, essa oportunidade desaparece.</p>
-        <span class="prob-tag" style="background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.2);color:var(--g)">70% precisam de 5+ contactos</span>
+      <div class="flow-wrap">
+        <div class="flow-step r d1">
+          <div class="flow-left"><div class="flow-node">🔍</div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-step-tag">Passo 1</div>
+            <div class="flow-title">Pesquisa no Google</div>
+            <div class="flow-desc">O cliente pesquisa "restaurante no Porto" ou "barbearia perto de mim" — e encontra o seu negócio no topo dos resultados.</div>
+          </div>
+        </div>
+        <div class="flow-step r d2">
+          <div class="flow-left"><div class="flow-node">📍</div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-step-tag">Passo 2</div>
+            <div class="flow-title">Top 3 Google Maps</div>
+            <div class="flow-desc">Google Business optimizado, avaliações actualizadas e SEO local garantem visibilidade permanente na sua zona.</div>
+          </div>
+        </div>
+        <div class="flow-step r d3">
+          <div class="flow-left"><div class="flow-node">💬</div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-step-tag">Passo 3</div>
+            <div class="flow-title">WhatsApp Automático</div>
+            <div class="flow-desc">O cliente envia mensagem e recebe resposta imediata com IA — 24 horas, 7 dias por semana, sem intervenção humana.</div>
+          </div>
+        </div>
+        <div class="flow-step r d4">
+          <div class="flow-left"><div class="flow-node">📅</div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-step-tag">Passo 4</div>
+            <div class="flow-title">Agenda Inteligente</div>
+            <div class="flow-desc">Marcação online em tempo real, pagamentos integrados e lembretes automáticos por WhatsApp para reduzir faltas.</div>
+          </div>
+        </div>
+        <div class="flow-step r d5">
+          <div class="flow-left"><div class="flow-node">🔔</div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-step-tag">Passo 5</div>
+            <div class="flow-title">Follow-up Automático</div>
+            <div class="flow-desc">Após a visita, o sistema envia mensagens de follow-up, solicita avaliação e oferece novo agendamento automaticamente.</div>
+          </div>
+        </div>
+        <div class="flow-step last r">
+          <div class="flow-left"><div class="flow-node">💰</div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-step-tag" style="color:var(--g)">Resultado</div>
+            <div class="flow-title">Cliente Fiel</div>
+            <div class="flow-desc">Um cliente que volta, recomenda e deixa avaliações — criando um ciclo de crescimento contínuo e previsível.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="div-line"></div>
+<div class="divider"></div>
 
-<!-- FLUXO -->
-<section class="sec" id="sistema">
+<!-- ══ SERVICES ══════════════════════════════ -->
+<section id="servicos">
   <div class="w">
-    <div class="sec-label r">
-      <span class="tag tag-g">A Solução</span>
-      <h2>Do Google à venda — automatizado</h2>
-      <p class="lead">Um sistema que trabalha 24/7 enquanto se foca no seu negócio.</p>
-    </div>
-    <div class="flow-visual r d1">
-      <svg class="flow-svg" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00d97e" stop-opacity=".6"/><stop offset="100%" stop-color="#4f8ef7" stop-opacity=".6"/></linearGradient></defs>
-        <line x1="0%" y1="50%" x2="100%" y2="50%" stroke="url(#flowGrad)" stroke-width="2" stroke-dasharray="8 6" style="animation:dashAnim 2s linear infinite"/>
-      </svg>
-      <div class="flow-steps">
-        <div class="fs"><div class="fs-ball">🔍</div><h4>Google</h4><p>Pesquisa local</p></div>
-        <div class="fs"><div class="fs-ball">📍</div><h4>Aparece</h4><p>Top 3 Maps</p></div>
-        <div class="fs"><div class="fs-ball">💬</div><h4>WhatsApp</h4><p>Resposta auto</p></div>
-        <div class="fs"><div class="fs-ball">📅</div><h4>Agenda</h4><p>Marcação online</p></div>
-        <div class="fs"><div class="fs-ball">🔔</div><h4>Lembrete</h4><p>Confirmação auto</p></div>
-        <div class="fs"><div class="fs-ball last">💰</div><h4>Venda</h4><p>Cliente fiel</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- SERVIÇOS -->
-<section class="sec" id="servicos">
-  <div class="w">
-    <div class="sec-label r">
-      <span class="tag tag-g">3 Pilares</span>
-      <h2>Não vendemos serviços.<br/>Instalamos um sistema.</h2>
-      <p class="lead">Cada pilar funciona de forma integrada para atrair, converter e fidelizar.</p>
+    <div class="tc r">
+      <span class="eyebrow">3 Pilares</span>
+      <h2 class="section-title">Não vendemos serviços.<br/>Instalamos um sistema.</h2>
+      <p class="section-sub">Cada pilar funciona de forma integrada para atrair, converter e fidelizar os seus clientes.</p>
     </div>
     <div class="srv-grid">
-      <div class="srv-card srv1 r d1">
-        <div class="srv-ico" style="background:rgba(79,142,247,.15);border:1px solid rgba(79,142,247,.25)">🤖</div>
+      <div class="srv r d1">
+        <div class="srv-ico">🤖</div>
         <h3>Automação com IA</h3>
-        <p class="srv-desc">Chatbots inteligentes, follow-up automático e CRM integrado. O seu negócio responde e converte mesmo enquanto dorme.</p>
-        <ul class="fl">
-          <li><span class="fl-ck">✓</span>Chatbot WhatsApp 24/7</li>
-          <li><span class="fl-ck">✓</span>Follow-up automático de leads</li>
-          <li><span class="fl-ck">✓</span>CRM e gestão de pipeline</li>
-          <li><span class="fl-ck">✓</span>Respostas a reviews com IA</li>
-        </ul>
-        <div class="srv-res">↑ Média de 3× mais leads convertidos</div>
+        <p class="srv-desc">Chatbot WhatsApp 24/7, follow-up automático e CRM integrado. O seu negócio responde e converte mesmo enquanto dorme.</p>
+        <span class="srv-result">↑ 3× mais leads convertidos</span>
       </div>
-      <div class="srv-card srv2 r d2" style="position:relative">
-        <div style="position:absolute;top:16px;right:16px"><span class="tag tag-g" style="font-size:10px;padding:4px 12px">Mais Popular</span></div>
-        <div class="srv-ico" style="background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.25)">📅</div>
+      <div class="srv featured r d2">
+        <span class="srv-popular">Mais Popular</span>
+        <div class="srv-ico">📅</div>
         <h3>Agenda.IGSolution</h3>
-        <p class="srv-desc">Sistema completo de agendamentos com pagamentos integrados. Os clientes marcam, pagam e recebem confirmação automática.</p>
-        <ul class="fl">
-          <li><span class="fl-ck">✓</span>Agendamentos online 24/7</li>
-          <li><span class="fl-ck">✓</span>Pagamentos integrados</li>
-          <li><span class="fl-ck">✓</span>Lembretes automáticos WhatsApp</li>
-          <li><span class="fl-ck">✓</span>Gestão de agenda e equipa</li>
-        </ul>
-        <div class="srv-res">↓ -40% faltas e cancelamentos</div>
+        <p class="srv-desc">Agendamentos online, pagamentos integrados e lembretes automáticos. Zero trabalho manual da sua parte.</p>
+        <span class="srv-result">↓ -40% faltas e cancelamentos</span>
       </div>
-      <div class="srv-card srv3 r d3">
-        <div class="srv-ico" style="background:rgba(255,179,71,.12);border:1px solid rgba(255,179,71,.25)">🗺️</div>
+      <div class="srv r d3">
+        <div class="srv-ico">🗺️</div>
         <h3>Marketing Local</h3>
-        <p class="srv-desc">Visibilidade permanente no Google Maps. SEO local, Google Business Profile optimizado e gestão de avaliações.</p>
-        <ul class="fl">
-          <li><span class="fl-ck">✓</span>Top 3 Google Maps</li>
-          <li><span class="fl-ck">✓</span>Google Business optimizado</li>
-          <li><span class="fl-ck">✓</span>Reviews automáticas</li>
-          <li><span class="fl-ck">✓</span>Dashboard LocalPulse</li>
+        <p class="srv-desc">Top 3 Google Maps, Google Business optimizado e gestão de avaliações. Visibilidade permanente na sua zona.</p>
+        <span class="srv-result">↑ +218% visibilidade em 90 dias</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ NICHES ════════════════════════════════ -->
+<section id="nichos">
+  <div class="w">
+    <div class="tc r">
+      <span class="eyebrow">Para o Seu Negócio</span>
+      <h2 class="section-title">O sistema adapta-se<br/>ao seu segmento</h2>
+      <p class="section-sub">Soluções específicas para cada tipo de negócio local, com resultados comprovados.</p>
+    </div>
+    <div class="niches-grid">
+      <div class="niche r d1"><div class="niche-ico">🍽️</div><div class="niche-name">Alimentação</div><div class="niche-sub">Cafés e Restaurantes</div></div>
+      <div class="niche r d2"><div class="niche-ico">💈</div><div class="niche-name">Beleza</div><div class="niche-sub">Barbearias e Salões</div></div>
+      <div class="niche r d3"><div class="niche-ico">🏋️</div><div class="niche-name">Bem-estar</div><div class="niche-sub">Personal Trainers</div></div>
+      <div class="niche r d4"><div class="niche-ico">🛠️</div><div class="niche-name">Serviços</div><div class="niche-sub">Prestadores de Serviço</div></div>
+      <div class="niche r d5"><div class="niche-ico">🚀</div><div class="niche-name">Profissionais</div><div class="niche-sub">Empreendedores</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RESULTS ════════════════════════════════ -->
+<section id="resultados">
+  <div class="w">
+    <div class="r">
+      <span class="eyebrow">Resultados</span>
+      <h2 class="section-title">Números reais.<br/>Clientes reais.</h2>
+      <p class="section-sub">Médias dos nossos clientes activos nos primeiros 90 dias de operação.</p>
+    </div>
+    <div class="results-wrap">
+      <div class="results-stats">
+        <div class="r-stat r d1">
+          <span class="r-big">+35%</span>
+          <span class="r-lbl">mais reservas</span>
+          <span class="r-sub">Restaurantes e Cafés</span>
+        </div>
+        <div class="r-stat r d2">
+          <span class="r-big">-60%</span>
+          <span class="r-lbl">faltas e cancelamentos</span>
+          <span class="r-sub">Barbearias e Salões</span>
+        </div>
+        <div class="r-stat r d3">
+          <span class="r-big">3×</span>
+          <span class="r-lbl">mais leads convertidos</span>
+          <span class="r-sub">Todos os segmentos</span>
+        </div>
+      </div>
+      <div class="results-chart-card r d1">
+        <div class="rc-head">
+          <span class="rc-title">Crescimento médio · primeiros 90 dias</span>
+          <div class="rc-legend">
+            <div class="leg"><div class="leg-dot" style="background:var(--g)"></div>Leads</div>
+            <div class="leg"><div class="leg-dot" style="background:#4f8ef7"></div>Reservas</div>
+          </div>
+        </div>
+        <div class="bar-area">
+          <div class="bar-chart" id="resultsChart"></div>
+        </div>
+        <div class="rc-footer">
+          <div class="rc-foot-item"><span class="rc-foot-num">47+</span><span class="rc-foot-lbl">Clientes activos</span></div>
+          <div class="rc-foot-item"><span class="rc-foot-num">28d</span><span class="rc-foot-lbl">1ºs resultados</span></div>
+          <div class="rc-foot-item"><span class="rc-foot-num">24/7</span><span class="rc-foot-lbl">Sistema activo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ AGENDA ════════════════════════════════ -->
+<section id="agenda">
+  <div class="w">
+    <div class="agenda-wrap">
+      <div class="agenda-text r">
+        <span class="eyebrow">Agenda.IGSolution</span>
+        <h2 class="section-title">A sua agenda<br/>trabalha sozinha</h2>
+        <p class="section-sub" style="margin-bottom:32px">Clientes marcam, pagam e recebem confirmação automática — a qualquer hora, sem trabalho da sua parte.</p>
+        <ul class="af-list">
+          <li class="af"><div class="af-i">📅</div><div><strong>Calendário online 24/7</strong><span>Sem telefonemas. Sem trabalho manual.</span></div></li>
+          <li class="af"><div class="af-i">💬</div><div><strong>WhatsApp · SMS · Email</strong><span>Confirmações e lembretes automáticos.</span></div></li>
+          <li class="af"><div class="af-i">💳</div><div><strong>Pagamentos integrados</strong><span>MB Way, cartão e multibanco.</span></div></li>
+          <li class="af"><div class="af-i">📊</div><div><strong>Dashboard em tempo real</strong><span>Agenda e equipa numa única vista.</span></div></li>
         </ul>
-        <div class="srv-res">↑ +218% visibilidade em 90 dias</div>
+        <a href="https://agenda-igsolution.vercel.app" class="btn btn-p btn-lg" target="_blank">Aceder à Agenda.IGSolution →</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- NÚMEROS -->
-<section class="sec-sm">
-  <div class="w">
-    <div class="sec-label r">
-      <span class="tag tag-g">Resultados</span>
-      <h2>Números reais. Clientes reais.</h2>
-      <p class="lead">Médias dos nossos clientes nos primeiros 90 dias.</p>
-    </div>
-    <div class="nums-grid">
-      <div class="num-card n1 r d1">
-        <span class="num-val" style="color:#00d97e"><span data-count="35" data-prefix="+" data-suffix="%">+35%</span></span>
-        <div class="num-lbl" style="color:#00d97e">mais reservas</div>
-        <div class="num-niche">Restaurantes & Cafés</div>
-      </div>
-      <div class="num-card n2 r d2">
-        <span class="num-val" style="color:#4f8ef7"><span data-count="50" data-prefix="+">+50</span></span>
-        <div class="num-lbl" style="color:#4f8ef7">novos contactos/mês</div>
-        <div class="num-niche">Barbearias & Salões</div>
-      </div>
-      <div class="num-card n3 r d3">
-        <span class="num-val" style="color:#9b6bff"><span data-count="40" data-prefix="-" data-suffix="%">-40%</span></span>
-        <div class="num-lbl" style="color:#9b6bff">faltas e cancelamentos</div>
-        <div class="num-niche">Saúde & Bem-Estar</div>
-      </div>
-      <div class="num-card n4 r d4">
-        <span class="num-val" style="color:#ffb347"><span data-count="3" data-suffix="×">3×</span></span>
-        <div class="num-lbl" style="color:#ffb347">mais leads convertidos</div>
-        <div class="num-niche">Empreendedores</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- SOLUÇÕES POR SEGMENTO -->
-<section class="sec" id="nichos">
-  <div class="w">
-
-    <div class="sec-label r">
-      <span class="tag tag-g">Soluções para o Seu Negócio</span>
-      <h2>O sistema certo para<br/>cada segmento</h2>
-      <p class="lead">Não somos uma solução genérica. Adaptamos cada sistema ao seu tipo de negócio — com resultados específicos e mensuráveis.</p>
-    </div>
-
-    <div class="sl-stack">
-
-      <!-- 1. Barbearias & Salões -->
-      <div class="sl-card r d1" data-color="green">
-        <div class="sl-head">
-          <div class="sl-icon-wrap" style="background:rgba(0,217,126,.12);border:1px solid rgba(0,217,126,.22)">💈</div>
-          <div class="sl-head-info">
-            <h3>Barbearias e Salões de Beleza</h3>
-            <p class="sl-subtitle">Agenda organizada. Menos faltas. Clientes que voltam sempre.</p>
-          </div>
-          <span class="sl-head-badge" style="background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.22);color:var(--g)">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            -60% faltas
-          </span>
-        </div>
-        <div class="sl-body">
-          <div class="sl-col sl-prob">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
-            <ul>
-              <li>Agenda desorganizada e manual</li>
-              <li>Clientes que faltam sem avisar</li>
-              <li>Sem confirmações automáticas</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Solução</span>
-          </div>
-          <div class="sl-col sl-sol">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
-            <ul>
-              <li>Agenda.IGSolution online 24/7</li>
-              <li>WhatsApp automático de resposta</li>
-              <li>Lembretes inteligentes 24h antes</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Resultado</span>
-          </div>
-          <div class="sl-col sl-res">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
-            <ul>
-              <li>-60% faltas e cancelamentos</li>
-              <li>+50 marcações novas/mês</li>
-              <li>Clientes mais fidelizados</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. Cafés & Restaurantes -->
-      <div class="sl-card r d2" data-color="amber">
-        <div class="sl-head">
-          <div class="sl-icon-wrap" style="background:rgba(255,179,71,.12);border:1px solid rgba(255,179,71,.22)">🍽️</div>
-          <div class="sl-head-info">
-            <h3>Cafés e Restaurantes</h3>
-            <p class="sl-subtitle">Mais visibilidade local. Mais reservas. Melhor reputação online.</p>
-          </div>
-          <span class="sl-head-badge" style="background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.22);color:#ffcc70">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            +35% reservas
-          </span>
-        </div>
-        <div class="sl-body">
-          <div class="sl-col sl-prob">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
-            <ul>
-              <li>Baixa visibilidade no Google Maps</li>
-              <li>Poucas reservas online</li>
-              <li>Poucas avaliações recentes</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Solução</span>
-          </div>
-          <div class="sl-col sl-sol">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
-            <ul>
-              <li>Marketing Local e SEO optimizado</li>
-              <li>Google Business Profile completo</li>
-              <li>Gestão automática de avaliações</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Resultado</span>
-          </div>
-          <div class="sl-col sl-res">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
-            <ul>
-              <li>+180% visibilidade no Maps</li>
-              <li>+35% mais reservas mensais</li>
-              <li>Reputação online consistente</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Personal Trainers & Coaches -->
-      <div class="sl-card r d3" data-color="blue">
-        <div class="sl-head">
-          <div class="sl-icon-wrap" style="background:rgba(79,142,247,.12);border:1px solid rgba(79,142,247,.22)">🏋️</div>
-          <div class="sl-head-info">
-            <h3>Personal Trainers e Coaches</h3>
-            <p class="sl-subtitle">Mais sessões marcadas. Mais retenção. Melhor experiência do cliente.</p>
-          </div>
-          <span class="sl-head-badge" style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.22);color:#93c5fd">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            +30% retenção
-          </span>
-        </div>
-        <div class="sl-body">
-          <div class="sl-col sl-prob">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
-            <ul>
-              <li>Gestão manual de clientes</li>
-              <li>Falta de acompanhamento pós-sessão</li>
-              <li>Cancelamentos de última hora</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Solução</span>
-          </div>
-          <div class="sl-col sl-sol">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
-            <ul>
-              <li>Agenda.IGSolution integrada</li>
-              <li>CRM de clientes automatizado</li>
-              <li>Automações de follow-up por IA</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Resultado</span>
-          </div>
-          <div class="sl-col sl-res">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
-            <ul>
-              <li>Agenda 90% cheia todos os meses</li>
-              <li>+30% de retenção de clientes</li>
-              <li>Experiência mais profissional</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Prestadores de Serviços -->
-      <div class="sl-card r d4" data-color="purple">
-        <div class="sl-head">
-          <div class="sl-icon-wrap" style="background:rgba(155,107,255,.12);border:1px solid rgba(155,107,255,.22)">🛠️</div>
-          <div class="sl-head-info">
-            <h3>Prestadores de Serviços</h3>
-            <p class="sl-subtitle">Eletricistas, canalizadores, limpezas, técnicos e muito mais.</p>
-          </div>
-          <span class="sl-head-badge" style="background:rgba(155,107,255,.1);border:1px solid rgba(155,107,255,.22);color:#c4b5fd">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            +25% orçamentos
-          </span>
-        </div>
-        <div class="sl-body">
-          <div class="sl-col sl-prob">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
-            <ul>
-              <li>Perda de contactos e leads</li>
-              <li>Falta de organização interna</li>
-              <li>Poucos pedidos de orçamento</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Solução</span>
-          </div>
-          <div class="sl-col sl-sol">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
-            <ul>
-              <li>CRM de leads automático</li>
-              <li>WhatsApp com respostas rápidas</li>
-              <li>Automações de follow-up</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Resultado</span>
-          </div>
-          <div class="sl-col sl-res">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
-            <ul>
-              <li>+25% pedidos de orçamento</li>
-              <li>Operação mais organizada</li>
-              <li>Mais vendas fechadas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Empreendedores -->
-      <div class="sl-card r d5" data-color="pink">
-        <div class="sl-head">
-          <div class="sl-icon-wrap" style="background:rgba(255,107,157,.12);border:1px solid rgba(255,107,157,.22)">🚀</div>
-          <div class="sl-head-info">
-            <h3>Empreendedores e Profissionais Independentes</h3>
-            <p class="sl-subtitle">Mais leads. Mais produtividade. Mais vendas — no automático.</p>
-          </div>
-          <span class="sl-head-badge" style="background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.22);color:#ffa0c5">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            3× mais leads
-          </span>
-        </div>
-        <div class="sl-body">
-          <div class="sl-col sl-prob">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Problemas</div>
-            <ul>
-              <li>Poucos leads qualificados</li>
-              <li>Falta de automação nos processos</li>
-              <li>Tudo feito manualmente</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Solução</span>
-          </div>
-          <div class="sl-col sl-sol">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Soluções</div>
-            <ul>
-              <li>Marketing Digital com IA</li>
-              <li>Funis de venda automatizados</li>
-              <li>CRM e captação inteligente</li>
-            </ul>
-          </div>
-          <div class="sl-arrow-wrap">
-            <div class="sl-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>
-            <span class="sl-arr-label">Resultado</span>
-          </div>
-          <div class="sl-col sl-res">
-            <div class="sl-col-hd"><span class="sl-col-hd-dot"></span>Resultados</div>
-            <ul>
-              <li>3× mais leads qualificados</li>
-              <li>Muito mais produtividade</li>
-              <li>Vendas crescem no automático</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /sl-stack -->
-
-    <!-- CTA FINAL DA SECÇÃO -->
-    <div class="sl-cta-block r">
-      <h3>Não encontrou o seu segmento?</h3>
-      <p>Adaptamos as nossas soluções a qualquer negócio local. Se atende clientes, temos um sistema para si.</p>
-      <div class="sl-cta-btns">
-        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-g">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          Solicitar Diagnóstico Gratuito
-        </a>
-        <a href="https://wa.me/351917305248?text=Olá!%20O%20meu%20negócio%20é%20diferente%20e%20quero%20saber%20como%20podem%20ajudar." class="btn btn-w" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          Falar no WhatsApp
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- AGENDA -->
-<section class="sec" id="agenda">
-  <div class="w">
-    <div class="ag-wrap">
-      <div class="ag-text r">
-        <span class="tag tag-g" style="margin-bottom:18px">Agenda.IGSolution</span>
-        <h2>Agenda enquanto descansa</h2>
-        <p>Clientes marcam, pagam e recebem confirmação automática — a qualquer hora, sem trabalho da sua parte. Live em <strong style="color:var(--g)">agenda-igsolution.vercel.app</strong></p>
-        <ul class="ag-feats">
-          <li class="af"><div class="ag-ico">📅</div><div><strong>Calendário online 24/7</strong><span>Sem telefonemas, sem trabalho manual</span></div></li>
-          <li class="af"><div class="ag-ico">💬</div><div><strong>WhatsApp · SMS · Email</strong><span>Confirmações e lembretes automáticos</span></div></li>
-          <li class="af"><div class="ag-ico">💳</div><div><strong>Pagamentos integrados</strong><span>MB Way, cartão, multibanco</span></div></li>
-          <li class="af"><div class="ag-ico">📊</div><div><strong>Dashboard em tempo real</strong><span>Visão completa da agenda e equipa</span></div></li>
-        </ul>
-        <a href="https://agenda-igsolution.vercel.app" class="btn btn-g" target="_blank">Aceder à Agenda.IGSolution →</a>
-      </div>
-      <div class="r d1">
+      <div class="r d2">
         <div class="ag-mock">
-          <div class="ag-hd"><span class="ag-t">Agenda.IGSolution</span><span class="ag-s"><span class="dot" style="width:5px;height:5px;margin:0"></span>8 marcações hoje</span></div>
+          <div class="ag-hd">
+            <span class="ag-t">Agenda.IGSolution</span>
+            <span class="ag-s"><span class="live-dot"></span>8 marcações hoje</span>
+          </div>
           <div class="ag-body">
-            <div class="ag-slot ok"><span class="ag-time">09:00</span><div><div class="ag-name">Maria Santos</div><div class="ag-svc">Corte + Coloração · 90 min</div></div><span class="ag-badge ab-ok">Confirmado</span></div>
-            <div class="ag-slot ok"><span class="ag-time">10:30</span><div><div class="ag-name">João Ferreira</div><div class="ag-svc">Consulta · 45 min</div></div><span class="ag-badge ab-ok">Pago ✓</span></div>
-            <div class="ag-slot"><span class="ag-time">11:30</span><div><div class="ag-name">Disponível</div><div class="ag-svc">Aberto para marcação</div></div><span class="ag-badge ab-free">Livre</span></div>
-            <div class="ag-slot ok"><span class="ag-time">14:00</span><div><div class="ag-name">Ana Costa</div><div class="ag-svc">Manicure · 60 min</div></div><span class="ag-badge ab-ok">Confirmado</span></div>
-            <div class="ag-notif"><span class="an-icon">💬</span><div class="an-text"><strong>Lembrete automático enviado</strong><br/>Maria Santos confirmou via WhatsApp ✓</div></div>
+            <div class="ag-slot ok">
+              <span class="ag-time">09:00</span>
+              <div><div class="ag-name">Maria Santos</div><div class="ag-svc">Corte + Coloração · 90 min</div></div>
+              <span class="ag-tag tag-ok">Confirmado</span>
+            </div>
+            <div class="ag-slot ok">
+              <span class="ag-time">10:30</span>
+              <div><div class="ag-name">João Ferreira</div><div class="ag-svc">Consulta · 45 min</div></div>
+              <span class="ag-tag tag-ok">Pago ✓</span>
+            </div>
+            <div class="ag-slot">
+              <span class="ag-time">11:30</span>
+              <div><div class="ag-name">Disponível</div><div class="ag-svc">Aberto para marcação</div></div>
+              <span class="ag-tag tag-free">Livre</span>
+            </div>
+            <div class="ag-slot ok">
+              <span class="ag-time">14:00</span>
+              <div><div class="ag-name">Ana Costa</div><div class="ag-svc">Manicure · 60 min</div></div>
+              <span class="ag-tag tag-ok">Confirmado</span>
+            </div>
+            <div class="ag-notif">
+              <span style="font-size:14px">💬</span>
+              <div class="ag-notif-txt"><strong>Lembrete automático enviado</strong><br/>Maria Santos confirmou via WhatsApp ✓</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1140,135 +813,41 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
   </div>
 </section>
 
-<div class="div-line"></div>
+<div class="divider"></div>
 
-<!-- PORTUGAL 2030 -->
-<section class="sec" id="apoios">
+<!-- ══ FAQ ════════════════════════════════════ -->
+<section id="faq">
   <div class="w">
-    <div class="sec-label r">
-      <span class="tag tag-g">Apoios do Estado</span>
-      <h2>Financie até 75% com Portugal 2030</h2>
-      <p class="lead">O Estado financia a digitalização do seu negócio. Nós tratamos do processo.</p>
+    <div class="tc r">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-title">Perguntas frequentes</h2>
     </div>
-    <div class="p30-wrap">
-      <div class="p30-text r">
-        <span class="tag tag-g" style="margin-bottom:20px">✓ Candidaturas abertas · Norte · até Dez 2026</span>
-        <h2 style="font-size:clamp(24px,3.5vw,38px)">Até €20.000<br/>a fundo perdido</h2>
-        <p style="margin-top:12px">O Portugal 2030 financia serviços de digitalização para PME — incluindo todos os nossos serviços. Paga apenas 25%.</p>
-        <ul class="p30-list">
-          <li class="p30-li"><div class="p30-ck">✓</div>Até €20.000 por empresa (75% subsidiado)</li>
-          <li class="p30-li"><div class="p30-ck">✓</div>Cobre automação, marketing e agenda online</li>
-          <li class="p30-li"><div class="p30-ck">✓</div>Disponível para PME da região Norte</li>
-          <li class="p30-li"><div class="p30-ck">✓</div>Orientamos todo o processo de candidatura</li>
-        </ul>
-        <div class="p30-alert">⚠️ <strong>Candidaturas por ordem de entrada.</strong> Os fundos esgotam quando a dotação acaba.</div>
-        <a href="https://wa.me/351917305248?text=Quero%20saber%20se%20sou%20elegível%20para%20Portugal%202030." class="btn btn-g" target="_blank">Verificar Elegibilidade</a>
-      </div>
-      <div class="p30-visual r d1">
-        <div class="p30-big card-g card" style="margin-bottom:12px"><strong>75%</strong><span>financiado pelo Estado</span></div>
-        <div class="p30-big card" style="margin-bottom:20px;background:rgba(79,142,247,.06);border:1px solid rgba(79,142,247,.18)"><strong style="color:#4f8ef7">€20k</strong><span>máximo por empresa</span></div>
-        <div class="p30-steps">
-          <div class="p30-step"><div class="p30-n">1</div>Verificar elegibilidade (gratuito)</div>
-          <div class="p30-step"><div class="p30-n">2</div>Candidatura orientada por nós</div>
-          <div class="p30-step"><div class="p30-n">3</div>Aprovação e início dos serviços</div>
-          <div class="p30-step"><div class="p30-n">4</div>Paga apenas 25% do total</div>
-        </div>
-      </div>
-    </div>
+    <div class="faq-list" id="faqList"></div>
   </div>
 </section>
 
-<div class="div-line"></div>
+<div class="divider"></div>
 
-<!-- LOCALPULSE -->
-<section class="sec" id="localpulse">
-  <div class="w">
-    <div class="lp-wrap">
-      <div class="lp-text r">
-        <span class="tag tag-g" style="margin-bottom:18px">Produto SaaS · PWA</span>
-        <h2>LocalPulse — painel de controlo em tempo real</h2>
-        <p>Dashboard exclusivo para clientes. Posições Google Maps, reviews, chamadas e agendamentos — no telemóvel, em tempo real.</p>
-        <ul class="lp-list">
-          <li class="lp-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Métricas Google Maps em tempo real</li>
-          <li class="lp-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews e reputação online</li>
-          <li class="lp-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>Ranking vs concorrentes no Maps</li>
-          <li class="lp-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agendamentos e agenda em tempo real</li>
-          <li class="lp-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chat directo com a equipa IG Solution</li>
-        </ul>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a href="https://localpulse-spotlight.lovable.app/app" class="btn btn-g" target="_blank">Aceder ao LocalPulse</a>
-          <a href="https://localpulse-spotlight.lovable.app" class="btn btn-w" target="_blank">Saber mais</a>
-        </div>
-      </div>
-      <div class="r d1">
-        <div class="lp-mock">
-          <div class="lp-mhd"><span class="lp-mt">LocalPulse PWA</span><span class="ag-s"><span class="dot" style="width:5px;height:5px;margin:0"></span>Tempo real</span></div>
-          <div class="lp-body">
-            <div class="lp-row"><div class="lp-kpi"><strong>847</strong><span>Visualizações</span><div>↑ +218%</div></div><div class="lp-kpi"><strong>#2</strong><span>Posição Maps</span><div>↑ 4 posições</div></div></div>
-            <div class="lp-row"><div class="lp-kpi"><strong>23</strong><span>Chamadas</span><div>↑ +3×</div></div><div class="lp-kpi"><strong>4.8★</strong><span>Rating Google</span><div>↑ +0.4</div></div></div>
-            <div class="lp-map"><div class="lp-map-g"></div><div class="lp-pin" style="top:40%;left:48%"></div><div class="lp-pin" style="top:58%;left:64%;animation-delay:.6s;border-color:rgba(255,255,255,.2)"></div><span style="font-size:11px;color:var(--g);font-weight:600;position:relative;z-index:1;font-family:var(--f-head)">Porto · Vista de área</span></div>
-            <div class="lp-rv"><div class="lp-rname">Pedro Alves · <span style="color:var(--t4);font-weight:400">agora</span></div><div class="lp-rstars">★★★★★</div><div class="lp-rtext">"Serviço excelente, recomendo a todos..."</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- CASOS -->
-<section class="sec">
-  <div class="w">
-    <div class="sec-label r">
-      <span class="tag tag-g">Prova Social</span>
-      <h2>De problema a resultado</h2>
-      <p class="lead">Como o sistema transforma negócios locais em 90 dias.</p>
-    </div>
-    <div class="casos-grid">
-      <div class="caso card r d1"><div class="cb p"><div class="cbl">Problema</div><div class="cbv">Restaurante no Porto invisible no Google Maps. Dependia só de clientes habituais.</div></div><div class="c-arr">↓</div><div class="cb s"><div class="cbl">Solução</div><div class="cbv">GBP optimizado + reviews automáticas + SEO local da zona.</div></div><div class="c-arr">↓</div><div class="cb res"><div class="cbl">Resultado em 60 dias</div><div class="cbv">+35% reservas · Top 3 Maps · 80+ reviews</div></div><div class="c-sec">🍽️ Restaurante · Porto</div></div>
-      <div class="caso card r d2"><div class="cb p"><div class="cbl">Problema</div><div class="cbv">Barbearia com agenda manual, muitas faltas e sem resposta fora do horário.</div></div><div class="c-arr">↓</div><div class="cb s"><div class="cbl">Solução</div><div class="cbv">Agenda.IGSolution + chatbot WhatsApp 24/7 + lembretes 24h antes.</div></div><div class="c-arr">↓</div><div class="cb res"><div class="cbl">Resultado em 45 dias</div><div class="cbv">+50 contactos/mês · -60% faltas · Agenda 90% cheia</div></div><div class="c-sec">✂️ Barbearia · Porto</div></div>
-      <div class="caso card r d3"><div class="cb p"><div class="cbl">Problema</div><div class="cbv">Salão com 25% faltas. Perdendo €2.000+/mês em horários vazios.</div></div><div class="c-arr">↓</div><div class="cb s"><div class="cbl">Solução</div><div class="cbv">Confirmações duplas + lembretes WhatsApp + lista de espera auto.</div></div><div class="c-arr">↓</div><div class="cb res"><div class="cbl">Resultado em 30 dias</div><div class="cbv">-40% faltas · +30% ocupação · €1.800 recuperados/mês</div></div><div class="c-sec">💇 Salão de Beleza · Matosinhos</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- FAQ -->
-<section class="sec-sm" id="faq">
-  <div class="w tc">
-    <div class="r"><span class="tag tag-g">FAQ</span></div>
-    <h2 class="r d1" style="margin:16px 0 0">Perguntas frequentes</h2>
-    <div id="faq-list"></div>
-  </div>
-</section>
-
-<div class="div-line"></div>
-
-<!-- CTA FINAL -->
+<!-- ══ CTA ════════════════════════════════════ -->
 <section class="cta-sec">
-  <div class="cta-bg"></div>
-  <div class="cta-inner r">
-    <img src="logo.png" alt="IG Solution" class="cta-logo"/>
-    <div class="urg"><span class="urg-d"></span>1 vaga disponível para Junho 2026</div>
-    <h2>Descubra Quantos Clientes<br/>Está a <span class="grad">Perder</span> Todos os Meses</h2>
-    <p>Análise gratuita da sua presença online e oportunidades de automação. Sem compromisso.</p>
-    <div class="cta-ctas">
-      <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-g btn-lg">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Quero o Meu Diagnóstico Gratuito
-      </a>
-      <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="btn btn-w btn-lg" target="_blank">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        WhatsApp Directo
-      </a>
+  <div class="w">
+    <div class="cta-inner r">
+      <div class="cta-urgency"><span class="urg-dot"></span>1 vaga disponível · Junho 2026</div>
+      <h2 class="cta-h2">Descubra quantos clientes<br/>está a <span class="grad">perder</span> hoje</h2>
+      <p class="cta-p">Análise gratuita da sua presença online. Sem compromisso. Resposta em menos de 2 horas.</p>
+      <div class="cta-btns">
+        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Quero o Meu Diagnóstico
+        </a>
+        <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="btn btn-s btn-lg" target="_blank">WhatsApp Directo</a>
+      </div>
+      <p class="cta-note">Resposta em &lt;2h · <a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a> · <a href="tel:+351917305248">+351 917 305 248</a></p>
     </div>
-    <p class="cta-note">Resposta em &lt;2h · <a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a> · <a href="tel:+351917305248">+351 917 305 248</a></p>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══════════════════════════════ -->
 <footer>
   <div class="w">
     <div class="ft-g">
@@ -1276,69 +855,53 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
         <div class="ft-logo"><img src="logo.png" alt=""/>IG<em>.Solution</em></div>
         <p>Sistema completo de captação, conversão e gestão automática de clientes para negócios locais. Porto, Portugal.</p>
         <div class="ft-socs">
-          <a href="https://instagram.com/igsolutionmkt" class="ft-s" target="_blank">📷</a>
-          <a href="https://wa.me/351917305248" class="ft-s" target="_blank">💬</a>
-          <a href="mailto:igsolutionmkt@gmail.com" class="ft-s">📧</a>
-          <a href="https://agenda-igsolution.vercel.app" class="ft-s" target="_blank">📅</a>
+          <a href="https://instagram.com/igsolutionmkt" class="ft-soc" target="_blank">📷</a>
+          <a href="https://wa.me/351917305248" class="ft-soc" target="_blank">💬</a>
+          <a href="mailto:igsolutionmkt@gmail.com" class="ft-soc">📧</a>
         </div>
       </div>
       <div class="ft-col"><h4>Sistema</h4><a href="#sistema">Como Funciona</a><a href="#servicos">Automação IA</a><a href="#agenda">Agenda.IGSolution</a><a href="#servicos">Marketing Local</a></div>
-      <div class="ft-col"><h4>Nichos</h4><a href="#nichos">Cafés</a><a href="#nichos">Restaurantes</a><a href="#nichos">Salões de Beleza</a><a href="#nichos">Barbearias</a><a href="#nichos">Personal Trainer</a><a href="#nichos">Prestadores</a></div>
-      <div class="ft-col"><h4>Empresa</h4><a href="https://igsolutionmkt-lang.github.io/diagnostico.html">Diagnóstico Gratuito</a><a href="#localpulse">LocalPulse</a><a href="#apoios">Portugal 2030</a><a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a><a href="tel:+351917305248">+351 917 305 248</a></div>
+      <div class="ft-col"><h4>Nichos</h4><a href="#nichos">Restaurantes</a><a href="#nichos">Barbearias</a><a href="#nichos">Salões de Beleza</a><a href="#nichos">Personal Trainer</a><a href="#nichos">Empreendedores</a></div>
+      <div class="ft-col"><h4>Empresa</h4><a href="https://igsolutionmkt-lang.github.io/diagnostico.html">Diagnóstico Gratuito</a><a href="#agenda">LocalPulse</a><a href="mailto:igsolutionmkt@gmail.com">Email</a><a href="tel:+351917305248">+351 917 305 248</a></div>
     </div>
     <div class="ft-bot"><span>© 2026 IG Solution · Todos os direitos reservados.</span><span>Porto, Portugal</span></div>
   </div>
 </footer>
 
-<a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="wa-float" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="wa-btn" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
 
 <script>
-// Nav scroll
+/* ── Nav ── */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
-
-// Hamburger
 const hb=document.getElementById('hb'),mob=document.getElementById('mob');
 hb.addEventListener('click',()=>mob.classList.toggle('open'));
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
 
-// Scroll reveal
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -32px 0px'});
-document.querySelectorAll('.r').forEach(el=>ro.observe(el));
-
-// Smooth scroll
+/* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   const t=document.querySelector(a.getAttribute('href'));
-  if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-76,behavior:'smooth'})}
+  if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'})}
 }));
 
-// Typewriter
-const tw=document.getElementById('tw');
-if(tw){
-  const words=['Menos Trabalho.','Mais Resultados.','Mais Liberdade.','Sistema Automático.','Agenda Cheia.'];
-  let wi=0,ci=0,del=false;
-  tw.textContent=words[0];
-  function type(){
-    const w=words[wi];
-    if(!del){tw.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1800);return}}
-    else{tw.textContent=w.slice(0,--ci);if(ci===0){del=false;wi=(wi+1)%words.length}}
-    setTimeout(type,del?40:75);
-  }
-  setTimeout(type,1200);
-}
+/* ── Scroll reveal ── */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}
+}),{threshold:.07,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.r').forEach(el=>ro.observe(el));
 
-// Counter animation
+/* ── Counter animation ── */
 function animCount(el,target,dur=1400){
   let start=null;
-  const prefix=el.dataset.prefix||'';
-  const suffix=el.dataset.suffix||'';
-  const isFloat=target%1!==0;
+  const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const isF=target%1!==0;
   const step=ts=>{
     if(!start)start=ts;
     const p=Math.min((ts-start)/dur,1);
     const ease=1-Math.pow(1-p,3);
-    const val=target*ease;
-    el.textContent=prefix+(isFloat?val.toFixed(1):Math.round(val))+suffix;
+    el.textContent=pre+(isF?( target*ease).toFixed(1):Math.round(target*ease))+suf;
     if(p<1)requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
@@ -1348,81 +911,86 @@ const co=new IntersectionObserver(es=>es.forEach(e=>{
   e.target.querySelectorAll('[data-count]').forEach(el=>animCount(el,parseFloat(el.dataset.count)));
   co.unobserve(e.target);
 }),{threshold:.3});
-document.querySelectorAll('.stats-row,.nums-grid').forEach(el=>co.observe(el));
+document.querySelectorAll('.metrics-row').forEach(el=>co.observe(el));
 
-// Phone chart bars
-const pc=document.getElementById('pChart');
-if(pc){
-  const vals=[28,42,36,58,50,74,88];
-  const colors=['rgba(0,217,126,.28)','rgba(0,217,126,.36)','rgba(0,217,126,.3)','rgba(0,217,126,.45)','rgba(0,217,126,.4)','rgba(0,217,126,.58)','rgba(0,217,126,.9)'];
-  vals.forEach((v,i)=>{
-    const b=document.createElement('div');
-    b.className='pc-bar';
-    b.style.cssText=`flex:1;background:${colors[i]};border-radius:2px 2px 0 0;height:0;transition:height .6s cubic-bezier(.34,1.42,.64,1);transition-delay:${i*.08}s`;
-    pc.appendChild(b);
-    setTimeout(()=>{b.style.height=v+'px'},400+i*60);
-  });
-}
+/* ── Hero SVG line chart ── */
+(function(){
+  const svg=document.getElementById('heroChart');
+  if(!svg)return;
+  const pts=[6,9,8,12,11,16,20,17,23,26,22,28,32,29,36,40,37,43,48,45,52,56,53,60,64,61,68,72,69,76];
+  const W=320,H=64,p=3;
+  const max=Math.max(...pts),min=Math.min(...pts);
+  const px=i=>p+(i/(pts.length-1))*(W-2*p);
+  const py=v=>H-p-((v-min)/(max-min))*(H-2*p);
+  let d=`M${px(0)} ${py(pts[0])}`;
+  for(let i=1;i<pts.length;i++){
+    const cx=px(i-.5);
+    d+=` C${cx} ${py(pts[i-1])} ${cx} ${py(pts[i])} ${px(i)} ${py(pts[i])}`;
+  }
+  const fill=d+` L${px(pts.length-1)} ${H} L${px(0)} ${H}Z`;
+  const last=pts.length-1;
+  svg.innerHTML=`
+    <defs>
+      <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00d97e" stop-opacity=".28"/>
+        <stop offset="100%" stop-color="#00d97e" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="${fill}" fill="url(#lg)"/>
+    <path d="${d}" fill="none" stroke="#00d97e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="${px(last)}" cy="${py(pts[last])}" r="3" fill="#00d97e"/>
+    <circle cx="${px(last)}" cy="${py(pts[last])}" r="5.5" fill="rgba(0,217,126,.18)"/>
+  `;
+})();
 
-// 3D card tilt
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(600px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-4px)`;
-    card.style.transition='transform .05s';
+/* ── Results bar chart ── */
+(function(){
+  const c=document.getElementById('resultsChart');
+  if(!c)return;
+  const months=['Jan','Fev','Mar','Abr','Mai','Jun'];
+  const leads= [14,20,30,44,62,88];
+  const res=   [11,17,26,38,53,74];
+  const max=100;
+  months.forEach((m,i)=>{
+    const g=document.createElement('div');
+    g.className='bar-grp';
+    const b1=document.createElement('div');
+    b1.className='bar';b1.style.cssText=`background:var(--g);height:0;transition:height .7s cubic-bezier(.34,1.42,.64,1) ${.08*i}s`;
+    const b2=document.createElement('div');
+    b2.className='bar';b2.style.cssText=`background:#4f8ef7;height:0;transition:height .7s cubic-bezier(.34,1.42,.64,1) ${.08*i+.04}s`;
+    const lbl=document.createElement('div');lbl.className='bar-lbl';lbl.textContent=m;
+    g.append(b1,b2,lbl);c.appendChild(g);
+    const obs=new IntersectionObserver(en=>{
+      if(en[0].isIntersecting){
+        b1.style.height=(leads[i]/max*118)+'px';
+        b2.style.height=(res[i]/max*118)+'px';
+        obs.disconnect();
+      }
+    },{threshold:.3});
+    obs.observe(c);
   });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transform='';
-    card.style.transition='transform .45s cubic-bezier(.22,1,.36,1)';
-  });
-});
+})();
 
-// Flow step stagger
-const flowOb=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  document.querySelectorAll('.fs').forEach((f,i)=>{
-    f.style.opacity='0';f.style.transform='translateY(20px)';
-    setTimeout(()=>{f.style.opacity='1';f.style.transform='none';f.style.transition='all .5s cubic-bezier(.22,1,.36,1)';},100+i*110);
-  });
-  flowOb.unobserve(e.target);
-}),{threshold:.2});
-const flowEl=document.querySelector('.flow-visual');
-if(flowEl)flowOb.observe(flowEl);
-
-// Magnetic buttons
-document.querySelectorAll('.btn-g').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{
-    const r=btn.getBoundingClientRect();
-    const x=(e.clientX-r.left-r.width/2)*.18;
-    const y=(e.clientY-r.top-r.height/2)*.18;
-    btn.style.transform=`translate(${x}px,${y}px) translateY(-3px) scale(1.02)`;
-  });
-  btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
-});
-
-// FAQ
+/* ── FAQ ── */
 const faqs=[
   {q:'Em quanto tempo vejo resultados?',a:'Os primeiros resultados surgem entre 7 a 28 dias — mais visibilidade no Google Maps, mais chamadas e primeiros agendamentos automáticos. Resultados expressivos (top 3 Google Maps) em 60 a 90 dias.'},
   {q:'Tenho de fazer alguma coisa da minha parte?',a:'Praticamente tudo fica a nosso cargo. Só precisamos de acesso ao Google Business (5 minutos) e aprovação pontual de conteúdo. O sistema funciona 24/7 automaticamente.'},
-  {q:'O que é exactamente a Agenda.IGSolution?',a:'É um sistema profissional de agendamentos integrado no seu Google Business e WhatsApp. Disponível em agenda-igsolution.vercel.app — os clientes marcam, pagam e recebem confirmação automática, sem trabalho manual da sua parte.'},
+  {q:'O que é a Agenda.IGSolution?',a:'É um sistema profissional de agendamentos integrado no seu Google Business e WhatsApp. Os clientes marcam, pagam e recebem confirmação automática — sem trabalho manual da sua parte.'},
   {q:'Posso financiar com o Portugal 2030?',a:'Sim, se for PME na região Norte. O programa financia até 75% do investimento em digitalização (até €20.000). Verificamos a elegibilidade gratuitamente e orientamos todo o processo.'},
   {q:'Qual a diferença entre a IG Solution e uma agência?',a:'Não somos uma agência. Instalamos um sistema completo de captação, conversão e gestão automática de clientes. O resultado não para quando deixa de pagar — o sistema continua a trabalhar.'},
   {q:'Há contrato mínimo?',a:'Pedimos 3 meses iniciais para o sistema produzir resultados consistentes. Depois, cancela quando quiser com 30 dias de aviso. Sem multas nem letras pequenas.'},
 ];
-const fl=document.getElementById('faq-list');
+const fl=document.getElementById('faqList');
 faqs.forEach(f=>{
   const d=document.createElement('div');
   d.className='fq r';
-  d.innerHTML=`<button class="fq-q" aria-expanded="false">${f.q}<div class="fq-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="fq-a">${f.a}</div>`;
+  d.innerHTML=`<button class="fq-q" aria-expanded="false">${f.q}<span class="fq-icon">+</span></button><div class="fq-a">${f.a}</div>`;
   d.querySelector('button').addEventListener('click',function(){
     const o=d.classList.toggle('open');
     this.setAttribute('aria-expanded',o);
-    d.querySelector('.fq-a').style.display=o?'block':'none';
+    this.querySelector('.fq-icon').textContent=o?'×':'+';
   });
-  fl.appendChild(d);
-  ro.observe(d);
+  fl.appendChild(d);ro.observe(d);
 });
 </script>
 </body>
