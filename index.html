@@ -202,7 +202,7 @@ h1,h2,h3,h4{font-family:var(--fh);color:var(--t1);letter-spacing:-.03em;line-hei
 .mr-stats{display:flex;gap:12px;margin-top:7px}
 .mr-stat{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--t3)}
 .mr-stat.green{color:var(--g)}
-.maps-visual{width:130px;border-radius:10px;background:var(--sf3);border:1px solid var(--bd);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.maps-visual{width:130px;min-height:130px;border-radius:10px;background:var(--sf3);border:1px solid var(--bd);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .maps-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,217,126,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,217,126,.05) 1px,transparent 1px);background-size:16px 16px}
 .map-pin{position:absolute;width:10px;height:10px;border-radius:50%;border:2.5px solid var(--g);box-shadow:0 0 0 4px rgba(0,217,126,.15)}
 .map-pin.main{top:40%;left:42%}
@@ -294,7 +294,20 @@ h1,h2,h3,h4{font-family:var(--fh);color:var(--t1);letter-spacing:-.03em;line-hei
 .srv-result::before{content:'';width:14px;height:14px;border-radius:50%;background:rgba(0,217,126,.1);border:1px solid rgba(0,217,126,.2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24' fill='none' stroke='%2300d97e' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;flex-shrink:0}
 .srv-cell.featured{background:linear-gradient(145deg,rgba(0,217,126,.055),var(--sf))}
 .srv-cell.featured::after{content:'Mais popular';position:absolute;top:20px;right:20px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g);background:rgba(0,217,126,.09);border:1px solid rgba(0,217,126,.18);padding:3px 10px;border-radius:999px}
+.srv-cell.featured{padding-top:52px}
 @media(max-width:768px){.srv-row{grid-template-columns:1fr;border-radius:16px}}
+
+/* ─── NICHOS ───────────────────────────────── */
+.nichos-row{display:flex;gap:1px;background:var(--bd);border-radius:16px;overflow:hidden;margin-top:64px}
+.nicho{flex:1;background:var(--sf);padding:28px 20px;text-align:center;transition:background .2s,color .2s;cursor:default}
+.nicho:hover{background:var(--sf2)}
+.nicho:hover .nicho-name{color:var(--g)}
+.nicho-ico-wrap{width:40px;height:40px;border-radius:10px;background:var(--sf2);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;color:var(--t3);margin:0 auto 14px;transition:all .2s}
+.nicho:hover .nicho-ico-wrap{background:var(--gd);border-color:rgba(0,217,126,.2);color:var(--g)}
+.nicho-name{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px;transition:color .2s}
+.nicho-sub{font-size:11px;color:var(--t4);line-height:1.4}
+@media(max-width:768px){.nichos-row{flex-wrap:wrap}.nicho{flex:1 1 calc(50% - 1px);min-width:calc(50% - 1px)}}
+@media(max-width:400px){.nichos-row{flex-direction:column}.nicho{min-width:100%}}
 
 /* ─── FAQ ─────────────────────────────────── */
 .faq-list{max-width:620px;margin:56px auto 0;display:flex;flex-direction:column;gap:5px}
@@ -401,7 +414,7 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
   <symbol id="ico-trending"  viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
   <symbol id="ico-star"      viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
   <symbol id="ico-card"      viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
-  <symbol id="ico-bot"       viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7m-4 4V7m8 4V7"/><circle cx="12" cy="5" r="2"/><path d="M8 15h.01M12 15h.01M16 15h.01"/></symbol>
+  <symbol id="ico-bot"       viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.5"/><path d="M8 12h.01M16 12h.01M8 16h8"/></symbol>
   <symbol id="ico-grid"      viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
   <symbol id="ico-settings"  viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41"/></symbol>
 </svg>
@@ -413,6 +426,7 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
     <ul class="nl">
       <li><a href="#sistema">Sistema</a></li>
       <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#nichos">Nichos</a></li>
       <li><a href="#resultados">Resultados</a></li>
       <li><a href="#agenda">Agenda</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -423,7 +437,7 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
     <button class="hb" id="hb" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mob" id="mob">
-    <a href="#sistema">Sistema</a><a href="#servicos">Serviços</a><a href="#resultados">Resultados</a>
+    <a href="#sistema">Sistema</a><a href="#servicos">Serviços</a><a href="#nichos">Nichos</a><a href="#resultados">Resultados</a>
     <a href="#agenda">Agenda</a><a href="#faq">FAQ</a>
     <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p" style="margin-top:8px;justify-content:center">Diagnóstico Gratuito</a>
   </div>
@@ -614,6 +628,46 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
 
 <div class="divider"></div>
 
+<!-- ═══ NICHOS ══════════════════════════════════════ -->
+<section id="nichos">
+  <div class="w">
+    <div class="tc r">
+      <span class="eyebrow">Para o Seu Negócio</span>
+      <h2 class="title">O sistema adapta-se<br/>ao seu segmento</h2>
+      <p class="sub">Resultados específicos para cada tipo de negócio local.</p>
+    </div>
+    <div class="nichos-row">
+      <div class="nicho r d1">
+        <div class="nicho-ico-wrap"><svg class="ico"><use href="#ico-users"/></svg></div>
+        <div class="nicho-name">Alimentação</div>
+        <div class="nicho-sub">Cafés e Restaurantes</div>
+      </div>
+      <div class="nicho r d2">
+        <div class="nicho-ico-wrap"><svg class="ico"><use href="#ico-star"/></svg></div>
+        <div class="nicho-name">Beleza</div>
+        <div class="nicho-sub">Barbearias e Salões</div>
+      </div>
+      <div class="nicho r d3">
+        <div class="nicho-ico-wrap"><svg class="ico"><use href="#ico-zap"/></svg></div>
+        <div class="nicho-name">Bem-estar</div>
+        <div class="nicho-sub">Personal Trainers</div>
+      </div>
+      <div class="nicho r d4">
+        <div class="nicho-ico-wrap"><svg class="ico"><use href="#ico-check"/></svg></div>
+        <div class="nicho-name">Serviços</div>
+        <div class="nicho-sub">Prestadores de Serviço</div>
+      </div>
+      <div class="nicho r d5">
+        <div class="nicho-ico-wrap"><svg class="ico"><use href="#ico-trending"/></svg></div>
+        <div class="nicho-name">Profissionais</div>
+        <div class="nicho-sub">Empreendedores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- FEATURE 1: WhatsApp / AI -->
 <section>
   <div class="feat-split">
@@ -655,7 +709,7 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
           </div>
           <div class="msg out">
             <div>
-              <div class="msg-bubble">Perfeito! Marcação confirmada para Quarta, 11 Jun às 18:00. Receberá um lembrete 24h antes. 👌</div>
+              <div class="msg-bubble">Perfeito! Marcação confirmada para Quarta, 11 Jun às 18:00. Receberá um lembrete 24h antes.</div>
               <div class="msg-time">14:33 ✓✓</div>
             </div>
           </div>
@@ -927,9 +981,15 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
         <div class="ft-brand-logo"><img src="logo.png" alt=""/>IG<em>.Solution</em></div>
         <p>Sistema de automação para negócios locais no Porto.</p>
         <div class="ft-socs">
-          <a href="https://instagram.com/igsolutionmkt" class="ft-soc" target="_blank"><svg class="ico" style="width:15px;height:15px"><use href="#ico-star"/></svg></a>
-          <a href="https://wa.me/351917305248" class="ft-soc" target="_blank"><svg class="ico" style="width:15px;height:15px"><use href="#ico-msg"/></svg></a>
-          <a href="mailto:igsolutionmkt@gmail.com" class="ft-soc"><svg class="ico" style="width:15px;height:15px"><use href="#ico-check"/></svg></a>
+          <a href="https://instagram.com/igsolutionmkt" class="ft-soc" target="_blank" title="Instagram">
+            <svg class="ico" style="width:15px;height:15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://wa.me/351917305248" class="ft-soc" target="_blank" title="WhatsApp">
+            <svg class="ico" style="width:15px;height:15px"><use href="#ico-msg"/></svg>
+          </a>
+          <a href="mailto:igsolutionmkt@gmail.com" class="ft-soc" title="Email">
+            <svg class="ico" style="width:15px;height:15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
       <div class="ft-col"><h4>Produto</h4><a href="#sistema">Como Funciona</a><a href="#agenda">Agenda.IGSolution</a><a href="#resultados">Resultados</a></div>
@@ -994,7 +1054,7 @@ function renderLineChart(el,pts,W,H,color,fill=true,pw=1.5){
     <stop offset="0%" stop-color="${color}" stop-opacity=".3"/>
     <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
   </linearGradient></defs>
-  ${fill?`<path d="${fd}" fill="url(##${gid})"/>`:''}
+  ${fill?`<path d="${fd}" fill="url(#${gid})"/>`:''}
   <path d="${d}" fill="none" stroke="${color}" stroke-width="${pw}" stroke-linecap="round" stroke-linejoin="round"/>
   <circle cx="${px(last)}" cy="${py(pts[last])}" r="3" fill="${color}"/>
   <circle cx="${px(last)}" cy="${py(pts[last])}" r="5" fill="${color}" fill-opacity=".2"/>`;
