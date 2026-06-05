@@ -194,6 +194,7 @@ h3{font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-.02em;color:va
    NICHOS
 ──────────────────────────────────────────────────── */
 .nicho-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+/* 9 nichos: 3x3 */
 .nicho-card{padding:28px;border-radius:14px}
 .nicho-icon{font-size:28px;margin-bottom:14px}
 .nicho-card h3{font-size:16px;font-weight:700;margin-bottom:14px}
@@ -384,6 +385,48 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
   .ft-bot{flex-direction:column;gap:6px;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ── EXTRA INTERACTIVE ──────────────────────────────── */
+/* Glitch */
+.glitch{animation:glitch .3s steps(2) forwards}
+@keyframes glitch{
+  0%{text-shadow:2px 0 #22c55e,-2px 0 #3b82f6;transform:skewX(0deg)}
+  25%{text-shadow:-3px 0 #22c55e,3px 0 #3b82f6;transform:skewX(-2deg)}
+  50%{text-shadow:3px 0 #22c55e,-3px 0 #3b82f6;transform:skewX(1deg)}
+  75%{text-shadow:-2px 0 #22c55e,2px 0 #3b82f6;transform:skewX(0deg)}
+  100%{text-shadow:none;transform:skewX(0deg)}
+}
+/* Hero slogan pill */
+.hero-slogan{display:inline-block;font-size:clamp(13px,1.4vw,16px);font-weight:500;color:rgba(255,255,255,.55);font-style:italic;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:8px 20px;border-radius:999px;margin:0 auto 20px;letter-spacing:.02em;cursor:default}
+/* Typewriter cursor */
+.hero h1 em::after{content:'|';animation:cur .8s steps(1) infinite;color:var(--g)}
+@keyframes cur{0%,100%{opacity:1}50%{opacity:0}}
+/* Num card pbar */
+.num-card{position:relative;overflow:hidden}
+.num-card::after{content:'';position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--g),transparent);width:100%;transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}
+.num-card:hover::after{transform:scaleX(1)}
+/* Nicho card hover glow */
+.nicho-card:hover{box-shadow:0 0 30px rgba(34,197,94,.1),0 8px 32px rgba(0,0,0,.4)}
+/* Flow animate */
+.flow-item .fn{transition:box-shadow .4s var(--ease)}
+/* Caso card arrow pulse */
+.caso-arr{animation:arrPulse 2s ease infinite}
+@keyframes arrPulse{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:.7;transform:translateY(3px)}}
+/* Card shine on hover */
+.card::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);transform:skewX(-15deg);transition:left .5s var(--ease);pointer-events:none}
+.card:hover::after{left:150%}
+/* Btn pulse ring */
+.btn-p::after{content:'';position:absolute;inset:-4px;border-radius:inherit;border:1px solid rgba(34,197,94,.3);opacity:0;animation:btnRing 2s ease infinite}
+.btn-p{position:relative;overflow:visible}
+@keyframes btnRing{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(1.15)}}
+/* Number count style */
+[data-count]{display:block;font-size:inherit;font-weight:inherit;color:inherit}
+/* Stats bar in hero */
+.hero-stats-row{display:flex;gap:32px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat strong{display:block;font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.05em;color:var(--t1);line-height:1}
+.hstat span{font-size:12px;color:var(--t4);text-transform:uppercase;letter-spacing:.08em;display:block;margin-top:4px}
+.hstat-sep{width:1px;background:var(--border);align-self:stretch;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -423,6 +466,7 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
   <div class="hero-inner">
     <div class="r"><span class="badge badge-g"><span class="dot"></span>Porto · Sistema activo · 24/7</span></div>
     <h1 class="r d1">Mais Clientes.<br/><em>Menos Trabalho Manual.</em></h1>
+    <p class="hero-slogan r d1">"O teu cliente já te procura. Tu é que não apareces."</p>
     <p class="lead center r d2">Automatizamos a captação, atendimento por WhatsApp, agendamentos e follow-ups para negócios locais.</p>
     <div class="hero-ctas r d3">
       <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg">
@@ -617,10 +661,10 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
       <p class="lead center" style="margin-top:12px">Médias dos nossos clientes nos primeiros 90 dias.</p>
     </div>
     <div class="nums-grid">
-      <div class="num-card card r d1"><div class="num-val" style="color:#4ade80">+35%</div><div class="num-label">mais reservas</div><div class="num-niche">Restaurantes</div></div>
-      <div class="num-card card r d2"><div class="num-val" style="color:#93c5fd">+50</div><div class="num-label">novos contactos/mês</div><div class="num-niche">Barbearias</div></div>
-      <div class="num-card card r d3"><div class="num-val" style="color:#c4b5fd">-40%</div><div class="num-label">faltas e cancelamentos</div><div class="num-niche">Clínicas</div></div>
-      <div class="num-card card r d4"><div class="num-val" style="color:#fcd34d">+25%</div><div class="num-label">pedidos de orçamento</div><div class="num-niche">Oficinas</div></div>
+      <div class="num-card card r d1"><div class="num-val" style="color:#4ade80"><span data-count="35" data-prefix="+" data-suffix="%">+35%</span></div><div class="num-label">mais reservas</div><div class="num-niche">Restaurantes & Cafés</div></div>
+      <div class="num-card card r d2"><div class="num-val" style="color:#93c5fd"><span data-count="50" data-prefix="+">+50</span></div><div class="num-label">novos contactos/mês</div><div class="num-niche">Barbearias & Salões</div></div>
+      <div class="num-card card r d3"><div class="num-val" style="color:#c4b5fd"><span data-count="40" data-prefix="-" data-suffix="%">-40%</span></div><div class="num-label">faltas e cancelamentos</div><div class="num-niche">Saúde & Bem-Estar</div></div>
+      <div class="num-card card r d4"><div class="num-val" style="color:#fcd34d"><span data-count="3" data-suffix="×">3×</span></div><div class="num-label">mais leads convertidos</div><div class="num-niche">Empreendedores</div></div>
     </div>
   </div>
 </section>
@@ -636,12 +680,15 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
       <p class="lead center" style="margin-top:12px">Cada nicho tem desafios específicos. Temos soluções à medida.</p>
     </div>
     <div class="nicho-grid">
-      <div class="nicho-card card r d1"><div class="nicho-icon">✂️</div><h3>Barbearias & Cabeleireiros</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Agenda manual, faltas frequentes, sem presença online</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Agendamento automático + lembretes + GBP optimizado</div></div><div class="nicho-res">↑ +50 contactos/mês · -60% faltas</div></div>
-      <div class="nicho-card card r d2"><div class="nicho-icon">🏥</div><h3>Clínicas & Saúde</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Alto volume de faltas, gestão manual de marcações</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Lembretes automáticos + confirmação 24h antes</div></div><div class="nicho-res">↓ -40% faltas · +30% ocupação</div></div>
-      <div class="nicho-card card r d3"><div class="nicho-icon">💅</div><h3>Estéticas & Bem-Estar</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Clientes sem fidelização, agenda desequilibrada</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">CRM + follow-up + programa de fidelização automático</div></div><div class="nicho-res">↑ +40% clientes recorrentes</div></div>
-      <div class="nicho-card card r d4"><div class="nicho-icon">🍽️</div><h3>Restaurantes & Cafés</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Invisível no Google Maps, poucas reservas online</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">GBP optimizado + sistema de reservas + reviews auto</div></div><div class="nicho-res">↑ +35% reservas · +180% visibilidade</div></div>
-      <div class="nicho-card card r d5"><div class="nicho-icon">🔧</div><h3>Oficinas & Auto</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Difícil de encontrar online, depende de passa-palavra</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">SEO local + orçamentos WhatsApp automáticos</div></div><div class="nicho-res">↑ +25% orçamentos · top 3 Maps</div></div>
-      <div class="nicho-card card r d6"><div class="nicho-icon">🏠</div><h3>Imobiliárias</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Leads sem follow-up, muitos contactos perdidos</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">CRM automático + sequências follow-up + qualificação IA</div></div><div class="nicho-res">↑ +45% leads qualificados convertidos</div></div>
+      <div class="nicho-card card r d1"><div class="nicho-icon">☕</div><h3>Cafés</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Invisível no Google, sem presença online e pouca fidelização</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">GBP optimizado + reviews automáticas + WhatsApp</div></div><div class="nicho-res">↑ +180% visibilidade · +35% clientes</div></div>
+      <div class="nicho-card card r d2"><div class="nicho-icon">🍽️</div><h3>Restaurantes</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Sem reservas online, depende apenas de clientes habituais</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Sistema de reservas + SEO local + reviews automáticas</div></div><div class="nicho-res">↑ +35% reservas · top 3 Maps</div></div>
+      <div class="nicho-card card r d3"><div class="nicho-icon">💇</div><h3>Salões de Beleza</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Agenda manual, faltas frequentes, clientes sem fidelização</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Agenda.IGSolution + lembretes + programa de fidelização</div></div><div class="nicho-res">↑ +40% recorrentes · -60% faltas</div></div>
+      <div class="nicho-card card r d4"><div class="nicho-icon">✂️</div><h3>Barbearias</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Agenda por telefone, sem resposta fora do horário</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Agendamento online 24/7 + chatbot WhatsApp automático</div></div><div class="nicho-res">↑ +50 contactos/mês · -60% faltas</div></div>
+      <div class="nicho-card card r d5"><div class="nicho-icon">💪</div><h3>Personal Trainer</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Gestão manual de alunos, pagamentos e marcações dispersas</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">CRM automático + agenda + follow-up de alunos inativos</div></div><div class="nicho-res">↑ +30% retenção · agenda 90% cheia</div></div>
+      <div class="nicho-card card r d6"><div class="nicho-icon">💼</div><h3>Empreendedores</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Pouco tempo para gerir clientes, leads e comunicação</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Sistema automático de captação + CRM + follow-up com IA</div></div><div class="nicho-res">↑ 3× mais leads convertidos</div></div>
+      <div class="nicho-card card r d1"><div class="nicho-icon">👤</div><h3>Trabalho Pessoal</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Dificuldade em gerir a própria agenda e captar novos clientes</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Agenda online + página profissional + automação WhatsApp</div></div><div class="nicho-res">↑ +45% novos clientes em 60 dias</div></div>
+      <div class="nicho-card card r d2"><div class="nicho-icon">🛠️</div><h3>Prestadores de Serviço</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Orçamentos perdidos, leads sem resposta, sem presença digital</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Orçamentos automáticos WhatsApp + SEO local + GBP</div></div><div class="nicho-res">↑ +25% orçamentos fechados</div></div>
+      <div class="nicho-card card r d3"><div class="nicho-icon">🤝</div><h3>Acompanhantes</h3><div class="nicho-block"><div class="nl">Problema</div><div class="nv">Gestão de agenda e contactos feita manualmente, sem sistema</div></div><div class="nicho-block"><div class="nl">Solução</div><div class="nv">Agenda privada + confirmações automáticas + CRM discreto</div></div><div class="nicho-res">↑ Agenda organizada · 0 faltas</div></div>
     </div>
   </div>
 </section>
@@ -662,7 +709,7 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
           <li class="ag-item"><div class="ag-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><strong>Pagamentos integrados</strong><span>MB Way, cartão, multibanco</span></div></li>
           <li class="ag-item"><div class="ag-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div><strong>Dashboard em tempo real</strong><span>Visão completa da agenda e equipa</span></div></li>
         </ul>
-        <a href="https://wa.me/351917305248?text=Quero%20saber%20mais%20sobre%20a%20Agenda.IGSolution" class="btn btn-p" target="_blank">Ver Demonstração</a>
+        <a href="https://agenda-igsolution.vercel.app" class="btn btn-p" target="_blank">Aceder à Agenda.IGSolution →</a>
       </div>
       <div class="r d1">
         <div class="ag-mock">
@@ -845,7 +892,7 @@ footer{border-top:1px solid var(--border);padding:56px 0 0}
         </div>
       </div>
       <div class="ft-col"><h4>Sistema</h4><a href="#sistema">Como Funciona</a><a href="#servicos">Automação IA</a><a href="#agenda">Agenda.IGSolution</a><a href="#servicos">Marketing Local</a></div>
-      <div class="ft-col"><h4>Nichos</h4><a href="#nichos">Barbearias</a><a href="#nichos">Clínicas</a><a href="#nichos">Restaurantes</a><a href="#nichos">Oficinas</a><a href="#nichos">Estéticas</a></div>
+      <div class="ft-col"><h4>Nichos</h4><a href="#nichos">Cafés</a><a href="#nichos">Restaurantes</a><a href="#nichos">Salões de Beleza</a><a href="#nichos">Barbearias</a><a href="#nichos">Personal Trainer</a><a href="#nichos">Prestadores de Serviço</a></div>
       <div class="ft-col"><h4>Empresa</h4><a href="https://igsolutionmkt-lang.github.io/diagnostico.html">Diagnóstico Gratuito</a><a href="#localpulse">LocalPulse</a><a href="#apoios">Portugal 2030</a><a href="mailto:igsolutionmkt@gmail.com">igsolutionmkt@gmail.com</a><a href="tel:+351917305248">+351 917 305 248</a></div>
     </div>
     <div class="ft-bot"><span>© 2026 IG Solution · Todos os direitos reservados.</span><span>Porto, Portugal</span></div>
@@ -874,6 +921,110 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 // Chart
 const chartEl=document.getElementById('chartBars');
 if(chartEl){const vals=[32,48,41,62,55,78,95];vals.forEach((v,i)=>{const b=document.createElement('div');b.className='mb'+(i===6?' hi':'');b.style.cssText=`flex:1;border-radius:3px 3px 0 0;background:${i===6?'var(--g)':'rgba(34,197,94,.22)'};height:0;transition:height .7s cubic-bezier(.34,1.42,.64,1);transition-delay:${i*.07}s`;chartEl.appendChild(b);setTimeout(()=>{b.style.height=v+'%'},300+i*60)})}
+
+// ── TYPEWRITER HERO ──────────────────────────────────
+const tw=document.querySelector('.hero h1 em');
+if(tw){
+  const words=['Menos Trabalho Manual.','Mais Resultados.','Mais Liberdade.','Sistema Automático.'];
+  let wi=0,ci=0,del=false;
+  tw.textContent='';
+  function type(){
+    const w=words[wi];
+    if(!del){tw.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1800);return}}
+    else{tw.textContent=w.slice(0,--ci);if(ci===0){del=false;wi=(wi+1)%words.length}}
+    setTimeout(type,del?45:80);
+  }
+  type();
+}
+
+// ── COUNTER ANIMATION ────────────────────────────────
+function animCount(el,target,dur=1400,prefix='',suffix=''){
+  let start=null,from=0;
+  const isFloat=target%1!==0;
+  const step=ts=>{
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    const val=from+(target-from)*ease;
+    el.textContent=prefix+(isFloat?val.toFixed(1):Math.round(val))+suffix;
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const counterObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target;
+  const raw=el.dataset.count;
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  animCount(el,parseFloat(raw),1400,prefix,suffix);
+  counterObs.unobserve(el);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>counterObs.observe(el));
+
+// ── 3D CARD TILT ─────────────────────────────────────
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
+    card.style.transition='transform .05s';
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+    card.style.transition='transform .4s cubic-bezier(.22,1,.36,1)';
+  });
+});
+
+// ── ANIMATED FLOW LINES ──────────────────────────────
+const flowItems=document.querySelectorAll('.flow-item');
+const flowObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  flowItems.forEach((item,i)=>{
+    setTimeout(()=>{
+      item.style.opacity='1';
+      item.style.transform='translateY(0)';
+      const num=item.querySelector('.fn');
+      if(num){num.style.boxShadow='0 0 0 4px rgba(34,197,94,.2),0 0 20px rgba(34,197,94,.3)';}
+    },i*120);
+  });
+  flowObs.unobserve(e.target);
+}),{threshold:.2});
+if(flowItems.length){
+  flowItems.forEach(i=>{i.style.opacity='0';i.style.transform='translateY(16px)';i.style.transition='all .5s cubic-bezier(.22,1,.36,1)';});
+  flowObs.observe(flowItems[0].closest('.flow')||flowItems[0]);
+}
+
+// ── MAGNETIC BUTTONS ─────────────────────────────────
+document.querySelectorAll('.btn-p,.btn-lg').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.15;
+    const y=(e.clientY-r.top-r.height/2)*.15;
+    btn.style.transform=`translate(${x}px,${y}px) translateY(-2px)`;
+  });
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+});
+
+// ── PROGRESS BARS (results) ──────────────────────────
+const pbObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.querySelectorAll('.pbar-fill').forEach(b=>{
+    b.style.width=b.dataset.w+'%';
+  });
+  pbObs.unobserve(e.target);
+}),{threshold:.3});
+document.querySelectorAll('.nums-grid').forEach(el=>pbObs.observe(el));
+
+// ── GLITCH on hero slogan ────────────────────────────
+const slogan=document.querySelector('.hero-slogan');
+if(slogan){
+  setInterval(()=>{
+    slogan.classList.add('glitch');
+    setTimeout(()=>slogan.classList.remove('glitch'),300);
+  },4000);
+}
 
 // FAQ
 const faqs=[
