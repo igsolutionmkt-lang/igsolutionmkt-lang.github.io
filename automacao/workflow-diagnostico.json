@@ -1,0 +1,284 @@
+{
+  "name": "IG Solution — Leads Diagnóstico Gratuito",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "diagnostico-lead",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "a1b2c3d4-0001",
+      "name": "📥 Webhook — Receber Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "webhookId": "diagnostico-lead"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1",
+              "name": "data",
+              "value": "={{ new Date().toLocaleString('pt-PT', { timeZone: 'Europe/Lisbon', day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) }}",
+              "type": "string"
+            },
+            {
+              "id": "f2",
+              "name": "nome",
+              "value": "={{ $json.body.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "f3",
+              "name": "telefone",
+              "value": "={{ $json.body.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "f4",
+              "name": "negocio",
+              "value": "={{ $json.body.negocio }}",
+              "type": "string"
+            },
+            {
+              "id": "f5",
+              "name": "cidade",
+              "value": "={{ $json.body.cidade }}",
+              "type": "string"
+            },
+            {
+              "id": "f6",
+              "name": "google_business",
+              "value": "={{ $json.body.google || 'Não respondeu' }}",
+              "type": "string"
+            },
+            {
+              "id": "f7",
+              "name": "clientes_mes",
+              "value": "={{ $json.body.clientes || 'Não respondeu' }}",
+              "type": "string"
+            },
+            {
+              "id": "f8",
+              "name": "telefone_wa",
+              "value": "={{ '351' + $json.body.telefone.replace(/\\D/g, '').replace(/^351/, '') }}",
+              "type": "string"
+            },
+            {
+              "id": "f9",
+              "name": "status",
+              "value": "Novo",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0002",
+      "name": "🔧 Formatar Dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "SUBSTITUI_PELO_ID_DA_GOOGLE_SHEET",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $json.data }}",
+            "Nome": "={{ $json.nome }}",
+            "Telefone": "={{ $json.telefone }}",
+            "Negócio": "={{ $json.negocio }}",
+            "Cidade": "={{ $json.cidade }}",
+            "Google Business": "={{ $json.google_business }}",
+            "Clientes/Mês": "={{ $json.clientes_mes }}",
+            "Status": "={{ $json.status }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0003",
+      "name": "📊 Google Sheets — Guardar Lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [680, 200],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SUBSTITUI_PELO_ID_DA_CREDENCIAL_GOOGLE",
+          "name": "Google Sheets — IG Solution"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://SUBSTITUI_URL_EVOLUTION_API/message/sendText/SUBSTITUI_NOME_INSTANCIA",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "SUBSTITUI_API_KEY_EVOLUTION"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"351917305248\",\n  \"text\": \"🔔 *NOVO LEAD — Diagnóstico Gratuito*\\n\\n👤 *Nome:* {{ $json.nome }}\\n📱 *Telefone:* {{ $json.telefone }}\\n🏪 *Negócio:* {{ $json.negocio }}\\n📍 *Cidade:* {{ $json.cidade }}\\n🔍 *Google Business:* {{ $json.google_business }}\\n👥 *Clientes/mês:* {{ $json.clientes_mes }}\\n🕐 *Data:* {{ $json.data }}\\n\\n➡️ Responde em menos de 2h!\"\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0004",
+      "name": "📲 Evolution — Notificar Dono",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 340]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://SUBSTITUI_URL_EVOLUTION_API/message/sendText/SUBSTITUI_NOME_INSTANCIA",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "SUBSTITUI_API_KEY_EVOLUTION"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $json.telefone_wa }}\",\n  \"text\": \"Olá {{ $json.nome }}! 👋\\n\\nRecebi o teu pedido de diagnóstico gratuito da IG Solution.\\n\\n✅ Vou analisar a tua presença online e entro em contacto *em menos de 2 horas* com um relatório personalizado para o teu negócio em {{ $json.cidade }}.\\n\\nQualquer dúvida, responde aqui! 😊\\n\\n— IG Solution Porto\"\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0005",
+      "name": "💬 Evolution — Resposta Automática Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 480]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, message: 'Lead recebido com sucesso' }) }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a1b2c3d4-0006",
+      "name": "✅ Responder ao Site",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [920, 340]
+    },
+    {
+      "parameters": {
+        "method": "OPTIONS",
+        "path": "diagnostico-lead",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0007",
+      "name": "🔀 CORS Preflight",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 500],
+      "webhookId": "diagnostico-lead-cors"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{ \"ok\": true }",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
+              { "name": "Access-Control-Allow-Headers", "value": "Content-Type" }
+            ]
+          }
+        }
+      },
+      "id": "a1b2c3d4-0008",
+      "name": "✅ CORS Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [440, 500]
+    }
+  ],
+  "connections": {
+    "📥 Webhook — Receber Lead": {
+      "main": [
+        [{ "node": "🔧 Formatar Dados", "type": "main", "index": 0 }]
+      ]
+    },
+    "🔧 Formatar Dados": {
+      "main": [
+        [
+          { "node": "📊 Google Sheets — Guardar Lead", "type": "main", "index": 0 },
+          { "node": "📲 Evolution — Notificar Dono", "type": "main", "index": 0 },
+          { "node": "💬 Evolution — Resposta Automática Lead", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "📲 Evolution — Notificar Dono": {
+      "main": [
+        [{ "node": "✅ Responder ao Site", "type": "main", "index": 0 }]
+      ]
+    },
+    "🔀 CORS Preflight": {
+      "main": [
+        [{ "node": "✅ CORS Response", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": ""
+  },
+  "tags": ["IG Solution", "Leads", "WhatsApp", "Automação"]
+}

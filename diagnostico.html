@@ -293,9 +293,9 @@ footer{border-top:1px solid var(--bd)}
           </div>
         </div>
 
-        <button type="submit" class="btn-submit" onclick="submeter()">
+        <button type="submit" class="btn-submit" id="btnSubmit" onclick="submeter()">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          Quero o meu diagnóstico gratuito
+          <span id="btnText">Quero o meu diagnóstico gratuito</span>
         </button>
         <p class="disclaimer">Os teus dados são confidenciais e nunca partilhados com terceiros.</p>
       </form>
@@ -364,14 +364,18 @@ footer{border-top:1px solid var(--bd)}
 </a>
 
 <script>
-/* Nav scroll */
+/* ── CONFIG — substitui pelo URL real do teu n8n ── */
+const WEBHOOK_URL = 'https://SEU_N8N/webhook/diagnostico-lead';
+/* ─────────────────────────────────────────────── */
+
+/* Nav */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
 const hb=document.getElementById('hb'),mob=document.getElementById('mob');
 hb.addEventListener('click',()=>mob.classList.toggle('open'));
 
 /* Form submit */
-function submeter(){
+async function submeter(){
   const nome=document.getElementById('nome').value.trim();
   const tel=document.getElementById('telefone').value.trim();
   const neg=document.getElementById('negocio').value;
@@ -379,6 +383,7 @@ function submeter(){
   const google=document.querySelector('input[name="google"]:checked');
   const clientes=document.querySelector('input[name="clientes"]:checked');
 
+  /* Validação */
   let ok=true;
   ['nome','telefone','cidade'].forEach(id=>{
     const el=document.getElementById(id);
@@ -387,12 +392,42 @@ function submeter(){
   if(!neg){document.getElementById('negocio').classList.add('err');ok=false}
   if(!ok)return;
 
+  /* Loading state */
+  const btn=document.getElementById('btnSubmit');
+  const btnText=document.getElementById('btnText');
+  btn.disabled=true;
+  btn.style.opacity='.7';
+  btnText.textContent='A enviar…';
+
+  const payload={
+    nome,
+    telefone: tel,
+    negocio: neg,
+    cidade: cid,
+    google: google?google.value:'Não respondeu',
+    clientes: clientes?clientes.value:'Não respondeu'
+  };
+
+  /* Fallback wa.me link (sempre disponível) */
   const msg=`Olá! Submeti o formulário de diagnóstico gratuito.\n\n`+
     `👤 Nome: ${nome}\n📱 Telefone: ${tel}\n🏪 Negócio: ${neg}\n📍 Cidade: ${cid}\n`+
-    `🔍 Google Business: ${google?google.value:'Não respondeu'}\n`+
-    `👥 Clientes/mês: ${clientes?clientes.value:'Não respondeu'}\n\nAguardo o meu diagnóstico gratuito!`;
-
+    `🔍 Google Business: ${payload.google}\n`+
+    `👥 Clientes/mês: ${payload.clientes}\n\nAguardo o meu diagnóstico gratuito!`;
   document.getElementById('waLink').href=`https://wa.me/351917305248?text=${encodeURIComponent(msg)}`;
+
+  /* Envio para n8n webhook */
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) {
+    /* Webhook falhou mas não bloqueamos o utilizador — fallback wa.me activo */
+    console.warn('Webhook indisponível — fallback wa.me activo', e);
+  }
+
+  /* Mostrar sucesso */
   document.getElementById('formSection').style.display='none';
   document.getElementById('successSection').classList.add('show');
   window.scrollTo({top:0,behavior:'smooth'});
