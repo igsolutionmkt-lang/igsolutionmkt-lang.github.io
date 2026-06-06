@@ -354,6 +354,15 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
 .wa:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.5)}
 .wa svg{width:22px;height:22px;fill:#fff}
 
+/* ─── BUTTON PULSE ───────────────────────── */
+@keyframes pulse-ring{
+  0%  { box-shadow:0 0 0 0 rgba(0,159,90,.50),0 6px 20px rgba(0,159,90,.22); }
+  65% { box-shadow:0 0 0 10px rgba(0,159,90,0),0 6px 20px rgba(0,159,90,.22); }
+  100%{ box-shadow:0 0 0 0 rgba(0,159,90,0),  0 6px 20px rgba(0,159,90,.22); }
+}
+.btn-pulse{animation:pulse-ring 2.2s cubic-bezier(.4,0,.6,1) infinite}
+.btn-pulse:hover{animation:none;transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,159,90,.38)!important}
+
 /* ─── REVEAL ──────────────────────────────── */
 .r{opacity:0;transform:translateY(20px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
 .r.on{opacity:1;transform:none}
@@ -432,14 +441,14 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nc">
-      <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p">Diagnóstico Gratuito</a>
+      <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-pulse">Diagnóstico Gratuito</a>
     </div>
     <button class="hb" id="hb" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mob" id="mob">
     <a href="#sistema">Sistema</a><a href="#servicos">Serviços</a><a href="#nichos">Nichos</a><a href="#resultados">Resultados</a>
     <a href="#agenda">Agenda</a><a href="#faq">FAQ</a>
-    <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p" style="margin-top:8px;justify-content:center">Diagnóstico Gratuito</a>
+    <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-pulse" style="margin-top:8px;justify-content:center">Diagnóstico Gratuito</a>
   </div>
 </div>
 
@@ -450,7 +459,7 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
     <h1 class="hero-h1 r d1">Mais Clientes.<br/><span class="grad">Menos Trabalho.</span></h1>
     <p class="hero-sub r d2">Automatizamos captação, atendimento por WhatsApp e agendamentos para negócios locais.</p>
     <div class="hero-ctas r d3">
-      <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg">
+      <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg btn-pulse">
         <svg class="ico"><use href="#ico-search"/></svg>Diagnóstico Gratuito
       </a>
       <a href="https://wa.me/351917305248?text=Quero%20ver%20uma%20demonstração." class="btn btn-s btn-lg" target="_blank">
@@ -963,7 +972,7 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
       <h2 class="cta-h2">Descubra quantos clientes<br/>está a <span class="grad">perder</span> hoje.</h2>
       <p class="cta-p">Análise gratuita da sua presença online. Sem compromisso.</p>
       <div class="cta-btns">
-        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg">
+        <a href="https://igsolutionmkt-lang.github.io/diagnostico.html" class="btn btn-p btn-lg btn-pulse">
           <svg class="ico"><use href="#ico-search"/></svg>Diagnóstico Gratuito
         </a>
         <a href="https://wa.me/351917305248?text=Olá!%20Vim%20pelo%20site." class="btn btn-s btn-lg" target="_blank">WhatsApp Directo</a>
