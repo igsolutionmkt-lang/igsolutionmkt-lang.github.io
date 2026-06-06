@@ -158,15 +158,17 @@ h1,h2,h3,h4{font-family:var(--fh);color:var(--t1);letter-spacing:-.02em;line-hei
 .mb-lbl{font-size:11px;color:var(--t4);text-transform:uppercase;letter-spacing:.1em;margin-top:8px;display:block}
 
 /* ─── SYSTEM / HOW IT WORKS ───────────────── */
-.stepper{display:flex;align-items:center;justify-content:center;gap:0;max-width:760px;margin:64px auto 0;position:relative}
+.stepper{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:72px auto 0;position:relative}
 .step{display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;position:relative;z-index:1}
-.step-node{width:56px;height:56px;border-radius:14px;border:1.5px solid rgba(0,255,133,.15);background:rgba(255,255,255,.04);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;color:var(--t3);transition:all .4s cubic-bezier(.23,1,.32,1);margin-bottom:14px}
-.step:hover .step-node,.step.active .step-node{border-color:rgba(0,255,133,.45);color:var(--g);background:rgba(0,255,133,.08);box-shadow:0 0 20px rgba(0,255,133,.18)}
-.step-label{font-size:11.5px;font-weight:600;color:var(--t3)}
-.step-arrow{flex-shrink:0;color:var(--t4);padding:0 8px;margin-bottom:28px}
+.step-node{width:72px;height:72px;border-radius:18px;border:1.5px solid rgba(0,255,133,.15);background:rgba(255,255,255,.04);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;color:var(--t3);transition:all .4s cubic-bezier(.23,1,.32,1);margin-bottom:16px}
+.step-node svg{width:28px;height:28px}
+.step:hover .step-node,.step.active .step-node{border-color:rgba(0,255,133,.45);color:var(--g);background:rgba(0,255,133,.08);box-shadow:0 0 28px rgba(0,255,133,.22);transform:translateY(-4px)}
+.step-label{font-size:12.5px;font-weight:600;color:var(--t3);line-height:1.3;max-width:80px}
+.step:hover .step-label,.step.active .step-label{color:var(--t2)}
+.step-arrow{flex-shrink:0;color:rgba(0,255,133,.25);padding:0 4px;margin-bottom:42px;font-size:18px}
 .step:last-child .step-arrow{display:none}
 /* Gradient line behind steps */
-.stepper-line{position:absolute;top:24px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--bd2) 20%,var(--bd2) 80%,transparent);z-index:0}
+.stepper-line{position:absolute;top:36px;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,133,.20) 20%,rgba(0,255,133,.20) 80%,transparent);z-index:0}
 
 /* Feature split rows */
 .feat-split{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;max-width:1160px;margin:0 auto;padding:0 40px}
@@ -388,10 +390,12 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
 @media(max-width:768px){
   section{padding:100px 0}
   .nl,.nc{display:none}.hb{display:flex}
-  .stepper{flex-direction:column;align-items:flex-start;gap:8px;max-width:360px}
+  .stepper{flex-direction:column;align-items:flex-start;gap:12px;max-width:360px}
   .stepper-line{display:none}
-  .step{flex-direction:row;gap:12px;align-items:flex-start}
-  .step-node{margin-bottom:0;flex-shrink:0}
+  .step{flex-direction:row;gap:16px;align-items:center}
+  .step-node{margin-bottom:0;flex-shrink:0;width:60px;height:60px}
+  .step-node svg{width:24px;height:24px}
+  .step-label{text-align:left;max-width:none;font-size:13px}
   .step-arrow{display:none}
   .mb-row{flex-wrap:wrap}
   .mb-item{min-width:50%;border-bottom:1px solid var(--bd)}
@@ -578,31 +582,31 @@ footer{border-top:1px solid var(--bd);position:relative;z-index:1}
         <div class="step active">
           <div class="step-node"><svg class="ico"><use href="#ico-search"/></svg></div>
           <div class="step-label">Pesquisa</div>
-          <div class="step-arrow"><svg class="ico" style="width:14px;height:14px"><use href="#ico-arrow-r"/></svg></div>
+          <div class="step-arrow"><svg class="ico" style="width:16px;height:16px"><use href="#ico-arrow-r"/></svg></div>
         </div>
         <div class="step">
           <div class="step-node"><svg class="ico"><use href="#ico-pin"/></svg></div>
           <div class="step-label">Top 3 Maps</div>
-          <div class="step-arrow"><svg class="ico" style="width:14px;height:14px"><use href="#ico-arrow-r"/></svg></div>
+          <div class="step-arrow"><svg class="ico" style="width:16px;height:16px"><use href="#ico-arrow-r"/></svg></div>
         </div>
         <div class="step">
           <div class="step-node"><svg class="ico"><use href="#ico-msg"/></svg></div>
           <div class="step-label">WhatsApp IA</div>
-          <div class="step-arrow"><svg class="ico" style="width:14px;height:14px"><use href="#ico-arrow-r"/></svg></div>
+          <div class="step-arrow"><svg class="ico" style="width:16px;height:16px"><use href="#ico-arrow-r"/></svg></div>
         </div>
         <div class="step">
           <div class="step-node"><svg class="ico"><use href="#ico-cal"/></svg></div>
           <div class="step-label">Agenda</div>
-          <div class="step-arrow"><svg class="ico" style="width:14px;height:14px"><use href="#ico-arrow-r"/></svg></div>
+          <div class="step-arrow"><svg class="ico" style="width:16px;height:16px"><use href="#ico-arrow-r"/></svg></div>
         </div>
         <div class="step">
           <div class="step-node"><svg class="ico"><use href="#ico-bell"/></svg></div>
           <div class="step-label">Follow-up</div>
-          <div class="step-arrow"><svg class="ico" style="width:14px;height:14px"><use href="#ico-arrow-r"/></svg></div>
+          <div class="step-arrow"><svg class="ico" style="width:16px;height:16px"><use href="#ico-arrow-r"/></svg></div>
         </div>
         <div class="step">
-          <div class="step-node" style="border-color:rgba(0,217,126,.35);color:var(--g);background:rgba(0,217,126,.06)">
-            <svg class="ico"><use href="#ico-check"/></svg>
+          <div class="step-node" style="border-color:rgba(0,255,133,.50);color:var(--g);background:rgba(0,255,133,.10);box-shadow:0 0 28px rgba(0,255,133,.25)">
+            <svg style="width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round"><use href="#ico-check"/></svg>
           </div>
           <div class="step-label" style="color:var(--g)">Cliente Fiel</div>
         </div>
