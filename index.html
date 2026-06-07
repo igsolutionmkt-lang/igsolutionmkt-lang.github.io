@@ -144,8 +144,7 @@ section{padding:120px 0}
 }
 .mobile-menu a:last-of-type{border-bottom:none}
 .mobile-menu .mobile-ctas{display:flex;flex-direction:column;gap:10px;margin-top:16px}
-@media(max-width:900px){.nav-links,.nav-right .btn-ghost{display:none}.hamburger{display:flex}}
-@media(max-width:480px){.nav-right .btn-primary{display:none}}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
 
 /* HERO */
 .hero{
@@ -238,6 +237,7 @@ section{padding:120px 0}
 }
 .agent-status-item:last-child{border-bottom:none}
 .agent-status-item::before{content:'✓';color:var(--green);font-size:9px;font-weight:700}
+.agent-status-item.no-check::before{display:none}
 @media(max-width:1024px){.hero-grid{gap:48px}.agent-card{display:none}}
 @media(max-width:768px){.hero{padding:80px 0 60px}.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}}
 
@@ -447,7 +447,6 @@ footer{border-top:1px solid var(--bd);padding:64px 0 32px}
     <a href="#nichos">Nichos</a>
   </div>
   <div class="nav-right">
-    <a href="tel:+351917305248" class="btn-ghost">+351 917 305 248</a>
     <a href="diagnostico.html" class="btn-primary">Diagnóstico Gratuito</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -461,8 +460,8 @@ footer{border-top:1px solid var(--bd);padding:64px 0 32px}
   <a href="#resultados">Resultados</a>
   <a href="#nichos">Nichos</a>
   <div class="mobile-ctas">
-    <a href="tel:+351917305248" class="btn-ghost" style="text-align:center">+351 917 305 248</a>
     <a href="diagnostico.html" class="btn-primary" style="text-align:center;padding:12px">Diagnóstico Gratuito</a>
+    <a href="https://wa.me/351917305248" target="_blank" class="btn-ghost" style="text-align:center">💬 WhatsApp</a>
   </div>
 </div>
 
@@ -546,7 +545,7 @@ footer{border-top:1px solid var(--bd);padding:64px 0 32px}
             <div class="agent-header"><div class="agent-h-dot"></div>AGENTE IA ACTIVO</div>
             <div class="agent-status-item">WhatsApp respondendo</div>
             <div class="agent-status-item">Instagram activo</div>
-            <div class="agent-status-item" style="color:var(--t2)">⚡ 3 leads a qualificar</div>
+            <div class="agent-status-item no-check" style="color:var(--t2)">⚡ 3 leads a qualificar</div>
           </div>
         </div>
       </div>
