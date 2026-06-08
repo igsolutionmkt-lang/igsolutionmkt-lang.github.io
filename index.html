@@ -150,25 +150,7 @@ section{padding:120px 0}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite;flex-shrink:0}
 
 /* FLOATING WA CARD */
-.wa-hero-card{
-  position:absolute;bottom:-16px;right:-20px;
-  background:var(--s1);border:1px solid rgba(255,255,255,.12);
-  border-radius:var(--r-lg);padding:14px 16px;
-  box-shadow:var(--sh);min-width:240px;max-width:280px;
-  z-index:2;
-}
-.wa-card-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--bd)}
-.wa-avatar{width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-.wa-info-name{font-size:.8125rem;font-weight:700;color:var(--t1);line-height:1.2}
-.wa-info-status{font-size:.6875rem;color:var(--green)}
-.wa-msgs{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-.wa-msg{border-radius:10px;padding:7px 10px;font-size:.75rem;line-height:1.45;max-width:92%}
-.wa-msg.in{background:#1F2C34;color:var(--t2);border-bottom-left-radius:2px;align-self:flex-start}
-.wa-msg.out{background:rgba(34,197,94,.12);border:1px solid var(--green-border);color:var(--t1);border-bottom-right-radius:2px;align-self:flex-end}
-.wa-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;background:var(--green-dim);border:1px solid var(--green-border);border-radius:100px;font-family:var(--font-m);font-size:8.5px;letter-spacing:.06em;color:var(--green)}
-.wa-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite}
-
-@media(max-width:1060px){.hero-grid{gap:48px}.wa-hero-card{display:none}}
+@media(max-width:1060px){.hero-grid{gap:48px}}
 @media(max-width:768px){.hero{padding:80px 0 60px}.hero-grid{grid-template-columns:1fr;gap:44px}.hero-visual{display:none}.hero-phone-wrap{display:block}}
 
 /* MOBILE PHONE MOCKUP */
@@ -463,18 +445,6 @@ footer{border-top:1px solid var(--bd);padding:60px 0 28px}
             </div>
           </div>
           <p style="font-size:10px;color:rgba(249,249,250,.25);text-align:right;margin-top:8px;font-family:'Space Mono',monospace;">*Dashboard ilustrativo baseado em clientes activos</p>
-          <!-- Floating WA card -->
-          <div class="wa-hero-card">
-            <div class="wa-card-head">
-              <div class="wa-avatar">🤖</div>
-              <div><div class="wa-info-name">Agente IA · IG Solution</div><div class="wa-info-status">● online agora</div></div>
-            </div>
-            <div class="wa-msgs">
-              <div class="wa-msg in">Gostava de saber o preço de um corte 👋</div>
-              <div class="wa-msg out">Olá! Temos disponibilidade hoje às 15h ou 17h. Qual preferes?</div>
-            </div>
-            <div class="wa-badge"><span class="wa-badge-dot"></span>Agente IA · respondeu em 18s</div>
-          </div>
         </div>
       </div>
 
