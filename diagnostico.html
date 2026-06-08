@@ -184,7 +184,7 @@ p{color:var(--t2);line-height:1.7}
   display:flex;align-items:center;gap:10px;
   padding:10px 14px;
   background:var(--s2);border:1px solid var(--bd2);border-radius:var(--radius-sm);
-  cursor:pointer;transition:all .18s;
+  cursor:pointer;transition:border-color .18s,background .18s;
   position:relative;
 }
 .radio-option:hover{border-color:var(--bd3)}
@@ -194,7 +194,7 @@ p{color:var(--t2);line-height:1.7}
   background:transparent;
   appearance:none;-webkit-appearance:none;
   flex-shrink:0;
-  transition:all .18s;cursor:pointer;
+  transition:border-color .18s,background .18s;cursor:pointer;
   position:relative;
 }
 .radio-option input[type=radio]:checked{
@@ -218,14 +218,14 @@ p{color:var(--t2);line-height:1.7}
   display:flex;align-items:center;gap:8px;
   padding:8px 12px;
   background:var(--s2);border:1px solid var(--bd2);border-radius:var(--radius-sm);
-  cursor:pointer;transition:all .18s;
+  cursor:pointer;transition:border-color .18s,background .18s;
 }
 .check-option:hover{border-color:var(--bd3)}
 .check-option input[type=checkbox]{
   width:15px;height:15px;flex-shrink:0;
   border:1.5px solid var(--bd3);border-radius:3px;
   background:transparent;appearance:none;-webkit-appearance:none;
-  transition:all .18s;cursor:pointer;
+  transition:border-color .18s,background .18s;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
 }
 .check-option input[type=checkbox]:checked{
@@ -248,7 +248,7 @@ p{color:var(--t2);line-height:1.7}
   border-radius:var(--radius-sm);
   font-size:1.0625rem;font-weight:700;font-family:var(--font-h);
   letter-spacing:-.01em;
-  transition:all .18s;cursor:pointer;
+  transition:background .18s,transform .18s,box-shadow .18s;cursor:pointer;
   position:relative;overflow:hidden;
 }
 .btn-submit:hover:not(:disabled){background:#16a34a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,.25)}
@@ -278,7 +278,7 @@ p{color:var(--t2);line-height:1.7}
   background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);
   border-radius:var(--radius-sm);
   font-size:.875rem;font-weight:600;color:#25D366;
-  transition:all .18s;white-space:nowrap;
+  transition:background .18s;white-space:nowrap;
 }
 .btn-wa:hover{background:rgba(37,211,102,.2)}
 
@@ -317,7 +317,7 @@ p{color:var(--t2);line-height:1.7}
 .btn-home{
   display:inline-flex;align-items:center;gap:8px;
   padding:13px 28px;border:1px solid var(--bd2);border-radius:var(--radius-sm);
-  font-size:.9375rem;font-weight:500;color:var(--t2);transition:all .18s;
+  font-size:.9375rem;font-weight:500;color:var(--t2);transition:border-color .18s,color .18s;
 }
 .btn-home:hover{border-color:rgba(255,255,255,.2);color:var(--t1)}
 
