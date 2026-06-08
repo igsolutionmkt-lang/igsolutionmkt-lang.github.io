@@ -419,6 +419,10 @@ p{color:var(--t2);line-height:1.7}
         <div class="field-group">
           <div class="group-label">02 · Situação actual</div>
           <div class="field">
+            <label>Website ou perfil Instagram (URL)</label>
+            <input type="url" name="website_instagram" id="website_instagram" placeholder="https://www.seusite.pt ou instagram.com/seunegoicio"/>
+          </div>
+          <div class="field">
             <label>Sector de actividade <span class="req">*</span></label>
             <select name="sector" id="sector" required>
               <option value="">Selecciona o teu sector</option>
@@ -473,6 +477,23 @@ p{color:var(--t2);line-height:1.7}
         <!-- GRUPO 3: AUTOMAÇÃO -->
         <div class="field-group">
           <div class="group-label">03 · Automação &amp; Marketing</div>
+          <div class="field">
+            <label>Já trabalhas com alguma agência de marketing?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="agencia" value="Sim actualmente"/>
+                <span class="radio-label">Sim, actualmente</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="agencia" value="Já trabalhei mas não continuo"/>
+                <span class="radio-label">Já trabalhei, mas não continuo</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="agencia" value="Nunca trabalhei"/>
+                <span class="radio-label">Nunca trabalhei com agência</span>
+              </label>
+            </div>
+          </div>
           <div class="field">
             <label>Como respondes actualmente aos leads? <span class="req">*</span></label>
             <select name="resposta_leads" id="resposta_leads" required>
@@ -711,7 +732,9 @@ function getFormData() {
     cidade: d.get('cidade') || '',
     sector: d.get('sector') || '',
     clientes_mes: d.get('clientes_mes') || '',
+    website_instagram: d.get('website_instagram') || '',
     google_business: d.get('google_business') || '',
+    agencia: d.get('agencia') || '',
     resposta_leads: d.get('resposta_leads') || '',
     canais: canais.join(', '),
     maior_desafio: d.get('maior_desafio') || '',
@@ -759,7 +782,7 @@ document.getElementById('diag-form').addEventListener('submit', async (e) => {
 
   } catch (err) {
     console.error('Webhook error:', err);
-    errBanner.textContent = 'Ocorreu um erro ao enviar. Tenta novamente ou contacta-nos pelo WhatsApp abaixo.';
+    errBanner.innerHTML = 'Ocorreu um erro ao enviar. Tenta novamente ou fala connosco directamente: <a href="https://wa.me/351917305248" target="_blank" style="color:#25D366;text-decoration:underline">💬 WhatsApp +351 917 305 248</a>';
     errBanner.classList.add('show');
     errBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
   } finally {
