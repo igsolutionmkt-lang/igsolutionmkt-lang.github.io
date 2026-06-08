@@ -58,7 +58,7 @@ section{padding:120px 0}
 @media(max-width:768px){section{padding:80px 0}}
 
 /* ── SCROLL OFFSET ── */
-#problema,#ecossistema,#como-funciona,#precos,#resultados,#nichos,#ia-search,#faq{scroll-margin-top:80px}
+#problema,#ecossistema,#sistema-em-acao,#como-funciona,#precos,#resultados,#nichos,#ia-search,#faq{scroll-margin-top:80px}
 
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
@@ -524,6 +524,364 @@ footer{border-top:1px solid var(--bd);padding:60px 0 28px}
     </div>
   </div>
 </section>
+
+<!-- SISTEMA EM ACÇÃO -->
+<section id="sistema-em-acao" style="background:var(--s1);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="eyebrow">Sistema em Acção</div>
+      <h2>De pesquisa a cliente confirmado.<br/>Em menos de 60 segundos.</h2>
+      <p>Sem telefonemas. Sem esperas. Sem intervenção humana.</p>
+    </div>
+
+    <!-- FLOW WRAPPER -->
+    <div class="sia-wrap reveal d1" id="sia-wrap" aria-label="Fluxo do sistema em acção">
+
+      <!-- CONNECTOR LINE -->
+      <div class="sia-track" aria-hidden="true">
+        <div class="sia-dot" id="sia-dot"></div>
+      </div>
+
+      <!-- STAGES -->
+      <div class="sia-stages">
+
+        <!-- STAGE 1 -->
+        <div class="sia-card" id="sia-s1" aria-label="Estágio 1: Motor de Captação">
+          <div class="sia-card-top">
+            <span class="sia-badge" id="sia-b1">Motor de Captação</span>
+            <span class="sia-time" id="sia-t1">T+0s</span>
+          </div>
+          <div class="sia-icon">🔍</div>
+          <div class="sia-title">Cliente encontra o negócio</div>
+          <div class="sia-detail">
+            <div class="sia-dl">João pesquisou "barbearia porto"</div>
+            <div class="sia-dl">Apareceu em Top 3 do Google Maps</div>
+            <div class="sia-dl">e clicou no perfil</div>
+          </div>
+        </div>
+
+        <!-- STAGE 2 -->
+        <div class="sia-card" id="sia-s2" aria-label="Estágio 2: Agente IA">
+          <div class="sia-card-top">
+            <span class="sia-badge" id="sia-b2">Agente IA</span>
+            <span class="sia-time" id="sia-t2">T+18s</span>
+          </div>
+          <div class="sia-icon">🤖</div>
+          <div class="sia-title">Agente responde automaticamente</div>
+          <div class="sia-chat" id="sia-chat">
+            <div class="sia-bubble sia-in" id="siac1">João: "Qual o preço de um corte?"</div>
+            <div class="sia-bubble sia-out" id="siac2">€15. Tens disponibilidade hoje às 15h ou 17h?</div>
+            <div class="sia-bubble sia-in" id="siac3">João: "15h!"</div>
+          </div>
+        </div>
+
+        <!-- STAGE 3 -->
+        <div class="sia-card" id="sia-s3" aria-label="Estágio 3: Agenda.IG">
+          <div class="sia-card-top">
+            <span class="sia-badge" id="sia-b3">Agenda.IG</span>
+            <span class="sia-time" id="sia-t3">T+34s</span>
+          </div>
+          <div class="sia-icon">📆</div>
+          <div class="sia-title">Marcação confirmada</div>
+          <div class="sia-detail">
+            <div class="sia-dl">Marcação criada: hoje 15:00</div>
+            <div class="sia-dl">Confirmação enviada por WhatsApp</div>
+            <div class="sia-dl">Lembrete agendado para −1h</div>
+          </div>
+        </div>
+
+        <!-- STAGE 4 -->
+        <div class="sia-card" id="sia-s4" aria-label="Estágio 4: LocalPulse">
+          <div class="sia-card-top">
+            <span class="sia-badge" id="sia-b4">LocalPulse</span>
+            <span class="sia-time" id="sia-t4">T+47s</span>
+          </div>
+          <div class="sia-icon">📊</div>
+          <div class="sia-title">Lead no pipeline</div>
+          <div class="sia-detail">
+            <div class="sia-dl">João Silva adicionado ao CRM</div>
+            <div class="sia-dl">Estado: <span style="color:var(--green)">Confirmado</span></div>
+            <div class="sia-dl">Follow-up: amanhã 10:00</div>
+          </div>
+        </div>
+
+      </div><!-- /sia-stages -->
+
+      <!-- RESULT BAR -->
+      <div class="sia-result reveal d2">
+        <div class="sia-res-item"><span class="sia-res-dot"></span>Lead convertido</div>
+        <div class="sia-res-item">⏱ <span id="sia-counter">0</span> segundos</div>
+        <div class="sia-res-item">👤 0 humanos envolvidos</div>
+        <div class="sia-res-item">✓ Follow-up activo</div>
+      </div>
+
+    </div><!-- /sia-wrap -->
+
+    <p style="font-size:10px;color:rgba(249,249,250,.25);text-align:center;margin-top:20px;font-family:'Space Mono',monospace;">*Exemplo real baseado no fluxo de um cliente activo. Tempos aproximados.</p>
+
+  </div>
+</section>
+
+<style>
+/* ── SISTEMA EM ACÇÃO ── */
+#sistema-em-acao{scroll-margin-top:80px}
+.sia-wrap{position:relative;padding-bottom:8px}
+
+/* TRACK + DOT */
+.sia-track{
+  position:absolute;top:62px;left:0;right:0;height:1px;
+  background:rgba(255,255,255,.08);z-index:0;
+  overflow:visible;
+}
+.sia-dot{
+  position:absolute;top:50%;left:0;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green);
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 8px rgba(34,197,94,.6);
+  animation:siaDot 8s linear infinite;
+}
+@keyframes siaDot{
+  0%   {left:0%}
+  22%  {left:25%;animation-timing-function:ease-in-out}
+  28%  {left:25%}
+  47%  {left:50%;animation-timing-function:ease-in-out}
+  53%  {left:50%}
+  72%  {left:75%;animation-timing-function:ease-in-out}
+  78%  {left:75%}
+  97%  {left:100%}
+  100% {left:100%}
+}
+
+/* STAGES */
+.sia-stages{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  position:relative;z-index:1;
+}
+.sia-card{
+  background:var(--s2);
+  border:1px solid var(--bd);
+  border-radius:var(--r-lg);
+  padding:20px 18px;
+  transition:border-color .4s ease,background .4s ease;
+  min-height:180px;
+}
+.sia-card.active{
+  border-color:rgba(34,197,94,.20);
+  background:rgba(34,197,94,.04);
+}
+.sia-card.done{
+  border-color:rgba(34,197,94,.10);
+}
+.sia-card-top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;gap:6px;
+}
+.sia-badge{
+  font-family:var(--font-m);font-size:8px;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 9px;border-radius:100px;
+  border:1px solid var(--bd2);color:var(--t4);
+  transition:all .4s ease;white-space:nowrap;
+}
+.sia-card.active .sia-badge,.sia-card.done .sia-badge{
+  border-color:var(--green-border);color:var(--green);
+  background:var(--green-dim);
+}
+.sia-time{
+  font-family:var(--font-m);font-size:8px;color:var(--t4);
+  opacity:0;transition:opacity .4s ease;white-space:nowrap;
+}
+.sia-card.active .sia-time,.sia-card.done .sia-time{opacity:1;color:var(--t3)}
+.sia-icon{font-size:1.35rem;margin-bottom:8px}
+.sia-title{
+  font-family:var(--font-h);font-size:.875rem;font-weight:700;
+  color:var(--t1);margin-bottom:10px;line-height:1.3;
+}
+.sia-detail{display:flex;flex-direction:column;gap:3px}
+.sia-dl{font-size:.75rem;color:var(--t3);line-height:1.5}
+.sia-card.active .sia-dl,.sia-card.done .sia-dl{color:var(--t2)}
+
+/* MINI CHAT */
+.sia-chat{display:flex;flex-direction:column;gap:5px}
+.sia-bubble{
+  border-radius:9px;padding:6px 9px;
+  font-size:.7rem;line-height:1.45;max-width:95%;
+  opacity:0;transform:translateY(4px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.sia-bubble.show{opacity:1;transform:none}
+.sia-in{
+  background:#1F2C34;color:var(--t2);
+  border-bottom-left-radius:2px;align-self:flex-start;
+}
+.sia-out{
+  background:rgba(34,197,94,.10);
+  border:1px solid rgba(34,197,94,.18);
+  color:var(--t1);
+  border-bottom-right-radius:2px;align-self:flex-end;
+}
+
+/* RESULT BAR */
+.sia-result{
+  display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:10px;
+  background:rgba(34,197,94,.06);
+  border:1px solid rgba(34,197,94,.15);
+  border-radius:10px;padding:16px 28px;
+  margin-top:28px;
+}
+.sia-res-item{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--font-m);font-size:11px;
+  color:rgba(34,197,94,.90);letter-spacing:.04em;
+}
+.sia-res-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);
+  animation:blink 2s ease-in-out infinite;
+  display:inline-block;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .sia-track{
+    top:0;bottom:0;left:20px;right:auto;
+    width:1px;height:auto;
+  }
+  .sia-dot{
+    top:0;left:50%;
+    animation:siaDotV 8s linear infinite;
+  }
+  @keyframes siaDotV{
+    0%   {top:0%}
+    22%  {top:25%;animation-timing-function:ease-in-out}
+    28%  {top:25%}
+    47%  {top:50%;animation-timing-function:ease-in-out}
+    53%  {top:50%}
+    72%  {top:75%;animation-timing-function:ease-in-out}
+    78%  {top:75%}
+    97%  {top:100%}
+    100% {top:100%}
+  }
+  .sia-stages{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding-left:40px;
+  }
+  .sia-result{
+    grid-template-columns:1fr 1fr;
+    display:grid;
+    padding:14px 18px;
+  }
+  .sia-res-item{justify-content:flex-start}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .sia-dot{animation:none;left:0}
+  .sia-bubble{opacity:1;transform:none}
+  .sia-card{border-color:rgba(34,197,94,.15)}
+}
+</style>
+
+<script>
+(function(){
+  var wrap = document.getElementById('sia-wrap');
+  if(!wrap) return;
+
+  var stages = [
+    document.getElementById('sia-s1'),
+    document.getElementById('sia-s2'),
+    document.getElementById('sia-s3'),
+    document.getElementById('sia-s4')
+  ];
+  var chatBubbles = [
+    document.getElementById('siac1'),
+    document.getElementById('siac2'),
+    document.getElementById('siac3')
+  ];
+  var counterEl = document.getElementById('sia-counter');
+  var CYCLE = 8000;
+  var activeTimes = [0, 2000, 4000, 6000];
+  var timer = null;
+  var counterTimer = null;
+  var started = false;
+
+  function resetStages(){
+    stages.forEach(function(s){ s.classList.remove('active','done'); });
+    chatBubbles.forEach(function(b){ b.classList.remove('show'); });
+    if(counterEl) counterEl.textContent = '0';
+  }
+
+  function activateStage(idx){
+    if(idx > 0) stages[idx-1].classList.remove('active');
+    if(idx > 0) stages[idx-1].classList.add('done');
+    if(stages[idx]) stages[idx].classList.add('active');
+
+    // chat animation for stage 2
+    if(idx === 1){
+      chatBubbles.forEach(function(b,i){
+        setTimeout(function(){ b.classList.add('show'); }, i * 420);
+      });
+    }
+  }
+
+  function animateCounter(target, duration){
+    var start = 0;
+    var step = target / (duration / 40);
+    if(counterTimer) clearInterval(counterTimer);
+    counterTimer = setInterval(function(){
+      start = Math.min(start + step, target);
+      if(counterEl) counterEl.textContent = Math.round(start);
+      if(start >= target) clearInterval(counterTimer);
+    }, 40);
+  }
+
+  function runCycle(){
+    resetStages();
+    activeTimes.forEach(function(t, i){
+      setTimeout(function(){ activateStage(i); }, t);
+    });
+    // counter animates on stage 4 activation
+    setTimeout(function(){ animateCounter(47, 900); }, activeTimes[3]);
+    // after full cycle, mark all done then reset
+    setTimeout(function(){
+      stages.forEach(function(s){ s.classList.remove('active'); s.classList.add('done'); });
+    }, CYCLE - 600);
+  }
+
+  function startLoop(){
+    if(timer) return;
+    runCycle();
+    timer = setInterval(runCycle, CYCLE);
+  }
+
+  function stopLoop(){
+    clearInterval(timer);
+    clearInterval(counterTimer);
+    timer = null;
+  }
+
+  // reduced motion — activate all statically
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(prefersReduced){
+    stages.forEach(function(s){ s.classList.add('done'); });
+    chatBubbles.forEach(function(b){ b.classList.add('show'); });
+    if(counterEl) counterEl.textContent = '47';
+    return;
+  }
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ startLoop(); }
+      else { stopLoop(); resetStages(); }
+    });
+  }, { threshold: 0.15 });
+
+  obs.observe(wrap);
+})();
+</script>
 
 <!-- COMO FUNCIONA -->
 <section id="como-funciona" style="background:var(--s1);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
