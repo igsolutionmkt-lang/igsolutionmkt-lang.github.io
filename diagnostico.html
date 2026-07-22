@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Diagnóstico Gratuito — IG Solution | Porto</title>
-<meta name="description" content="Recebe uma análise gratuita da tua presença online e descobre quantos clientes estás a perder. Resposta em menos de 2 horas."/>
+<title>Análise Inicial Gratuita — IG Solution | Porto</title>
+<meta name="description" content="Conta-nos a tua ideia ou o teu negócio. A IG Solution analisa o contexto e entra em contacto com os próximos passos."/>
 <link rel="icon" type="image/png" href="logo.png"/>
 <link rel="dns-prefetch" href="https://n8n-production-6ead.up.railway.app"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -100,6 +100,7 @@ p{color:var(--t2);line-height:1.7}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
 .page-header h1{margin-bottom:12px}
 .page-header p{font-size:1.0625rem;color:var(--t2);max-width:460px;margin:0 auto}
+.page-note{font-size:.8125rem;color:var(--t3);max-width:520px;margin:16px auto 0;line-height:1.6}
 
 /* TRUST ROW */
 .trust-row{
@@ -142,6 +143,9 @@ p{color:var(--t2);line-height:1.7}
   display:flex;align-items:center;gap:6px;
 }
 .field label .req{color:var(--green);font-size:.75rem}
+fieldset.field{border:none;padding:0;min-width:0}
+.field legend{font-size:.8125rem;font-weight:600;color:var(--t2);display:flex;align-items:center;gap:6px;padding:0;margin-bottom:6px}
+.field legend .req{color:var(--green);font-size:.75rem}
 .field input,.field select,.field textarea{
   background:var(--s2);
   border:1px solid var(--bd2);
@@ -210,6 +214,7 @@ p{color:var(--t2);line-height:1.7}
 }
 .radio-label{font-size:.875rem;color:var(--t2)}
 .radio-option:has(input:checked) .radio-label{color:var(--t1)}
+.radio-group.error .radio-option{border-color:var(--red-border)}
 
 /* CHECKBOX GRID */
 .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
@@ -365,14 +370,15 @@ p{color:var(--t2);line-height:1.7}
   <div class="container">
     <div class="page-header">
       <div class="page-badge">
-        <span class="badge-dot"></span>Diagnóstico 100% gratuito
+        <span class="badge-dot"></span>ANÁLISE INICIAL GRATUITA
       </div>
-      <h1>Descobre quantos clientes<br/>estás a perder hoje</h1>
-      <p>Análise completa da tua presença online, visibilidade local e automação. Resposta em menos de 2 horas.</p>
+      <h1>Vamos perceber o que<br/>precisa de ser construído.</h1>
+      <p>Conta-nos a tua ideia ou o teu negócio. Analisamos o contexto e entramos em contacto com os próximos passos.</p>
+      <p class="page-note">A análise inicial serve para compreender o contexto e indicar o próximo passo. Estudos de mercado, projeções financeiras e diagnósticos documentados fazem parte de um serviço separado.</p>
       <div class="trust-row">
         <div class="trust-item">Gratuito · sem compromisso</div>
-        <div class="trust-item">Resposta em &lt;2h</div>
         <div class="trust-item">Análise personalizada</div>
+        <div class="trust-item">Indicamos o próximo passo</div>
       </div>
     </div>
 
@@ -386,33 +392,51 @@ p{color:var(--t2);line-height:1.7}
         <!-- GRUPO 1: IDENTIFICAÇÃO -->
         <div class="field-group">
           <div class="group-label">01 · O teu negócio</div>
+          <fieldset class="field">
+            <legend>Qual é o teu ponto de partida? <span class="req">*</span></legend>
+            <div class="radio-group" id="tipo-projeto-group" aria-describedby="err-tipo_projeto">
+              <label class="radio-option">
+                <input type="radio" name="tipo_projeto" value="ideia_nova"/>
+                <span class="radio-label">Tenho uma ideia para lançar</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="tipo_projeto" value="negocio_existente"/>
+                <span class="radio-label">Já tenho um negócio a funcionar</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="tipo_projeto" value="projeto_parado"/>
+                <span class="radio-label">Tenho um projeto parado que quero retomar</span>
+              </label>
+            </div>
+            <div class="field-error" id="err-tipo_projeto">Por favor seleciona o teu ponto de partida</div>
+          </fieldset>
           <div class="fields-row">
             <div class="field">
-              <label>Nome <span class="req">*</span></label>
-              <input type="text" name="nome" id="nome" placeholder="O teu nome" autocomplete="given-name" required/>
+              <label for="nome">Nome <span class="req">*</span></label>
+              <input type="text" name="nome" id="nome" placeholder="O teu nome" autocomplete="given-name" aria-describedby="err-nome" required/>
               <div class="field-error" id="err-nome">Por favor indica o teu nome</div>
             </div>
             <div class="field">
-              <label>Telemóvel <span class="req">*</span></label>
-              <input type="tel" name="telefone" id="telefone" placeholder="+351 9XX XXX XXX" autocomplete="tel" required/>
+              <label for="telefone">Telemóvel <span class="req">*</span></label>
+              <input type="tel" name="telefone" id="telefone" placeholder="+351 9XX XXX XXX" autocomplete="tel" aria-describedby="err-telefone" required/>
               <div class="field-error" id="err-telefone">Número de telemóvel inválido</div>
             </div>
           </div>
           <div class="fields-row">
             <div class="field">
-              <label>Email</label>
-              <input type="email" name="email" id="email" placeholder="email@empresa.pt" autocomplete="email"/>
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="email@empresa.pt" autocomplete="email" aria-describedby="err-email"/>
               <div class="field-error" id="err-email">Email inválido</div>
             </div>
             <div class="field">
-              <label>Nome do negócio <span class="req">*</span></label>
-              <input type="text" name="negocio" id="negocio" placeholder="Ex: Barbearia do João" required/>
+              <label for="negocio">Nome do negócio <span class="req">*</span></label>
+              <input type="text" name="negocio" id="negocio" placeholder="Ex: Barbearia do João" aria-describedby="err-negocio" required/>
               <div class="field-error" id="err-negocio">Por favor indica o nome do negócio</div>
             </div>
           </div>
           <div class="field">
-            <label>Cidade / Zona <span class="req">*</span></label>
-            <input type="text" name="cidade" id="cidade" placeholder="Ex: Porto, Matosinhos, Braga…" required/>
+            <label for="cidade">Cidade / Zona <span class="req">*</span></label>
+            <input type="text" name="cidade" id="cidade" placeholder="Ex: Porto, Matosinhos, Braga…" aria-describedby="err-cidade" required/>
             <div class="field-error" id="err-cidade">Por favor indica a cidade ou zona</div>
           </div>
         </div>
@@ -421,12 +445,12 @@ p{color:var(--t2);line-height:1.7}
         <div class="field-group">
           <div class="group-label">02 · Situação actual</div>
           <div class="field">
-            <label>Website ou perfil Instagram (URL)</label>
+            <label for="website_instagram">Website ou perfil Instagram (URL)</label>
             <input type="url" name="website_instagram" id="website_instagram" placeholder="https://www.seusite.pt ou instagram.com/seunegoicio"/>
           </div>
           <div class="field">
-            <label>Sector de actividade <span class="req">*</span></label>
-            <select name="sector" id="sector" required>
+            <label for="sector">Sector de actividade <span class="req">*</span></label>
+            <select name="sector" id="sector" aria-describedby="err-sector" required>
               <option value="">Selecciona o teu sector</option>
               <option>Restauração &amp; Cafés</option>
               <option>Barbearia &amp; Salão de Beleza</option>
@@ -441,8 +465,8 @@ p{color:var(--t2);line-height:1.7}
             <div class="field-error" id="err-sector">Por favor selecciona o teu sector</div>
           </div>
           <div class="field">
-            <label>Quantos clientes novos captas por mês? <span class="req">*</span></label>
-            <select name="clientes_mes" id="clientes_mes" required>
+            <label for="clientes_mes">Quantos clientes novos captas por mês? <span class="req">*</span></label>
+            <select name="clientes_mes" id="clientes_mes" aria-describedby="err-clientes_mes" required>
               <option value="">Selecciona um intervalo</option>
               <option>Menos de 10</option>
               <option>10 a 30</option>
@@ -497,8 +521,8 @@ p{color:var(--t2);line-height:1.7}
             </div>
           </div>
           <div class="field">
-            <label>Como respondes actualmente aos leads? <span class="req">*</span></label>
-            <select name="resposta_leads" id="resposta_leads" required>
+            <label for="resposta_leads">Como respondes actualmente aos leads? <span class="req">*</span></label>
+            <select name="resposta_leads" id="resposta_leads" aria-describedby="err-resposta_leads" required>
               <option value="">Selecciona uma opção</option>
               <option>Manualmente, um a um</option>
               <option>Tenho alguém na equipa para isso</option>
@@ -519,8 +543,8 @@ p{color:var(--t2);line-height:1.7}
             </div>
           </div>
           <div class="field">
-            <label>Qual é o teu maior desafio actual? <span class="req">*</span></label>
-            <select name="maior_desafio" id="maior_desafio" required>
+            <label for="maior_desafio">Qual é o teu maior desafio actual? <span class="req">*</span></label>
+            <select name="maior_desafio" id="maior_desafio" aria-describedby="err-maior_desafio" required>
               <option value="">Selecciona o principal desafio</option>
               <option>Captar mais leads / clientes</option>
               <option>Responder a tempo a todos os contactos</option>
@@ -537,8 +561,8 @@ p{color:var(--t2);line-height:1.7}
         <div class="field-group">
           <div class="group-label">04 · Contexto final</div>
           <div class="field">
-            <label>Facturação mensal estimada <span class="req">*</span></label>
-            <select name="facturacao" id="facturacao" required>
+            <label for="facturacao">Facturação mensal estimada <span class="req">*</span></label>
+            <select name="facturacao" id="facturacao" aria-describedby="err-facturacao" required>
               <option value="">Selecciona um intervalo</option>
               <option>Menos de €1.000/mês</option>
               <option>€1.000 a €3.000/mês</option>
@@ -547,6 +571,18 @@ p{color:var(--t2);line-height:1.7}
               <option>Mais de €20.000/mês</option>
             </select>
             <div class="field-error" id="err-facturacao">Por favor selecciona um intervalo</div>
+          </div>
+          <div class="field">
+            <label for="investimento">Que nível de investimento estás a considerar para este projeto? <span class="req">*</span></label>
+            <select name="investimento" id="investimento" aria-describedby="err-investimento" required>
+              <option value="" selected disabled>Seleciona uma opção</option>
+              <option value="nao_definido">Ainda não defini</option>
+              <option value="menos_500">Menos de €500</option>
+              <option value="500_2000">€500 a €2.000</option>
+              <option value="2000_5000">€2.000 a €5.000</option>
+              <option value="mais_5000">Mais de €5.000</option>
+            </select>
+            <div class="field-error" id="err-investimento">Por favor seleciona uma opção</div>
           </div>
           <div class="field">
             <label>Quando queres começar?</label>
@@ -566,7 +602,7 @@ p{color:var(--t2);line-height:1.7}
             </div>
           </div>
           <div class="field">
-            <label>Observações (opcional)</label>
+            <label for="observacoes">Observações (opcional)</label>
             <textarea name="observacoes" id="observacoes" rows="3" placeholder="Conta-nos mais sobre o teu negócio, dúvidas ou situação específica…"></textarea>
           </div>
         </div>
@@ -574,10 +610,10 @@ p{color:var(--t2);line-height:1.7}
         <div class="submit-wrap">
           <div class="global-error" id="global-error-form" style="margin-bottom:16px"></div>
           <button type="submit" class="btn-submit" id="btn-submit">
-            <span class="btn-text">Quero o meu diagnóstico gratuito →</span>
+            <span class="btn-text">Pedir análise inicial →</span>
             <span class="spinner"></span>
           </button>
-          <div class="form-note">Resposta em menos de 2 horas · A IG Solution não partilha os teus dados com terceiros</div>
+          <div class="form-note">A IG Solution não partilha os teus dados com terceiros</div>
         </div>
 
       </form>
@@ -587,15 +623,15 @@ p{color:var(--t2);line-height:1.7}
     <div class="wa-fallback">
       <div class="wa-fallback-text">
         <strong>Preferes falar directamente?</strong>
-        <span>Envia mensagem no WhatsApp e respondemos em minutos</span>
+        <span>Envia mensagem no WhatsApp e conta-nos o teu projeto</span>
       </div>
-      <a href="https://wa.me/351917305248?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20gratuito%20para%20o%20meu%20negócio." target="_blank" class="btn-wa">
+      <a href="https://wa.me/351917305248?text=Olá,%20gostaria%20de%20pedir%20uma%20análise%20inicial%20do%20meu%20projeto." target="_blank" class="btn-wa">
         💬 WhatsApp
       </a>
     </div>
 
     <div class="rgpd-note">
-      Ao submeter este formulário, aceitas a nossa <a href="#privacidade">Política de Privacidade</a>. Os teus dados são tratados em conformidade com o RGPD e utilizados exclusivamente para responder ao diagnóstico solicitado.
+      Ao submeter este formulário, aceitas a nossa <a href="privacidade.html">Política de Privacidade</a>. Os teus dados são tratados em conformidade com o RGPD e utilizados exclusivamente para responder ao pedido de análise inicial.
     </div>
   </div>
 </div>
@@ -604,23 +640,23 @@ p{color:var(--t2);line-height:1.7}
 <div class="success-screen" id="success-screen">
   <div class="container">
     <div class="success-icon">✓</div>
-    <h2>Diagnóstico recebido!</h2>
-    <p>Recebemos a tua informação e já estamos a preparar a análise do teu negócio. Vemo-nos em breve.</p>
+    <h2>Recebemos as tuas informações.</h2>
+    <p>Vamos analisar o contexto e entrar em contacto com os próximos passos.</p>
     <div class="success-steps">
       <div class="success-step">
         <div class="success-step-num">PASSO 01</div>
         <div class="success-step-title">Análise</div>
-        <div class="success-step-desc">Analisamos a tua presença online e identificamos oportunidades</div>
+        <div class="success-step-desc">Revemos as informações e compreendemos o contexto</div>
       </div>
       <div class="success-step">
         <div class="success-step-num">PASSO 02</div>
         <div class="success-step-title">Contacto</div>
-        <div class="success-step-desc">Entramos em contacto em menos de 2h com o diagnóstico personalizado</div>
+        <div class="success-step-desc">Entramos em contacto para esclarecer o projeto e os objetivos</div>
       </div>
       <div class="success-step">
         <div class="success-step-num">PASSO 03</div>
-        <div class="success-step-title">Proposta</div>
-        <div class="success-step-desc">Se fizer sentido, apresentamos uma proposta sem compromisso</div>
+        <div class="success-step-title">Recomendação</div>
+        <div class="success-step-desc">Indicamos o próximo passo mais adequado</div>
       </div>
     </div>
     <a href="index.html" class="btn-home">← Voltar ao site</a>
@@ -632,8 +668,8 @@ p{color:var(--t2);line-height:1.7}
     <div class="page-footer-inner">
       <div class="page-footer-copy">© 2026 IG Solution · Porto, Portugal</div>
       <div class="page-footer-links">
-        <a href="#privacidade">Privacidade</a>
-        <a href="#rgpd">RGPD</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="privacidade.html">RGPD</a>
         <a href="mailto:info@igsolution.pt">Contacto</a>
       </div>
     </div>
@@ -653,6 +689,7 @@ function setFieldState(id, isErr, msg) {
   if (!el) return;
   el.classList.toggle('error', isErr);
   el.classList.toggle('ok', !isErr && el.value !== '');
+  el.setAttribute('aria-invalid', isErr ? 'true' : 'false');
   if (errEl) {
     errEl.classList.toggle('show', isErr);
     if (msg) errEl.textContent = msg;
@@ -667,7 +704,7 @@ function clearFieldState(id) {
 }
 
 // Live validation on blur
-['nome','telefone','email','negocio','cidade','sector','clientes_mes','resposta_leads','maior_desafio','facturacao'].forEach(id => {
+['nome','telefone','email','negocio','cidade','sector','clientes_mes','resposta_leads','maior_desafio','facturacao','investimento'].forEach(id => {
   const el = document.getElementById(id);
   if (!el) return;
   el.addEventListener('blur', () => validateField(id));
@@ -706,18 +743,30 @@ function validateField(id) {
 function validateRadio(name, errorId) {
   const checked = document.querySelector('input[name="' + name + '"]:checked');
   const errEl = document.getElementById(errorId);
+  const first = document.querySelector('input[name="' + name + '"]');
+  const wrap = first ? first.closest('.radio-group') : null;
   if (!checked) {
     if (errEl) errEl.classList.add('show');
+    if (wrap) { wrap.classList.add('error'); wrap.setAttribute('aria-invalid', 'true'); }
     return false;
   }
   if (errEl) errEl.classList.remove('show');
+  if (wrap) { wrap.classList.remove('error'); wrap.removeAttribute('aria-invalid'); }
   return true;
 }
 
+// Clear radio error as soon as an option is selected
+['tipo_projeto', 'google_business'].forEach(name => {
+  document.querySelectorAll('input[name="' + name + '"]').forEach(r => {
+    r.addEventListener('change', () => validateRadio(name, 'err-' + name));
+  });
+});
+
 function validateAll() {
-  const fields = ['nome','telefone','email','negocio','cidade','sector','clientes_mes','resposta_leads','maior_desafio','facturacao'];
+  const fields = ['nome','telefone','email','negocio','cidade','sector','clientes_mes','resposta_leads','maior_desafio','facturacao','investimento'];
   let valid = true;
   fields.forEach(id => { if (!validateField(id)) valid = false; });
+  if (!validateRadio('tipo_projeto', 'err-tipo_projeto')) valid = false;
   if (!validateRadio('google_business', 'err-google_business')) valid = false;
   return valid;
 }
@@ -727,6 +776,7 @@ function getFormData() {
   const d = new FormData(f);
   const canais = Array.from(document.querySelectorAll('input[name="canais"]:checked')).map(c => c.value);
   return {
+    tipo_projeto: d.get('tipo_projeto') || '',
     nome: d.get('nome') || '',
     telefone: d.get('telefone') || '',
     email: d.get('email') || '',
@@ -741,6 +791,7 @@ function getFormData() {
     canais: canais.join(', '),
     maior_desafio: d.get('maior_desafio') || '',
     facturacao: d.get('facturacao') || '',
+    investimento: d.get('investimento') || '',
     urgencia: d.get('urgencia') || '',
     observacoes: d.get('observacoes') || '',
     origem: window.location.href,
@@ -748,19 +799,26 @@ function getFormData() {
   };
 }
 
+let isSending = false;
 document.getElementById('diag-form').addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (isSending) return;
 
   const errBanner = document.getElementById('global-error-form');
   errBanner.classList.remove('show');
 
   if (!validateAll()) {
-    // Scroll to first error
+    // Scroll and focus first error
     const firstErr = document.querySelector('.error');
-    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (firstErr) {
+      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const focusEl = firstErr.matches('input,select,textarea') ? firstErr : firstErr.querySelector('input,select,textarea');
+      if (focusEl) focusEl.focus({ preventScroll: true });
+    }
     return;
   }
 
+  isSending = true;
   const btn = document.getElementById('btn-submit');
   btn.classList.add('loading');
   btn.disabled = true;
@@ -788,6 +846,7 @@ document.getElementById('diag-form').addEventListener('submit', async (e) => {
     errBanner.classList.add('show');
     errBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
   } finally {
+    isSending = false;
     btn.classList.remove('loading');
     btn.disabled = false;
   }
