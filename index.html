@@ -71,9 +71,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .btn:hover .arr{transform:translateX(4px)}
 @media(max-width:480px){.btn{white-space:normal;text-align:center;justify-content:center}}
 
-/* ── REVEAL (contrato JS: .reveal + .visible) ── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+/* ── REVEAL (progressive enhancement: escondido só com .js) ── */
 .reveal.visible{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal.visible{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
 /* ── COOKIE ── */
@@ -216,26 +217,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .op-card:hover .op-cta .arr{transform:translateX(6px)}
 @media(max-width:900px){.op-grid{grid-template-columns:1fr}.op-card{padding:34px 28px}}
 
-/* ══ 4. MAPEAMENTO — NAVY ══ */
-.s-map{background:var(--navy);color:var(--t1);padding:120px 0;position:relative;overflow:hidden}
-.s-map::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:66px 66px;mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,#000 30%,transparent 100%);pointer-events:none}
-.map-glow{position:absolute;width:460px;height:460px;border-radius:50%;filter:blur(90px);background:rgba(34,197,94,.12);top:-160px;right:-60px;pointer-events:none;animation:glowDrift 13s ease-in-out infinite}
-.s-map .container{position:relative;z-index:1}
-.s-map .eyebrow{color:var(--green-lum)}
-.map-head{max-width:760px;margin-bottom:48px}
-.map-head h2{margin-bottom:18px}
-.map-head p{color:var(--t2);font-size:1.075rem;max-width:640px}
-.map-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px}
-.map-item{background:rgba(255,255,255,.03);border:1px solid var(--bd2);border-radius:var(--r-lg);padding:24px 22px;transition:border-color .3s,background .3s,transform .3s var(--ease)}
-.map-item:hover{border-color:var(--green-border);background:rgba(34,197,94,.06);transform:translateY(-4px)}
-.map-num{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:var(--green-lum);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.map-num::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green)}
-.map-item h3{font-size:1.1rem;color:var(--t1)}
-.map-note{font-size:.9rem;color:var(--t3);max-width:660px;border-left:2px solid var(--green-border);padding-left:16px;line-height:1.6}
-@media(max-width:900px){.map-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.map-grid{grid-template-columns:1fr}}
-
-/* ══ 5. OFERTAS + PROJETO — sistema de cards ══ */
+/* ══ OFERTAS + PROJETO — sistema de cards ══ */
 .cap-grid{display:grid;gap:20px;margin-top:56px}
 .cap-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .cap{position:relative;border:1px solid var(--bdl);border-radius:24px;box-shadow:var(--sh-card);overflow:hidden;background:linear-gradient(162deg,#fff,var(--cream));transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
@@ -325,7 +307,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .met-track{position:relative;height:4px;background:rgba(17,24,39,.09);border-radius:4px;margin:64px 0 52px}
 .met-fill{position:absolute;inset:0;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--cyan));transform:scaleX(var(--p,0));transform-origin:left;transition:transform .15s linear;box-shadow:0 0 18px rgba(34,197,94,.5)}
 .met-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
-.met-phase{position:relative;opacity:.4;transition:opacity .5s var(--ease),transform .5s var(--ease);transform:translateY(10px)}
+.met-phase{position:relative;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js .met-phase{opacity:.4;transform:translateY(10px)}
 .met-phase.on{opacity:1;transform:none}
 .met-glyph{width:52px;height:52px;border-radius:15px;border:1px solid var(--bdl2);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink3);margin-bottom:22px;transition:transform .5s var(--ease),border-color .5s,color .5s,box-shadow .5s}
 .met-glyph svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -335,6 +318,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .met-phase h3{font-size:1.7rem;margin-bottom:12px;color:var(--ink);transition:transform .5s var(--ease)}
 .met-phase.on h3{transform:translateX(2px)}
 .met-phase p{color:var(--ink2);font-size:.975rem;max-width:250px}
+.met-note{margin-top:44px;font-size:.95rem;color:var(--ink2);border-left:2px solid var(--green-border);padding-left:16px;max-width:660px;line-height:1.6}
 @media(max-width:900px){.met-grid{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:640px){
   .met-track{position:absolute;left:25px;top:0;bottom:0;width:4px;height:auto;margin:0}
@@ -407,15 +391,15 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
 }
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}.met-phase{opacity:1;transform:none}</style></noscript>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
 <!-- COOKIE -->
 <div class="cookie-banner" id="cookie-banner">
-  <div class="cookie-text">Usamos cookies essenciais e, com o teu consentimento, cookies analíticos para melhorar a experiência. <a href="privacidade.html">Política de Privacidade</a>.</div>
+  <div class="cookie-text">Este site utiliza apenas armazenamento essencial para guardar preferências básicas e garantir o funcionamento da experiência. <a href="privacidade.html">Política de Privacidade</a>.</div>
   <div class="cookie-btns">
-    <button class="btn-cr" id="cookie-reject">Apenas essenciais</button>
-    <button class="btn-ca" id="cookie-accept">Aceitar tudo</button>
+    <button class="btn-ca" id="cookie-accept">Entendido</button>
   </div>
 </div>
 
@@ -426,9 +410,9 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
     <a href="#solucoes">Soluções</a>
     <a href="#metodo">Como trabalhamos</a>
     <a href="#projetos">Projeto</a>
-    <a href="diagnostico.html">Contacto</a>
+    <a href="diagnostico.html?interesse=analise_operacao">Contacto</a>
   </div>
-  <a href="diagnostico.html" class="nav-cta">Organizar a minha operação</a>
+  <a href="diagnostico.html?interesse=analise_operacao" class="nav-cta">Organizar a minha operação</a>
   <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -436,9 +420,9 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
   <a href="#solucoes">Soluções</a>
   <a href="#metodo">Como trabalhamos</a>
   <a href="#projetos">Projeto</a>
-  <a href="diagnostico.html">Contacto</a>
+  <a href="diagnostico.html?interesse=analise_operacao">Contacto</a>
   <div class="mobile-ctas">
-    <a href="diagnostico.html" class="nav-cta">Organizar a minha operação</a>
+    <a href="diagnostico.html?interesse=analise_operacao" class="nav-cta">Organizar a minha operação</a>
   </div>
 </div>
 
@@ -458,7 +442,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         </h1>
         <p class="hero-sub fade-up fu2">Implementamos websites, formulários, WhatsApp, CRM, agenda e automações para negócios de serviços que ainda trabalham com processos e ferramentas dispersas.</p>
         <div class="hero-ctas fade-up fu3">
-          <a href="diagnostico.html" class="btn btn-green">Quero organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
+          <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
           <a href="#solucoes" class="btn btn-line">Ver as soluções</a>
         </div>
         <p class="hero-note fade-up fu4">Contas, dados e acessos permanecem no nome do cliente.</p>
@@ -554,26 +538,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
   </div>
 </section>
 
-<!-- ══ 4. MAPEAMENTO OPERACIONAL ══ -->
-<section class="s-map">
-  <div class="map-glow" aria-hidden="true"></div>
-  <div class="container">
-    <div class="map-head reveal">
-      <span class="eyebrow">Antes da tecnologia</span>
-      <h2>Primeiro mapeamos o processo. Depois escolhemos as ferramentas.</h2>
-      <p>Todos os projetos começam pela compreensão da operação atual: como os contactos entram, onde ficam registados, quem responde, que tarefas são manuais e onde se perdem tempo ou oportunidades.</p>
-    </div>
-    <div class="map-grid">
-      <div class="map-item reveal d1"><div class="map-num">01</div><h3>Processo atual</h3></div>
-      <div class="map-item reveal d2"><div class="map-num">02</div><h3>Gargalos</h3></div>
-      <div class="map-item reveal d3"><div class="map-num">03</div><h3>Prioridades</h3></div>
-      <div class="map-item reveal d4"><div class="map-num">04</div><h3>Plano de implementação</h3></div>
-    </div>
-    <p class="map-note reveal">Aproveitamos as ferramentas existentes sempre que fizer sentido. Só adicionamos tecnologia quando existe uma razão operacional.</p>
-  </div>
-</section>
-
-<!-- ══ 5. TRÊS OFERTAS ══ -->
+<!-- ══ 4. TRÊS OFERTAS ══ -->
 <section class="s-light s-pad" id="solucoes">
   <div class="container">
     <div class="sec-head reveal">
@@ -607,7 +572,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
             <span class="chip">Website ou landing page</span><span class="chip">Formulários</span><span class="chip">WhatsApp</span><span class="chip">CRM</span><span class="chip">Pipeline</span><span class="chip">Qualificação</span><span class="chip">Notificações</span><span class="chip">Follow-up</span><span class="chip">Relatório operacional</span>
           </div>
           <div class="cap-result">Um processo comercial visível e organizado desde o primeiro contacto.</div>
-          <a href="diagnostico.html" class="offer-cta">Organizar o meu processo comercial <span class="arr" aria-hidden="true">→</span></a>
+          <a href="diagnostico.html?interesse=sistema_comercial" class="offer-cta">Organizar o meu processo comercial <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </article>
 
@@ -616,12 +581,12 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         <!-- OFERTA 2 — Agenda 360 -->
         <article class="cap reveal d1" id="agenda-360">
           <div class="cap-body">
-            <span class="cap-label dev"><i></i>Produto especializado</span>
+            <span class="cap-label dev"><i></i>Projeto-piloto</span>
             <h3 class="cap-title">Agenda 360</h3>
             <p class="cap-desc">Sistema de marcação e acompanhamento para negócios que trabalham por agenda.</p>
             <p class="cap-prob">Marcações, confirmações, cancelamentos e lembretes consomem tempo e dependem de mensagens manuais.</p>
             <div class="agenda" aria-hidden="true">
-              <div class="agenda-top"><span class="agenda-title">Agenda</span><span class="agenda-badge">Em desenvolvimento</span></div>
+              <div class="agenda-top"><span class="agenda-title">Agenda</span><span class="agenda-badge">Projeto-piloto</span></div>
               <div class="agenda-slots">
                 <div class="slot"><em>09:00</em><b>Livre</b></div>
                 <div class="slot sel"><em>10:30</em><b>Marcado</b></div>
@@ -639,8 +604,8 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
               <span class="mf-chip">Reativação</span>
             </div>
             <div class="cap-result">Um ciclo de atendimento organizado antes, durante e depois da marcação.</div>
-            <p class="cap-note">Produto próprio em desenvolvimento e implementação por projeto-piloto.</p>
-            <a href="diagnostico.html" class="offer-cta">Falar sobre a Agenda 360 <span class="arr" aria-hidden="true">→</span></a>
+            <p class="cap-note"><strong style="color:#0e7490">Disponível apenas para projetos-piloto selecionados.</strong></p>
+            <a href="diagnostico.html?interesse=agenda_360" class="offer-cta">Candidatar o meu negócio ao projeto-piloto <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -659,11 +624,11 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
             </div>
             <span class="chips-lbl">Exemplos</span>
             <div class="chips">
-              <span class="chip">Formulário → CRM</span><span class="chip">Lead → notificação e tarefa</span><span class="chip">Pedido → orçamento</span><span class="chip">Pagamento → confirmação</span><span class="chip">Cliente novo → onboarding</span><span class="chip">Serviço concluído → avaliação</span><span class="chip">Lead parado → follow-up</span><span class="chip">Dados → relatório</span>
+              <span class="chip">Formulário → CRM</span><span class="chip">Lead → tarefa comercial</span><span class="chip">Pagamento → confirmação</span><span class="chip">Cliente parado → follow-up</span>
             </div>
             <p class="cap-note">Um processo, um escopo, uma implementação testada e documentada.</p>
             <div class="cap-result">Um fluxo manual convertido numa automação funcional.</div>
-            <a href="diagnostico.html" class="offer-cta">Automatizar um processo <span class="arr" aria-hidden="true">→</span></a>
+            <a href="diagnostico.html?interesse=sprint_automacao" class="offer-cta">Automatizar um processo <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </article>
       </div>
@@ -676,18 +641,18 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         <h3>Procuras desenvolver uma aplicação, portal ou plataforma?</h3>
         <p>Avaliamos projetos digitais selecionados depois de definir objetivos, utilizadores, escopo técnico, riscos, prazo e orçamento.</p>
       </div>
-      <a href="diagnostico.html" class="btn btn-line">Apresentar um projeto digital <span class="arr" aria-hidden="true">→</span></a>
+      <a href="diagnostico.html?interesse=produto_digital" class="btn btn-line">Apresentar um projeto digital <span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ══ 6. COMO TRABALHAMOS ══ -->
+<!-- ══ 5. COMO TRABALHAMOS ══ -->
 <section class="s-cream s-pad" id="metodo">
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow">Como trabalhamos</span>
-      <h2>Mapear, implementar, ativar, melhorar.</h2>
-      <p class="sec-sub">Quatro fases, um único responsável pela ligação entre elas.</p>
+      <h2>Primeiro compreendemos a operação. Depois implementamos.</h2>
+      <p class="sec-sub">Analisamos como os contactos entram, onde ficam registados, quem responde, que tarefas continuam manuais e onde existem perdas de tempo ou oportunidades.</p>
     </div>
     <div class="met-wrap" id="met-wrap">
       <div class="met-track" aria-hidden="true"><div class="met-fill" id="met-fill"></div></div>
@@ -718,6 +683,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         </div>
       </div>
     </div>
+    <p class="met-note reveal">Aproveitamos as ferramentas existentes sempre que fizer sentido. Só adicionamos tecnologia quando existe uma razão operacional.</p>
   </div>
 </section>
 
@@ -727,7 +693,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
     <div class="sec-head reveal">
       <span class="eyebrow">Projeto implementado</span>
       <h2>Operação comercial imobiliária</h2>
-      <p class="sec-sub">Implementação de uma infraestrutura digital para apresentar imóveis, receber contactos e organizar o acompanhamento comercial.</p>
+      <p class="sec-sub">O projeto precisava de uma presença digital capaz de apresentar os imóveis, receber pedidos de informação e organizar o acompanhamento comercial.</p>
     </div>
     <div class="cap-grid">
       <article class="cap cap-main reveal">
@@ -737,21 +703,23 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
             <div class="flow-node"><b aria-hidden="true"></b><em>Website</em></div>
             <div class="flow-node"><b aria-hidden="true"></b><em>Página do imóvel</em></div>
             <div class="flow-node"><b aria-hidden="true"></b><em>Formulário</em></div>
-            <div class="flow-node"><b aria-hidden="true"></b><em>CRM</em></div>
-            <div class="flow-node"><b aria-hidden="true"></b><em>Organização</em></div>
-            <div class="flow-node"><b aria-hidden="true"></b><em>Acompanhamento</em></div>
+            <div class="flow-node"><b aria-hidden="true"></b><em>Organização no CRM</em></div>
+            <div class="flow-node"><b aria-hidden="true"></b><em>Acompanhamento comercial</em></div>
           </div>
           <p class="flow-cap">Representação visual do sistema implementado.</p>
         </div>
         <div class="cap-body">
           <span class="cap-label"><i></i>Projeto de cliente · Em produção</span>
           <h3 class="cap-title">Website, captação e acompanhamento ligados</h3>
-          <p class="cap-desc">Uma infraestrutura digital que apresenta os imóveis, recebe os contactos e organiza o acompanhamento comercial num único sistema.</p>
+          <p class="cap-prob">As páginas dos imóveis, os contactos e o acompanhamento precisavam de funcionar como partes de uma única operação.</p>
           <span class="chips-lbl">Entregas</span>
           <ul class="cap-points">
-            <li>Website institucional e páginas dos imóveis</li>
-            <li>Formulários de contacto e organização de leads</li>
-            <li>CRM e automação de acompanhamento</li>
+            <li>Website institucional</li>
+            <li>Páginas dos imóveis</li>
+            <li>Formulários de contacto</li>
+            <li>Organização dos contactos</li>
+            <li>CRM</li>
+            <li>Automação de acompanhamento</li>
           </ul>
           <div class="cap-result">Estrutura colocada em produção em três semanas.</div>
           <p class="cap-note">Identidade do cliente reservada. Os ativos, contas e acessos permanecem no nome do cliente. Apresentamos apenas informações e resultados que podem ser documentados.</p>
@@ -805,7 +773,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
       <span class="eyebrow" style="color:var(--green-lum)">Análise inicial</span>
       <h2>Onde se perdem tempo e oportunidades na tua operação?</h2>
       <p class="cta-text">Conta-nos como os contactos entram, como são acompanhados e que tarefas ainda dependem de trabalho manual.</p>
-      <a href="diagnostico.html" class="btn btn-green">Quero organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
+      <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
       <p class="cta-support">A análise inicial ajuda a compreender o contexto e indicar o próximo passo. Mapeamentos documentados e projetos de implementação são serviços separados.</p>
     </div>
   </div>
@@ -840,16 +808,18 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-cta" id="sticky-cta">
-  <a href="diagnostico.html" class="btn btn-green">Organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
+  <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
 </div>
 
 <script>
-// COOKIE
+// COOKIE — armazenamento essencial, acesso seguro a localStorage
 (function(){
   const b=document.getElementById('cookie-banner');
-  if(localStorage.getItem('ig_cookie'))return b.classList.add('hidden');
-  document.getElementById('cookie-accept').onclick=()=>{localStorage.setItem('ig_cookie','all');b.classList.add('hidden')};
-  document.getElementById('cookie-reject').onclick=()=>{localStorage.setItem('ig_cookie','essential');b.classList.add('hidden')};
+  if(!b)return;
+  let seen=null;try{seen=localStorage.getItem('ig_cookie')}catch(e){}
+  if(seen){b.classList.add('hidden');return;}
+  const btn=document.getElementById('cookie-accept');
+  if(btn)btn.onclick=()=>{try{localStorage.setItem('ig_cookie','ok')}catch(e){}b.classList.add('hidden')};
 })();
 
 // NAV

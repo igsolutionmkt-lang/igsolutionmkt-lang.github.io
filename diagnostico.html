@@ -391,6 +391,19 @@ fieldset.field{border:none;padding:0;min-width:0}
 .page-footer-links a:hover{color:var(--t2)}
 
 /* RGPD */
+/* SOLUÇÃO DE INTERESSE */
+.interesse-banner{background:var(--green-dim);border:1px solid var(--green-border);border-radius:var(--radius-lg);padding:16px 18px;margin-bottom:26px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.interesse-banner[hidden]{display:none}
+.ib-main{display:flex;flex-direction:column;gap:2px;flex:1;min-width:180px}
+.ib-label{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.ib-value{font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--t1)}
+.ib-change{font-size:.8125rem;color:var(--green);text-decoration:underline;text-underline-offset:2px;padding:4px 2px}
+.ib-editor{flex-basis:100%;display:flex;flex-direction:column;gap:6px}
+.ib-editor[hidden]{display:none}
+.ib-editor-lbl{font-size:.75rem;color:var(--t3)}
+.ib-editor select{background:var(--s2);border:1px solid var(--bd2);border-radius:var(--radius-sm);color:var(--t1);font-family:var(--font-b);font-size:.9rem;padding:10px 12px;width:100%;outline:none}
+.ib-copy{flex-basis:100%;font-size:.85rem;color:var(--t2);margin:0;line-height:1.5;border-top:1px solid var(--green-border);padding-top:10px}
+.ib-copy:empty{display:none}
 .rgpd-note{
   font-size:.75rem;color:var(--t4);
   text-align:center;margin-top:16px;line-height:1.6;
@@ -429,6 +442,28 @@ fieldset.field{border:none;padding:0;min-width:0}
     </div>
 
     <div class="form-card">
+
+      <!-- SOLUÇÃO DE INTERESSE (preenchido por JS a partir de ?interesse validado) -->
+      <div class="interesse-banner" id="interesse-banner" hidden>
+        <div class="ib-main">
+          <span class="ib-label">Solução de interesse</span>
+          <strong class="ib-value" id="ib-value"></strong>
+        </div>
+        <button type="button" class="ib-change" id="ib-change">Alterar solução</button>
+        <div class="ib-editor" id="ib-editor" hidden>
+          <label class="ib-editor-lbl" for="interesse-select">Escolhe a solução de interesse</label>
+          <select id="interesse-select">
+            <option value="">Sem solução específica</option>
+            <option value="sistema_comercial">Sistema Comercial IG</option>
+            <option value="agenda_360">Agenda 360 — projeto-piloto</option>
+            <option value="sprint_automacao">Sprint de Automação</option>
+            <option value="produto_digital">Produto Digital à Medida</option>
+            <option value="analise_operacao">Análise da operação</option>
+          </select>
+        </div>
+        <p class="ib-copy" id="ib-copy"></p>
+      </div>
+
       <form id="diag-form" novalidate>
 
         <!-- PROGRESSO -->
@@ -851,6 +886,7 @@ fieldset.field{border:none;padding:0;min-width:0}
 const WEBHOOK = 'https://n8n-production-6ead.up.railway.app/webhook/diagnostico-lead';
 const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const $ = (id) => document.getElementById(id);
+let interesseOrigem = '';
 
 /* ── Helpers de validação ── */
 function isValidPhone(v){ const d=(v||'').replace(/\D/g,''); return d.length>=9 && d.length<=15; }
@@ -1111,6 +1147,7 @@ function buildPayload(){
     motivo_paragem: d.get('motivo_paragem') || '',
     ativos_existentes: joinChk('ativos_existentes'),
     privacidade_aceite: ($('privacidade_aceite').checked ? 'sim' : ''),
+    interesse_origem: interesseOrigem || '',
     origem: window.location.href,
     data_envio: new Date().toISOString()
   };
@@ -1164,6 +1201,45 @@ document.getElementById('diag-form').addEventListener('submit', async (e) => {
 
 // Estado inicial: nenhum fluxo ativo
 setFlow('');
+
+/* ── Solução de interesse (parâmetro ?interesse — validado contra whitelist) ── */
+(function(){
+  const MAP = {
+    sistema_comercial: { label:'Sistema Comercial IG', tipo:'negocio_existente', copy:'Vamos compreender como os contactos entram e são acompanhados atualmente.' },
+    agenda_360:        { label:'Agenda 360 — projeto-piloto', tipo:'negocio_existente', copy:'Vamos compreender como funcionam as marcações, confirmações e acompanhamento de clientes.' },
+    sprint_automacao:  { label:'Sprint de Automação', tipo:'negocio_existente', copy:'Vamos identificar o processo manual que precisa de ser automatizado.' },
+    produto_digital:   { label:'Produto Digital à Medida', tipo:'ideia_nova', copy:'Vamos compreender o problema, os utilizadores e o que pode precisar de ser construído.' },
+    analise_operacao:  { label:'Análise da operação', tipo:'', copy:'Vamos compreender os principais gargalos e indicar o próximo passo.' }
+  };
+  const banner=$('interesse-banner'), valEl=$('ib-value'), copyEl=$('ib-copy'), sel=$('interesse-select'), changeBtn=$('ib-change'), editor=$('ib-editor');
+  if(!banner) return;
+  function preselect(tipo){
+    if(!tipo) return;
+    const radio = document.querySelector('input[name="tipo_projeto"][value="'+tipo+'"]');
+    if(radio && !radio.checked){ radio.checked = true; radio.dispatchEvent(new Event('change', { bubbles:true })); }
+  }
+  function apply(val, doPreselect){
+    const cfg = MAP[val];
+    if(cfg){
+      interesseOrigem = val;
+      valEl.textContent = cfg.label;      // apenas rótulos fixos, nunca o valor bruto da URL
+      copyEl.textContent = cfg.copy;
+      if(sel) sel.value = val;
+      banner.hidden = false;
+      if(doPreselect) preselect(cfg.tipo);
+    } else {
+      interesseOrigem = '';
+      valEl.textContent = 'Sem solução específica';
+      copyEl.textContent = '';
+      if(sel) sel.value = '';
+    }
+  }
+  let param = '';
+  try { param = new URLSearchParams(window.location.search).get('interesse') || ''; } catch(e){}
+  if(MAP[param]) apply(param, true);   // ignora qualquer valor fora da whitelist
+  if(changeBtn) changeBtn.addEventListener('click', () => { editor.hidden = !editor.hidden; if(!editor.hidden && sel) sel.focus(); });
+  if(sel) sel.addEventListener('change', () => { apply(sel.value, true); });
+})();
 </script>
 </body>
 </html>
