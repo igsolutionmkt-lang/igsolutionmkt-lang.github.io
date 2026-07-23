@@ -41,6 +41,7 @@ button{cursor:pointer;border:none;background:none;font:inherit}
   --radius-sm:8px;
   --radius-xs:6px;
   --shadow:0 16px 48px rgba(0,0,0,0.4);
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 
 body{
@@ -87,7 +88,7 @@ p{color:var(--t2);line-height:1.7}
 
 /* PAGE HEADER */
 .page-header{
-  padding:64px 0 48px;
+  padding:56px 0 40px;
   text-align:center;
 }
 .page-badge{
@@ -98,14 +99,14 @@ p{color:var(--t2);line-height:1.7}
 }
 .badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
-.page-header h1{margin-bottom:12px}
-.page-header p{font-size:1.0625rem;color:var(--t2);max-width:460px;margin:0 auto}
-.page-note{font-size:.8125rem;color:var(--t3);max-width:520px;margin:16px auto 0;line-height:1.6}
+.page-header h1{margin-bottom:14px}
+.page-header p{font-size:1.0625rem;color:var(--t2);max-width:500px;margin:0 auto}
+.page-note{font-size:.8125rem;color:var(--t3);max-width:520px;margin:14px auto 0;line-height:1.6}
 
 /* TRUST ROW */
 .trust-row{
   display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
-  margin-top:24px;padding-bottom:48px;
+  margin-top:22px;
 }
 .trust-item{
   display:flex;align-items:center;gap:6px;
@@ -116,27 +117,43 @@ p{color:var(--t2);line-height:1.7}
 /* FORM CARD */
 .form-card{
   background:var(--s1);border:1px solid var(--bd);border-radius:16px;
-  padding:40px;margin-bottom:24px;
+  padding:36px 40px;margin-bottom:24px;
   box-shadow:0 24px 48px rgba(0,0,0,0.3);
 }
 @media(max-width:600px){.form-card{padding:24px 20px;border-radius:var(--radius-lg)}}
 
+/* STEPPER */
+.stepper{display:flex;gap:10px;margin-bottom:14px}
+.seg{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
+.seg-bar{height:4px;border-radius:2px;background:var(--bd2);transition:background .35s}
+.seg-txt{font-family:var(--font-m);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--t4);transition:color .35s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg.done .seg-bar,.seg.current .seg-bar{background:var(--green)}
+.seg.current .seg-txt{color:var(--green)}
+.seg.done .seg-txt{color:var(--t3)}
+.step-count{font-family:var(--font-m);font-size:11px;letter-spacing:.1em;color:var(--t3);margin-bottom:26px}
+@media(max-width:480px){.seg-txt{font-size:8px}}
+
+/* STEPS */
+.step[hidden]{display:none}
+.step:not([hidden]){animation:stepIn .4s var(--ease)}
+@keyframes stepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.step-title{font-size:1.375rem;font-weight:800;margin-bottom:24px;outline:none}
+.step-actions{display:flex;gap:12px;margin-top:32px}
+.step-actions.two{justify-content:space-between}
+.btn-step{padding:14px 26px;border-radius:var(--radius-sm);font-family:var(--font-h);font-weight:700;font-size:1rem;transition:background .18s,border-color .18s,color .18s,transform .18s}
+.btn-next{background:var(--green);color:#0B0B0D;margin-left:auto}
+.btn-next:hover{background:#16a34a;transform:translateY(-2px)}
+.btn-back{background:transparent;border:1px solid var(--bd2);color:var(--t2)}
+.btn-back:hover{border-color:var(--bd3);color:var(--t1)}
+
 /* FIELD GROUPS */
-.field-group{margin-bottom:36px}
+.field-group{margin-bottom:28px}
 .field-group:last-of-type{margin-bottom:0}
-.group-label{
-  font-family:var(--font-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--green);margin-bottom:20px;
-  display:flex;align-items:center;gap:8px;
-}
-.group-label::after{content:'';flex:1;height:1px;background:var(--green-border)}
 .fields-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:560px){.fields-row{grid-template-columns:1fr}}
-.fields-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-@media(max-width:640px){.fields-row-3{grid-template-columns:1fr}}
 
 /* FORM FIELDS */
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
 .field:last-child{margin-bottom:0}
 .field label{
   font-size:.8125rem;font-weight:600;color:var(--t2);
@@ -144,7 +161,7 @@ p{color:var(--t2);line-height:1.7}
 }
 .field label .req{color:var(--green);font-size:.75rem}
 fieldset.field{border:none;padding:0;min-width:0}
-.field legend{font-size:.8125rem;font-weight:600;color:var(--t2);display:flex;align-items:center;gap:6px;padding:0;margin-bottom:6px}
+.field legend{font-size:.8125rem;font-weight:600;color:var(--t2);display:flex;align-items:center;gap:6px;padding:0;margin-bottom:8px}
 .field legend .req{color:var(--green);font-size:.75rem}
 .field input,.field select,.field textarea{
   background:var(--s2);
@@ -178,9 +195,10 @@ fieldset.field{border:none;padding:0;min-width:0}
   cursor:pointer;
 }
 .field select option{background:#17171D;color:var(--t1)}
-.field textarea{resize:vertical;min-height:80px;line-height:1.6}
+.field textarea{resize:vertical;min-height:84px;line-height:1.6}
 .field-error{font-size:.75rem;color:var(--red);margin-top:4px;display:none}
 .field-error.show{display:block}
+.field-hint{font-size:.75rem;color:var(--t3);margin-top:-2px}
 
 /* RADIO / CHECKBOX GROUP */
 .radio-group{display:flex;flex-direction:column;gap:8px;margin-top:4px}
@@ -221,7 +239,7 @@ fieldset.field{border:none;padding:0;min-width:0}
 @media(max-width:480px){.check-grid{grid-template-columns:1fr}}
 .check-option{
   display:flex;align-items:center;gap:8px;
-  padding:8px 12px;
+  padding:9px 12px;
   background:var(--s2);border:1px solid var(--bd2);border-radius:var(--radius-sm);
   cursor:pointer;transition:border-color .18s,background .18s;
 }
@@ -231,33 +249,47 @@ fieldset.field{border:none;padding:0;min-width:0}
   border:1.5px solid var(--bd3);border-radius:3px;
   background:transparent;appearance:none;-webkit-appearance:none;
   transition:border-color .18s,background .18s;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center;position:relative;
 }
 .check-option input[type=checkbox]:checked{
   background:var(--green);border-color:var(--green);
 }
 .check-option input[type=checkbox]:checked::after{
-  content:'✓';font-size:9px;color:#0B0B0D;font-weight:800;
-  position:absolute;
+  content:'✓';font-size:9px;color:#0B0B0D;font-weight:800;position:absolute;
 }
 .check-option:has(input:checked){border-color:var(--green-border);background:var(--green-dim)}
 .check-label{font-size:.8125rem;color:var(--t2)}
 .check-option:has(input:checked) .check-label{color:var(--t1)}
+.check-grid.error .check-option{border-color:var(--red-border)}
+
+/* CONSENT */
+.consent{margin-top:8px}
+.consent-box{display:flex;align-items:flex-start;gap:11px;cursor:pointer;font-size:.875rem;color:var(--t2);line-height:1.5}
+.consent-box input[type=checkbox]{
+  width:18px;height:18px;flex-shrink:0;margin-top:2px;
+  border:1.5px solid var(--bd3);border-radius:4px;background:transparent;
+  appearance:none;-webkit-appearance:none;cursor:pointer;position:relative;
+  transition:border-color .18s,background .18s;
+}
+.consent-box input[type=checkbox]:checked{background:var(--green);border-color:var(--green)}
+.consent-box input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:#0B0B0D;font-weight:800}
+.consent-box input[aria-invalid="true"]{border-color:var(--red-border);box-shadow:0 0 0 3px var(--red-dim)}
+.consent-box a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
 
 /* SUBMIT */
-.submit-wrap{text-align:center;margin-top:32px}
 .btn-submit{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  width:100%;padding:16px 32px;
+  padding:14px 28px;
   background:var(--green);color:#0B0B0D;
   border-radius:var(--radius-sm);
-  font-size:1.0625rem;font-weight:700;font-family:var(--font-h);
+  font-size:1rem;font-weight:700;font-family:var(--font-h);
   letter-spacing:-.01em;
   transition:background .18s,transform .18s,box-shadow .18s;cursor:pointer;
   position:relative;overflow:hidden;
 }
 .btn-submit:hover:not(:disabled){background:#16a34a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,.25)}
 .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.step-actions .btn-submit{flex:1}
 .btn-submit .spinner{
   width:18px;height:18px;border:2px solid rgba(0,0,0,.2);
   border-top-color:#0B0B0D;border-radius:50%;
@@ -266,7 +298,7 @@ fieldset.field{border:none;padding:0;min-width:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 .btn-submit.loading .spinner{display:block}
 .btn-submit.loading .btn-text{display:none}
-.form-note{font-size:.75rem;color:var(--t4);margin-top:12px;text-align:center;line-height:1.5}
+.form-note{font-size:.75rem;color:var(--t3);margin-top:16px;line-height:1.55}
 
 /* WHATSAPP FALLBACK */
 .wa-fallback{
@@ -356,6 +388,12 @@ fieldset.field{border:none;padding:0;min-width:0}
   max-width:520px;margin-left:auto;margin-right:auto;
 }
 .rgpd-note a{color:var(--t3);text-decoration:underline;text-underline-offset:2px}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .step:not([hidden]){animation:none}
+}
 </style>
 </head>
 <body>
@@ -368,57 +406,62 @@ fieldset.field{border:none;padding:0;min-width:0}
 <!-- FORM SECTION -->
 <div id="form-section">
   <div class="container">
-    <div class="page-header">
+    <div class="page-header" id="form-top">
       <div class="page-badge">
         <span class="badge-dot"></span>ANÁLISE INICIAL GRATUITA
       </div>
       <h1>Vamos perceber o que<br/>precisa de ser construído.</h1>
-      <p>Conta-nos a tua ideia ou o teu negócio. Analisamos o contexto e entramos em contacto com os próximos passos.</p>
-      <p class="page-note">A análise inicial serve para compreender o contexto e indicar o próximo passo. Estudos de mercado, projeções financeiras e diagnósticos documentados fazem parte de um serviço separado.</p>
+      <p>Responde apenas ao que faz sentido para o ponto em que estás. A análise inicial ajuda-nos a compreender o contexto e indicar o próximo passo.</p>
+      <p class="page-note">Estudos de mercado, projeções financeiras e diagnósticos documentados fazem parte de um serviço separado.</p>
       <div class="trust-row">
         <div class="trust-item">Gratuito · sem compromisso</div>
-        <div class="trust-item">Análise personalizada</div>
-        <div class="trust-item">Indicamos o próximo passo</div>
+        <div class="trust-item">Adaptado ao teu ponto de partida</div>
       </div>
-    </div>
-
-    <div class="global-error" id="global-error">
-      Ocorreu um erro ao enviar o formulário. Tenta novamente ou contacta-nos pelo WhatsApp.
     </div>
 
     <div class="form-card">
       <form id="diag-form" novalidate>
 
-        <!-- GRUPO 1: IDENTIFICAÇÃO -->
-        <div class="field-group">
-          <div class="group-label">01 · O teu negócio</div>
-          <fieldset class="field">
+        <!-- PROGRESSO -->
+        <div class="stepper" role="group" aria-label="Progresso do formulário">
+          <div class="seg current" data-seg="1" aria-current="step"><span class="seg-bar"></span><span class="seg-txt">01 · Ponto de partida</span></div>
+          <div class="seg" data-seg="2"><span class="seg-bar"></span><span class="seg-txt">02 · Contexto do projeto</span></div>
+          <div class="seg" data-seg="3"><span class="seg-bar"></span><span class="seg-txt">03 · Próximo passo</span></div>
+        </div>
+        <p class="step-count" id="step-count" aria-live="polite">Passo 1 de 3</p>
+
+        <!-- ═══ PASSO 1 — PONTO DE PARTIDA ═══ -->
+        <section class="step" id="step-1" data-step="1" aria-labelledby="step1-title">
+          <h2 class="step-title" id="step1-title" tabindex="-1">Conta-nos onde estás.</h2>
+
+          <fieldset class="field field-group">
             <legend>Qual é o teu ponto de partida? <span class="req">*</span></legend>
             <div class="radio-group" id="tipo-projeto-group" aria-describedby="err-tipo_projeto">
               <label class="radio-option">
-                <input type="radio" name="tipo_projeto" value="ideia_nova"/>
+                <input type="radio" name="tipo_projeto" value="ideia_nova" aria-required="true"/>
                 <span class="radio-label">Tenho uma ideia para lançar</span>
               </label>
               <label class="radio-option">
-                <input type="radio" name="tipo_projeto" value="negocio_existente"/>
+                <input type="radio" name="tipo_projeto" value="negocio_existente" aria-required="true"/>
                 <span class="radio-label">Já tenho um negócio a funcionar</span>
               </label>
               <label class="radio-option">
-                <input type="radio" name="tipo_projeto" value="projeto_parado"/>
+                <input type="radio" name="tipo_projeto" value="projeto_parado" aria-required="true"/>
                 <span class="radio-label">Tenho um projeto parado que quero retomar</span>
               </label>
             </div>
             <div class="field-error" id="err-tipo_projeto">Por favor seleciona o teu ponto de partida</div>
           </fieldset>
+
           <div class="fields-row">
             <div class="field">
               <label for="nome">Nome <span class="req">*</span></label>
-              <input type="text" name="nome" id="nome" placeholder="O teu nome" autocomplete="given-name" aria-describedby="err-nome" required/>
+              <input type="text" name="nome" id="nome" placeholder="O teu nome" autocomplete="given-name" aria-describedby="err-nome" aria-required="true" required/>
               <div class="field-error" id="err-nome">Por favor indica o teu nome</div>
             </div>
             <div class="field">
               <label for="telefone">Telemóvel <span class="req">*</span></label>
-              <input type="tel" name="telefone" id="telefone" placeholder="+351 9XX XXX XXX" autocomplete="tel" aria-describedby="err-telefone" required/>
+              <input type="tel" name="telefone" id="telefone" placeholder="+351 9XX XXX XXX" autocomplete="tel" aria-describedby="err-telefone" aria-required="true" required/>
               <div class="field-error" id="err-telefone">Número de telemóvel inválido</div>
             </div>
           </div>
@@ -429,192 +472,311 @@ fieldset.field{border:none;padding:0;min-width:0}
               <div class="field-error" id="err-email">Email inválido</div>
             </div>
             <div class="field">
-              <label for="negocio">Nome do negócio <span class="req">*</span></label>
-              <input type="text" name="negocio" id="negocio" placeholder="Ex: Barbearia do João" aria-describedby="err-negocio" required/>
+              <label for="negocio" id="lbl-negocio"><span class="lbl-text">Nome do negócio ou projeto</span> <span class="req" id="req-negocio" hidden>*</span></label>
+              <input type="text" name="negocio" id="negocio" placeholder="—" aria-describedby="err-negocio"/>
               <div class="field-error" id="err-negocio">Por favor indica o nome do negócio</div>
             </div>
           </div>
-          <div class="field">
-            <label for="cidade">Cidade / Zona <span class="req">*</span></label>
-            <input type="text" name="cidade" id="cidade" placeholder="Ex: Porto, Matosinhos, Braga…" aria-describedby="err-cidade" required/>
-            <div class="field-error" id="err-cidade">Por favor indica a cidade ou zona</div>
-          </div>
-        </div>
 
-        <!-- GRUPO 2: QUALIFICAÇÃO -->
-        <div class="field-group">
-          <div class="group-label">02 · Situação actual</div>
-          <div class="field">
-            <label for="website_instagram">Website ou perfil Instagram (URL)</label>
-            <input type="url" name="website_instagram" id="website_instagram" placeholder="https://www.seusite.pt ou instagram.com/seunegoicio"/>
+          <div class="step-actions">
+            <button type="button" class="btn-step btn-next" data-next>Continuar →</button>
           </div>
+        </section>
+
+        <!-- ═══ PASSO 2 — CONTEXTO DO PROJETO ═══ -->
+        <section class="step" id="step-2" data-step="2" hidden aria-labelledby="step2-title">
+          <h2 class="step-title" id="step2-title" tabindex="-1">Contexto do projeto.</h2>
+
+          <!-- COMUNS -->
           <div class="field">
-            <label for="sector">Sector de actividade <span class="req">*</span></label>
-            <select name="sector" id="sector" aria-describedby="err-sector" required>
-              <option value="">Selecciona o teu sector</option>
-              <option>Restauração &amp; Cafés</option>
-              <option>Barbearia &amp; Salão de Beleza</option>
-              <option>Fitness &amp; Personal Trainer</option>
+            <label for="sector">Setor <span class="req">*</span></label>
+            <select name="sector" id="sector" aria-describedby="err-sector" aria-required="true" required>
+              <option value="">Seleciona uma opção</option>
+              <option>Produto digital / aplicação</option>
+              <option>Plataforma ou SaaS</option>
+              <option>E-commerce</option>
+              <option>Serviço profissional</option>
+              <option>Projeto tecnológico</option>
+              <option>Educação ou formação</option>
               <option>Imobiliário</option>
-              <option>Oficina &amp; Serviços Auto</option>
-              <option>Serviços Profissionais (Contabilidade, Direito, etc.)</option>
-              <option>Comércio Local</option>
-              <option>Bem-estar &amp; Estética</option>
+              <option>Restauração</option>
+              <option>Estética e beleza</option>
+              <option>Fitness e bem-estar</option>
+              <option>Oficina ou serviço automóvel</option>
+              <option>Comércio local</option>
+              <option>Mobilidade</option>
               <option>Outro</option>
             </select>
-            <div class="field-error" id="err-sector">Por favor selecciona o teu sector</div>
+            <div class="field-error" id="err-sector">Por favor seleciona o setor</div>
           </div>
           <div class="field">
-            <label for="clientes_mes">Quantos clientes novos captas por mês? <span class="req">*</span></label>
-            <select name="clientes_mes" id="clientes_mes" aria-describedby="err-clientes_mes" required>
-              <option value="">Selecciona um intervalo</option>
-              <option>Menos de 10</option>
-              <option>10 a 30</option>
-              <option>30 a 60</option>
-              <option>60 a 100</option>
-              <option>Mais de 100</option>
-            </select>
-            <div class="field-error" id="err-clientes_mes">Por favor selecciona um intervalo</div>
+            <label for="website_instagram" id="lbl-link">Website, Instagram ou página atual</label>
+            <input type="url" name="website_instagram" id="website_instagram" placeholder="https://..."/>
           </div>
           <div class="field">
-            <label>Tens Google Business Profile activo? <span class="req">*</span></label>
-            <div class="radio-group" id="google-business-group">
-              <label class="radio-option">
-                <input type="radio" name="google_business" value="Sim, activo e optimizado"/>
-                <span class="radio-label">Sim, activo e optimizado</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="google_business" value="Sim, mas não optimizado"/>
-                <span class="radio-label">Sim, mas não optimizado</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="google_business" value="Não tenho"/>
-                <span class="radio-label">Não tenho</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="google_business" value="Não sei o que é"/>
-                <span class="radio-label">Não sei o que é</span>
-              </label>
-            </div>
-            <div class="field-error" id="err-google_business">Por favor selecciona uma opção</div>
+            <label for="cidade">Cidade ou mercado principal</label>
+            <input type="text" name="cidade" id="cidade" placeholder="Ex.: Porto, Portugal, mercado online ou ainda não definido"/>
           </div>
-        </div>
 
-        <!-- GRUPO 3: AUTOMAÇÃO -->
-        <div class="field-group">
-          <div class="group-label">03 · Automação &amp; Marketing</div>
-          <div class="field">
-            <label>Já trabalhas com alguma agência de marketing?</label>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" name="agencia" value="Sim actualmente"/>
-                <span class="radio-label">Sim, actualmente</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="agencia" value="Já trabalhei mas não continuo"/>
-                <span class="radio-label">Já trabalhei, mas não continuo</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="agencia" value="Nunca trabalhei"/>
-                <span class="radio-label">Nunca trabalhei com agência</span>
-              </label>
+          <!-- ── FLUXO A · IDEIA NOVA ── -->
+          <div class="flow" id="flow-ideia" hidden>
+            <div class="field">
+              <label for="problema_resolver">Que problema queres resolver? <span class="req">*</span></label>
+              <textarea name="problema_resolver" id="problema_resolver" rows="3" placeholder="Explica de forma simples o problema, necessidade ou oportunidade que identificaste." aria-describedby="err-problema_resolver" aria-required="true"></textarea>
+              <div class="field-error" id="err-problema_resolver">Descreve o problema que queres resolver</div>
             </div>
-          </div>
-          <div class="field">
-            <label for="resposta_leads">Como respondes actualmente aos leads? <span class="req">*</span></label>
-            <select name="resposta_leads" id="resposta_leads" aria-describedby="err-resposta_leads" required>
-              <option value="">Selecciona uma opção</option>
-              <option>Manualmente, um a um</option>
-              <option>Tenho alguém na equipa para isso</option>
-              <option>Tenho alguma automação mas básica</option>
-              <option>Tenho um sistema bem estruturado</option>
-            </select>
-            <div class="field-error" id="err-resposta_leads">Por favor selecciona uma opção</div>
-          </div>
-          <div class="field">
-            <label>Que canais usas para captar clientes?</label>
-            <div class="check-grid" id="canais-group">
-              <label class="check-option"><input type="checkbox" name="canais" value="Instagram"/><span class="check-label">Instagram</span></label>
-              <label class="check-option"><input type="checkbox" name="canais" value="WhatsApp"/><span class="check-label">WhatsApp</span></label>
-              <label class="check-option"><input type="checkbox" name="canais" value="Google"/><span class="check-label">Google / SEO</span></label>
-              <label class="check-option"><input type="checkbox" name="canais" value="Facebook"/><span class="check-label">Facebook</span></label>
-              <label class="check-option"><input type="checkbox" name="canais" value="Passa-a-palavra"/><span class="check-label">Passa-a-palavra</span></label>
-              <label class="check-option"><input type="checkbox" name="canais" value="Nenhum sistematizado"/><span class="check-label">Nenhum sistematizado</span></label>
+            <div class="field">
+              <label for="publico_alvo">Para quem seria esta solução? <span class="req">*</span></label>
+              <input type="text" name="publico_alvo" id="publico_alvo" placeholder="Ex.: profissionais independentes, empresas, consumidores, motoristas…" aria-describedby="err-publico_alvo" aria-required="true"/>
+              <div class="field-error" id="err-publico_alvo">Indica para quem seria a solução</div>
             </div>
+            <div class="field">
+              <label for="fase_projeto">Em que fase está a ideia? <span class="req">*</span></label>
+              <select name="fase_projeto" id="fase_projeto" aria-describedby="err-fase_projeto" aria-required="true">
+                <option value="">Seleciona uma opção</option>
+                <option>É apenas uma ideia inicial</option>
+                <option>Já fiz alguma pesquisa</option>
+                <option>Já tenho o modelo documentado</option>
+                <option>Já tenho design ou protótipo</option>
+                <option>O desenvolvimento já começou</option>
+                <option>Preciso de ajuda para definir a fase</option>
+              </select>
+              <div class="field-error" id="err-fase_projeto">Seleciona a fase da ideia</div>
+            </div>
+            <fieldset class="field">
+              <legend>O que pode ser necessário construir? <span class="req">*</span></legend>
+              <div class="check-grid" id="grid-solucao-ideia" aria-describedby="err-tipo_solucao_ideia">
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Website ou landing page"/><span class="check-label">Website ou landing page</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Aplicação ou produto digital"/><span class="check-label">Aplicação ou produto digital</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Plataforma ou portal"/><span class="check-label">Plataforma ou portal</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="CRM ou sistema de gestão"/><span class="check-label">CRM ou sistema de gestão</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Automação e integrações"/><span class="check-label">Automação e integrações</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Sistema de agendamento"/><span class="check-label">Sistema de agendamento</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="E-commerce"/><span class="check-label">E-commerce</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Ainda não sei"/><span class="check-label">Ainda não sei</span></label>
+              </div>
+              <div class="field-error" id="err-tipo_solucao_ideia">Seleciona pelo menos uma opção</div>
+            </fieldset>
           </div>
-          <div class="field">
-            <label for="maior_desafio">Qual é o teu maior desafio actual? <span class="req">*</span></label>
-            <select name="maior_desafio" id="maior_desafio" aria-describedby="err-maior_desafio" required>
-              <option value="">Selecciona o principal desafio</option>
-              <option>Captar mais leads / clientes</option>
-              <option>Responder a tempo a todos os contactos</option>
-              <option>Reduzir faltas e cancelamentos</option>
-              <option>Aparecer no Google e Maps</option>
-              <option>Gerir e acompanhar leads</option>
-              <option>Automatizar tarefas repetitivas</option>
-            </select>
-            <div class="field-error" id="err-maior_desafio">Por favor selecciona o teu maior desafio</div>
-          </div>
-        </div>
 
-        <!-- GRUPO 4: CONTEXTO -->
-        <div class="field-group">
-          <div class="group-label">04 · Contexto final</div>
-          <div class="field">
-            <label for="facturacao">Facturação mensal estimada <span class="req">*</span></label>
-            <select name="facturacao" id="facturacao" aria-describedby="err-facturacao" required>
-              <option value="">Selecciona um intervalo</option>
-              <option>Menos de €1.000/mês</option>
-              <option>€1.000 a €3.000/mês</option>
-              <option>€3.000 a €8.000/mês</option>
-              <option>€8.000 a €20.000/mês</option>
-              <option>Mais de €20.000/mês</option>
-            </select>
-            <div class="field-error" id="err-facturacao">Por favor selecciona um intervalo</div>
+          <!-- ── FLUXO B · NEGÓCIO EXISTENTE ── -->
+          <div class="flow" id="flow-negocio" hidden>
+            <div class="field">
+              <label for="clientes_mes">Quantos novos contactos ou clientes recebes por mês?</label>
+              <select name="clientes_mes" id="clientes_mes">
+                <option value="">Seleciona uma opção</option>
+                <option>Ainda não sei</option>
+                <option>Menos de 10</option>
+                <option>10 a 30</option>
+                <option>30 a 60</option>
+                <option>60 a 100</option>
+                <option>Mais de 100</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="resposta_leads">Como os contactos são tratados atualmente? <span class="req">*</span></label>
+              <select name="resposta_leads" id="resposta_leads" aria-describedby="err-resposta_leads" aria-required="true">
+                <option value="">Seleciona uma opção</option>
+                <option>Manualmente por mim</option>
+                <option>Manualmente por uma pessoa da equipa</option>
+                <option>Utilizamos várias ferramentas separadas</option>
+                <option>Temos alguma automação</option>
+                <option>Temos um sistema bem estruturado</option>
+                <option>Ainda não recebemos contactos de forma consistente</option>
+              </select>
+              <div class="field-error" id="err-resposta_leads">Seleciona uma opção</div>
+            </div>
+            <div class="field">
+              <label>De onde chegam atualmente os contactos ou clientes?</label>
+              <div class="check-grid" id="canais-group">
+                <label class="check-option"><input type="checkbox" name="canais" value="Website"/><span class="check-label">Website</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Instagram"/><span class="check-label">Instagram</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="WhatsApp"/><span class="check-label">WhatsApp</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Google"/><span class="check-label">Google</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Publicidade"/><span class="check-label">Publicidade</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Facebook"/><span class="check-label">Facebook</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Marketplaces ou plataformas"/><span class="check-label">Marketplaces ou plataformas</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Recomendação"/><span class="check-label">Recomendação</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Prospecção comercial"/><span class="check-label">Prospecção comercial</span></label>
+                <label class="check-option"><input type="checkbox" name="canais" value="Nenhum canal estruturado"/><span class="check-label">Nenhum canal estruturado</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="maior_desafio">Qual é o principal problema que queres resolver? <span class="req">*</span></label>
+              <select name="maior_desafio" id="maior_desafio" aria-describedby="err-maior_desafio" aria-required="true">
+                <option value="">Seleciona uma opção</option>
+                <option>Captar mais oportunidades</option>
+                <option>Organizar contactos e clientes</option>
+                <option>Responder mais rapidamente</option>
+                <option>Automatizar processos</option>
+                <option>Integrar ferramentas separadas</option>
+                <option>Criar ou melhorar o website</option>
+                <option>Criar um sistema de agendamento</option>
+                <option>Desenvolver um produto digital</option>
+                <option>Melhorar o acompanhamento comercial</option>
+                <option>Outro</option>
+              </select>
+              <div class="field-error" id="err-maior_desafio">Seleciona o principal problema</div>
+            </div>
+            <fieldset class="field">
+              <legend>Quem está envolvido atualmente neste projeto?</legend>
+              <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="agencia" value="Apenas eu"/><span class="radio-label">Apenas eu</span></label>
+                <label class="radio-option"><input type="radio" name="agencia" value="Equipa interna"/><span class="radio-label">Equipa interna</span></label>
+                <label class="radio-option"><input type="radio" name="agencia" value="Designer ou agência"/><span class="radio-label">Designer ou agência</span></label>
+                <label class="radio-option"><input type="radio" name="agencia" value="Programador ou equipa técnica"/><span class="radio-label">Programador ou equipa técnica</span></label>
+                <label class="radio-option"><input type="radio" name="agencia" value="Consultor"/><span class="radio-label">Consultor</span></label>
+                <label class="radio-option"><input type="radio" name="agencia" value="Vários prestadores"/><span class="radio-label">Vários prestadores</span></label>
+                <label class="radio-option"><input type="radio" name="agencia" value="Ninguém neste momento"/><span class="radio-label">Ninguém neste momento</span></label>
+              </div>
+            </fieldset>
           </div>
+
+          <!-- ── FLUXO C · PROJETO PARADO ── -->
+          <div class="flow" id="flow-parado" hidden>
+            <div class="field">
+              <label for="fase_projeto_parado">Em que fase o projeto parou? <span class="req">*</span></label>
+              <select name="fase_projeto" id="fase_projeto_parado" aria-describedby="err-fase_projeto_parado" aria-required="true">
+                <option value="">Seleciona uma opção</option>
+                <option>Planeamento</option>
+                <option>Pesquisa e validação</option>
+                <option>Design</option>
+                <option>Protótipo</option>
+                <option>Desenvolvimento</option>
+                <option>Testes</option>
+                <option>Lançamento</option>
+                <option>Já esteve publicado</option>
+                <option>Não sei identificar</option>
+              </select>
+              <div class="field-error" id="err-fase_projeto_parado">Seleciona a fase em que parou</div>
+            </div>
+            <div class="field">
+              <label for="motivo_paragem">Porque é que o projeto parou? <span class="req">*</span></label>
+              <textarea name="motivo_paragem" id="motivo_paragem" rows="3" placeholder="Ex.: falta de direção, problemas técnicos, orçamento, equipa, fornecedor ou mudança de prioridade." aria-describedby="err-motivo_paragem" aria-required="true"></textarea>
+              <div class="field-error" id="err-motivo_paragem">Explica porque o projeto parou</div>
+            </div>
+            <fieldset class="field">
+              <legend>Que ativos já existem?</legend>
+              <div class="check-grid" id="ativos-group">
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Domínio"/><span class="check-label">Domínio</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Website"/><span class="check-label">Website</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Design"/><span class="check-label">Design</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Protótipo"/><span class="check-label">Protótipo</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Código"/><span class="check-label">Código</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Base de dados"/><span class="check-label">Base de dados</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Documentação"/><span class="check-label">Documentação</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Contas ou ferramentas"/><span class="check-label">Contas ou ferramentas</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Nenhum ativo organizado"/><span class="check-label">Nenhum ativo organizado</span></label>
+                <label class="check-option"><input type="checkbox" name="ativos_existentes" value="Não sei"/><span class="check-label">Não sei</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="maior_desafio_parado">O que precisa acontecer para o projeto avançar? <span class="req">*</span></label>
+              <select name="maior_desafio" id="maior_desafio_parado" aria-describedby="err-maior_desafio_parado" aria-required="true">
+                <option value="">Seleciona uma opção</option>
+                <option>Rever a estratégia</option>
+                <option>Redefinir o escopo</option>
+                <option>Melhorar o design</option>
+                <option>Corrigir ou concluir o desenvolvimento</option>
+                <option>Integrar ferramentas</option>
+                <option>Organizar dados e acessos</option>
+                <option>Preparar o lançamento</option>
+                <option>Retomar a operação</option>
+                <option>Ainda preciso de um diagnóstico</option>
+                <option>Outro</option>
+              </select>
+              <div class="field-error" id="err-maior_desafio_parado">Seleciona o que precisa acontecer</div>
+            </div>
+            <fieldset class="field">
+              <legend>Que tipo de solução está envolvida? <span class="req">*</span></legend>
+              <div class="check-grid" id="grid-solucao-parado" aria-describedby="err-tipo_solucao_parado">
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Website ou landing page"/><span class="check-label">Website ou landing page</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Aplicação"/><span class="check-label">Aplicação</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Plataforma"/><span class="check-label">Plataforma</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Sistema interno"/><span class="check-label">Sistema interno</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Automação"/><span class="check-label">Automação</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="E-commerce"/><span class="check-label">E-commerce</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Agenda ou CRM"/><span class="check-label">Agenda ou CRM</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Outro"/><span class="check-label">Outro</span></label>
+                <label class="check-option"><input type="checkbox" name="tipo_solucao" value="Ainda não sei"/><span class="check-label">Ainda não sei</span></label>
+              </div>
+              <div class="field-error" id="err-tipo_solucao_parado">Seleciona pelo menos uma opção</div>
+            </fieldset>
+          </div>
+
+          <div class="step-actions two">
+            <button type="button" class="btn-step btn-back" data-back>← Voltar</button>
+            <button type="button" class="btn-step btn-next" data-next>Continuar →</button>
+          </div>
+        </section>
+
+        <!-- ═══ PASSO 3 — PRÓXIMO PASSO ═══ -->
+        <section class="step" id="step-3" data-step="3" hidden aria-labelledby="step3-title">
+          <h2 class="step-title" id="step3-title" tabindex="-1">Próximo passo.</h2>
+
           <div class="field">
-            <label for="investimento">Que nível de investimento estás a considerar para este projeto? <span class="req">*</span></label>
-            <select name="investimento" id="investimento" aria-describedby="err-investimento" required>
-              <option value="" selected disabled>Seleciona uma opção</option>
+            <label for="investimento">Que nível de investimento estás a considerar? <span class="req">*</span></label>
+            <select name="investimento" id="investimento" aria-describedby="err-investimento" aria-required="true" required>
+              <option value="">Seleciona uma opção</option>
               <option value="nao_definido">Ainda não defini</option>
-              <option value="menos_500">Menos de €500</option>
-              <option value="500_2000">€500 a €2.000</option>
-              <option value="2000_5000">€2.000 a €5.000</option>
-              <option value="mais_5000">Mais de €5.000</option>
+              <option value="ate_1000">Até €1.000</option>
+              <option value="1000_3000">€1.000 a €3.000</option>
+              <option value="3000_7500">€3.000 a €7.500</option>
+              <option value="mais_7500">Mais de €7.500</option>
             </select>
-            <div class="field-error" id="err-investimento">Por favor seleciona uma opção</div>
+            <div class="field-error" id="err-investimento">Seleciona uma opção</div>
           </div>
-          <div class="field">
-            <label>Quando queres começar?</label>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" name="urgencia" value="Imediatamente"/>
-                <span class="radio-label">Imediatamente — preciso de resultados rápido</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="urgencia" value="Próximas semanas"/>
-                <span class="radio-label">Nas próximas semanas</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="urgencia" value="A explorar"/>
-                <span class="radio-label">A explorar — ainda a avaliar</span>
-              </label>
+
+          <div class="field" id="fac-wrap" hidden>
+            <label for="facturacao">Faturação mensal aproximada do negócio</label>
+            <select name="facturacao" id="facturacao">
+              <option value="">Seleciona uma opção</option>
+              <option>Prefiro não indicar</option>
+              <option>Ainda sem faturação regular</option>
+              <option>Menos de €1.000</option>
+              <option>€1.000 a €3.000</option>
+              <option>€3.000 a €8.000</option>
+              <option>€8.000 a €20.000</option>
+              <option>Mais de €20.000</option>
+            </select>
+          </div>
+
+          <fieldset class="field">
+            <legend>Quando pretendes começar? <span class="req">*</span></legend>
+            <div class="radio-group" id="urgencia-group" aria-describedby="err-urgencia">
+              <label class="radio-option"><input type="radio" name="urgencia" value="Assim que possível" aria-required="true"/><span class="radio-label">Assim que possível</span></label>
+              <label class="radio-option"><input type="radio" name="urgencia" value="Nas próximas semanas" aria-required="true"/><span class="radio-label">Nas próximas semanas</span></label>
+              <label class="radio-option"><input type="radio" name="urgencia" value="Nos próximos dois a três meses" aria-required="true"/><span class="radio-label">Nos próximos dois a três meses</span></label>
+              <label class="radio-option"><input type="radio" name="urgencia" value="Ainda estou a avaliar" aria-required="true"/><span class="radio-label">Ainda estou a avaliar</span></label>
             </div>
-          </div>
+            <div class="field-error" id="err-urgencia">Seleciona quando pretendes começar</div>
+          </fieldset>
+
           <div class="field">
             <label for="observacoes">Observações (opcional)</label>
-            <textarea name="observacoes" id="observacoes" rows="3" placeholder="Conta-nos mais sobre o teu negócio, dúvidas ou situação específica…"></textarea>
+            <textarea name="observacoes" id="observacoes" rows="3" placeholder="Acrescenta alguma informação importante."></textarea>
           </div>
-        </div>
 
-        <div class="submit-wrap">
-          <div class="global-error" id="global-error-form" style="margin-bottom:16px"></div>
-          <button type="submit" class="btn-submit" id="btn-submit">
-            <span class="btn-text">Pedir análise inicial →</span>
-            <span class="spinner"></span>
-          </button>
-          <div class="form-note">A IG Solution não partilha os teus dados com terceiros</div>
-        </div>
+          <div class="field consent">
+            <label class="consent-box">
+              <input type="checkbox" name="privacidade_aceite" id="privacidade_aceite" value="sim" aria-describedby="err-privacidade_aceite" aria-required="true"/>
+              <span>Li e aceito a <a href="privacidade.html">Política de Privacidade</a> e autorizo o tratamento dos dados para resposta a este pedido.</span>
+            </label>
+            <div class="field-error" id="err-privacidade_aceite">Precisas de aceitar a Política de Privacidade para continuar</div>
+          </div>
+
+          <p class="form-note">A IG Solution não vende os teus dados. As informações podem ser processadas pelos fornecedores técnicos necessários ao funcionamento do serviço.</p>
+
+          <div class="global-error" id="global-error-form" role="alert" aria-live="assertive"></div>
+
+          <div class="step-actions two">
+            <button type="button" class="btn-step btn-back" data-back>← Voltar</button>
+            <button type="submit" class="btn-submit" id="btn-submit">
+              <span class="btn-text">Enviar análise inicial →</span>
+              <span class="spinner"></span>
+            </button>
+          </div>
+        </section>
 
       </form>
     </div>
@@ -625,13 +787,13 @@ fieldset.field{border:none;padding:0;min-width:0}
         <strong>Preferes falar directamente?</strong>
         <span>Envia mensagem no WhatsApp e conta-nos o teu projeto</span>
       </div>
-      <a href="https://wa.me/351917305248?text=Olá,%20gostaria%20de%20pedir%20uma%20análise%20inicial%20do%20meu%20projeto." target="_blank" class="btn-wa">
+      <a href="https://wa.me/351917305248?text=Olá,%20gostaria%20de%20pedir%20uma%20análise%20inicial%20do%20meu%20projeto." target="_blank" rel="noopener" class="btn-wa">
         💬 WhatsApp
       </a>
     </div>
 
     <div class="rgpd-note">
-      Ao submeter este formulário, aceitas a nossa <a href="privacidade.html">Política de Privacidade</a>. Os teus dados são tratados em conformidade com o RGPD e utilizados exclusivamente para responder ao pedido de análise inicial.
+      Os teus dados são tratados em conformidade com o RGPD e utilizados exclusivamente para responder ao pedido de análise inicial. Vê a nossa <a href="privacidade.html">Política de Privacidade</a>.
     </div>
   </div>
 </div>
@@ -678,103 +840,218 @@ fieldset.field{border:none;padding:0;min-width:0}
 
 <script>
 const WEBHOOK = 'https://n8n-production-6ead.up.railway.app/webhook/diagnostico-lead';
+const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+const $ = (id) => document.getElementById(id);
 
-// Validation helpers
-function isValidPhone(v) { return /^\+?[\d\s\-()]{9,}$/.test(v.trim()); }
-function isValidEmail(v) { return !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+/* ── Helpers de validação ── */
+function isValidPhone(v){ return /^\+?[\d\s\-()]{9,}$/.test((v||'').trim()); }
+function isValidEmail(v){ return !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v||'').trim()); }
 
-function setFieldState(id, isErr, msg) {
-  const el = document.getElementById(id);
-  const errEl = document.getElementById('err-' + id);
-  if (!el) return;
-  el.classList.toggle('error', isErr);
-  el.classList.toggle('ok', !isErr && el.value !== '');
-  el.setAttribute('aria-invalid', isErr ? 'true' : 'false');
-  if (errEl) {
-    errEl.classList.toggle('show', isErr);
-    if (msg) errEl.textContent = msg;
-  }
+function setErr(id, show, msg){
+  const el = $(id), err = $('err-'+id);
+  if (el){ el.classList.toggle('error', show); el.setAttribute('aria-invalid', show?'true':'false'); }
+  if (err){ err.classList.toggle('show', show); if (msg) err.textContent = msg; }
 }
-
-function clearFieldState(id) {
-  const el = document.getElementById(id);
-  const errEl = document.getElementById('err-' + id);
-  if (el) { el.classList.remove('error', 'ok'); }
-  if (errEl) errEl.classList.remove('show');
+function clearErr(id){
+  const el = $(id), err = $('err-'+id);
+  if (el){ el.classList.remove('error','ok'); el.removeAttribute('aria-invalid'); }
+  if (err) err.classList.remove('show');
 }
-
-// Live validation on blur
-['nome','telefone','email','negocio','cidade','sector','clientes_mes','resposta_leads','maior_desafio','facturacao','investimento'].forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener('blur', () => validateField(id));
-  el.addEventListener('input', () => {
-    if (el.classList.contains('error')) validateField(id);
-  });
-});
-
-function validateField(id) {
-  const el = document.getElementById(id);
-  if (!el) return true;
-  const v = el.value.trim();
-  const required = el.hasAttribute('required');
-
-  if (id === 'nome') {
-    if (!v) { setFieldState(id, true, 'Por favor indica o teu nome'); return false; }
-    setFieldState(id, false); return true;
-  }
-  if (id === 'telefone') {
-    if (!v) { setFieldState(id, true, 'Indica o teu telemóvel'); return false; }
-    if (!isValidPhone(v)) { setFieldState(id, true, 'Número inválido'); return false; }
-    setFieldState(id, false); return true;
-  }
-  if (id === 'email') {
-    if (!isValidEmail(v)) { setFieldState(id, true, 'Email inválido'); return false; }
-    setFieldState(id, false); return true;
-  }
-  if (required && !v) {
-    setFieldState(id, true);
-    return false;
-  }
-  setFieldState(id, false);
-  return true;
-}
-
-function validateRadio(name, errorId) {
-  const checked = document.querySelector('input[name="' + name + '"]:checked');
-  const errEl = document.getElementById(errorId);
-  const first = document.querySelector('input[name="' + name + '"]');
+function vText(id, req){ const el=$(id); if(!el) return true; const v=(el.value||'').trim(); if(req && !v){ setErr(id,true); return false; } setErr(id,false); return true; }
+function vSelect(id, req){ const el=$(id); if(!el) return true; if(req && !el.value){ setErr(id,true); return false; } setErr(id,false); return true; }
+function vTel(id){ const el=$(id); const v=(el.value||'').trim(); if(!v){ setErr(id,true,'Indica o teu telemóvel'); return false; } if(!isValidPhone(v)){ setErr(id,true,'Número inválido'); return false; } setErr(id,false); return true; }
+function vEmail(id){ const el=$(id); const v=(el.value||'').trim(); if(v && !isValidEmail(v)){ setErr(id,true,'Email inválido'); return false; } setErr(id,false); return true; }
+function vRadio(name, errId){
+  const checked = document.querySelector('input[name="'+name+'"]:not(:disabled):checked');
+  const err = $(errId);
+  const first = document.querySelector('input[name="'+name+'"]');
   const wrap = first ? first.closest('.radio-group') : null;
-  if (!checked) {
-    if (errEl) errEl.classList.add('show');
-    if (wrap) { wrap.classList.add('error'); wrap.setAttribute('aria-invalid', 'true'); }
-    return false;
-  }
-  if (errEl) errEl.classList.remove('show');
-  if (wrap) { wrap.classList.remove('error'); wrap.removeAttribute('aria-invalid'); }
-  return true;
+  if(!checked){ if(err) err.classList.add('show'); if(wrap){ wrap.classList.add('error'); wrap.setAttribute('aria-invalid','true'); } return false; }
+  if(err) err.classList.remove('show'); if(wrap){ wrap.classList.remove('error'); wrap.removeAttribute('aria-invalid'); } return true;
+}
+function vCheck(name, errId, gridId){
+  const any = document.querySelector('input[name="'+name+'"]:not(:disabled):checked');
+  const err = $(errId), wrap = gridId ? $(gridId) : null;
+  if(!any){ if(err) err.classList.add('show'); if(wrap) wrap.classList.add('error'); return false; }
+  if(err) err.classList.remove('show'); if(wrap) wrap.classList.remove('error'); return true;
+}
+function vConsent(){
+  const el = $('privacidade_aceite'), err = $('err-privacidade_aceite');
+  if(!el.checked){ if(err) err.classList.add('show'); el.setAttribute('aria-invalid','true'); return false; }
+  if(err) err.classList.remove('show'); el.setAttribute('aria-invalid','false'); return true;
 }
 
-// Clear radio error as soon as an option is selected
-['tipo_projeto', 'google_business'].forEach(name => {
-  document.querySelectorAll('input[name="' + name + '"]').forEach(r => {
-    r.addEventListener('change', () => validateRadio(name, 'err-' + name));
+/* ── Comportamento dinâmico por tipo_projeto ── */
+const FLOWS = { ideia_nova:'flow-ideia', negocio_existente:'flow-negocio', projeto_parado:'flow-parado' };
+
+function getTipo(){ const r = document.querySelector('input[name="tipo_projeto"]:checked'); return r ? r.value : ''; }
+
+function setReq(inputId, reqSpanId, required){
+  const inp = $(inputId), req = $(reqSpanId);
+  if(!inp) return;
+  if(required){ inp.setAttribute('required',''); inp.setAttribute('aria-required','true'); if(req) req.hidden = false; }
+  else { inp.removeAttribute('required'); inp.setAttribute('aria-required','false'); if(req) req.hidden = true; clearErr(inputId); }
+}
+
+function applyDynamic(tipo){
+  // Nome do negócio / projeto
+  const map = {
+    ideia_nova:      ['Nome provisório do projeto', 'Ex.: Ainda não definido', false],
+    negocio_existente:['Nome do negócio', 'Ex.: Nome da empresa ou marca', true],
+    projeto_parado:  ['Nome do projeto ou negócio', 'Ex.: Nome do projeto, aplicação ou empresa', false]
+  };
+  const [lbl, ph, req] = map[tipo] || ['Nome do negócio ou projeto', '—', false];
+  const lblEl = $('lbl-negocio'); if(lblEl){ lblEl.querySelector('.lbl-text').textContent = lbl; }
+  const inp = $('negocio'); if(inp) inp.placeholder = ph;
+  setReq('negocio', 'req-negocio', req);
+
+  // Link existente
+  const linkMap = {
+    ideia_nova:'Link para protótipo, documento ou referência',
+    negocio_existente:'Website, Instagram ou página atual',
+    projeto_parado:'Link para site, protótipo, repositório ou documentação'
+  };
+  const linkLbl = $('lbl-link'); if(linkLbl) linkLbl.textContent = linkMap[tipo] || 'Website, Instagram ou página atual';
+
+  // Observações placeholder
+  const obsMap = {
+    ideia_nova:'Acrescenta alguma informação importante sobre a ideia ou o que esperas construir.',
+    negocio_existente:'Conta-nos mais sobre a operação atual ou o resultado que procuras.',
+    projeto_parado:'Indica detalhes que nos ajudem a compreender o histórico do projeto.'
+  };
+  const obs = $('observacoes'); if(obs) obs.placeholder = obsMap[tipo] || 'Acrescenta alguma informação importante.';
+}
+
+function setFlow(tipo){
+  Object.entries(FLOWS).forEach(([k,id]) => {
+    const el = $(id); if(!el) return;
+    const on = (k === tipo);
+    el.hidden = !on;
+    el.querySelectorAll('input,select,textarea').forEach(f => {
+      f.disabled = !on;
+      if(!on){
+        if(f.type==='checkbox' || f.type==='radio') f.checked = false; else f.value = '';
+        if(f.id) clearErr(f.id);
+      }
+    });
+    // limpar erros de grupos ao desativar
+    if(!on){
+      el.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+      el.querySelectorAll('.radio-group,.check-grid').forEach(g => g.classList.remove('error'));
+    }
+  });
+  // Faturação apenas para negócio existente
+  const facOn = (tipo === 'negocio_existente');
+  const facWrap = $('fac-wrap'); if(facWrap) facWrap.hidden = !facOn;
+  const fac = $('facturacao'); if(fac){ fac.disabled = !facOn; if(!facOn) fac.value = ''; }
+
+  applyDynamic(tipo);
+}
+
+/* ── Navegação entre passos ── */
+let current = 1;
+function showStep(n){
+  document.querySelectorAll('.step').forEach(s => { s.hidden = (parseInt(s.dataset.step,10) !== n); });
+  document.querySelectorAll('.seg').forEach(seg => {
+    const i = parseInt(seg.dataset.seg,10);
+    seg.classList.toggle('current', i === n);
+    seg.classList.toggle('done', i < n);
+    if(i === n) seg.setAttribute('aria-current','step'); else seg.removeAttribute('aria-current');
+  });
+  const sc = $('step-count'); if(sc) sc.textContent = 'Passo ' + n + ' de 3';
+  current = n;
+  const h = $('step'+n+'-title'); if(h) h.focus();
+  const top = $('form-top');
+  if(top){ const y = top.getBoundingClientRect().top + window.scrollY - 76; window.scrollTo({ top: y, behavior: prefersReduced ? 'auto' : 'smooth' }); }
+}
+
+function validateStep(n){
+  let bad = null;
+  const keep = (el) => { if(el && !bad) bad = el; };
+  if(n === 1){
+    if(!vRadio('tipo_projeto','err-tipo_projeto')) keep($('tipo-projeto-group'));
+    if(!vText('nome', true)) keep($('nome'));
+    if(!vTel('telefone')) keep($('telefone'));
+    if(!vEmail('email')) keep($('email'));
+    if(getTipo() === 'negocio_existente'){ if(!vText('negocio', true)) keep($('negocio')); }
+  } else if(n === 2){
+    if(!vSelect('sector', true)) keep($('sector'));
+    const t = getTipo();
+    if(t === 'ideia_nova'){
+      if(!vText('problema_resolver', true)) keep($('problema_resolver'));
+      if(!vText('publico_alvo', true)) keep($('publico_alvo'));
+      if(!vSelect('fase_projeto', true)) keep($('fase_projeto'));
+      if(!vCheck('tipo_solucao','err-tipo_solucao_ideia','grid-solucao-ideia')) keep($('grid-solucao-ideia'));
+    } else if(t === 'negocio_existente'){
+      if(!vSelect('resposta_leads', true)) keep($('resposta_leads'));
+      if(!vSelect('maior_desafio', true)) keep($('maior_desafio'));
+    } else if(t === 'projeto_parado'){
+      if(!vSelect('fase_projeto_parado', true)) keep($('fase_projeto_parado'));
+      if(!vText('motivo_paragem', true)) keep($('motivo_paragem'));
+      if(!vSelect('maior_desafio_parado', true)) keep($('maior_desafio_parado'));
+      if(!vCheck('tipo_solucao','err-tipo_solucao_parado','grid-solucao-parado')) keep($('grid-solucao-parado'));
+    }
+  } else if(n === 3){
+    if(!vSelect('investimento', true)) keep($('investimento'));
+    if(!vRadio('urgencia','err-urgencia')) keep($('urgencia-group'));
+    if(!vConsent()) keep($('privacidade_aceite'));
+  }
+  return { ok: !bad, el: bad };
+}
+
+function focusInvalid(el){
+  if(!el) return;
+  const f = el.matches('input,select,textarea') ? el : el.querySelector('input,select,textarea');
+  if(el.scrollIntoView) el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
+  if(f) f.focus({ preventScroll: true });
+}
+
+/* ── Listeners ── */
+document.querySelectorAll('input[name="tipo_projeto"]').forEach(r => {
+  r.addEventListener('change', () => { setFlow(r.value); vRadio('tipo_projeto','err-tipo_projeto'); });
+});
+document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+  const r = validateStep(current);
+  if(!r.ok){ focusInvalid(r.el); return; }
+  showStep(current + 1);
+}));
+document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => {
+  showStep(Math.max(1, current - 1));
+}));
+
+// Validação em tempo real (limpar / revalidar campos com erro)
+document.getElementById('diag-form').addEventListener('input', (e) => {
+  const t = e.target; if(t && t.id && t.classList.contains('error')){
+    if(t.id === 'telefone') vTel('telefone');
+    else if(t.id === 'email') vEmail('email');
+    else clearErr(t.id);
+  }
+});
+document.getElementById('diag-form').addEventListener('change', (e) => {
+  const t = e.target;
+  if(t && (t.type === 'checkbox' || t.type === 'radio')){
+    const grid = t.closest('.check-grid'); if(grid) grid.classList.remove('error');
+    const rg = t.closest('.radio-group'); if(rg) rg.classList.remove('error');
+    if(t.id === 'privacidade_aceite' && t.checked) clearErr('privacidade_aceite');
+    const err = t.closest('.field') ? t.closest('.field').querySelector('.field-error') : null;
+    if(err && t.checked) err.classList.remove('show');
+  }
+});
+['nome','telefone','email','negocio','sector','problema_resolver','publico_alvo','fase_projeto','resposta_leads','maior_desafio','fase_projeto_parado','motivo_paragem','maior_desafio_parado','investimento'].forEach(id => {
+  const el = $(id); if(!el) return;
+  el.addEventListener('blur', () => {
+    if(el.hasAttribute('required') || (id === 'email' && el.value)){
+      if(id === 'telefone') vTel(id); else if(id === 'email') vEmail(id);
+      else if(el.tagName === 'SELECT') vSelect(id, true); else vText(id, true);
+    }
   });
 });
 
-function validateAll() {
-  const fields = ['nome','telefone','email','negocio','cidade','sector','clientes_mes','resposta_leads','maior_desafio','facturacao','investimento'];
-  let valid = true;
-  fields.forEach(id => { if (!validateField(id)) valid = false; });
-  if (!validateRadio('tipo_projeto', 'err-tipo_projeto')) valid = false;
-  if (!validateRadio('google_business', 'err-google_business')) valid = false;
-  return valid;
-}
-
-function getFormData() {
+/* ── Payload ── */
+function buildPayload(){
   const f = document.getElementById('diag-form');
-  const d = new FormData(f);
-  const canais = Array.from(document.querySelectorAll('input[name="canais"]:checked')).map(c => c.value);
+  const d = new FormData(f); // campos desativados são excluídos
+  const joinChk = (name) => Array.from(document.querySelectorAll('input[name="'+name+'"]:not(:disabled):checked')).map(c => c.value).join(', ');
   return {
     tipo_projeto: d.get('tipo_projeto') || '',
     nome: d.get('nome') || '',
@@ -788,42 +1065,44 @@ function getFormData() {
     google_business: d.get('google_business') || '',
     agencia: d.get('agencia') || '',
     resposta_leads: d.get('resposta_leads') || '',
-    canais: canais.join(', '),
+    canais: joinChk('canais'),
     maior_desafio: d.get('maior_desafio') || '',
     facturacao: d.get('facturacao') || '',
     investimento: d.get('investimento') || '',
     urgencia: d.get('urgencia') || '',
     observacoes: d.get('observacoes') || '',
+    problema_resolver: d.get('problema_resolver') || '',
+    publico_alvo: d.get('publico_alvo') || '',
+    fase_projeto: d.get('fase_projeto') || '',
+    tipo_solucao: joinChk('tipo_solucao'),
+    motivo_paragem: d.get('motivo_paragem') || '',
+    ativos_existentes: joinChk('ativos_existentes'),
+    privacidade_aceite: ($('privacidade_aceite').checked ? 'sim' : ''),
     origem: window.location.href,
     data_envio: new Date().toISOString()
   };
 }
 
+/* ── Submissão ── */
 let isSending = false;
 document.getElementById('diag-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  if (isSending) return;
+  if(isSending) return;
 
-  const errBanner = document.getElementById('global-error-form');
+  const errBanner = $('global-error-form');
   errBanner.classList.remove('show');
 
-  if (!validateAll()) {
-    // Scroll and focus first error
-    const firstErr = document.querySelector('.error');
-    if (firstErr) {
-      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      const focusEl = firstErr.matches('input,select,textarea') ? firstErr : firstErr.querySelector('input,select,textarea');
-      if (focusEl) focusEl.focus({ preventScroll: true });
-    }
-    return;
+  for(let n = 1; n <= 3; n++){
+    const r = validateStep(n);
+    if(!r.ok){ if(current !== n) showStep(n); focusInvalid(r.el); return; }
   }
 
   isSending = true;
-  const btn = document.getElementById('btn-submit');
+  const btn = $('btn-submit');
   btn.classList.add('loading');
   btn.disabled = true;
 
-  const data = getFormData();
+  const data = buildPayload();
 
   try {
     const res = await fetch(WEBHOOK, {
@@ -831,26 +1110,27 @@ document.getElementById('diag-form').addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
+    if(!res.ok) throw new Error('HTTP ' + res.status);
 
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-
-    // Success
     document.getElementById('form-section').style.display = 'none';
-    const ss = document.getElementById('success-screen');
+    const ss = $('success-screen');
     ss.classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
 
   } catch (err) {
     console.error('Webhook error:', err);
-    errBanner.innerHTML = 'Ocorreu um erro ao enviar. Tenta novamente ou fala connosco directamente: <a href="https://wa.me/351917305248" target="_blank" style="color:#25D366;text-decoration:underline">💬 WhatsApp +351 917 305 248</a>';
+    errBanner.innerHTML = 'Ocorreu um erro ao enviar. Tenta novamente ou fala connosco directamente: <a href="https://wa.me/351917305248" target="_blank" rel="noopener" style="color:#25D366;text-decoration:underline">💬 WhatsApp +351 917 305 248</a>';
     errBanner.classList.add('show');
-    errBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    errBanner.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
   } finally {
     isSending = false;
     btn.classList.remove('loading');
     btn.disabled = false;
   }
 });
+
+// Estado inicial: nenhum fluxo ativo
+setFlow('');
 </script>
 </body>
 </html>
