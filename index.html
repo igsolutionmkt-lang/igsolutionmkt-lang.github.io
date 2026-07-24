@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>IG Solution — Sistemas Comerciais, CRM e Automação para Negócios de Serviços</title>
-<meta name="description" content="A IG Solution implementa sistemas comerciais, CRM, agenda e automações para organizar a captação, o atendimento e o acompanhamento de negócios de serviços."/>
-<meta property="og:title" content="IG Solution — Sistemas Comerciais, CRM e Automação para Negócios de Serviços"/>
-<meta property="og:description" content="Organizamos a captação, o atendimento e o acompanhamento de negócios de serviços através de sistemas comerciais ligados, documentados e adaptados à operação de cada empresa."/>
+<title>IG Solution — Sistemas comerciais, CRM e automação</title>
+<meta name="description" content="Estruturamos websites, formulários, CRM, WhatsApp e automações para negócios de serviços que precisam de organizar contactos, pedidos e acompanhamento."/>
+<meta property="og:title" content="IG Solution — Sistemas comerciais, CRM e automação"/>
+<meta property="og:description" content="Estruturamos websites, formulários, CRM, WhatsApp e automações para negócios de serviços que precisam de organizar contactos, pedidos e acompanhamento."/>
 <meta property="og:image" content="logo.png"/>
 <meta property="og:url" content="https://igsolutionmkt-lang.github.io"/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="pt_PT"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="IG Solution — Sistemas Comerciais, CRM e Automação para Negócios de Serviços"/>
-<meta name="twitter:description" content="Do primeiro contacto ao acompanhamento, tudo ligado. Sistemas comerciais, CRM, agenda e automação para negócios de serviços."/>
+<meta name="twitter:title" content="IG Solution — Sistemas comerciais, CRM e automação"/>
+<meta name="twitter:description" content="Estruturamos websites, formulários, CRM, WhatsApp e automações para negócios de serviços que precisam de organizar contactos, pedidos e acompanhamento."/>
 <meta name="twitter:image" content="logo.png"/>
 <link rel="canonical" href="https://igsolutionmkt-lang.github.io/"/>
 <link rel="icon" type="image/png" href="logo.png"/>
@@ -22,6 +22,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Figtree:wght@400;500;600&family=Space+Mono:wght@400&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Figtree:wght@400;500;600&family=Space+Mono:wght@400&display=swap"/></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"IG Solution","description":"Sistemas comerciais e automação para negócios de serviços. Organizamos a captação, o atendimento e o acompanhamento através de sistemas comerciais ligados, documentados e adaptados à operação de cada empresa.","url":"https://igsolutionmkt-lang.github.io","telephone":"+351917305248","email":"info@igsolution.pt","address":{"@type":"PostalAddress","addressLocality":"Porto","addressCountry":"PT"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como funcionam os preços?","acceptedAnswer":{"@type":"Answer","text":"Cada projeto recebe uma proposta fechada, com escopo, prazo, entregáveis, responsabilidades e custos externos definidos antes do início."}},{"@type":"Question","name":"Quanto tempo demora?","acceptedAnswer":{"@type":"Answer","text":"Depende do escopo. Uma automação específica pode ter uma implementação curta; um sistema completo é planeado depois da análise da operação."}},{"@type":"Question","name":"De quem são os acessos e os dados?","acceptedAnswer":{"@type":"Answer","text":"Do cliente, sempre que a plataforma utilizada permitir que a conta seja criada diretamente no seu nome."}},{"@type":"Question","name":"Preciso de equipa técnica?","acceptedAnswer":{"@type":"Answer","text":"Não. A IG Solution implementa, testa e documenta o sistema definido no projeto."}},{"@type":"Question","name":"Posso terminar o acompanhamento mensal?","acceptedAnswer":{"@type":"Answer","text":"Sim. As condições e o prazo de aviso são definidos na proposta e no acordo de acompanhamento."}},{"@type":"Question","name":"As ferramentas externas estão incluídas?","acceptedAnswer":{"@type":"Answer","text":"Domínio, alojamento, CRM, WhatsApp API, email e outros serviços externos não estão incluídos, salvo indicação expressa na proposta."}}]}</script>
 <style>
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -60,7 +61,8 @@ p{line-height:1.7}
 .eyebrow{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;max-width:100%}
 .eyebrow::before{content:'';width:22px;height:1px;background:currentColor;opacity:.5;flex-shrink:0}
 a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
-#metodo,#solucoes,#projetos,#sistema-comercial,#agenda-360,#sprint-automacao{scroll-margin-top:76px}
+#solucoes,#sistema,#setores,#agenda,#metodo,#exemplos,#sobre,#faq{scroll-margin-top:76px}
+[id^="setor-"]{scroll-margin-top:84px}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:var(--r-sm);font-family:var(--font-h);font-size:1rem;font-weight:700;letter-spacing:-.01em;transition:transform .25s var(--ease),box-shadow .25s,background .2s;white-space:nowrap}
@@ -181,34 +183,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .hd-btn:active{transform:translateY(0)}
 @media(max-width:960px){.hero{padding:118px 0 80px;min-height:auto}.hero-grid{grid-template-columns:1fr;gap:40px}.hero-demo{max-width:460px;margin:0 auto;width:100%}}
 
-/* ══ MICROINTERFACE genérica (cards) ══ */
-.mi{position:relative;border:1px solid var(--bdl);border-radius:14px;background:linear-gradient(160deg,#fff,var(--light));box-shadow:0 10px 26px rgba(17,24,39,.07);overflow:hidden}
-.mi-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--bdl);opacity:.5;transition:opacity .5s ease,background .5s ease;transform:translateX(-6px)}
-.inview .mi-row{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background .5s ease}
-.inview .mi-row.r1{transition-delay:.15s}.inview .mi-row.r2{transition-delay:.5s}.inview .mi-row.r3{transition-delay:.9s}
-.mi-row:last-child{border-bottom:none}
-.mi-row b{width:20px;height:20px;border-radius:6px;background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#15803D;font-family:var(--font-m)}
-.mi-row em{font-style:normal;font-size:.78rem;color:var(--ink2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mi-tag{font-family:var(--font-m);font-size:8px;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:100px;border:1px solid var(--bdl2);color:var(--ink3);transition:color .5s,border-color .5s,background .5s}
-.inview .mi-row.done .mi-tag{color:#15803D;border-color:var(--green-border);background:rgba(34,197,94,.08)}
-
-/* ══ 2. TIPOS DE OPERAÇÃO ══ */
-.op-grid{display:grid;grid-template-columns:1.05fr 1fr .95fr;gap:18px}
-.op-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(158deg,#fff,var(--cream));border:1px solid var(--bdl);border-radius:var(--r-xl);padding:34px 30px;overflow:hidden;box-shadow:var(--sh-card);transition:transform .45s var(--ease),box-shadow .45s,border-color .45s}
-.op-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent)}
-.op-card:hover{transform:translateY(-6px);box-shadow:var(--sh-card-h);border-color:var(--green-border)}
-.op-card:focus-within{transform:translateY(-6px);box-shadow:var(--sh-card-h)}
-.op-card .eyebrow{color:#15803D;margin-bottom:12px}
-.op-card h3{font-size:1.18rem;color:var(--ink);margin-bottom:10px;line-height:1.22}
-.op-card p{color:var(--ink2);font-size:.92rem;margin-bottom:20px}
-.op-mi{margin-top:auto;margin-bottom:20px}
-.op-ex{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
-.op-ex span{font-family:var(--font-m);font-size:8px;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:100px;border:1px solid var(--bdl2);color:var(--ink2);background:#fff}
-.op-cta{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-h);font-weight:700;font-size:.92rem;color:#15803D}
-.op-cta .arr{transition:transform .3s var(--ease)}
-.op-card:hover .op-cta .arr{transform:translateX(6px)}
-@media(max-width:900px){.op-grid{grid-template-columns:1fr}.op-card{padding:30px 26px}}
-
 /* ══ 3. OFERTAS ══ */
 .off-grid{display:grid;gap:18px;margin-top:56px}
 .off-row{display:grid;grid-template-columns:.86fr 1.14fr;gap:18px}
@@ -247,7 +221,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .card-main .c-title{font-size:clamp(1.7rem,2.5vw,2.15rem)}
 @media(max-width:820px){.card-main{grid-template-columns:1fr}.pipe-panel{padding:32px 26px}}
 
-/* Agenda 360 — produto em camadas */
+/* Agenda — produto em camadas */
 .agenda{margin-top:22px;position:relative;background:#fff;border:1px solid var(--bdl);border-radius:14px;padding:15px;box-shadow:0 14px 34px rgba(17,24,39,.09);overflow:hidden}
 .agenda-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
 .agenda-title{font-family:var(--font-h);font-weight:700;font-size:.88rem;color:var(--ink);display:flex;align-items:center;gap:8px}
@@ -355,27 +329,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .eco-block p{color:var(--t2);font-size:.9rem;line-height:1.6}
 @media(max-width:860px){.eco{grid-template-columns:1fr;gap:20px;padding:24px}.eco-rail::before{display:none}.eco-panel{min-height:0}}
 
-/* Faixa urgência */
-.urg{margin:64px 0 60px;background:linear-gradient(150deg,#16283f,var(--navy));border:1px solid rgba(255,255,255,.09);border-radius:var(--r-xl);padding:44px 40px;position:relative;overflow:hidden}
-.urg::after{content:'';position:absolute;inset:0;background:radial-gradient(500px 240px at 88% 10%,rgba(56,189,248,.14),transparent 60%);pointer-events:none}
-.urg-in{position:relative;z-index:1;max-width:760px}
-.urg h3{color:var(--t1);font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:14px}
-.urg p{color:var(--t2);font-size:1rem;margin-bottom:18px;max-width:640px}
-.urg-hi{font-family:var(--font-h);font-weight:800;font-size:clamp(1.05rem,2vw,1.3rem);color:var(--green-lum);letter-spacing:-.01em}
-
-/* Três formas de aplicar */
-.apply-head{font-family:var(--font-h);font-weight:800;font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--ink);letter-spacing:-.02em;margin-bottom:36px;max-width:640px}
-.apply-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.apply-block{position:relative;padding:30px 26px;border-radius:var(--r-lg);border:1px solid var(--bdl);background:linear-gradient(160deg,#fff,var(--cream));box-shadow:0 8px 22px rgba(17,24,39,.05);transition:transform .4s var(--ease),box-shadow .4s}
-.apply-block:hover{transform:translateY(-5px);box-shadow:var(--sh-card-h)}
-.apply-word{font-family:var(--font-h);font-weight:900;font-size:1.6rem;color:var(--ink);letter-spacing:-.03em;margin-bottom:12px}
-.apply-word span{color:#15803D}
-.apply-block p{color:var(--ink2);font-size:.9rem;margin-bottom:18px}
-.apply-flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.apply-flow span{font-family:var(--font-m);font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;padding:5px 9px;border-radius:100px;border:1px solid var(--bdl2);color:var(--ink2);background:#fff}
-.apply-flow i{color:#15803D;font-style:normal;font-size:.7rem}
-@media(max-width:820px){.apply-grid{grid-template-columns:1fr}}
-
 /* Projeto real (prova) */
 .proof{margin-top:64px;display:grid;grid-template-columns:.95fr 1.05fr;gap:24px;align-items:center;background:linear-gradient(160deg,#fff,var(--cream));border:1px solid var(--bdl);border-radius:var(--r-xl);padding:8px;box-shadow:var(--sh-card);overflow:hidden}
 .proof-vis{position:relative;background:linear-gradient(158deg,var(--navy2),var(--navy));border-radius:22px;padding:34px 30px;overflow:hidden;align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:11px}
@@ -393,10 +346,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offs
 .proof-result::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
 .proof-note{font-size:.8rem;color:var(--ink3);line-height:1.55;border-left:2px solid rgba(34,197,94,.4);padding-left:13px}
 @media(max-width:820px){.proof{grid-template-columns:1fr}}
-
-/* CTA da secção */
-.sys-foot{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:56px;padding-top:38px;border-top:1px solid var(--bdl)}
-.sys-foot p{color:var(--ink2);font-size:.95rem;max-width:480px;line-height:1.6}
 
 /* ══ 6. CTA FINAL ══ */
 .s-cta{background:var(--navy);color:var(--t1);padding:150px 0;position:relative;overflow:hidden}
@@ -435,24 +384,157 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
 @media(max-width:768px){.sticky-cta{display:block}}
 @media(min-width:769px){.sticky-cta{display:none!important}}
 
+/* ══ MICROVISUAL GENÉRICO (componentes, setores, exemplos) ══ */
+.cv{position:relative;border:1px solid var(--bd);border-radius:14px;background:linear-gradient(158deg,var(--navy2),var(--navy));padding:13px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+.cv::after{content:'';position:absolute;top:-30%;right:-18%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,.14),transparent 66%);pointer-events:none}
+.mv-row{position:relative;z-index:1;display:flex;align-items:center;gap:10px;padding:8px 11px;border:1px solid var(--bd);border-radius:10px;background:rgba(9,9,11,.28);opacity:.42;transform:translateX(-6px);transition:opacity .45s var(--ease),transform .45s var(--ease),border-color .45s,background .45s}
+.inview .mv-row{opacity:1;transform:none}
+.inview .mv-row:nth-child(1){transition-delay:.06s}
+.inview .mv-row:nth-child(2){transition-delay:.3s}
+.inview .mv-row:nth-child(3){transition-delay:.54s}
+.inview .mv-row:nth-child(4){transition-delay:.78s}
+.mv-row b{width:18px;height:18px;border-radius:5px;border:1px solid rgba(110,231,160,.28);background:rgba(9,9,11,.4);flex-shrink:0}
+.mv-row em{font-style:normal;font-family:var(--font-m);font-size:10px;letter-spacing:.02em;color:var(--t2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mv-row s{text-decoration:none;font-family:var(--font-m);font-size:8px;letter-spacing:.05em;text-transform:uppercase;color:var(--t3);border:1px solid var(--bd2);border-radius:100px;padding:3px 8px;flex-shrink:0;transition:color .45s,border-color .45s,background .45s}
+.inview .mv-row.hot{border-color:var(--green-border);background:rgba(34,197,94,.07)}
+.inview .mv-row.hot em{color:var(--t1)}
+.inview .mv-row.hot s{color:var(--green-lum);border-color:var(--green-border);background:rgba(34,197,94,.1)}
+
+/* ══ SISTEMA — chips + componentes ══ */
+.sc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.sc-chips span{font-family:var(--font-m);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;padding:5px 10px;border-radius:100px;border:1px solid var(--bdl2);color:var(--ink2);background:#fff}
+.comp-lead{font-family:var(--font-h);font-weight:800;font-size:clamp(1.2rem,2.2vw,1.55rem);color:var(--ink);letter-spacing:-.02em;margin:64px 0 8px}
+.comp-sub{color:var(--ink2);font-size:.98rem;max-width:600px;margin-bottom:32px}
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.comp-min{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:40px 0 18px;display:flex;align-items:center;gap:10px}
+.comp-min::before{content:'';width:22px;height:1px;background:currentColor;opacity:.5}
+.comp-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(158deg,#fff,var(--cream));border:1px solid var(--bdl);border-radius:var(--r-xl);padding:24px 24px 26px;box-shadow:var(--sh-card);transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.comp-card:hover{transform:translateY(-4px);box-shadow:var(--sh-card-h);border-color:var(--green-border)}
+.comp-card.sec{background:linear-gradient(158deg,#fff,var(--light));box-shadow:0 6px 18px rgba(17,24,39,.05)}
+.comp-card h3{font-size:1.1rem;color:var(--ink);margin:16px 0 8px;letter-spacing:-.01em}
+.comp-card>p{color:var(--ink2);font-size:.9rem;line-height:1.6}
+.comp-fn{margin-top:14px;border-left:2px solid var(--green);padding-left:13px}
+.comp-fn i{font-style:normal;font-family:var(--font-m);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#15803D;display:block;margin-bottom:4px}
+.comp-fn p{color:var(--ink);font-size:.87rem;line-height:1.5}
+@media(max-width:820px){.comp-grid{grid-template-columns:1fr}}
+
+/* ══ SETORES ══ */
+.sector{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:40px 24px;border-radius:18px;scroll-margin-top:84px;transition:box-shadow .4s ease,background .4s ease}
+.sector + .sector{margin-top:8px}
+.sector.hl{box-shadow:0 0 0 2px var(--green),0 24px 60px rgba(34,197,94,.14);background:rgba(34,197,94,.03)}
+.sec-text .eyebrow{color:#15803D}
+.sec-num{font-family:var(--font-m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sec-num::before{content:'';width:20px;height:1px;background:currentColor;opacity:.5}
+.sec-text h3{font-size:1.55rem;color:var(--ink);letter-spacing:-.02em;margin-bottom:16px;line-height:1.14}
+.sec-field{margin-bottom:14px}
+.sec-field:last-child{margin-bottom:0}
+.sec-lbl{font-family:var(--font-m);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:5px}
+.sec-field p{color:var(--ink2);font-size:.95rem;line-height:1.6}
+.sector.flip .sec-text{order:2}
+.sectors-foot{margin-top:36px;padding-top:28px;border-top:1px solid var(--bdl);color:var(--ink2);font-size:.98rem;max-width:720px}
+@media(max-width:820px){.sector{grid-template-columns:1fr;gap:24px;padding:30px 18px}.sector.flip .sec-text{order:0}}
+
+/* ══ AGENDA IGSOLUTION (produto próprio) ══ */
+.s-agenda{background:linear-gradient(165deg,#101a2e,var(--bg));color:var(--t1);padding:130px 0;position:relative;overflow:hidden}
+.s-agenda::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bd2),transparent)}
+.s-agenda::after{content:'';position:absolute;top:-10%;left:-6%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.10),transparent 64%);pointer-events:none}
+.agn-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:1}
+.agn-text .eyebrow{color:var(--green)}
+.agn-text h2{color:var(--t1);margin-bottom:18px}
+.agn-text p{color:var(--t2);font-size:1.075rem;max-width:480px;margin-bottom:18px}
+.agn-note{font-size:.86rem;color:var(--t3);border-left:2px solid var(--green-border);padding-left:13px;margin-bottom:28px;max-width:420px}
+.agw{position:relative;border:1px solid var(--bd2);border-radius:16px;overflow:hidden;background:linear-gradient(160deg,rgba(22,40,63,.9),rgba(13,23,38,.94));box-shadow:var(--sh-dark);max-width:440px;margin:0 auto;width:100%}
+.js .agw{animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.agw-bar{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--bd);background:rgba(9,9,11,.3)}
+.agw-dots{display:flex;gap:6px}
+.agw-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
+.agw-url{flex:1;font-family:var(--font-m);font-size:9.5px;color:var(--t3);background:rgba(9,9,11,.4);border:1px solid var(--bd);border-radius:7px;padding:5px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.agw-body{padding:18px}
+.agw-mtitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.agw-mtitle b{font-family:var(--font-h);font-weight:700;font-size:.9rem;color:var(--t1)}
+.agw-live{font-family:var(--font-m);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-lum);background:rgba(34,197,94,.1);border:1px solid var(--green-border);padding:4px 9px;border-radius:100px}
+.agw-slots{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.agw-slot{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:1px solid var(--bd);border-radius:9px;font-family:var(--font-m);font-size:.72rem;color:var(--t3)}
+.agw-slot.sel{border-color:var(--green-border);background:rgba(34,197,94,.08);color:var(--green-lum)}
+.agw-slot.sel b{color:var(--t1);font-weight:400}
+.agw-foot{display:flex;gap:8px;flex-wrap:wrap}
+.agw-chip{flex:1;min-width:120px;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-m);font-size:.66rem;color:var(--green-lum);background:rgba(34,197,94,.08);border:1px solid var(--green-border);padding:8px 11px;border-radius:9px}
+.agw-chip i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);flex-shrink:0}
+@media(max-width:860px){.s-agenda{padding:88px 0}.agn-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ══ APLICADO NA PRÁTICA — exemplos ilustrativos ══ */
+.ex-warn{margin-top:56px;margin-bottom:22px;display:inline-flex;align-items:flex-start;gap:11px;font-size:.86rem;color:var(--ink2);border:1px solid var(--bdl2);border-left:3px solid var(--ink3);border-radius:var(--r-sm);background:#fff;padding:14px 18px;max-width:640px}
+.ex-warn b{font-family:var(--font-m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-right:2px;white-space:nowrap}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ex-card{background:linear-gradient(158deg,#fff,var(--cream));border:1px solid var(--bdl);border-radius:var(--r-xl);padding:24px;box-shadow:var(--sh-card)}
+.ex-card h3{font-size:1.05rem;color:var(--ink);margin-bottom:16px}
+@media(max-width:820px){.ex-grid{grid-template-columns:1fr}}
+
+/* ══ A IG SOLUTION (sobre) ══ */
+.s-about{background:var(--navy);color:var(--t1);padding:130px 0;position:relative;overflow:hidden}
+.s-about::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bd2),transparent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about-lead .eyebrow{color:var(--green)}
+.about-lead h2{color:var(--t1);margin-bottom:22px}
+.about-lead p{color:var(--t2);font-size:1.03rem;margin-bottom:16px;max-width:520px}
+.about-blocks{display:flex;flex-direction:column;gap:24px}
+.about-block{border-left:2px solid var(--green);padding-left:18px}
+.about-block i{font-style:normal;font-family:var(--font-m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-lum);display:block;margin-bottom:8px}
+.about-block p{color:var(--t2);font-size:.95rem;line-height:1.6}
+.about-id{grid-column:1/-1;margin-top:12px;padding-top:26px;border-top:1px solid var(--bd);font-family:var(--font-m);font-size:.8rem;letter-spacing:.02em;color:var(--t3);line-height:1.8}
+@media(max-width:860px){.s-about{padding:88px 0}.about-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ══ FAQ ══ */
+.faq-list{max-width:820px;margin:0}
+.faq-item{border-top:1px solid var(--bdl)}
+.faq-item:last-child{border-bottom:1px solid var(--bdl)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;text-align:left;font-family:var(--font-h);font-weight:700;font-size:1.08rem;color:var(--ink);letter-spacing:-.01em}
+.faq-q:hover{color:#15803D}
+.faq-chev{flex-shrink:0;width:20px;height:20px;color:var(--ink3);transition:transform .3s var(--ease),color .2s}
+.faq-chev svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.faq-q[aria-expanded="true"]{color:#15803D}
+.faq-q[aria-expanded="true"] .faq-chev{transform:rotate(180deg);color:#15803D}
+.faq-a{overflow:hidden}
+.faq-a>div{overflow:hidden}
+.faq-a p{padding:0 4px 24px;color:var(--ink2);font-size:.98rem;line-height:1.65;max-width:680px}
+.js .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
+.js .faq-q[aria-expanded="true"] + .faq-a{grid-template-rows:1fr}
+
+/* ══ CTA final — texto de apoio ══ */
+.cta-support{font-family:var(--font-b);font-size:.9rem;color:var(--t3);margin-top:22px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.55}
+
+/* ══ FOOTER — links internos + NIF ══ */
+.ft-nav{display:flex;flex-wrap:wrap;gap:8px 24px;margin:14px 0 2px}
+.ft-nav a{font-size:.875rem;color:var(--t2);transition:color .18s}
+.ft-nav a:hover{color:var(--green)}
+.ft-nif{font-family:var(--font-m);font-size:.78rem;color:var(--t3);letter-spacing:.02em;margin-top:8px}
+
+/* ── MOVIMENTO REDUZIDO (novos elementos) ── */
+@media(prefers-reduced-motion:reduce){
+  .mv-row{opacity:1;transform:none}
+  .js .agw{animation:none}
+  .sector.hl{box-shadow:0 0 0 2px var(--green)}
+}
+
 /* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .reveal,.fade-up,.h-line>span,.hero-demo{opacity:1;transform:none}
   .met-phase{opacity:1;transform:none}.met-fill{transform:scaleX(1)}
-  .mi-row,.pipe-node,.slot,.agenda-toast{opacity:1;transform:none}
+  .pipe-node,.slot,.agenda-toast{opacity:1;transform:none}
   .hd-step{border-color:var(--green-border)}
 }
 </style>
-<noscript><style>.reveal{opacity:1;transform:none}.met-phase{opacity:1;transform:none}.mi-row,.pipe-node,.agenda-toast{opacity:1;transform:none}</style></noscript>
+<noscript><style>.reveal{opacity:1;transform:none}.met-phase{opacity:1;transform:none}.pipe-node,.agenda-toast,.mv-row{opacity:1;transform:none}.faq-a{grid-template-rows:1fr}</style></noscript>
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
 <!-- COOKIE -->
 <div class="cookie-banner" id="cookie-banner">
-  <div class="cookie-text">Este site utiliza apenas armazenamento essencial para guardar preferências básicas e garantir o funcionamento da experiência. <a href="privacidade.html">Política de Privacidade</a>.</div>
+  <div class="cookie-text">Este site utiliza apenas armazenamento essencial para guardar preferências básicas e permitir o funcionamento da experiência. <a href="privacidade.html">Política de Privacidade</a>.</div>
   <div class="cookie-btns">
     <button class="btn-ca" id="cookie-accept">Entendido</button>
   </div>
@@ -463,21 +545,24 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
   <a href="/" class="nav-logo">IG<span>·</span>Solution</a>
   <div class="nav-links" id="nav-links">
     <a href="#solucoes">Soluções</a>
+    <a href="#sistema">Sistema</a>
+    <a href="#setores">Setores</a>
     <a href="#metodo">Como trabalhamos</a>
-    <a href="#projetos">Sistema</a>
-    <a href="diagnostico.html?interesse=analise_operacao">Contacto</a>
+    <a href="#sobre">A IG Solution</a>
   </div>
-  <a href="diagnostico.html?interesse=analise_operacao" class="nav-cta">Organizar a minha operação</a>
+  <a href="diagnostico.html?interesse=analise_operacao" class="nav-cta">Quero estruturar o meu sistema</a>
   <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
   <a href="#solucoes">Soluções</a>
+  <a href="#sistema">Sistema</a>
+  <a href="#setores">Setores</a>
   <a href="#metodo">Como trabalhamos</a>
-  <a href="#projetos">Sistema</a>
-  <a href="diagnostico.html?interesse=analise_operacao">Contacto</a>
+  <a href="#sobre">A IG Solution</a>
+  <a href="#faq">FAQ</a>
   <div class="mobile-ctas">
-    <a href="diagnostico.html?interesse=analise_operacao" class="nav-cta">Organizar a minha operação</a>
+    <a href="diagnostico.html?interesse=analise_operacao" class="nav-cta">Quero estruturar o meu sistema</a>
   </div>
 </div>
 
@@ -495,10 +580,10 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
           <span class="h-line"><span>ao acompanhamento,</span></span>
           <span class="h-line"><span><span class="grad">tudo ligado</span>.</span></span>
         </h1>
-        <p class="hero-sub fade-up fu2">Implementamos websites, formulários, WhatsApp, CRM, agenda e automações para negócios de serviços que ainda trabalham com processos e ferramentas dispersas.</p>
+        <p class="hero-sub fade-up fu2">Implementamos websites, formulários, WhatsApp, CRM e automações para negócios de serviços que ainda trabalham com contactos, tarefas e ferramentas dispersas.</p>
         <div class="hero-ctas fade-up fu3">
-          <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
-          <a href="#projetos" class="btn btn-line">Ver como o sistema funciona</a>
+          <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero estruturar o meu sistema <span class="arr" aria-hidden="true">→</span></a>
+          <a href="#sistema" class="btn btn-line">Ver como funciona</a>
         </div>
       </div>
 
@@ -522,69 +607,18 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
   </div>
 </section>
 
-<!-- ══ 2. TIPOS DE OPERAÇÃO ══ -->
-<section class="s-light hairline s-pad" id="problema">
+<!-- ══ 2. SOLUÇÕES ══ -->
+<section class="s-cream hairline s-pad" id="solucoes">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow">Tipos de operação</span>
-      <h2>Como os teus clientes chegam até ti?</h2>
-      <p class="sec-sub">O sistema muda conforme o modelo da operação. Cada card mostra o que acontece com um contacto.</p>
-    </div>
-    <div class="op-grid">
-      <!-- Pedidos e orçamentos -->
-      <div class="op-card spot reveal d1">
-        <span class="eyebrow">Pedidos e orçamentos</span>
-        <h3>Recebo contactos e preciso de organizar o processo comercial.</h3>
-        <p>Para negócios que trabalham com pedidos de informação, propostas, orçamentos ou oportunidades comerciais.</p>
-        <div class="op-mi mi" aria-hidden="true">
-          <div class="mi-row r1"><b>1</b><em>Novo pedido</em><span class="mi-tag">Recebido</span></div>
-          <div class="mi-row r2 done"><b>2</b><em>Qualificado</em><span class="mi-tag">Qualificado</span></div>
-          <div class="mi-row r3 done"><b>3</b><em>Orçamento · tarefa comercial</em><span class="mi-tag">Tarefa</span></div>
-        </div>
-        <div class="op-ex"><span>Imobiliário</span><span>Obras</span><span>Serviços profissionais</span><span>Oficinas</span><span>B2B</span></div>
-        <a href="#sistema-comercial" class="op-cta">Conhecer o Sistema Comercial <span class="arr" aria-hidden="true">→</span></a>
-      </div>
-      <!-- Marcações -->
-      <div class="op-card spot reveal d2">
-        <span class="eyebrow">Marcações</span>
-        <h3>Trabalho com agenda e preciso de reduzir tarefas manuais.</h3>
-        <p>Para negócios que precisam de organizar disponibilidade, confirmações, lembretes e acompanhamento de clientes.</p>
-        <div class="op-mi mi" aria-hidden="true">
-          <div class="mi-row r1"><b>◷</b><em>09:00 · 10:30 · 14:00</em><span class="mi-tag">Horários</span></div>
-          <div class="mi-row r2 done"><b>✓</b><em>10:30 selecionado</em><span class="mi-tag">Confirmado</span></div>
-          <div class="mi-row r3 done"><b>↻</b><em>Lembrete</em><span class="mi-tag">Ativo</span></div>
-        </div>
-        <div class="op-ex"><span>Estética</span><span>Beleza</span><span>Fitness</span><span>Bem-estar</span><span>Marcação</span></div>
-        <a href="#agenda-360" class="op-cta">Conhecer a Agenda 360 <span class="arr" aria-hidden="true">→</span></a>
-      </div>
-      <!-- Processos internos -->
-      <div class="op-card spot reveal d3">
-        <span class="eyebrow">Processos internos</span>
-        <h3>Tenho uma tarefa repetitiva que precisa de ser automatizada.</h3>
-        <p>Para empresas que copiam informação entre ferramentas ou dependem de processos administrativos repetitivos.</p>
-        <div class="op-mi mi" aria-hidden="true">
-          <div class="mi-row r1"><b>▤</b><em>Formulário</em><span class="mi-tag">Dados</span></div>
-          <div class="mi-row r2 done"><b>▦</b><em>CRM</em><span class="mi-tag">Ligado</span></div>
-          <div class="mi-row r3 done"><b>✓</b><em>Tarefa</em><span class="mi-tag">Concluída</span></div>
-        </div>
-        <a href="#sprint-automacao" class="op-cta">Conhecer o Sprint de Automação <span class="arr" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 3. OFERTAS ══ -->
-<section class="s-cream s-pad" id="solucoes">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow">As ofertas</span>
-      <h2>Três formas de pôr a operação a funcionar.</h2>
-      <p class="sec-sub">Cada oferta resolve um problema concreto. Começamos pelo fluxo de maior impacto.</p>
+      <span class="eyebrow">Soluções</span>
+      <h2>Uma forma clara de começar.</h2>
+      <p class="sec-sub">O ponto de partida depende do problema. A implementação pode envolver diferentes componentes, mas cada projeto começa com um objetivo e um escopo definidos.</p>
     </div>
     <div class="off-grid">
 
       <!-- Sistema Comercial IG — principal -->
-      <article class="card card-main spot reveal" id="sistema-comercial">
+      <article class="card card-main spot reveal">
         <div class="pipe-panel">
           <span class="hd-title">Pipeline comercial</span>
           <div class="pipe" data-mi>
@@ -599,47 +633,26 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         <div class="card-body">
           <span class="c-label"><i></i>Oferta principal</span>
           <h3 class="c-title">Sistema Comercial IG</h3>
-          <p class="c-desc">Para negócios que recebem contactos, pedidos de informação ou orçamentos e precisam de acompanhar cada oportunidade de forma organizada.</p>
-          <div class="c-result">Um processo comercial visível e organizado desde o primeiro contacto.</div>
-          <a href="diagnostico.html?interesse=sistema_comercial" class="c-cta">Organizar o meu processo comercial <span class="arr" aria-hidden="true">→</span></a>
+          <p class="c-desc">Para negócios que recebem contactos, pedidos ou oportunidades e precisam de os transformar num processo organizado de resposta, qualificação, proposta e acompanhamento.</p>
+          <div class="sc-chips" aria-hidden="true">
+            <span>Website / landing</span><span>Formulários</span><span>CRM</span><span>Distribuição</span><span>Tarefas</span><span>Follow-up</span><span>Integrações</span>
+          </div>
+          <a href="diagnostico.html?interesse=sistema_comercial" class="c-cta">Estruturar o meu sistema comercial <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </article>
 
       <div class="off-row">
-        <!-- Agenda 360 — produto vertical -->
-        <article class="card spot reveal d1" id="agenda-360">
-          <div class="card-body">
-            <span class="c-label cy"><i></i>Produto especializado</span>
-            <h3 class="c-title">Agenda 360</h3>
-            <p class="c-desc">Sistema de marcação e acompanhamento para negócios que trabalham por agenda.</p>
-            <div class="agenda" aria-hidden="true">
-              <div class="agenda-top"><span class="agenda-title">Agenda</span><span class="pilot-tag">Projeto-piloto</span></div>
-              <div class="slots">
-                <div class="slot"><em>09:00</em><b>Livre</b></div>
-                <div class="slot sel"><em>10:30</em><b>Marcado</b></div>
-                <div class="slot"><em>14:00</em><b>Livre</b></div>
-              </div>
-              <div class="agenda-confirm">
-                <div class="mini-card"><div class="mc-lbl">Cliente</div><div class="mc-val">Ficha organizada</div></div>
-                <span class="agenda-toast"><i></i>Lembrete ativado</span>
-              </div>
-            </div>
-            <p class="c-note">Disponível apenas para projetos-piloto selecionados.</p>
-            <a href="diagnostico.html?interesse=agenda_360" class="c-cta">Candidatar o meu negócio ao projeto-piloto <span class="arr" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
         <!-- Sprint de Automação — antes/depois -->
-        <article class="card card-sprint spot reveal d2" id="sprint-automacao">
+        <article class="card card-sprint spot reveal d1">
           <div class="card-body">
             <span class="c-label plain"><i></i>Escopo curto</span>
             <h3 class="c-title">Sprint de Automação</h3>
-            <p class="c-desc">Implementação de uma automação específica para eliminar uma tarefa repetitiva ou ligar duas partes importantes da operação.</p>
+            <p class="c-desc">Para eliminar ou organizar um processo manual específico, com escopo curto, implementação testada e documentação de entrega.</p>
             <div class="ba" aria-hidden="true">
               <div class="ba-col before">
                 <div class="ba-lbl">Antes</div>
                 <div class="ba-step"><span class="n"></span>Formulário</div>
-                <div class="ba-step manual"><span class="n"></span>Copiar dados</div>
+                <div class="ba-step manual"><span class="n"></span>Copiar informação</div>
                 <div class="ba-step manual"><span class="n"></span>Criar tarefa manual</div>
               </div>
               <div class="ba-arrow">→</div>
@@ -657,9 +670,32 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
             <a href="diagnostico.html?interesse=sprint_automacao" class="c-cta">Automatizar um processo <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </article>
+
+        <!-- Agenda IGSolution — produto próprio -->
+        <article class="card spot reveal d2">
+          <div class="card-body">
+            <span class="c-label cy"><i></i>Produto próprio</span>
+            <h3 class="c-title">Agenda IGSolution</h3>
+            <p class="c-desc">Plataforma de marcações desenvolvida pela IG Solution, com reservas online, gestão de horários, confirmações, lembretes e automações.</p>
+            <div class="agenda" aria-hidden="true">
+              <div class="agenda-top"><span class="agenda-title">Agenda</span><span class="pilot-tag">Produto próprio</span></div>
+              <div class="slots">
+                <div class="slot"><em>09:00</em><b>Livre</b></div>
+                <div class="slot sel"><em>10:30</em><b>Marcado</b></div>
+                <div class="slot"><em>14:00</em><b>Livre</b></div>
+              </div>
+              <div class="agenda-confirm">
+                <div class="mini-card"><div class="mc-lbl">Cliente</div><div class="mc-val">Ficha organizada</div></div>
+                <span class="agenda-toast"><i></i>Lembrete ativado</span>
+              </div>
+            </div>
+            <p class="c-note">Disponível para demonstração e implementação em projetos selecionados.</p>
+            <a href="https://agenda-igsolution.vercel.app/" target="_blank" rel="noopener noreferrer" class="c-cta">Conhecer a Agenda IGSolution <span class="arr" aria-hidden="true">→</span></a>
+          </div>
+        </article>
       </div>
 
-      <!-- Produtos digitais — faixa secundária -->
+      <!-- Produto digital — faixa secundária -->
       <div class="prod-strip reveal">
         <div class="prod-left">
           <div class="prod-mock" aria-hidden="true">
@@ -667,23 +703,228 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
             <div class="pm-body"><span></span><span></span><span></span><span></span><span></span></div>
           </div>
           <div class="prod-txt">
-            <h3>Procuras desenvolver uma aplicação, portal ou plataforma?</h3>
-            <p>Avaliamos projetos digitais selecionados depois de definir objetivos, utilizadores, escopo técnico, riscos, prazo e orçamento.</p>
+            <h3>Produto digital sob escopo</h3>
+            <p>Aplicações web, portais e plataformas desenvolvidos apenas quando existe um problema claro, escopo técnico definido e viabilidade de implementação.</p>
           </div>
         </div>
-        <a href="diagnostico.html?interesse=produto_digital" class="btn btn-line">Apresentar um projeto digital <span class="arr" aria-hidden="true">→</span></a>
+        <a href="diagnostico.html?interesse=produto_digital" class="btn btn-line">Avaliar um produto digital <span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 4. COMO TRABALHAMOS ══ -->
+<!-- ══ 3. O SISTEMA E OS COMPONENTES ══ -->
+<section class="s-sys s-pad" id="sistema">
+  <div class="container">
+    <div class="sys-intro reveal">
+      <span class="eyebrow">O sistema</span>
+      <h2>Cada serviço resolve uma parte. O sistema funciona quando estão ligados.</h2>
+      <p>Cada projeto utiliza apenas os componentes necessários ao objetivo definido.</p>
+    </div>
+    <p class="sys-central reveal"><b>Presença digital → entrada → organização → automação → acompanhamento.</b> Seleciona uma etapa para ver a função e como se liga ao próximo passo.</p>
+
+    <!-- Fluxo interativo -->
+    <div class="eco reveal">
+      <div class="eco-rail" role="tablist" aria-label="Etapas do sistema" id="eco-rail">
+        <button class="eco-node" role="tab" aria-selected="true" aria-controls="eco-panel" id="eco-t0" data-i="0"><span class="eco-num">01</span><span class="eco-name">Presença digital</span></button>
+        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t1" data-i="1" tabindex="-1"><span class="eco-num">02</span><span class="eco-name">Entrada de contactos</span></button>
+        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t2" data-i="2" tabindex="-1"><span class="eco-num">03</span><span class="eco-name">Organização</span></button>
+        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t3" data-i="3" tabindex="-1"><span class="eco-num">04</span><span class="eco-name">Automação</span></button>
+        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t4" data-i="4" tabindex="-1"><span class="eco-num">05</span><span class="eco-name">Acompanhamento</span></button>
+      </div>
+      <div class="eco-panel" role="tabpanel" id="eco-panel" aria-labelledby="eco-t0" tabindex="0" aria-live="polite">
+        <div class="eco-panel-in" id="eco-in">
+          <div class="eco-step" id="eco-step">Etapa 01 de 05</div>
+          <h3 class="eco-h" id="eco-h">Presença digital</h3>
+          <p class="eco-serve" id="eco-serve">Website, landing page, portal ou página de marcação que apresenta o negócio e conduz o visitante até uma ação concreta.</p>
+          <div class="eco-block when"><div class="eco-block-lbl">Quando falta</div><p id="eco-when">O negócio depende de plataformas externas e controla menos a experiência do potencial cliente.</p></div>
+          <div class="eco-block link"><div class="eco-block-lbl">Liga-se a</div><p id="eco-link">Cria o ponto de entrada para transformar atenção em contacto.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Componentes principais -->
+    <p class="comp-lead reveal">Componentes que implementamos.</p>
+    <p class="comp-sub reveal">Quatro componentes principais e dois complementares. Cada projeto usa apenas os que fazem sentido para o objetivo.</p>
+    <div class="comp-grid">
+      <article class="comp-card mv-host spot reveal d1">
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Cabeçalho e conteúdo</em><s>Página</s></div>
+          <div class="mv-row"><b></b><em>Secção de serviço</em><s>Estrutura</s></div>
+          <div class="mv-row hot"><b></b><em>Formulário ligado</em><s>Contacto</s></div>
+        </div>
+        <h3>Websites e landing pages</h3>
+        <p>Sites institucionais, páginas de produto ou serviço e páginas de captação, com formulários ligados ao processo comercial.</p>
+        <div class="comp-fn"><i>Função no sistema</i><p>Transformar atenção em contacto ou ação concreta.</p></div>
+      </article>
+      <article class="comp-card mv-host spot reveal d2">
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Contacto · portal</em><s>Origem</s></div>
+          <div class="mv-row"><b></b><em>Contacto · site</em><s>Origem</s></div>
+          <div class="mv-row hot"><b></b><em>Responsável atribuído</em><s>Próximo passo</s></div>
+        </div>
+        <h3>CRM e organização de contactos</h3>
+        <p>Estrutura para registar cada contacto, identificar a origem, atribuir responsável e definir o próximo passo.</p>
+        <div class="comp-fn"><i>Função no sistema</i><p>Impedir que oportunidades fiquem espalhadas por mensagens, emails ou folhas de cálculo.</p></div>
+      </article>
+      <article class="comp-card mv-host spot reveal d1">
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Mensagem recebida</em><s>Entrada</s></div>
+          <div class="mv-row hot"><b></b><em>Confirmação enviada</em><s>Automático</s></div>
+          <div class="mv-row"><b></b><em>Lembrete programado</em><s>Agendado</s></div>
+        </div>
+        <h3>WhatsApp e follow-up</h3>
+        <p>Respostas, confirmações, lembretes e sequências de acompanhamento para contactos, propostas e marcações.</p>
+        <div class="comp-fn"><i>Função no sistema</i><p>Fazer com que o próximo passo não dependa apenas da memória.</p></div>
+      </article>
+      <article class="comp-card mv-host spot reveal d2">
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Sistema A</em><s>Origem</s></div>
+          <div class="mv-row"><b></b><em>Sistema B</em><s>Destino</s></div>
+          <div class="mv-row hot"><b></b><em>Tarefa criada</em><s>Sem cópia</s></div>
+        </div>
+        <h3>Integrações e automação de processos</h3>
+        <p>Ligação entre formulários, bases de dados, CRM, email e ferramentas de gestão.</p>
+        <div class="comp-fn"><i>Função no sistema</i><p>Eliminar cópias manuais e tarefas repetitivas.</p></div>
+      </article>
+    </div>
+
+    <div class="comp-min reveal">Componentes complementares</div>
+    <div class="comp-grid">
+      <article class="comp-card sec mv-host spot reveal d1">
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Perfil e categorias</em><s>Perfil</s></div>
+          <div class="mv-row"><b></b><em>Pesquisa local</em><s>Visível</s></div>
+          <div class="mv-row hot"><b></b><em>Contacto encaminhado</em><s>Processo</s></div>
+        </div>
+        <h3>Google Business e visibilidade local</h3>
+        <p>Configuração e otimização do perfil, categorias, serviços, fotografias, publicações e processo de avaliações.</p>
+        <div class="comp-fn"><i>Função no sistema</i><p>Ajudar negócios locais a serem encontrados e a encaminhar contactos para um processo organizado.</p></div>
+      </article>
+      <article class="comp-card sec mv-host spot reveal d2">
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Interface</em><s>App</s></div>
+          <div class="mv-row"><b></b><em>Base de dados</em><s>Dados</s></div>
+          <div class="mv-row hot"><b></b><em>Utilizador autenticado</em><s>Acesso</s></div>
+        </div>
+        <h3>Aplicações e portais sob escopo</h3>
+        <p>Aplicações web, portais, dashboards e sistemas com autenticação, base de dados ou pagamentos, depois de análise técnica.</p>
+        <div class="comp-fn"><i>Função no sistema</i><p>Resolver necessidades que não podem ser cobertas adequadamente por ferramentas existentes.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. SETORES ══ -->
+<section class="s-cream hairline s-pad" id="setores">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Setores</span>
+      <h2>Negócios que recebem pedidos e precisam de os organizar.</h2>
+      <p class="sec-sub">A tecnologia muda. O problema costuma ser o mesmo: contactos entram por vários canais e o acompanhamento não segue um processo claro.</p>
+    </div>
+
+    <article class="sector mv-host reveal" id="setor-obras">
+      <div class="sec-text">
+        <span class="sec-num">Setor 01</span>
+        <h3>Obras, remodelações e instalações</h3>
+        <div class="sec-field"><span class="sec-lbl">Situação</span><p>Os pedidos de orçamento chegam por telefone e WhatsApp, e os orçamentos enviados ficam sem seguimento definido.</p></div>
+        <div class="sec-field"><span class="sec-lbl">Implementamos</span><p>Formulário de pedido com qualificação, CRM com estados do processo — pedido, visita, orçamento enviado e decisão — e seguimento automático programado.</p></div>
+      </div>
+      <div class="cv mv" aria-hidden="true">
+        <div class="mv-row"><b></b><em>Pedido de orçamento</em><s>Recebido</s></div>
+        <div class="mv-row"><b></b><em>Visita agendada</em><s>Processo</s></div>
+        <div class="mv-row"><b></b><em>Orçamento enviado</em><s>Enviado</s></div>
+        <div class="mv-row hot"><b></b><em>Seguimento programado</em><s>Automático</s></div>
+      </div>
+    </article>
+
+    <article class="sector flip mv-host reveal" id="setor-imobiliario">
+      <div class="sec-text">
+        <span class="sec-num">Setor 02</span>
+        <h3>Imobiliário</h3>
+        <div class="sec-field"><span class="sec-lbl">Situação</span><p>Os contactos chegam de portais, website e redes sociais, e nem sempre é claro qual imóvel gerou o pedido ou quem está a acompanhar.</p></div>
+        <div class="sec-field"><span class="sec-lbl">Implementamos</span><p>Website com página por imóvel, formulário por imóvel, registo com origem identificada, atribuição de responsável e acompanhamento comercial.</p></div>
+      </div>
+      <div class="cv mv" aria-hidden="true">
+        <div class="mv-row"><b></b><em>Contacto do portal</em><s>Origem</s></div>
+        <div class="mv-row"><b></b><em>Imóvel identificado</em><s>Página</s></div>
+        <div class="mv-row hot"><b></b><em>Responsável atribuído</em><s>Acompanha</s></div>
+      </div>
+    </article>
+
+    <article class="sector mv-host reveal" id="setor-oficinas">
+      <div class="sec-text">
+        <span class="sec-num">Setor 03</span>
+        <h3>Oficinas e serviço automóvel</h3>
+        <div class="sec-field"><span class="sec-lbl">Situação</span><p>As marcações são feitas por mensagem e registadas manualmente, e o contacto seguinte depende da memória.</p></div>
+        <div class="sec-field"><span class="sec-lbl">Implementamos</span><p>Receção estruturada de pedidos, ficha do cliente e da viatura, confirmação, lembrete e acompanhamento periódico.</p></div>
+      </div>
+      <div class="cv mv" aria-hidden="true">
+        <div class="mv-row"><b></b><em>Pedido recebido</em><s>Entrada</s></div>
+        <div class="mv-row"><b></b><em>Ficha cliente / viatura</em><s>Registo</s></div>
+        <div class="mv-row hot"><b></b><em>Lembrete programado</em><s>Automático</s></div>
+      </div>
+    </article>
+
+    <article class="sector flip mv-host reveal" id="setor-servicos-profissionais">
+      <div class="sec-text">
+        <span class="sec-num">Setor 04</span>
+        <h3>Serviços profissionais</h3>
+        <div class="sec-field"><span class="sec-lbl">Situação</span><p>Contactos e propostas ficam dispersos entre email e telefone, sem prazo ou responsável claramente definido.</p></div>
+        <div class="sec-field"><span class="sec-lbl">Implementamos</span><p>Formulário de qualificação, CRM com fases da proposta, tarefas automáticas e sequência de acompanhamento.</p></div>
+      </div>
+      <div class="cv mv" aria-hidden="true">
+        <div class="mv-row"><b></b><em>Contacto qualificado</em><s>Entrada</s></div>
+        <div class="mv-row"><b></b><em>Proposta em curso</em><s>Fase</s></div>
+        <div class="mv-row hot"><b></b><em>Tarefa de seguimento</em><s>Prazo</s></div>
+      </div>
+    </article>
+
+    <p class="sectors-foot reveal">Também implementamos soluções para comércio local, formação, saúde, bem-estar e outros negócios que trabalham por pedido ou marcação.</p>
+  </div>
+</section>
+
+<!-- ══ 5. AGENDA IGSOLUTION ══ -->
+<section class="s-agenda" id="agenda">
+  <div class="container">
+    <div class="agn-grid">
+      <div class="agn-text reveal">
+        <span class="eyebrow">Produto próprio</span>
+        <h2>Agenda IGSolution</h2>
+        <p>Reservas online, gestão de horários, confirmações, lembretes e automações numa plataforma desenvolvida pela IG Solution.</p>
+        <p class="agn-note">Disponível para demonstração e implementação em projetos selecionados.</p>
+        <a href="https://agenda-igsolution.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-green">Conhecer a Agenda IGSolution <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+      <div class="agw reveal" aria-hidden="true">
+        <div class="agw-bar">
+          <div class="agw-dots"><i></i><i></i><i></i></div>
+          <div class="agw-url">agenda-igsolution.vercel.app</div>
+        </div>
+        <div class="agw-body">
+          <div class="agw-mtitle"><b>Agenda</b><span class="agw-live">Online</span></div>
+          <div class="agw-slots">
+            <div class="agw-slot"><span>09:00</span><b>Livre</b></div>
+            <div class="agw-slot sel"><span>10:30</span><b>Marcado</b></div>
+            <div class="agw-slot"><span>14:00</span><b>Livre</b></div>
+          </div>
+          <div class="agw-foot">
+            <span class="agw-chip"><i></i>Confirmação enviada</span>
+            <span class="agw-chip"><i></i>Lembrete ativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. COMO TRABALHAMOS ══ -->
 <section class="s-light s-pad" id="metodo">
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow">Como trabalhamos</span>
       <h2>Primeiro compreendemos a operação. Depois implementamos.</h2>
-      <p class="sec-sub">Analisamos como os contactos entram, onde ficam registados, quem responde, que tarefas continuam manuais e onde existem perdas de tempo ou oportunidades.</p>
+      <p class="sec-sub">Cada projeto segue as mesmas fases, com o objetivo e o escopo definidos antes de começar.</p>
     </div>
     <div class="met-wrap" id="met-wrap">
       <div class="met-track" aria-hidden="true"><div class="met-fill" id="met-fill"></div></div>
@@ -692,89 +933,37 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
           <div class="met-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3zM9 3v15M15 6v15"/></svg></div>
           <span class="met-num">01 · Mapear</span>
           <h3>Mapear</h3>
-          <p>Compreendemos o processo atual, as ferramentas existentes e os principais gargalos.</p>
+          <p>Compreendemos a operação, os canais atuais, as ferramentas e os pontos onde a informação se perde.</p>
         </div>
         <div class="met-phase" id="met-p2">
           <div class="met-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
           <span class="met-num">02 · Implementar</span>
           <h3>Implementar</h3>
-          <p>Construímos e ligamos apenas os componentes necessários para o objetivo definido.</p>
+          <p>Configuramos e ligamos apenas os componentes definidos no escopo.</p>
         </div>
         <div class="met-phase" id="met-p3">
           <div class="met-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10M4 20h16"/></svg></div>
           <span class="met-num">03 · Ativar</span>
           <h3>Ativar</h3>
-          <p>Testamos, publicamos, documentamos e preparamos o cliente para utilizar o sistema.</p>
+          <p>Testamos o fluxo, corrigimos falhas e colocamos o sistema em funcionamento.</p>
         </div>
         <div class="met-phase" id="met-p4">
           <div class="met-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8M17 4h4v4"/></svg></div>
           <span class="met-num">04 · Melhorar</span>
           <h3>Melhorar</h3>
-          <p>Acompanhamos indicadores operacionais e evoluímos o sistema quando existe suporte contratado.</p>
+          <p>Acompanhamos o comportamento e fazemos ajustes quando fazem parte do serviço contratado.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 5. O SISTEMA COMPLETO ══ -->
-<section class="s-sys s-pad" id="projetos">
+<!-- ══ 7. APLICADO NA PRÁTICA ══ -->
+<section class="s-cream s-pad" id="exemplos">
   <div class="container">
-    <div class="sys-intro reveal">
-      <span class="eyebrow">O sistema completo</span>
-      <h2>Um projeto não funciona apenas com uma peça.</h2>
-      <p>Um website apresenta. Um formulário recebe o contacto. O CRM organiza. A automação garante o próximo passo. A medição mostra o que precisa de ser melhorado. A IG Solution identifica quais destas partes são necessárias e liga-as numa única operação.</p>
-    </div>
-    <p class="sys-central reveal"><b>Cada parte resolve um problema.</b> O valor aparece quando todas trabalham em conjunto.</p>
-
-    <!-- Ecossistema interativo -->
-    <div class="eco reveal">
-      <div class="eco-rail" role="tablist" aria-label="Componentes do sistema" id="eco-rail">
-        <button class="eco-node" role="tab" aria-selected="true" aria-controls="eco-panel" id="eco-t0" data-i="0"><span class="eco-num">01</span><span class="eco-name">Estratégia</span></button>
-        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t1" data-i="1" tabindex="-1"><span class="eco-num">02</span><span class="eco-name">Presença digital</span></button>
-        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t2" data-i="2" tabindex="-1"><span class="eco-num">03</span><span class="eco-name">Captação</span></button>
-        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t3" data-i="3" tabindex="-1"><span class="eco-num">04</span><span class="eco-name">Organização</span></button>
-        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t4" data-i="4" tabindex="-1"><span class="eco-num">05</span><span class="eco-name">Automação</span></button>
-        <button class="eco-node" role="tab" aria-selected="false" aria-controls="eco-panel" id="eco-t5" data-i="5" tabindex="-1"><span class="eco-num">06</span><span class="eco-name">Evolução</span></button>
-      </div>
-      <div class="eco-panel" role="tabpanel" id="eco-panel" aria-labelledby="eco-t0" tabindex="0" aria-live="polite">
-        <div class="eco-panel-in" id="eco-in">
-          <div class="eco-step" id="eco-step">Componente 01 de 06</div>
-          <h3 class="eco-h" id="eco-h">Estratégia e arquitetura</h3>
-          <p class="eco-serve" id="eco-serve">Define o objetivo, o público, a oferta, o processo e o que realmente precisa de ser construído.</p>
-          <div class="eco-block when"><div class="eco-block-lbl">Quando falta</div><p id="eco-when">O negócio pode investir em ferramentas, páginas e automações que não resolvem o problema principal.</p></div>
-          <div class="eco-block link"><div class="eco-block-lbl">Liga-se a</div><p id="eco-link">Transforma a decisão numa presença digital com um objetivo claro.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Faixa urgência -->
-    <div class="urg reveal">
-      <div class="urg-in">
-        <h3>A tecnologia deixou de ser apenas uma vantagem.</h3>
-        <p>Os clientes já esperam respostas rápidas, processos simples e acompanhamento consistente. Negócios que continuam dependentes de mensagens dispersas, folhas de cálculo e tarefas manuais tornam-se mais lentos e difíceis de controlar.</p>
-        <p class="urg-hi">A diferença não está em ter mais ferramentas. Está em fazer com que trabalhem juntas.</p>
-      </div>
-    </div>
-
-    <!-- Três formas de aplicar -->
-    <p class="apply-head reveal">O ponto de partida muda. A lógica de integração mantém-se.</p>
-    <div class="apply-grid">
-      <div class="apply-block reveal d1">
-        <div class="apply-word"><span>Lançar</span></div>
-        <p>Transformar uma nova oferta numa estrutura preparada para apresentar, captar e acompanhar os primeiros contactos.</p>
-        <div class="apply-flow"><span>Estratégia</span><i>→</i><span>Presença</span><i>→</i><span>Captação</span><i>→</i><span>Organização</span></div>
-      </div>
-      <div class="apply-block reveal d2">
-        <div class="apply-word"><span>Organizar</span></div>
-        <p>Centralizar contactos, tarefas e processos que atualmente estão espalhados por diferentes canais.</p>
-        <div class="apply-flow"><span>Canais atuais</span><i>→</i><span>CRM</span><i>→</i><span>Processo</span><i>→</i><span>Follow-up</span></div>
-      </div>
-      <div class="apply-block reveal d3">
-        <div class="apply-word"><span>Evoluir</span></div>
-        <p>Integrar ferramentas, reduzir tarefas manuais e melhorar o controlo da operação.</p>
-        <div class="apply-flow"><span>Sistema atual</span><i>→</i><span>Integrações</span><i>→</i><span>Automação</span><i>→</i><span>Medição</span></div>
-      </div>
+    <div class="sec-head reveal">
+      <span class="eyebrow">Aplicado na prática</span>
+      <h2>Um projeto real e exemplos de configuração.</h2>
     </div>
 
     <!-- Projeto real -->
@@ -789,33 +978,107 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         <p class="proof-cap">Representação visual do sistema implementado.</p>
       </div>
       <div class="proof-body">
-        <span class="eyebrow">Aplicado na prática</span>
+        <span class="eyebrow">Projeto documentado</span>
         <h3>Operação comercial imobiliária</h3>
-        <p>O projeto precisava de uma presença digital capaz de apresentar os imóveis, receber pedidos de informação e organizar o acompanhamento comercial.</p>
+        <p>O projeto precisava de uma presença digital capaz de apresentar imóveis, receber pedidos de informação e organizar o acompanhamento comercial.</p>
         <p>Website, páginas dos imóveis, formulários, CRM e acompanhamento foram implementados como partes da mesma operação digital.</p>
         <div class="proof-result">Estrutura colocada em produção em três semanas.</div>
-        <p class="proof-note">Identidade do cliente reservada. Os ativos, contas e acessos permanecem no nome do cliente. Apresentamos apenas informações e resultados que podem ser documentados.</p>
+        <p class="proof-note">Identidade do cliente reservada. Os ativos, contas, dados e acessos permanecem no nome do cliente. Apresentamos apenas informações e resultados que podem ser documentados.</p>
       </div>
     </div>
 
-    <!-- CTA da secção -->
-    <div class="sys-foot reveal">
-      <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Descobrir o que falta na minha operação <span class="arr" aria-hidden="true">→</span></a>
-      <p>Nem todos os projetos precisam das mesmas ferramentas. A análise inicial ajuda a identificar quais componentes fazem sentido para o teu caso.</p>
+    <!-- Exemplos ilustrativos -->
+    <div class="ex-warn reveal"><b>Nota</b><span>Exemplos ilustrativos de configurações possíveis. Não representam clientes reais nem resultados assegurados.</span></div>
+    <div class="ex-grid">
+      <article class="ex-card mv-host reveal d1">
+        <h3>Pedido de orçamento</h3>
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Formulário</em><s>Entrada</s></div>
+          <div class="mv-row"><b></b><em>Registo no CRM</em><s>Organizado</s></div>
+          <div class="mv-row"><b></b><em>Notificação ao responsável</em><s>Aviso</s></div>
+          <div class="mv-row hot"><b></b><em>Tarefa + lembrete</em><s>Seguimento</s></div>
+        </div>
+      </article>
+      <article class="ex-card mv-host reveal d2">
+        <h3>Processo interno</h3>
+        <div class="cv mv" aria-hidden="true">
+          <div class="mv-row"><b></b><em>Formulário</em><s>Entrada</s></div>
+          <div class="mv-row"><b></b><em>Base de dados</em><s>Registo</s></div>
+          <div class="mv-row"><b></b><em>Tarefa criada</em><s>Automático</s></div>
+          <div class="mv-row hot"><b></b><em>Sem cópia manual</em><s>Ligado</s></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ══ 6. CTA FINAL ══ -->
+<!-- ══ 8. A IG SOLUTION ══ -->
+<section class="s-about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-lead reveal">
+        <span class="eyebrow">A IG Solution</span>
+        <h2>Da presença digital à operação.</h2>
+        <p>A IG Solution é um estúdio de implementação digital sediado no Porto. Trabalha com negócios que recebem contactos, pedidos de informação, orçamentos ou marcações e precisam de os organizar num processo único.</p>
+        <p>Cada projeto tem objetivo, escopo, prazo, entregáveis e responsabilidades definidos antes de começar. No final, o sistema é testado, documentado e entregue em funcionamento.</p>
+      </div>
+      <div class="about-blocks reveal d1">
+        <div class="about-block"><i>Assumimos</i><p>A análise da operação, a implementação, os testes, a documentação e, quando contratada, a manutenção do sistema digital.</p></div>
+        <div class="about-block"><i>Não assumimos</i><p>A gestão do negócio, a equipa, as decisões comerciais, o atendimento aos clientes nem a operação diária da empresa.</p></div>
+        <div class="about-block"><i>Ativos e acessos</i><p>As contas, os domínios, os dados e os acessos ficam no nome do cliente sempre que a plataforma o permitir.</p></div>
+      </div>
+      <div class="about-id">IG Solution · Porto, Portugal · NIF 239513576 · info@igsolution.pt · +351 917 305 248</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. FAQ ══ -->
+<section class="s-light hairline s-pad" id="faq">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2>Antes de avançar.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">Como funcionam os preços?<span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Cada projeto recebe uma proposta fechada, com escopo, prazo, entregáveis, responsabilidades e custos externos definidos antes do início.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">Quanto tempo demora?<span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Depende do escopo. Uma automação específica pode ter uma implementação curta; um sistema completo é planeado depois da análise da operação.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">De quem são os acessos e os dados?<span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Do cliente, sempre que a plataforma utilizada permitir que a conta seja criada diretamente no seu nome.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">Preciso de equipa técnica?<span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>Não. A IG Solution implementa, testa e documenta o sistema definido no projeto.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">Posso terminar o acompanhamento mensal?<span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div><p>Sim. As condições e o prazo de aviso são definidos na proposta e no acordo de acompanhamento.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">As ferramentas externas estão incluídas?<span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Domínio, alojamento, CRM, WhatsApp API, email e outros serviços externos não estão incluídos, salvo indicação expressa na proposta.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. CTA FINAL ══ -->
 <section class="s-cta">
   <div class="cta-glow cg1" aria-hidden="true"></div>
   <div class="cta-glow cg2" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-inner reveal">
       <span class="eyebrow" style="color:var(--green-lum)">Análise inicial</span>
-      <h2>Onde se perdem tempo e oportunidades na tua operação?</h2>
-      <p class="cta-text">Conta-nos como os contactos entram, como são acompanhados e que tarefas ainda dependem de trabalho manual.</p>
-      <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
+      <h2>O teu sistema começa por perceber o que está a falhar.</h2>
+      <p class="cta-text">Analisamos a operação, identificamos os componentes necessários e definimos um escopo claro antes de implementar.</p>
+      <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero estruturar o meu sistema <span class="arr" aria-hidden="true">→</span></a>
+      <p class="cta-support">Sem compromisso de resultado. O primeiro passo é compreender a operação e definir o que faz sentido implementar.</p>
     </div>
   </div>
 </section>
@@ -830,6 +1093,15 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
         <div class="ft-logo">IG<span>·</span>Solution</div>
         <p class="ft-desc">Sistemas comerciais e automação para negócios de serviços.</p>
         <p class="ft-tag">Menos ferramentas soltas. Mais operação a funcionar.</p>
+        <nav class="ft-nav" aria-label="Secções">
+          <a href="#solucoes">Soluções</a>
+          <a href="#sistema">Sistema</a>
+          <a href="#setores">Setores</a>
+          <a href="#agenda">Agenda</a>
+          <a href="#metodo">Como trabalhamos</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <p class="ft-nif">NIF 239513576</p>
       </div>
       <div class="ft-contacts">
         <a href="mailto:info@igsolution.pt">info@igsolution.pt</a>
@@ -849,7 +1121,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:72px 0 34px}
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-cta" id="sticky-cta">
-  <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Organizar a minha operação <span class="arr" aria-hidden="true">→</span></a>
+  <a href="diagnostico.html?interesse=analise_operacao" class="btn btn-green">Quero estruturar o meu sistema <span class="arr" aria-hidden="true">→</span></a>
 </div>
 
 <script>
@@ -890,12 +1162,12 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
 
 // MICROINTERFACES dos cards — tocar uma vez ao entrar no viewport (.inview)
 (function(){
-  var els=document.querySelectorAll('.op-mi,.agenda,.proof-vis,.pipe,.ba');
+  var els=document.querySelectorAll('.agenda,.proof-vis,.pipe,.ba,.mv');
   if(!els.length)return;
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
-        var host=e.target.closest('.op-card,.card,.proof');
+        var host=e.target.closest('.card,.proof,.mv-host');
         (host||e.target).classList.add('inview');
         // pipeline: acender nós em sequência (uma vez)
         if(e.target.hasAttribute && e.target.hasAttribute('data-mi') && !REDUCED){
@@ -909,7 +1181,7 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
     });
   },{threshold:.35});
   els.forEach(function(el){io.observe(el)});
-  if(REDUCED){document.querySelectorAll('.op-card,.card,.proof').forEach(function(h){h.classList.add('inview')});document.querySelectorAll('.pipe-node').forEach(function(n){n.classList.add('on')});}
+  if(REDUCED){document.querySelectorAll('.card,.proof,.mv-host').forEach(function(h){h.classList.add('inview')});document.querySelectorAll('.pipe-node').forEach(function(n){n.classList.add('on')});}
 })();
 
 // SPOTLIGHT (cards desktop, pointer:fine — pointermove por card)
@@ -953,12 +1225,11 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
   var tabs=[].slice.call(rail.querySelectorAll('.eco-node'));
   var panelIn=document.getElementById('eco-in'), panel=document.getElementById('eco-panel');
   var DATA=[
-    {h:'Estratégia e arquitetura',serve:'Define o objetivo, o público, a oferta, o processo e o que realmente precisa de ser construído.',when:'O negócio pode investir em ferramentas, páginas e automações que não resolvem o problema principal.',link:'Transforma a decisão numa presença digital com um objetivo claro.'},
-    {h:'Website e presença digital',serve:'Apresenta o negócio, explica a oferta e conduz o visitante até uma ação concreta. Pode incluir website, landing page, portal, página de marcação ou de pedido de orçamento.',when:'O negócio depende excessivamente de plataformas externas e controla menos a experiência do potencial cliente.',link:'Cria o ponto de entrada para transformar atenção em contacto.'},
-    {h:'Captação e entrada de contactos',serve:'Transforma interesse em pedidos, oportunidades, orçamentos ou marcações organizadas. Pode incluir formulários, WhatsApp, pedidos de orçamento, marcações e páginas de conversão.',when:'Existe atenção, mas não existe um percurso claro para o potencial cliente avançar.',link:'Envia os dados para o sistema responsável pela organização e acompanhamento.'},
-    {h:'CRM e organização',serve:'Centraliza contactos, oportunidades, tarefas, histórico e próximos passos. Permite saber quem entrou, de onde veio, quem respondeu, em que fase está e qual é a próxima ação.',when:'A informação fica espalhada por mensagens, emails, notas e folhas de cálculo.',link:'Fornece os dados e estados necessários para automatizar tarefas.'},
-    {h:'Automação',serve:'Liga ferramentas e executa tarefas repetitivas de forma consistente: confirmações, notificações, lembretes, follow-ups, criação de tarefas, atualização de estados e reativação.',when:'A equipa continua a gastar tempo em tarefas previsíveis e alguns passos acabam esquecidos.',link:'Gera informação sobre o funcionamento e os pontos que precisam de melhoria.'},
-    {h:'Acompanhamento e evolução',serve:'Permite verificar se o sistema está a funcionar e onde precisa de ser melhorado: entrada de contactos, tempo de resposta, estado das oportunidades, tarefas pendentes, falhas nas automações e pontos de abandono.',when:'Existem ferramentas, mas não existe clareza sobre o que está a funcionar ou o que precisa de mudar.',link:'Alimenta novas decisões e melhorias na estratégia.'}
+    {h:'Presença digital',serve:'Website, landing page, portal ou página de marcação que apresenta o negócio e conduz o visitante até uma ação concreta.',when:'O negócio depende de plataformas externas e controla menos a experiência do potencial cliente.',link:'Cria o ponto de entrada para transformar atenção em contacto.'},
+    {h:'Entrada de contactos',serve:'Formulários, WhatsApp, pedidos de orçamento e marcações que transformam interesse em pedidos e oportunidades organizadas.',when:'Existe atenção, mas não existe um percurso claro para o potencial cliente avançar.',link:'Envia os dados para o sistema responsável pela organização.'},
+    {h:'Organização',serve:'CRM que centraliza contactos, origem, responsável, histórico e próximo passo de cada oportunidade.',when:'A informação fica espalhada por mensagens, emails, notas e folhas de cálculo.',link:'Fornece os dados e estados necessários para automatizar tarefas.'},
+    {h:'Automação',serve:'Confirmações, notificações, lembretes, follow-ups e criação de tarefas executados de forma consistente entre ferramentas.',when:'A equipa continua a gastar tempo em tarefas previsíveis e alguns passos acabam esquecidos.',link:'Liberta tempo e alimenta o acompanhamento da operação.'},
+    {h:'Acompanhamento e evolução',serve:'Permite verificar se o sistema está a funcionar: entrada de contactos, tempo de resposta, estado das oportunidades e falhas nas automações.',when:'Existem ferramentas, mas não existe clareza sobre o que está a funcionar ou o que precisa de mudar.',link:'Alimenta novas decisões e melhorias no sistema.'}
   ];
   function select(i,focus){
     tabs.forEach(function(t,j){
@@ -969,7 +1240,7 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
     panel.setAttribute('aria-labelledby',tabs[i].id);
     var d=DATA[i];
     var apply=function(){
-      document.getElementById('eco-step').textContent='Componente 0'+(i+1)+' de 06';
+      document.getElementById('eco-step').textContent='Etapa 0'+(i+1)+' de 05';
       document.getElementById('eco-h').textContent=d.h;
       document.getElementById('eco-serve').textContent=d.serve;
       document.getElementById('eco-when').textContent=d.when;
@@ -988,6 +1259,45 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
       else if(k==='Home')ni=0;
       else if(k==='End')ni=tabs.length-1;
       if(ni>=0){e.preventDefault();select(ni,true);}
+    });
+  });
+})();
+
+// SETORES — deep-link + realce
+(function(){
+  function highlight(el){
+    el.classList.add('hl');
+    setTimeout(function(){el.classList.remove('hl');},2000);
+  }
+  function go(id){
+    var el=document.getElementById(id); if(!el)return;
+    var y=el.getBoundingClientRect().top+scrollY-76;
+    try{window.scrollTo({top:y,behavior:REDUCED?'auto':'smooth'});}catch(e){window.scrollTo(0,y);}
+    highlight(el);
+  }
+  if(location.hash && location.hash.indexOf('#setor-')===0){
+    var id0=location.hash.slice(1);
+    window.addEventListener('load',function(){setTimeout(function(){go(id0);}, REDUCED?0:320);});
+  }
+  document.querySelectorAll('a[href^="#setor-"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var id=a.getAttribute('href').slice(1);
+      if(history.replaceState)history.replaceState(null,'','#'+id);
+      go(id);
+    });
+  });
+})();
+
+// FAQ — acordeão acessível
+(function(){
+  var qs=[].slice.call(document.querySelectorAll('.faq-q'));
+  if(!qs.length)return;
+  qs.forEach(function(q){
+    q.addEventListener('click',function(){
+      var open=q.getAttribute('aria-expanded')==='true';
+      qs.forEach(function(o){o.setAttribute('aria-expanded','false');});
+      q.setAttribute('aria-expanded',open?'false':'true');
     });
   });
 })();
